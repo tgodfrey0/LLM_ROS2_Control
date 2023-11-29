@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'python_node = llm_ros_controller.llm_controller.entry'
         ],
     },
 )
