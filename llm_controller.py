@@ -1,8 +1,12 @@
 import cv2
 import apriltag
+import openai
+
+from openai import OpenAI
 
 at_options = apriltag.DetectorOptions(families="tag36h11")
 tag_width = 10
+global_conv = []
 
 def entry():
   cv2.namedWindow("Stream")
@@ -50,6 +54,31 @@ def entry():
   
   cv2.destroyWindow("Stream")
   vc.release()
+  
+def send_req(client: OpenAI) -> str:
+  completion = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=global_conv,
+    max_tokens=300
+  )
+
+  # print(completion.choices[0].message)
+  
+  return completion.choices[0].message.content
+  
+def get_api_key() -> str:
+  with open("openai_key", "r") as f:
+    return f.readline()
 
 if __name__=="__main__":
-  entry()
+  client = OpenAI(api_key=get_api_key())
+  # entry()
+  # global_conv = [
+  #   {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."}, 
+  #   {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
+  # ]
+  global_conv = [
+    {"role": "system", "content": "You are a wheeled robot, and can only move forwards, backwards, and rotate clockwise or anticlockwise. You will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree. Once this has been decided you should call the '@SUPERVISOR' tag at the end of your plan."}, 
+    {"role": "user", "content": "Create a plan to move on a chess board from B7 to F7 without colliding with the agent at D7"}
+  ]
+  print(send_req(client))
