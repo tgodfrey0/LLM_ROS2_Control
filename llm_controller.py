@@ -1,15 +1,10 @@
 import cv2
 import apriltag
-import rclpy
 
 at_options = apriltag.DetectorOptions(families="tag36h11")
 tag_width = 10
 
 def entry():
-  #ROS
-  rclpy.init()
-  node = Node("LLM_Controller")
-  
   cv2.namedWindow("Stream")
   vc = cv2.VideoCapture(0)
   
@@ -55,9 +50,6 @@ def entry():
   
   cv2.destroyWindow("Stream")
   vc.release()
-  
-  rclpy.spin(node)
-  rclpy.shutdown()
 
 if __name__=="__main__":
   entry()
