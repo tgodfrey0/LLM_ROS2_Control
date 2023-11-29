@@ -1,3 +1,4 @@
 [submodule "SwarmNet"]
 	path = SwarmNet
 	url = git@github.com:tgodfrey0/SwarmNet.git
+	branch = main
