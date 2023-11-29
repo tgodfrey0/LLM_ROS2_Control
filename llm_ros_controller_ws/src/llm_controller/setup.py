@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'llm_ros_controller'
+package_name = 'llm_controller'
 
 setup(
     name=package_name,
@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'python_node = llm_ros_controller.llm_controller.entry'
+            'llm_node = llm_controller.llm_node:main'
         ],
     },
 )
