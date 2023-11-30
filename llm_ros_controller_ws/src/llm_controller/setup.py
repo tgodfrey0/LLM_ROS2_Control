@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'llm_node = llm_controller.llm_node:main'
         ],
     },
 )
