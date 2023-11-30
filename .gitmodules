@@ -2,3 +2,9 @@
 	path = SwarmNet
 	url = git@github.com:tgodfrey0/SwarmNet.git
 	branch = main
+[submodule "llm_ros_controller_ws/src/apriltag_msgs"]
+	path = llm_ros_controller_ws/src/apriltag_msgs
+	url = https://github.com/christianrauch/apriltag_msgs
+[submodule "llm_ros_controller_ws/src/apriltag_ros"]
+	path = llm_ros_controller_ws/src/apriltag_ros
+	url = https://github.com/christianrauch/apriltag_ros
