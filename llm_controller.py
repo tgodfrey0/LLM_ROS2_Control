@@ -59,7 +59,7 @@ def send_req(client: OpenAI) -> str:
   completion = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=global_conv,
-    max_tokens=300
+    # max_tokens=500
   )
 
   # print(completion.choices[0].message)
@@ -78,7 +78,14 @@ if __name__=="__main__":
   #   {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
   # ]
   global_conv = [
-    {"role": "system", "content": "You are a wheeled robot, and can only move forwards, backwards, and rotate clockwise or anticlockwise. You will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree. Once this has been decided you should call the '@SUPERVISOR' tag at the end of your plan."}, 
+    {"role": "system", "content": "You are a wheeled robot, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
+      You will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
+        Once this has been decided you should call the '@SUPERVISOR' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
+          - 'FORWARDS' to move one square forwards\
+          - 'BACKWARDS' to move one square backwards\
+          - 'CLOCKWISE' to rotate 90 degrees clockwise\
+          - 'ANTICLOCKWISE' to rotate 90 degrees clockwise\
+          "}, 
     {"role": "user", "content": "Create a plan to move on a chess board from B7 to F7 without colliding with the agent at D7"}
   ]
   print(send_req(client))
