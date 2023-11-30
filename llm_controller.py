@@ -2,6 +2,7 @@ import cv2
 import apriltag
 import openai
 
+from SwarmNet import swarmnet
 from openai import OpenAI
 
 at_options = apriltag.DetectorOptions(families="tag36h11")
@@ -69,8 +70,14 @@ def send_req(client: OpenAI) -> str:
 def get_api_key() -> str:
   with open("openai_key", "r") as f:
     return f.readline()
+  
+def input_recv(msg: str) -> None: 
+  print(msg)
+  print("Add to dictionary or something")
 
 if __name__=="__main__":
+  sn_ctrl = swarmnet.SwarmNet({"LLM": input_recv})
+  sn_ctrl.start()
   client = OpenAI(api_key=get_api_key())
   # entry()
   # global_conv = [
@@ -81,4 +88,7 @@ if __name__=="__main__":
     {"role": "system", "content": "You are a wheeled robot, and can only move forwards, backwards, and rotate clockwise or anticlockwise. You will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree. Once this has been decided you should call the '@SUPERVISOR' tag at the end of your plan."}, 
     {"role": "user", "content": "Create a plan to move on a chess board from B7 to F7 without colliding with the agent at D7"}
   ]
-  print(send_req(client))
+  res = send_req(client)
+  print(res)
+  sn_ctrl.send(f"LLM {res}")
+  sn_ctrl.kill()
