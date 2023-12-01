@@ -1,0 +1,13 @@
+launch:
+
+- node:
+    pkg: "llm_controller"
+    exec: "image_publisher_node"
+    name: "image_and_info_publisher"
+    namespace: "llm_control"
+
+- node:
+    pkg: "apriltag_ros"
+    exec: "apriltag_node"
+    name: "apriltag_detector"
+    namespace: "llm_control"
