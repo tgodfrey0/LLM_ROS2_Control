@@ -7,26 +7,8 @@ from sensor_msgs.msg import Image
 from sensor_msgs.msg import CameraInfo
 from cv_bridge import CvBridge
 
-TARGET_FPS: int = 20
+TARGET_FPS: int = 15
 TIMER_PERIOD: float = round(1/30)
-  
-class ImagePublisher(Node):
-  def __init__(self):
-    super().__init__('image_publisher')
-       
-    self.publisher_ = self.create_publisher(Image, 'video_frames', 10)
-    timer_period = TIMER_PERIOD
-    self.timer = self.create_timer(timer_period, self.timer_callback)
-    self.cap = cv2.VideoCapture(0)
-    self.br = CvBridge() # Convert between ROS and OpenCV images
-    
-  def timer_callback(self):
-    ret, frame = self.cap.read()
-           
-    if ret == True:
-      self.publisher_.publish(self.br.cv2_to_imgmsg(frame, encoding='rgb8'))
-      
-    self.get_logger().info('Publishing video frame')
     
 class CameraInfoPublisher(Node):
     def __init__(self):
@@ -52,27 +34,11 @@ def main(args=None):
   rclpy.init(args=args)
   
   camera_info_publisher = CameraInfoPublisher()
-  image_publisher = ImagePublisher()
-  
-# rclpy.spin(camera_info_publisher)
-# rclpy.spin(image_publisher)
-  
-  executor = rclpy.executors.MultiThreadedExecutor()
-  executor.add_node(camera_info_publisher)
-  executor.add_node(image_publisher)
-  executor_thread = threading.Thread(target=executor.spin, daemon=True)
-  executor_thread.start()
-  try:
-      while rclpy.ok():
-          pass
-  except KeyboardInterrupt:
-      pass
     
-  rclpy.shutdown()
-  executor_thread.join()
+  rclpy.spin(camera_info_publisher)
   
-  # image_publisher.destroy_node()
-  # rclpy.shutdown()
+  camera_info_publisher.destroy_node()
+  rclpy.shutdown()
    
 if __name__ == '__main__':
   main()

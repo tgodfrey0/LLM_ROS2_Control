@@ -1,9 +1,19 @@
 launch:
 
 - node:
+    pkg: "image_tools"
+    exec: "cam2image"
+    name: "cam2image"
+    namespace: "llm_control"
+    remap:
+    -
+        from: "/image"
+        to: "/camera_image"
+
+- node:
     pkg: "llm_controller"
-    exec: "image_publisher_node"
-    name: "image_and_info_publisher"
+    exec: "camera_info_publisher"
+    name: "camera_info_publisher"
     namespace: "llm_control"
 
 - node:

@@ -1,7 +1,0 @@
-launch:
-
-- node:
-    pkg: "llm_controller"
-    exec: "image_publisher_node"
-    name: "iamge_publisher"
-    namespace: "llm_control"
