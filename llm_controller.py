@@ -47,6 +47,7 @@ if __name__=="__main__":
   sn_ctrl = SwarmNet({"LLM": llm_recv})
   sn_ctrl.start()
   print("Communications started")
+  input("Press any key to start")
   client = OpenAI(api_key=get_api_key())
   global_conv = [
     {"role": "system", "content": "You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
