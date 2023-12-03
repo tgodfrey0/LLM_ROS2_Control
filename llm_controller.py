@@ -17,7 +17,7 @@ def send_req(client: OpenAI) -> str:
   
 def get_api_key() -> str:
   with open("openai_key", "r") as f:
-    return f.readline()
+    return f.readline().rstrip()
   
 def toggle_role(r: str):
   if r == "assistant":
