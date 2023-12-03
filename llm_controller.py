@@ -95,9 +95,7 @@ if __name__=="__main__":
           - 'BACKWARDS' to move one square backwards\
           - 'CLOCKWISE' to rotate 90 degrees clockwise\
           - 'ANTICLOCKWISE' to rotate 90 degrees clockwise\
-          "}, 
-    {"role": "user", "content": "I am at D1, you are at D7. I must end at D7 and you must end at D1"}
-  ]
+          "}]
   # res = send_req(client)
   # print(res.content)
   # sn_ctrl.send(f"LLM {res.role} {res.content}")
