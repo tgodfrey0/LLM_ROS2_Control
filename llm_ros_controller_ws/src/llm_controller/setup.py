@@ -24,7 +24,8 @@ setup(
     entry_points={
         'console_scripts': [
             'llm_node = llm_controller.llm_node:main',
-            'camera_info_publisher = llm_controller.camera_info_publisher:main'
+            'camera_info_publisher = llm_controller.camera_info_publisher:main',
+            'hardware_protection = llm_controller.hardware_protection:main'
         ],
     },
 )
