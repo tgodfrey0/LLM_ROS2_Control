@@ -22,6 +22,8 @@ class ScanSubscriber(Node):
       rs: List[float] = msg.ranges
       less_than_min = False
       
+      self.get_logger().info(f"Ranges: {rs}")
+      
       for r in rs:
         less_than_min = r < THRESHOLD_CM
         
