@@ -65,11 +65,11 @@ def zero_vel():
 def main(args=None):
   rclpy.init(args=args)
   
-  camera_info_publisher = ScanSubscriber()
+  scan_subscriber = ScanSubscriber()
     
-  rclpy.spin(camera_info_publisher)
+  rclpy.spin(scan_subscriber)
   
-  camera_info_publisher.destroy_node()
+  scan_subscriber.destroy_node()
   rclpy.shutdown()
    
 if __name__ == '__main__':
