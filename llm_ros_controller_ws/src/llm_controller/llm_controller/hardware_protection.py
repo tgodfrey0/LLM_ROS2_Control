@@ -53,7 +53,7 @@ class TwistPublisher(Node):
     msg.linear = lin
     msg.angular = ang
     
-    self.publisher_.publish(msg)
+    self.publisher.publish(msg)
     self.get_logger().error("Min LIDAR reading, sending 0 velocity")
     
     
