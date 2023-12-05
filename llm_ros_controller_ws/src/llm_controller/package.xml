@@ -12,7 +12,7 @@
   <depend>std_msgs</depend>
   <depend>image_transport</depend>
   <depend>cv_bridge</depend>
-  <depend>apriltag_ros</depend>
+  <!-- <depend>apriltag_ros</depend> -->
   <!-- <depend>opencv2</depend> -->
 
   <exec_depend>ros2launch</exec_depend>
