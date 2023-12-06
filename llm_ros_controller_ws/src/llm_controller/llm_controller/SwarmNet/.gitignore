@@ -1,0 +1,12 @@
+*
+
+!.gitignore
+!LICENSE
+!README.md
+!requirements.txt
+!enable_slave.sh
+
+!*.py
+
+!examples
+!examples/*.py

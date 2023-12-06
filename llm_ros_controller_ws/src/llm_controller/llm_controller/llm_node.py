@@ -1,10 +1,10 @@
-from swarmnet import SwarmNet
+from llm_controller.swarmnet import SwarmNet
 from openai import OpenAI
 from math import pi
 from threading import Lock
 
 import rclpy
-from rcply import Node
+from rclpy.node import Node
 from geometry_msgs.msg import Twist, Vector3
 
 CMD_FORWARD = "@FORWARD"
@@ -15,10 +15,7 @@ LINEAR_SPEED = 0.15 # m/s
 LINEAR_DISTANCE = 0.45 # m
 
 ANGULAR_SPEED = 0.3 # rad/s
-ANGUALR_DISTANCE = pi/2.0 # rad
-
-linear_rate = node.create_rate(LINEAR_DISTANCE / LINEAR_SPEED)
-angular_rate = node.create_rate(ANGUALR_DISTANCE / ANGULAR_SPEED)
+ANGULAR_DISTANCE = pi/2.0 # rad
 
 global_conv = []
 client: OpenAI = None
@@ -30,54 +27,77 @@ vp = None
 class VelocityPublisher(Node):
   def __init__(self):
     super().__init__("velocity_publisher")
-    self.publisher = self.publisher(Twist, "/cmd_vel", 10)
+    self.publisher_ = self.create_publisher(Twist, "/cmd_vel", 10)
     
-    cmd = global_conv[len(global_conv)-1]["content"]
-    for s in cmd.split("\n"):
-      if(s == CMD_FORWARD):
+    self.linear_rate = self.create_rate(LINEAR_DISTANCE / LINEAR_SPEED, self.get_clock())
+    self.angular_rate = self.create_rate(ANGULAR_DISTANCE / ANGULAR_SPEED, self.get_clock())
+    
+    # cmd = global_conv[len(global_conv)-1]["content"]
+    # for s in cmd.split("\n"):
+    #   if(CMD_FORWARD in s):
+    #     self.pub_forward()
+    #   elif(CMD_ROTATE_CLOCKWISE in s):
+    #     self.pub_clockwise()
+    #   elif(CMD_ROTATE_ANTICLOCKWISE in s):
+    #     self.pub_anticlockwise()
+    #   else:
+    #     self.get_logger().error("Unrecognised command")
+    
+    ss = ["@FORWARD", "@CLOCKWISE"]
+    for s in ss:
+      if(CMD_FORWARD in s):
         self.pub_forward()
-      elif(s == CMD_ROTATE_CLOCKWISE):
+      elif(CMD_ROTATE_CLOCKWISE in s):
         self.pub_clockwise()
-      elif(s == CMD_ROTATE_ANTICLOCKWISE):
+      elif(CMD_ROTATE_ANTICLOCKWISE in s):
         self.pub_anticlockwise()
+      else:
+        self.get_logger().error("Unrecognised command")
     
   def _publish_cmd(self, msg: Twist):
-    self.publisher.publish(msg)
-    self.get_logger("Publishing to /cmd_vel")
+    self.publisher_.publish(msg)
+    self.get_logger().info("Publishing to /cmd_vel")
   
   def _publish_zero(self):
     msg = Twist()
     
     lin_msg = Vector3()
-    lin_msg.x = 0
-    lin_msg.y = 0
-    lin_msg.z = 0
+    lin_msg.x = 0.0
+    lin_msg.y = 0.0
+    lin_msg.z = 0.0
     
     ang_msg = Vector3()
-    ang_msg.x = 0
-    ang_msg.y = 0
-    ang_msg.z = 0
+    ang_msg.x = 0.0
+    ang_msg.y = 0.0
+    ang_msg.z = 0.0
+    
+    msg.linear = lin_msg
+    msg.angular = ang_msg
     
     self._publish_cmd(msg)
     
   def pub_forward(self):
+    self.get_logger().info("Forward command")
     msg = Twist()
     
     lin_msg = Vector3()
     lin_msg.x = LINEAR_SPEED #? X, Y or Z?
-    lin_msg.y = 0
-    lin_msg.z = 0
+    lin_msg.y = 0.0
+    lin_msg.z = 0.0
     
     ang_msg = Vector3()
-    ang_msg.x = 0
-    ang_msg.y = 0
-    ang_msg.z = 0
+    ang_msg.x = 0.0
+    ang_msg.y = 0.0
+    ang_msg.z = 0.0
+    
+    msg.linear = lin_msg
+    msg.angular = ang_msg
     
     self._publish_cmd(msg)
     
-    linear_rate.sleep()
+    # self.linear_rate.sleep()
     
-    self._publish_zero()
+    # self._publish_zero()
     
   def _pub_rotation(self, dir: float):
     msg = Twist()
@@ -92,16 +112,21 @@ class VelocityPublisher(Node):
     ang_msg.y = 0
     ang_msg.z = dir * ANGULAR_SPEED #? X Y or Z
     
+    msg.linear = lin_msg
+    msg.angular = ang_msg
+    
     self._publish_cmd(msg)
     
-    angular_rate.sleep()
+    # self.angular_rate.sleep()
     
-    self._publish_zero()
+    # self._publish_zero()
     
   def pub_anticlockwise(self):
+    self.get_logger().info("Anticlockwise command")
     self._pub_rotation(-1)
     
   def pub_clockwise(self):
+    self.get_logger().info("Clockwise command")
     self._pub_rotation(1)
     
 
@@ -126,7 +151,7 @@ def send_req():
 
   # print(completion.choices[0].message)
   global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
-  sn_ctrl.send(f"LLM {completion.choices[0].message.role} {completion.choices[0].message.content}")
+  #! sn_ctrl.send(f"LLM {completion.choices[0].message.role} {completion.choices[0].message.content}")
   
 def get_api_key() -> str:
   with open("openai_key", "r") as f:
@@ -165,7 +190,7 @@ def negotiate():
   
   while(current_stage < max_stages or not global_conv[len(global_conv)-1]["content"].endswith("@SUPERVISOR")):
     while(not is_my_turn()): # Wait to receive from the other agent
-      sleep(0.5)
+      #sleep(0.5)
       print("waiting")
     
     send_req()
@@ -202,7 +227,7 @@ def main(args=None):
   
   rclpy.init()
   velocity_publisher = VelocityPublisher()
-  rclpy.spin(velocity_publisher)
+  rclpy.spin(velocity_publisher) #* Remember spinonce() exists
   velocity_publisher.destroy_node()
   rclpy.shutdown()
 
