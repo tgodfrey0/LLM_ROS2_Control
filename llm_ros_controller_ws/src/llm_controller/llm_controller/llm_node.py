@@ -11,6 +11,7 @@ from geometry_msgs.msg import Twist, Vector3
 CMD_FORWARD = "@FORWARD"
 CMD_ROTATE_CLOCKWISE = "@CLOCKWISE"
 CMD_ROTATE_ANTICLOCKWISE = "@ANTICLOCKWISE"
+CMD_SUPERVISOR = "@SUPERVISOR"
 
 LINEAR_SPEED = 0.15 # m/s
 LINEAR_DISTANCE = 0.45 # m
@@ -54,8 +55,12 @@ class VelocityPublisher(Node):
         self.pub_clockwise()
       elif(CMD_ROTATE_ANTICLOCKWISE in s):
         self.pub_anticlockwise()
+      elif(CMD_SUPERVISOR in s):
+        pass
       else:
         self.get_logger().error("Unrecognised command")
+    
+    self.get_logger().info("Full plan parsed")
         
   def _delay(self, t_target):
     t0 = self.get_clock().now()
@@ -216,7 +221,7 @@ def main(args=None):
   # global_conv = [
   #   {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
   #     We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
-  #       Once this has been decided you should call the '@SUPERVISOR' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
+  #       Once this has been decided you should call the 'f{CMD_SUPERVISOR}' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
   #         - '{CMD_FORWARD}' to move one square forwards\
   #         - '{CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise\
   #         - '{CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise\
@@ -232,7 +237,7 @@ def main(args=None):
   
   rclpy.init()
   velocity_publisher = VelocityPublisher()
-  rclpy.spin_once(velocity_publisher) #* Remember spinonce() exists
+  rclpy.spin_once(velocity_publisher) #* spin_once will parse the given plan then return
   velocity_publisher.destroy_node()
   rclpy.shutdown()
 
