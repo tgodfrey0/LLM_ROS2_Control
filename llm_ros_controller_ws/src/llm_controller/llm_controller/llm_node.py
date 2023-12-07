@@ -5,6 +5,7 @@ from threading import Lock
 
 import rclpy
 from rclpy.node import Node
+from rclpy.timer import Timer
 from geometry_msgs.msg import Twist, Vector3
 
 CMD_FORWARD = "@FORWARD"
@@ -13,9 +14,11 @@ CMD_ROTATE_ANTICLOCKWISE = "@ANTICLOCKWISE"
 
 LINEAR_SPEED = 0.15 # m/s
 LINEAR_DISTANCE = 0.45 # m
+LINEAR_TIME = LINEAR_DISTANCE / LINEAR_SPEED
 
 ANGULAR_SPEED = 0.3 # rad/s
 ANGULAR_DISTANCE = pi/2.0 # rad
+ANGULAR_TIME = ANGULAR_DISTANCE / ANGULAR_SPEED
 
 global_conv = []
 client: OpenAI = None
@@ -29,8 +32,8 @@ class VelocityPublisher(Node):
     super().__init__("velocity_publisher")
     self.publisher_ = self.create_publisher(Twist, "/cmd_vel", 10)
     
-    self.linear_rate = self.create_rate(LINEAR_DISTANCE / LINEAR_SPEED, self.get_clock())
-    self.angular_rate = self.create_rate(ANGULAR_DISTANCE / ANGULAR_SPEED, self.get_clock())
+    self.linear_rate = self.create_rate(LINEAR_SPEED / LINEAR_DISTANCE, self.get_clock()) # Hz so inverse the fraction
+    self.angular_rate = self.create_rate(ANGULAR_SPEED / ANGULAR_DISTANCE, self.get_clock())
     
     # cmd = global_conv[len(global_conv)-1]["content"]
     # for s in cmd.split("\n"):
@@ -43,7 +46,7 @@ class VelocityPublisher(Node):
     #   else:
     #     self.get_logger().error("Unrecognised command")
     
-    ss = ["@FORWARD", "@CLOCKWISE"]
+    ss = ["@FORWARD", "@CLOCKWISE", "@FORWARD", "@CLOCKWISE"]
     for s in ss:
       if(CMD_FORWARD in s):
         self.pub_forward()
@@ -53,26 +56,34 @@ class VelocityPublisher(Node):
         self.pub_anticlockwise()
       else:
         self.get_logger().error("Unrecognised command")
+        
+  def _delay(self, t_target):
+    t0 = self.get_clock().now()
+    while(self.get_clock().now() - t0 < rclpy.duration.Duration(seconds=t_target)):
+      pass
+    self.get_logger().info(f"Delayed for {t_target} seconds")
+    
+  def linear_delay(self):
+    self._delay(LINEAR_TIME)
+    
+  def angular_delay(self):
+    self._delay(ANGULAR_TIME)
     
   def _publish_cmd(self, msg: Twist):
     self.publisher_.publish(msg)
     self.get_logger().info("Publishing to /cmd_vel")
   
   def _publish_zero(self):
+    self.get_logger().info("Zero velocity requested")
     msg = Twist()
     
-    lin_msg = Vector3()
-    lin_msg.x = 0.0
-    lin_msg.y = 0.0
-    lin_msg.z = 0.0
+    msg.linear.x = 0.0
+    msg.linear.y = 0.0
+    msg.linear.z = 0.0
     
-    ang_msg = Vector3()
-    ang_msg.x = 0.0
-    ang_msg.y = 0.0
-    ang_msg.z = 0.0
-    
-    msg.linear = lin_msg
-    msg.angular = ang_msg
+    msg.angular.x = 0.0
+    msg.angular.y = 0.0
+    msg.angular.z = 0.0
     
     self._publish_cmd(msg)
     
@@ -80,46 +91,40 @@ class VelocityPublisher(Node):
     self.get_logger().info("Forward command")
     msg = Twist()
     
-    lin_msg = Vector3()
-    lin_msg.x = LINEAR_SPEED #? X, Y or Z?
-    lin_msg.y = 0.0
-    lin_msg.z = 0.0
+    msg.linear.x = LINEAR_SPEED #? X, Y or Z?
+    msg.linear.y = 0.0
+    msg.linear.z = 0.0
     
-    ang_msg = Vector3()
-    ang_msg.x = 0.0
-    ang_msg.y = 0.0
-    ang_msg.z = 0.0
-    
-    msg.linear = lin_msg
-    msg.angular = ang_msg
+    msg.angular.x = 0.0
+    msg.angular.y = 0.0
+    msg.angular.z = 0.0
     
     self._publish_cmd(msg)
     
+    self.linear_delay()
+    
     # self.linear_rate.sleep()
     
-    # self._publish_zero()
+    self._publish_zero()
     
   def _pub_rotation(self, dir: float):
     msg = Twist()
     
-    lin_msg = Vector3()
-    lin_msg.x = 0
-    lin_msg.y = 0
-    lin_msg.z = 0
+    msg.linear.x = 0.0
+    msg.linear.y = 0.0
+    msg.linear.z = 0.0
     
-    ang_msg = Vector3()
-    ang_msg.x = 0
-    ang_msg.y = 0
-    ang_msg.z = dir * ANGULAR_SPEED #? X Y or Z
-    
-    msg.linear = lin_msg
-    msg.angular = ang_msg
+    msg.angular.x = 0.0
+    msg.angular.y = 0.0
+    msg.angular.z = dir * ANGULAR_SPEED #? X Y or Z
     
     self._publish_cmd(msg)
     
+    self.angular_delay()
+    
     # self.angular_rate.sleep()
     
-    # self._publish_zero()
+    self._publish_zero()
     
   def pub_anticlockwise(self):
     self.get_logger().info("Anticlockwise command")
@@ -227,7 +232,7 @@ def main(args=None):
   
   rclpy.init()
   velocity_publisher = VelocityPublisher()
-  rclpy.spin(velocity_publisher) #* Remember spinonce() exists
+  rclpy.spin_once(velocity_publisher) #* Remember spinonce() exists
   velocity_publisher.destroy_node()
   rclpy.shutdown()
 
