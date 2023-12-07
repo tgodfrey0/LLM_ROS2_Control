@@ -219,6 +219,8 @@ def main(args=None):
   velocity_publisher = VelocityPublisher()
   logger = velocity_publisher.get_logger()
   
+  #* Move this logic into the node itself
+  
   sn_ctrl = SwarmNet({"LLM": llm_recv})
   sn_ctrl.start()
   print("Communications initialised")
