@@ -1,6 +1,0 @@
-camera_info_publisher:
-  ros__parameters: 
-    device_id: 0
-    width: 640
-    height: 480
-    
