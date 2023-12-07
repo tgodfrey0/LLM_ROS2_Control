@@ -1,12 +1,12 @@
-#! from llm_controller.swarmnet import SwarmNet
+from llm_controller.SwarmNet.swarmnet import SwarmNet
 from openai import OpenAI
 from math import pi
 from threading import Lock
+from time import sleep
 
 import rclpy
 from rclpy.node import Node
-from rclpy.timer import Timer
-from geometry_msgs.msg import Twist, Vector3
+from geometry_msgs.msg import Twist
 
 CMD_FORWARD = "@FORWARD"
 CMD_ROTATE_CLOCKWISE = "@CLOCKWISE"
@@ -36,19 +36,8 @@ class VelocityPublisher(Node):
     self.linear_rate = self.create_rate(LINEAR_SPEED / LINEAR_DISTANCE, self.get_clock()) # Hz so inverse the fraction
     self.angular_rate = self.create_rate(ANGULAR_SPEED / ANGULAR_DISTANCE, self.get_clock())
     
-    # cmd = global_conv[len(global_conv)-1]["content"]
-    # for s in cmd.split("\n"):
-    #   if(CMD_FORWARD in s):
-    #     self.pub_forward()
-    #   elif(CMD_ROTATE_CLOCKWISE in s):
-    #     self.pub_clockwise()
-    #   elif(CMD_ROTATE_ANTICLOCKWISE in s):
-    #     self.pub_anticlockwise()
-    #   else:
-    #     self.get_logger().error("Unrecognised command")
-    
-    ss = ["@FORWARD", "@CLOCKWISE", "@FORWARD", "@CLOCKWISE"]
-    for s in ss:
+    cmd = global_conv[len(global_conv)-1]["content"]
+    for s in cmd.split("\n"):
       if(CMD_FORWARD in s):
         self.pub_forward()
       elif(CMD_ROTATE_CLOCKWISE in s):
@@ -59,6 +48,19 @@ class VelocityPublisher(Node):
         pass
       else:
         self.get_logger().error("Unrecognised command")
+    
+    # ss = ["@FORWARD", "@CLOCKWISE", "@FORWARD", "@CLOCKWISE"]
+    # for s in ss:
+    #   if(CMD_FORWARD in s):
+    #     self.pub_forward()
+    #   elif(CMD_ROTATE_CLOCKWISE in s):
+    #     self.pub_clockwise()
+    #   elif(CMD_ROTATE_ANTICLOCKWISE in s):
+    #     self.pub_anticlockwise()
+    #   elif(CMD_SUPERVISOR in s):
+    #     pass
+    #   else:
+    #     self.get_logger().error("Unrecognised command")
     
     self.get_logger().info("Full plan parsed")
         
@@ -107,9 +109,7 @@ class VelocityPublisher(Node):
     self._publish_cmd(msg)
     
     self.linear_delay()
-    
-    # self.linear_rate.sleep()
-    
+        
     self._publish_zero()
     
   def _pub_rotation(self, dir: float):
@@ -126,8 +126,6 @@ class VelocityPublisher(Node):
     self._publish_cmd(msg)
     
     self.angular_delay()
-    
-    # self.angular_rate.sleep()
     
     self._publish_zero()
     
@@ -161,7 +159,7 @@ def send_req():
 
   # print(completion.choices[0].message)
   global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
-  #! sn_ctrl.send(f"LLM {completion.choices[0].message.role} {completion.choices[0].message.content}")
+  sn_ctrl.send(f"LLM {completion.choices[0].message.role} {completion.choices[0].message.content}")
   
 def get_api_key() -> str:
   with open("openai_key", "r") as f:
@@ -177,7 +175,6 @@ def toggle_role(r: str):
   
 def plan_completed():
   print("Plan completed:")
-  # map(lambda m : print(f"{m.role}: {m.content}"), global_conv)
   for m in global_conv:
     print(f"{m['role']}: {m['content']}")
   
@@ -200,7 +197,7 @@ def negotiate():
   
   while(current_stage < max_stages or not global_conv[len(global_conv)-1]["content"].endswith("@SUPERVISOR")):
     while(not is_my_turn()): # Wait to receive from the other agent
-      #sleep(0.5)
+      sleep(0.5)
       print("waiting")
     
     send_req()
@@ -213,30 +210,35 @@ def negotiate():
   current_stage = 0
 
 def main(args=None):
-  # sn_ctrl = SwarmNet({"LLM": llm_recv})
-  # sn_ctrl.start()
-  # print("Communications initialised")
-  # input("Press any key to start")
-  # client = OpenAI(api_key=get_api_key())
-  # global_conv = [
-  #   {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
-  #     We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
-  #       Once this has been decided you should call the 'f{CMD_SUPERVISOR}' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
-  #         - '{CMD_FORWARD}' to move one square forwards\
-  #         - '{CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise\
-  #         - '{CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise\
-  #         "}]
-  # negotiate()
-  # input("Press any key to finish")
-  # sn_ctrl.kill()
-  
   global global_conv
-  
-  global_conv = [
-    {"role": "system", "content": f"@FORWARD"}]
+  global client
+  global logger
   
   rclpy.init()
   velocity_publisher = VelocityPublisher()
+  logger = velocity_publisher.get_logger()
+  
+  sn_ctrl = SwarmNet({"LLM": llm_recv})
+  sn_ctrl.start()
+  print("Communications initialised")
+  input("Press any key to start")
+  client = OpenAI(api_key=get_api_key())
+  global_conv = [
+    {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
+      We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
+        Once this has been decided you should call the 'f{CMD_SUPERVISOR}' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
+          - '{CMD_FORWARD}' to move one square forwards\
+          - '{CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise\
+          - '{CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise\
+          "}]
+  negotiate()
+  input("Press any key to finish")
+  sn_ctrl.kill()
+  
+  # global global_conv
+  
+  # global_conv = [
+  #   {"role": "system", "content": f"@FORWARD"}]
   rclpy.spin_once(velocity_publisher) #* spin_once will parse the given plan then return
   velocity_publisher.destroy_node()
   rclpy.shutdown()

@@ -1,13 +1,14 @@
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 from glob import glob
 
 package_name = 'llm_controller'
 
 setup(
     name=package_name,
-    version='0.0.0',
-    packages=[package_name],
+    version='0.0.1',
+    # packages=[package_name],
+    packages=find_packages(exclude=["test"]),
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
