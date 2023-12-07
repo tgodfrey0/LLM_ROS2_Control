@@ -36,18 +36,19 @@ class VelocityPublisher(Node):
     self.linear_rate = self.create_rate(LINEAR_SPEED / LINEAR_DISTANCE, self.get_clock()) # Hz so inverse the fraction
     self.angular_rate = self.create_rate(ANGULAR_SPEED / ANGULAR_DISTANCE, self.get_clock())
     
-    cmd = global_conv[len(global_conv)-1]["content"]
-    for s in cmd.split("\n"):
-      if(CMD_FORWARD in s):
-        self.pub_forward()
-      elif(CMD_ROTATE_CLOCKWISE in s):
-        self.pub_clockwise()
-      elif(CMD_ROTATE_ANTICLOCKWISE in s):
-        self.pub_anticlockwise()
-      elif(CMD_SUPERVISOR in s):
-        pass
-      else:
-        self.get_logger().error("Unrecognised command")
+    if(len(global_conv) > 0):
+      cmd = global_conv[len(global_conv)-1]["content"]
+      for s in cmd.split("\n"):
+        if(CMD_FORWARD in s):
+          self.pub_forward()
+        elif(CMD_ROTATE_CLOCKWISE in s):
+          self.pub_clockwise()
+        elif(CMD_ROTATE_ANTICLOCKWISE in s):
+          self.pub_anticlockwise()
+        elif(CMD_SUPERVISOR in s):
+          pass
+        else:
+          self.get_logger().error("Unrecognised command")
     
     # ss = ["@FORWARD", "@CLOCKWISE", "@FORWARD", "@CLOCKWISE"]
     # for s in ss:
