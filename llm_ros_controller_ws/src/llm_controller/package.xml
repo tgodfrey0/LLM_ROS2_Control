@@ -2,10 +2,10 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>llm_controller</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="toby.godfrey2003@gmail.com">tg</maintainer>
-  <license>TODO: License declaration</license>
+  <version>0.0.1</version>
+  <description>Interacts with an LLM and parse the response into topic messages.</description>
+  <maintainer email="toby.godfrey2003@gmail.com">Toby Godfrey</maintainer>
+  <license>GPT-3.0</license>
 
   <depend>rclpy</depend>
   <depend>sensor_msgs</depend>

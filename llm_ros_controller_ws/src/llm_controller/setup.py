@@ -18,8 +18,8 @@ setup(
     zip_safe=True,
     maintainer='tg',
     maintainer_email='toby.godfrey2003@gmail.com',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    description='Interacts with an LLM and parse the response into topic messages.',
+    license='GPT-3.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
