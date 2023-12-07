@@ -1,0 +1,13 @@
+launch:
+
+- node:
+    pkg: "llm_controller"
+    exec: "hardware_protection"
+    name: "hardware_protection"
+    namespace: "llm_control"
+
+- node:
+    pkg: "llm_controller"
+    exec: "llm_node"
+    name: "llm_node"
+    namespace: "llm_control"
