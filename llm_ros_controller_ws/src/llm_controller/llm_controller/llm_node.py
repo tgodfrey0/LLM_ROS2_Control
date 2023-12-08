@@ -9,6 +9,9 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 
+#! Will need some way of determining which command in the plan is for which agent
+#! Use some ID prefixed to the command?
+
 CMD_FORWARD = "@FORWARD"
 CMD_ROTATE_CLOCKWISE = "@CLOCKWISE"
 CMD_ROTATE_ANTICLOCKWISE = "@ANTICLOCKWISE"
