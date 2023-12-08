@@ -11,3 +11,4 @@ launch:
     exec: "llm_node"
     name: "llm_node"
     namespace: "llm_control"
+    output: "screen"

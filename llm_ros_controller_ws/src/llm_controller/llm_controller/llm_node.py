@@ -3,6 +3,7 @@ from openai import OpenAI
 from math import pi
 from threading import Lock
 from time import sleep
+import os
 
 import rclpy
 from rclpy.node import Node
@@ -60,7 +61,7 @@ class VelocityPublisher(Node):
     #   else:
     #     self.get_logger().error("Unrecognised command")
     
-    self.get_logger().info("Full plan parsed")
+    self.get_logger().info(f"Full plan parsed")
         
   def _delay(self, t_target):
     t0 = self.get_clock().now()
@@ -76,10 +77,10 @@ class VelocityPublisher(Node):
     
   def _publish_cmd(self, msg: Twist):
     self.publisher_.publish(msg)
-    self.get_logger().info("Publishing to /cmd_vel")
+    self.get_logger().info(f"Publishing to /cmd_vel")
   
   def _publish_zero(self):
-    self.get_logger().info("Zero velocity requested")
+    self.get_logger().info(f"Zero velocity requested")
     msg = Twist()
     
     msg.linear.x = 0.0
@@ -93,7 +94,7 @@ class VelocityPublisher(Node):
     self._publish_cmd(msg)
     
   def pub_forward(self):
-    self.get_logger().info("Forward command")
+    self.get_logger().info(f"Forward command")
     msg = Twist()
     
     msg.linear.x = LINEAR_SPEED #? X, Y or Z?
@@ -128,19 +129,20 @@ class VelocityPublisher(Node):
     self._publish_zero()
     
   def pub_anticlockwise(self):
-    self.get_logger().info("Anticlockwise command")
+    self.get_logger().info(f"Anticlockwise command")
     self._pub_rotation(1)
     
   def pub_clockwise(self):
-    self.get_logger().info("Clockwise command")
+    self.get_logger().info(f"Clockwise command")
     self._pub_rotation(-1)
     
   def create_plan(self):
-    self.get_logger().info("Creating plan")
-    sn_ctrl = SwarmNet({"LLM": self.llm_recv})
-    sn_ctrl.start()
-    self.get_logger().info("Communication initialised") #! Wait until another agent connects
-    self.client = OpenAI(api_key=self.get_api_key())
+    self.get_logger().info(f"Initialising SwarmNet")
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv})
+    self.sn_ctrl.set_logger_fn(self.get_logger().info)
+    self.sn_ctrl.start()
+    self.get_logger().info(f"SwarmNet initialised") #! Wait until another agent connects
+    self.client = OpenAI()
     self.global_conv = [
       {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
         We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
@@ -150,7 +152,7 @@ class VelocityPublisher(Node):
             - '{CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise\
             "}]
     self.negotiate()
-    sn_ctrl.kill()
+    self.sn_ctrl.kill()
     
   def is_my_turn(self):
     self.tl.acquire()
@@ -159,9 +161,8 @@ class VelocityPublisher(Node):
     return b
 
   def toggle_turn(self):
-    global this_agents_turn
     self.tl.acquire()
-    self.this_agents_turn = not this_agents_turn
+    self.this_agents_turn = not self.this_agents_turn
     self.tl.release()
     
   def send_req(self):
@@ -175,10 +176,6 @@ class VelocityPublisher(Node):
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
     self.sn_ctrl.send(f"LLM {completion.choices[0].message.role} {completion.choices[0].message.content}")
     
-  def get_api_key(self) -> str:
-    with open("openai_key", "r") as f:
-      return f.readline().rstrip()
-    
   def toggle_role(self, r: str):
     if r == "assistant":
       return "user"
@@ -188,9 +185,9 @@ class VelocityPublisher(Node):
       return ""
     
   def plan_completed(self):
-    print("Plan completed:")
+    self.get_logger().info(f"Plan completed:")
     for m in self.global_conv:
-      print(f"{m['role']}: {m['content']}")
+      self.get_logger().info(f"{m['role']}: {m['content']}")
     
   def llm_recv(self, msg: str) -> None: 
     m = msg.split(" ", 1) # Msg are LLM ROLE CONTENT
@@ -206,19 +203,19 @@ class VelocityPublisher(Node):
   def negotiate(self):
     current_stage = 0
     
-    if this_agents_turn:
+    if self.this_agents_turn:
       self.global_conv.append({"role": "user", "content": "I am at D1, you are at D7. I must end at D7 and you must end at D1"})
     
     while(current_stage < self.max_stages or not self.global_conv[len(self.global_conv)-1]["content"].endswith("@SUPERVISOR")):
       while(not self.is_my_turn()): # Wait to receive from the other agent
         sleep(0.5)
-        print("waiting")
+        self.get_logger().info(f"waiting")
       
       self.send_req()
       self.toggle_turn()
       current_stage += 1
-      print(f"Stage {current_stage}")
-      print(self.global_conv);
+      self.get_logger().info(f"Stage {current_stage}")
+      self.get_logger().info(f"{self.global_conv}");
         
     self.plan_completed()
     current_stage = 0
