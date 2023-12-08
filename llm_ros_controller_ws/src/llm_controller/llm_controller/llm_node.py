@@ -31,34 +31,34 @@ class VelocityPublisher(Node):
     self.this_agents_turn = True
     self.tl = Lock()
   
-    # self.create_plan()
+    self.create_plan()
     
-    # if(len(self.global_conv) > 0):
-    #   cmd = self.global_conv[len(self.global_conv)-1]["content"]
-    #   for s in cmd.split("\n"):
-    #     if(CMD_FORWARD in s):
-    #       self.pub_forward()
-    #     elif(CMD_ROTATE_CLOCKWISE in s):
-    #       self.pub_clockwise()
-    #     elif(CMD_ROTATE_ANTICLOCKWISE in s):
-    #       self.pub_anticlockwise()
-    #     elif(CMD_SUPERVISOR in s):
-    #       pass
-    #     else:
-    #       self.get_logger().error("Unrecognised command")
+    if(len(self.global_conv) > 1):
+      cmd = self.global_conv[len(self.global_conv)-1]["content"]
+      for s in cmd.split("\n"):
+        if(CMD_FORWARD in s):
+          self.pub_forward()
+        elif(CMD_ROTATE_CLOCKWISE in s):
+          self.pub_clockwise()
+        elif(CMD_ROTATE_ANTICLOCKWISE in s):
+          self.pub_anticlockwise()
+        elif(CMD_SUPERVISOR in s):
+          pass
+        else:
+          self.get_logger().error(f"Unrecognised command: {s}")
     
-    ss = ["@FORWARD", "@ANTICLOCKWISE", "@FORWARD", "@CLOCKWISE", "@FORWARD"]
-    for s in ss:
-      if(CMD_FORWARD in s):
-        self.pub_forward()
-      elif(CMD_ROTATE_CLOCKWISE in s):
-        self.pub_clockwise()
-      elif(CMD_ROTATE_ANTICLOCKWISE in s):
-        self.pub_anticlockwise()
-      elif(CMD_SUPERVISOR in s):
-        pass
-      else:
-        self.get_logger().error("Unrecognised command")
+    # ss = ["@FORWARD", "@ANTICLOCKWISE", "@FORWARD", "@CLOCKWISE", "@FORWARD"]
+    # for s in ss:
+    #   if(CMD_FORWARD in s):
+    #     self.pub_forward()
+    #   elif(CMD_ROTATE_CLOCKWISE in s):
+    #     self.pub_clockwise()
+    #   elif(CMD_ROTATE_ANTICLOCKWISE in s):
+    #     self.pub_anticlockwise()
+    #   elif(CMD_SUPERVISOR in s):
+    #     pass
+    #   else:
+    #     self.get_logger().error("Unrecognised command")
     
     self.get_logger().info("Full plan parsed")
         
