@@ -157,11 +157,11 @@ class VelocityPublisher(Node):
     self.global_conv = [
       {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
         We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
-          Once this has been decided you should call the 'f{CMD_SUPERVISOR}' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
+          Once this has been decided you should call the '\f{CMD_SUPERVISOR}' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
             - '{CMD_FORWARD}' to move one square forwards\
             - '{CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise\
             - '{CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise\
-            "}]
+            The final plan should be a numbered list only containing these commands."}]
     self.negotiate()
     self.sn_ctrl.kill()
     
