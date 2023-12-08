@@ -22,6 +22,8 @@ ANGULAR_SPEED = 0.3 # rad/s
 ANGULAR_DISTANCE = pi/2.0 # rad
 ANGULAR_TIME = ANGULAR_DISTANCE / ANGULAR_SPEED
 
+WAITING_TIME = 0.5
+
 class VelocityPublisher(Node):
   def __init__(self):
     super().__init__("velocity_publisher")
@@ -74,6 +76,9 @@ class VelocityPublisher(Node):
     
   def angular_delay(self):
     self._delay(ANGULAR_TIME)
+    
+  def wait_delay(self):
+    self._delay(WAITING_TIME)
     
   def _publish_cmd(self, msg: Twist):
     self.publisher_.publish(msg)
@@ -141,7 +146,13 @@ class VelocityPublisher(Node):
     self.sn_ctrl = SwarmNet({"LLM": self.llm_recv})
     self.sn_ctrl.set_logger_fn(self.get_logger().info)
     self.sn_ctrl.start()
-    self.get_logger().info(f"SwarmNet initialised") #! Wait until another agent connects
+    self.get_logger().info(f"SwarmNet initialised") 
+    
+    #* Wait until another agent connects
+    while(len(self.sn_ctrl.get_devices()) == 0): #? Does does an agent add itself to the list? I don't think so 
+      self.wait_delay()
+      self.get_logger().warn("Waiting for an agent to connect")
+    
     self.client = OpenAI()
     self.global_conv = [
       {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
@@ -208,8 +219,10 @@ class VelocityPublisher(Node):
     
     while(current_stage < self.max_stages or not self.global_conv[len(self.global_conv)-1]["content"].endswith("@SUPERVISOR")):
       while(not self.is_my_turn()): # Wait to receive from the other agent
-        sleep(0.5)
-        self.get_logger().info(f"waiting")
+        #! sleep(0.5)
+        self.wait_delay()
+        #? Will this allow another thread to get the mutex?
+        self.get_logger().info(f"Waiting for a response from another agent")
       
       self.send_req()
       self.toggle_turn()
