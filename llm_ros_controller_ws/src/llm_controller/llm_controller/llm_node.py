@@ -156,7 +156,7 @@ class VelocityPublisher(Node):
       self.wait_delay()
       self.get_logger().warn("Waiting for an agent to connect")
     
-    self.client = OpenAI()
+    self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
     self.global_conv = [
       {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
         We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
