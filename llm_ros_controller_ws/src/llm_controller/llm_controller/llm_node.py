@@ -36,7 +36,7 @@ class VelocityPublisher(Node):
     self.client: OpenAI = None
     self.max_stages = 10
     self.this_agents_turn = True
-    self.ready_to_negotiate = False
+    self.agent_ready_to_negotiate = False
     self.tl = Lock()
     self.nl = Lock()
   
@@ -219,12 +219,12 @@ class VelocityPublisher(Node):
 
   def ready_recv(self, msg: Optional[str]) -> None:
     self.nl.acquire()
-    self.ready_to_negotiate = True
+    self.agent_ready_to_negotiate = True
     self.nl.release()
   
   def is_ready(self):
     self.nl.acquire()
-    b = self.ready_to_negotiate
+    b = self.agent_ready_to_negotiate
     self.nl.release()
     return b
 
