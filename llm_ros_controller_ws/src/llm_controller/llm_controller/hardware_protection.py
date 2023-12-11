@@ -1,6 +1,7 @@
 import rclpy
 
 from rclpy.node import Node
+from rclpy.qos import QosProfile, QoSReliabilityPolicy, QoSHistoryPolicy
 from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist, Vector3
 from typing import List
@@ -10,6 +11,12 @@ THRESHOLD_CM = 30
 class ScanSubscriber(Node):
     def __init__(self):
       super().__init__('scan_subscriber')
+      
+      # https://robotics.stackexchange.com/questions/89194/ros2-retrieving-qos-settings-for-a-topic
+      # qos = QosProfile(
+      #   reliability=
+      # )
+      
       self.subscription = self.create_subscription(
         LaserScan,
         "/scan",
