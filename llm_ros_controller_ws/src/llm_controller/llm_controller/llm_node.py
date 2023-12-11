@@ -3,6 +3,7 @@ from openai import OpenAI
 from math import pi
 from threading import Lock
 from time import sleep
+from typing import Optional
 import os
 
 import rclpy
@@ -35,7 +36,9 @@ class VelocityPublisher(Node):
     self.client: OpenAI = None
     self.max_stages = 10
     self.this_agents_turn = True
+    self.agent_ready_to_negotiate = False
     self.tl = Lock()
+    self.nl = Lock()
   
     self.create_plan()
     
@@ -146,15 +149,19 @@ class VelocityPublisher(Node):
     
   def create_plan(self):
     self.get_logger().info(f"Initialising SwarmNet")
-    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv})
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv})
     self.sn_ctrl.set_logger_fn(self.get_logger().info)
     self.sn_ctrl.start()
     self.get_logger().info(f"SwarmNet initialised") 
+    self.sn_ctrl.send("READY")
     
     #* Wait until another agent connects
-    while(len(self.sn_ctrl.get_devices()) == 0): #? Does does an agent add itself to the list? I don't think so 
+    # while(len(self.sn_ctrl.get_devices()) == 0): #? Does does an agent add itself to the list? I don't think so 
+    #   self.wait_delay()
+    #   self.get_logger().warn("Waiting for an agent to connect")
+    while(not self.is_ready()):
       self.wait_delay()
-      self.get_logger().warn("Waiting for an agent to connect")
+      self.get_logger().warn("Waiting for an agent to be ready")
     
     self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
     self.global_conv = [
@@ -203,16 +210,23 @@ class VelocityPublisher(Node):
     for m in self.global_conv:
       self.get_logger().info(f"{m['role']}: {m['content']}")
     
-  def llm_recv(self, msg: str) -> None: 
+  def llm_recv(self, msg: Optional[str]) -> None: 
     m = msg.split(" ", 1) # Msg are LLM ROLE CONTENT
     r = m[0]
     c = m[1]
     self.global_conv.append({"role": self.toggle_role(r), "content": c}) #! Don't think this is adding to the list
     self.toggle_turn()
-    # if("@SUPERVISOR" not in c):
-    #   send_req(client)
-    # else:
-    #   plan_completed() #? This may have issues with only one agent finishing. Could just add a SN command
+
+  def ready_recv(self, msg: Optional[str]) -> None:
+    self.nl.acquire()
+    self.agent_ready_to_negotiate = True
+    self.nl.release()
+  
+  def is_ready(self):
+    self.nl.acquire()
+    b = self.agent_ready_to_negotiate
+    self.nl.release()
+    return b
 
   def negotiate(self):
     current_stage = 0
