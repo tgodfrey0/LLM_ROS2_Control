@@ -1,27 +1,28 @@
 import rclpy
 
 from rclpy.node import Node
-from rclpy.qos import QosProfile, QoSReliabilityPolicy, QoSHistoryPolicy
+from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicy
 from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist, Vector3
 from typing import List
 
-THRESHOLD_CM = 30
+THRESHOLD_M = 0.3
     
 class ScanSubscriber(Node):
     def __init__(self):
       super().__init__('scan_subscriber')
       
-      # https://robotics.stackexchange.com/questions/89194/ros2-retrieving-qos-settings-for-a-topic
-      # qos = QosProfile(
-      #   reliability=
-      # )
+      qos = QoSProfile(
+            reliability=QoSReliabilityPolicy.RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT,
+            history=QoSHistoryPolicy.RMW_QOS_POLICY_HISTORY_KEEP_LAST,
+            depth=10
+        )
       
       self.subscription = self.create_subscription(
         LaserScan,
         "/scan",
         self.listener_callback,
-        10
+        qos_profile=qos
       )
       self.subscription
     
@@ -29,10 +30,11 @@ class ScanSubscriber(Node):
       rs: List[float] = msg.ranges
       less_than_min = False
       
-      self.get_logger().info(f"Ranges: {rs}")
+      # self.get_logger().info(f"Ranges: {rs}")
       
       for r in rs:
-        less_than_min = r < THRESHOLD_CM
+        self.get_logger().info(f"{r}")
+        less_than_min = r < THRESHOLD_M
         
       if(less_than_min):
         zero_vel()
@@ -49,13 +51,13 @@ class TwistPublisher(Node):
     lin = Vector3()
     ang = Vector3()
     
-    lin.x = 0
-    lin.y = 0
-    lin.z = 0
+    lin.x = 0.0
+    lin.y = 0.0
+    lin.z = 0.0
     
-    ang.x = 0
-    ang.y = 0
-    ang.z = 0
+    ang.x = 0.0
+    ang.y = 0.0
+    ang.z = 0.0
 
     msg.linear = lin
     msg.angular = ang
