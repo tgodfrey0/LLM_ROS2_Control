@@ -43,27 +43,40 @@ class TwistPublisher(Node):
   def __init__(self):
     super().__init__('twist_publisher')
     self.publisher = self.create_publisher(Twist, "/cmd_vel", 10)
-    period = 0.1
-    self.timer = self.create_timer(period, self.timer_callback)
+    # period = 0.1
+    # self.timer = self.create_timer(period, self.timer_callback)
   
-  def timer_callback(self):
     msg = Twist()
-    lin = Vector3()
-    ang = Vector3()
+    msg.linear.x = 0.0
+    msg.linear.y = 0.0
+    msg.linear.z = 0.0
+    msg.angular.x = 0.0
+    msg.angular.y = 0.0
+    msg.angular.z = 0.0
     
-    lin.x = 0.0
-    lin.y = 0.0
-    lin.z = 0.0
+    while(True):
+      self.publisher.publish(msg)
+      self.get_logger().error("Min LIDAR reading, sending 0 velocity")
+  
+  
+  # def timer_callback(self):
+  #   msg = Twist()
+  #   lin = Vector3()
+  #   ang = Vector3()
     
-    ang.x = 0.0
-    ang.y = 0.0
-    ang.z = 0.0
+  #   lin.x = 0.0
+  #   lin.y = 0.0
+  #   lin.z = 0.0
+    
+  #   ang.x = 0.0
+  #   ang.y = 0.0
+  #   ang.z = 0.0
 
-    msg.linear = lin
-    msg.angular = ang
+  #   msg.linear = lin
+  #   msg.angular = ang
     
-    self.publisher.publish(msg)
-    self.get_logger().error("Min LIDAR reading, sending 0 velocity")
+  #   self.publisher.publish(msg)
+  #   self.get_logger().error("Min LIDAR reading, sending 0 velocity")
     
     
 
