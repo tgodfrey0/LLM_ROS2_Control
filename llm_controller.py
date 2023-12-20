@@ -1,4 +1,4 @@
-from SwarmNet.swarmnet import SwarmNet
+from swarmnet import SwarmNet
 from openai import OpenAI
 from threading import Lock
 from time import sleep
@@ -82,11 +82,11 @@ def negotiate():
   current_stage = 0
 
 if __name__=="__main__":
-  sn_ctrl = SwarmNet({"LLM": llm_recv})
+  sn_ctrl = SwarmNet({"LLM": llm_recv}, device_list = [("192.168.0.120", 51000)])
   sn_ctrl.start()
   print("Communications initialised")
   input("Press any key to start")
-  client = OpenAI(api_key=get_api_key())
+  client = OpenAI()
   global_conv = [
     {"role": "system", "content": "You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
       We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\

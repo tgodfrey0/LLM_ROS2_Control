@@ -1,4 +1,4 @@
-from llm_controller.SwarmNet.swarmnet import SwarmNet
+from swarmnet import SwarmNet
 from openai import OpenAI
 from math import pi
 from threading import Lock
