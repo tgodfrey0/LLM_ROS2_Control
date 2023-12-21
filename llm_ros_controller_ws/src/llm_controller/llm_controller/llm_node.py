@@ -2,8 +2,7 @@ from swarmnet import SwarmNet
 from openai import OpenAI
 from math import pi
 from threading import Lock
-from time import sleep
-from typing import Optional
+from typing import Optional, List, Tuple
 import os
 
 import rclpy
@@ -12,6 +11,9 @@ from geometry_msgs.msg import Twist
 
 #! Will need some way of determining which command in the plan is for which agent
 #! Use some ID prefixed to the command?
+
+dl: List[Tuple[str, int]] = [("192.168.0.120", 51000)] # Other device
+# dl: List[Tuple[str, int]] = [("192.168.0.121", 51000)] # Other device
 
 CMD_FORWARD = "@FORWARD"
 CMD_ROTATE_CLOCKWISE = "@CLOCKWISE"
@@ -149,8 +151,8 @@ class VelocityPublisher(Node):
     
   def create_plan(self):
     self.get_logger().info(f"Initialising SwarmNet")
-    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv})
-    self.sn_ctrl.set_logger_fn(self.get_logger().info)
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv}, device_list = dl)
+    # self.sn_ctrl.set_logger_fn(self.get_logger().info)
     self.sn_ctrl.start()
     self.get_logger().info(f"SwarmNet initialised") 
     self.sn_ctrl.send("READY")
