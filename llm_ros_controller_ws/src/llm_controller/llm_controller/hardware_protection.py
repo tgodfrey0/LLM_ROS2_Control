@@ -6,7 +6,7 @@ from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist, Vector3
 from typing import List
 
-THRESHOLD_M = 0.3
+THRESHOLD_M = 0.25
     
 class ScanSubscriber(Node):
     def __init__(self):
