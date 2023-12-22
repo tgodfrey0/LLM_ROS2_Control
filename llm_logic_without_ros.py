@@ -39,7 +39,7 @@ class LLM():
   
     self.create_plan()
     
-    self.get_logger().info(f"Full plan parsed")
+    print(f"Full plan parsed")
         
   def _delay(self, t_target):
     sleep(t_target)
@@ -49,14 +49,14 @@ class LLM():
     self._delay(WAITING_TIME)
     
   def create_plan(self):
-    self.get_logger().info(f"Initialising SwarmNet")
+    print(f"Initialising SwarmNet")
     self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv}, device_list = dl)
     self.sn_ctrl.start()
-    self.get_logger().info(f"SwarmNet initialised") 
+    print(f"SwarmNet initialised") 
     
     while(not self.is_ready()):
       self.sn_ctrl.send("READY")
-      self.get_logger().warn("Waiting for an agent to be ready")
+      print("Waiting for an agent to be ready")
       self.wait_delay()
     
     self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
@@ -102,9 +102,9 @@ class LLM():
       return ""
     
   def plan_completed(self):
-    self.get_logger().info(f"Plan completed:")
+    print(f"Plan completed:")
     for m in self.global_conv:
-      self.get_logger().info(f"{m['role']}: {m['content']}")
+      print(f"{m['role']}: {m['content']}")
     
   def llm_recv(self, msg: Optional[str]) -> None: 
     m = msg.split(" ", 1) # Msg are LLM ROLE CONTENT
@@ -133,13 +133,13 @@ class LLM():
     while(current_stage < self.max_stages or not self.global_conv[len(self.global_conv)-1]["content"].endswith("@SUPERVISOR")):
       while(not self.is_my_turn()): # Wait to receive from the other agent
         self.wait_delay()
-        self.get_logger().info(f"Waiting for a response from another agent")
+        print(f"Waiting for a response from another agent")
       
       self.send_req()
       self.toggle_turn()
       current_stage += 1
-      self.get_logger().info(f"Stage {current_stage}")
-      self.get_logger().info(f"{self.global_conv}");
+      print(f"Stage {current_stage}")
+      print(f"{self.global_conv}");
         
     self.plan_completed()
     current_stage = 0
