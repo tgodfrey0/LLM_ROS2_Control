@@ -12,6 +12,9 @@ from time import sleep
 dl: List[Tuple[str, int]] = [("192.168.0.120", 51000)] # Other device
 # dl: List[Tuple[str, int]] = [("192.168.0.121", 51000)] # Other device
 
+ID_THIS_AGENT = 'A'
+ID_OTHER_AGENT = 'X'
+
 CMD_FORWARD = "@FORWARD"
 CMD_ROTATE_CLOCKWISE = "@CLOCKWISE"
 CMD_ROTATE_ANTICLOCKWISE = "@ANTICLOCKWISE"
@@ -55,7 +58,7 @@ class LLM():
     print(f"SwarmNet initialised") 
     
     while(not self.is_ready()):
-      self.sn_ctrl.send("READY")
+      self.sn_ctrl.send(f"READY {ID_THIS_AGENT}")
       print("Waiting for an agent to be ready")
       self.wait_delay()
     
@@ -114,8 +117,10 @@ class LLM():
     self.toggle_turn()
 
   def ready_recv(self, msg: Optional[str]) -> None:
+    global ID_OTHER_AGENT
     self.ready_lock.acquire()
     self.other_agent_ready = True
+    ID_OTHER_AGENT = msg
     self.ready_lock.release()
   
   def is_ready(self):
