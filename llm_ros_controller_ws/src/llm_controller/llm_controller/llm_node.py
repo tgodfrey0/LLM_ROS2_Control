@@ -38,9 +38,9 @@ class VelocityPublisher(Node):
     self.client: OpenAI = None
     self.max_stages = 10
     self.this_agents_turn = True
-    self.agent_ready_to_negotiate = False
-    self.tl = Lock()
-    self.nl = Lock()
+    self.other_agent_ready = False
+    self.turn_lock = Lock()
+    self.ready_lock = Lock()
   
     self.create_plan()
     
@@ -155,15 +155,15 @@ class VelocityPublisher(Node):
     # self.sn_ctrl.set_logger_fn(self.get_logger().info)
     self.sn_ctrl.start()
     self.get_logger().info(f"SwarmNet initialised") 
-    self.sn_ctrl.send("READY")
     
     #* Wait until another agent connects
     # while(len(self.sn_ctrl.get_devices()) == 0): #? Does does an agent add itself to the list? I don't think so 
     #   self.wait_delay()
     #   self.get_logger().warn("Waiting for an agent to connect")
     while(not self.is_ready()):
-      self.wait_delay()
+      self.sn_ctrl.send("READY")
       self.get_logger().warn("Waiting for an agent to be ready")
+      self.wait_delay()
     
     self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
     self.global_conv = [
@@ -178,15 +178,15 @@ class VelocityPublisher(Node):
     self.sn_ctrl.kill()
     
   def is_my_turn(self):
-    self.tl.acquire()
+    self.turn_lock.acquire()
     b = self.this_agents_turn
-    self.tl.release()
+    self.turn_lock.release()
     return b
 
   def toggle_turn(self):
-    self.tl.acquire()
+    self.turn_lock.acquire()
     self.this_agents_turn = not self.this_agents_turn
-    self.tl.release()
+    self.turn_lock.release()
     
   def send_req(self):
     completion = self.client.chat.completions.create(
@@ -220,14 +220,14 @@ class VelocityPublisher(Node):
     self.toggle_turn()
 
   def ready_recv(self, msg: Optional[str]) -> None:
-    self.nl.acquire()
-    self.agent_ready_to_negotiate = True
-    self.nl.release()
+    self.ready_lock.acquire()
+    self.other_agent_ready = True
+    self.ready_lock.release()
   
   def is_ready(self):
-    self.nl.acquire()
-    b = self.agent_ready_to_negotiate
-    self.nl.release()
+    self.ready_lock.acquire()
+    b = self.other_agent_ready
+    self.ready_lock.release()
     return b
 
   def negotiate(self):
