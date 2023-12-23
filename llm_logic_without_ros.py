@@ -61,6 +61,8 @@ class LLM():
       self.sn_ctrl.send(f"READY {ID_THIS_AGENT}")
       print("Waiting for an agent to be ready")
       self.wait_delay()
+      
+    self.sn_ctrl.clear_rx_queue()
     
     self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
     self.global_conv = [
