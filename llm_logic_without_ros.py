@@ -91,7 +91,7 @@ class LLM():
     completion = self.client.chat.completions.create(
       model="gpt-3.5-turbo",
       messages=self.global_conv,
-      # max_tokens=500
+      max_tokens=750
     )
 
     # print(completion.choices[0].message)
