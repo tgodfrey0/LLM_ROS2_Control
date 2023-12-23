@@ -53,7 +53,7 @@ class LLM():
     
   def create_plan(self):
     print(f"Initialising SwarmNet")
-    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv}, device_list = dl)
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv}, device_list = dl) #! Maybe not working as it is inside a class
     self.sn_ctrl.start()
     print(f"SwarmNet initialised") 
     
