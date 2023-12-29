@@ -129,7 +129,7 @@ class LLM():
     m = msg.split(" ", 1) # Msg are LLM ROLE CONTENT
     r = m[0]
     c = m[1]
-    self.global_conv.append({"role": self.toggle_role(r), "content": c}) #! Don't think this is adding to the list
+    self.global_conv.append({"role": self.toggle_role(r), "content": c})
     self.toggle_turn()
 
   def ready_recv(self, msg: Optional[str]) -> None:
@@ -151,7 +151,10 @@ class LLM():
     if self.this_agents_turn:
       self.global_conv.append({"role": "user", "content": "I am at D1, you are at D7. I must end at D7 and you must end at D1"})
     
-    while(current_stage < self.max_stages or not self.global_conv[len(self.global_conv)-1]["content"].endswith("@SUPERVISOR")):
+    while(current_stage < self.max_stages):
+      if(len(self.global_conv) > 0 and self.global_conv[len(self.global_conv)-1]["content"].endswith("@SUPERVISOR")):
+        break;
+      
       while(not self.is_my_turn()): # Wait to receive from the other agent
         self.wait_delay()
         print(f"Waiting for a response from another agent")
