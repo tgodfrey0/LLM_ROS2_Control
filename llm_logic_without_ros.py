@@ -53,7 +53,7 @@ class LLM():
     
   def create_plan(self):
     print(f"Initialising SwarmNet")
-    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv}, device_list = dl) #! Maybe not working as it is inside a class
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.generate_summary}, device_list = dl) #! Maybe not working as it is inside a class
     self.sn_ctrl.start()
     print(f"SwarmNet initialised") 
     
@@ -110,6 +110,20 @@ class LLM():
     print(f"Plan completed:")
     for m in self.global_conv:
       print(f"{m['role']}: {m['content']}")
+      
+    self.sn_ctrl.send("FINISHED")
+    self.generate_summary()
+    
+  def generate_summary(self):
+    self.global_conv.append({"role": "user", "content": "Generate a summarised numerical list of the plan"})
+    completion = self.client.chat.completions.create(
+      model="gpt-3.5-turbo",
+      messages=self.global_conv,
+      max_tokens=750
+    )
+
+    # print(completion.choices[0].message)
+    self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
     
   def llm_recv(self, msg: Optional[str]) -> None: 
     m = msg.split(" ", 1) # Msg are LLM ROLE CONTENT
