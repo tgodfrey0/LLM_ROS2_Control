@@ -12,9 +12,6 @@ from time import sleep
 dl: List[Tuple[str, int]] = [("192.168.0.120", 51000)] # Other device
 # dl: List[Tuple[str, int]] = [("192.168.0.121", 51000)] # Other device
 
-ID_THIS_AGENT = 'A'
-ID_OTHER_AGENT = 'X'
-
 CMD_FORWARD = "@FORWARD"
 CMD_ROTATE_CLOCKWISE = "@CLOCKWISE"
 CMD_ROTATE_ANTICLOCKWISE = "@ANTICLOCKWISE"
@@ -28,7 +25,7 @@ ANGULAR_SPEED = 0.3 # rad/s
 ANGULAR_DISTANCE = pi/2.0 # rad
 ANGULAR_TIME = ANGULAR_DISTANCE / ANGULAR_SPEED
 
-WAITING_TIME = 0.5
+WAITING_TIME = 1
 
 class LLM():
   def __init__(self):
@@ -58,11 +55,12 @@ class LLM():
     print(f"SwarmNet initialised") 
     
     while(not self.is_ready()):
-      self.sn_ctrl.send(f"READY {ID_THIS_AGENT}")
+      self.sn_ctrl.send(f"READY")
       print("Waiting for an agent to be ready")
       self.wait_delay()
       
     self.sn_ctrl.clear_rx_queue()
+    self.sn_ctrl.clear_tx_queue()
     
     self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
     self.global_conv = [
@@ -116,6 +114,7 @@ class LLM():
     
   def generate_summary(self):
     self.global_conv.append({"role": "user", "content": "Generate a summarised numerical list of the plan"})
+    
     completion = self.client.chat.completions.create(
       model="gpt-3.5-turbo",
       messages=self.global_conv,
@@ -133,10 +132,8 @@ class LLM():
     self.toggle_turn()
 
   def ready_recv(self, msg: Optional[str]) -> None:
-    global ID_OTHER_AGENT
     self.ready_lock.acquire()
     self.other_agent_ready = True
-    ID_OTHER_AGENT = msg
     self.ready_lock.release()
   
   def is_ready(self):
