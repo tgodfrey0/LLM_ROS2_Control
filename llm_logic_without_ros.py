@@ -32,7 +32,7 @@ class LLM():
   def __init__(self):
     self.global_conv = []
     self.client: OpenAI = None
-    self.max_stages = 10
+    self.max_stages = 5
     self.this_agents_turn = True
     self.other_agent_ready = False
     self.turn_lock = Lock()
@@ -70,9 +70,14 @@ class LLM():
       self.sn_ctrl.send(f"READY")
       print("Waiting for an agent to be ready")
       self.wait_delay()
-      
+    
+    print(self.sn_ctrl.rx_queue.queue)
     self.sn_ctrl.clear_rx_queue()
     self.sn_ctrl.clear_tx_queue()
+    print(self.sn_ctrl.rx_queue.queue)
+    
+    while(True):
+      pass
     
     self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
     self.global_conv = [
