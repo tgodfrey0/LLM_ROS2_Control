@@ -51,6 +51,7 @@ class LLM():
     
   def t(self, sn_ctrl: SwarmNet):
     while(True):
+      continue
       if(not sn_ctrl.rx_queue.empty()):
         print(sn_ctrl.rx_queue.queue)
     
@@ -62,6 +63,8 @@ class LLM():
     
     t1 = threading.Thread(target=self.t, args=[self.sn_ctrl])
     t1.start()
+  
+    self.sn_ctrl.send("READY")
   
     while(not self.is_ready()):
       self.sn_ctrl.send(f"READY")
