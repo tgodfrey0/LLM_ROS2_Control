@@ -61,15 +61,15 @@ class LLM():
     self.sn_ctrl.start()
     print(f"SwarmNet initialised") 
     
-    # t1 = threading.Thread(target=self.t, args=[self.sn_ctrl])
-    # t1.start()
+    t1 = threading.Thread(target=self.t, args=[self.sn_ctrl])
+    t1.start()
   
-    # self.sn_ctrl.send("READY")
+    self.sn_ctrl.send("READY")
   
-    # while(not self.is_ready()):
-    #   self.sn_ctrl.send(f"READY")
-    #   print("Waiting for an agent to be ready")
-    #   self.wait_delay()
+    while(not self.is_ready()):
+      self.sn_ctrl.send(f"READY")
+      print("Waiting for an agent to be ready")
+      self.wait_delay()
       
     self.sn_ctrl.clear_rx_queue()
     self.sn_ctrl.clear_tx_queue()
