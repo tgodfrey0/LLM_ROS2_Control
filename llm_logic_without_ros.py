@@ -122,7 +122,7 @@ class LLM():
       print(f"{m['role']}: {m['content']}")
       
     self.sn_ctrl.send("FINISHED")
-    self.generate_summary()
+    self.generate_summary(None)
     
   def generate_summary(self, msg: Optional[str]):
     self.global_conv.append({"role": "user", "content": "Generate a summarised numerical list of the plan"})
