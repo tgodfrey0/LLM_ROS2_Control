@@ -5,6 +5,7 @@ from threading import Lock
 from typing import Optional, List, Tuple
 import os
 from time import sleep
+import threading
 
 #! Will need some way of determining which command in the plan is for which agent
 #! Use some ID prefixed to the command?
@@ -48,12 +49,20 @@ class LLM():
   def wait_delay(self):
     self._delay(WAITING_TIME)
     
+  def t(self, sn_ctrl: SwarmNet):
+    while(True):
+      if(not sn_ctrl.rx_queue.empty()):
+        print(sn_ctrl.rx_queue.queue)
+    
   def create_plan(self):
     print(f"Initialising SwarmNet")
     self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.generate_summary}, device_list = dl) #! Maybe not working as it is inside a class
     self.sn_ctrl.start()
     print(f"SwarmNet initialised") 
     
+    t1 = threading.Thread(target=self.t, args=[self.sn_ctrl])
+    t1.start()
+  
     while(not self.is_ready()):
       self.sn_ctrl.send(f"READY")
       print("Waiting for an agent to be ready")
@@ -112,7 +121,7 @@ class LLM():
     self.sn_ctrl.send("FINISHED")
     self.generate_summary()
     
-  def generate_summary(self):
+  def generate_summary(self, msg: Optional[str]):
     self.global_conv.append({"role": "user", "content": "Generate a summarised numerical list of the plan"})
     
     completion = self.client.chat.completions.create(
