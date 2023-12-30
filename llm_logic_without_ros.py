@@ -81,6 +81,8 @@ class LLM():
     while(True):
       pass
     
+    #! Agent started second cannot proceed past READY synchronisation
+    
     self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
     self.global_conv = [
       {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
