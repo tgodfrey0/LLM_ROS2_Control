@@ -50,10 +50,14 @@ class LLM():
     self._delay(WAITING_TIME)
     
   def t(self, sn_ctrl: SwarmNet):
-    while(True):
+    while(not self.is_ready()):
       print(f"Ready: {self.is_ready()}")
       print(f"Turn: {self.is_my_turn()}")
-      self._delay(0.5)
+      
+      with sn_ctrl.rx_queue.mutex:
+        print(f"Queue: {sn_ctrl.rx_queue.queue}")
+        
+      self._delay(0.1)
     
   def create_plan(self):
     print(f"Initialising SwarmNet")
@@ -62,17 +66,15 @@ class LLM():
     print(f"SwarmNet initialised") 
     
     t1 = threading.Thread(target=self.t, args=[self.sn_ctrl])
-    t1.start()
-  
-    self.sn_ctrl.send("READY")
   
     while(not self.is_ready()):
-      self.sn_ctrl.send(f"READY")
+      self.sn_ctrl.send("READY")
       print("Waiting for an agent to be ready")
       self.wait_delay()
-
+      
+    self.sn_ctrl.send("READY")
+      
     self.sn_ctrl.clear_rx_queue()
-    self.sn_ctrl.clear_tx_queue()
     
     #! Agent started second cannot proceed past READY synchronisation
     
