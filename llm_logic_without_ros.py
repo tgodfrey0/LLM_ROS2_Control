@@ -51,13 +51,13 @@ class LLM():
     
   def t(self, sn_ctrl: SwarmNet):
     while(True):
-      continue
-      if(not sn_ctrl.rx_queue.empty()):
-        print(sn_ctrl.rx_queue.queue)
+      print(f"Ready: {self.is_ready()}")
+      print(f"Turn: {self.is_my_turn()}")
+      self._delay(0.5)
     
   def create_plan(self):
     print(f"Initialising SwarmNet")
-    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.generate_summary}, device_list = dl) #! Maybe not working as it is inside a class
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.generate_summary}, device_list = dl)
     self.sn_ctrl.start()
     print(f"SwarmNet initialised") 
     
