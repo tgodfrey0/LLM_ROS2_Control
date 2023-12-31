@@ -70,16 +70,9 @@ class LLM():
       self.sn_ctrl.send(f"READY")
       print("Waiting for an agent to be ready")
       self.wait_delay()
-    
-    with self.sn_ctrl.rx_queue.mutex:
-      print(self.sn_ctrl.rx_queue.queue)
+
     self.sn_ctrl.clear_rx_queue()
     self.sn_ctrl.clear_tx_queue()
-    with self.sn_ctrl.rx_queue.mutex:
-      print(self.sn_ctrl.rx_queue.queue)
-    
-    while(True):
-      pass
     
     #! Agent started second cannot proceed past READY synchronisation
     
