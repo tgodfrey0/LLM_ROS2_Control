@@ -129,7 +129,7 @@ class LLM():
     self.generate_summary(None)
     
   def generate_summary(self, msg: Optional[str]):
-    self.global_conv.append({"role": "user", "content": "Generate a summarised numerical list of the plan"})
+    self.global_conv.append({"role": "user", "content": "Generate a summarised numerical list of the plan for the steps that I should complete"})
     
     completion = self.client.chat.completions.create(
       model="gpt-3.5-turbo",
