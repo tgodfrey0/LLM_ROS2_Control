@@ -257,7 +257,6 @@ class VelocityPublisher(Node):
     pass
   
   def finished_recv(self, msg: Optional[str]) -> None:
-    self.set_turn(True) # Prevent being stuck waiting for the other
     self.generate_summary()
   
   def llm_recv(self, msg: Optional[str]) -> None: 
@@ -289,11 +288,15 @@ class VelocityPublisher(Node):
     
     while(current_stage < self.max_stages):
       while(not self.is_my_turn()): # Wait to receive from the other agent
+        if(len(self.global_conv) > 0 and self.global_conv[len(self.global_conv)-1]["content"].rstrip().endswith(f"{CMD_SUPERVISOR}")):
+          break;
+        
         self.wait_delay()
         self.get_logger().info(f"Waiting for a response from another agent")
         
-      if(len(self.global_conv) > 0 and self.global_conv[len(self.global_conv)-1]["content"].rstrip().endswith("@SUPERVISOR")):
-        break;
+      # if(len(self.global_conv) > 0 and self.global_conv[len(self.global_conv)-1]["content"].rstrip().endswith(f"{CMD_SUPERVISOR}")):
+      #   self.get_logger().info(f"Content ends with {CMD_SUPERVISOR}")
+      #   break;
       
       self.send_req()
       self.toggle_turn()
