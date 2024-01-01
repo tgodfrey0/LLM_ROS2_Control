@@ -79,7 +79,6 @@ class LLM():
   def wait_delay(self):
     self._delay(WAITING_TIME)
     
-  
   def _publish_zero(self):
     print("ZERO")
     
@@ -111,24 +110,12 @@ class LLM():
     self.grid.clockwise()
     self._pub_rotation(-1)
     
-  def t(self, sn_ctrl: SwarmNet):
-    while(not self.is_ready()):
-      print(f"Ready: {self.is_ready()}")
-      print(f"Turn: {self.is_my_turn()}")
-      
-      with sn_ctrl.rx_queue.mutex:
-        print(f"Queue: {sn_ctrl.rx_queue.queue}")
-        
-      self._delay(0.1)
-    
   def create_plan(self):
     print(f"Initialising SwarmNet")
     self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv}, device_list = dl) #! Publish INFO messages which can then be subscribed to by observers
     self.sn_ctrl.start()
     print(f"SwarmNet initialised") 
     
-    t1 = threading.Thread(target=self.t, args=[self.sn_ctrl])
-  
     while(not self.is_ready()):
       self.sn_ctrl.send("READY")
       print("Waiting for an agent to be ready")
@@ -137,9 +124,7 @@ class LLM():
     self.sn_ctrl.send("READY")
       
     self.sn_ctrl.clear_rx_queue()
-    
-    #! Agent started second cannot proceed past READY synchronisation
-    
+        
     self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
     self.global_conv = [
       {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
