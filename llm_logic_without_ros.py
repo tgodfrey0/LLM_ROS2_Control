@@ -338,12 +338,12 @@ class LLM():
       print(f"Stage {current_stage}")
       print(f"{self.global_conv}");
         
-    self.plan_completed()
-    current_stage = 0
-    
     while(not (self.sn_ctrl.rx_queue.empty() and self.sn_ctrl.tx_queue.empty())):
       print("Waiting for message queues to clear")
       self.wait_delay()
+        
+    self.plan_completed()
+    current_stage = 0
 
 if __name__ == '__main__':
   x = LLM()
