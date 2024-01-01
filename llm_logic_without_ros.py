@@ -30,9 +30,9 @@ ANGULAR_TIME = ANGULAR_DISTANCE / ANGULAR_SPEED
 
 WAITING_TIME = 1
 
-INITIALLY_THIS_AGENTS_TURN = True
-STARTING_GRID_LOC = "D1"
-ENDING_GRID_LOC = "D7"
+INITIALLY_THIS_AGENTS_TURN = True # Only one agent should have true
+STARTING_GRID_LOC = "D1" # This should be updated to ensure the grid is set up correctly
+ENDING_GRID_LOC = "D7" # This only needs updating if INITIALLY_THIS_AGENTS_TURN is true
 
 class Grid():
   class Heading(Enum):
