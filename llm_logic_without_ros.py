@@ -138,19 +138,70 @@ class LLM():
     self.other_agent_ready = False
     self.turn_lock = Lock()
     self.ready_lock = Lock()
-    
     self.grid = Grid(STARTING_GRID_LOC, Grid.Heading.UP, 8, 8) #! When moving into ROS update grid position
   
     self.create_plan()
     
-    print(f"Full plan parsed") #! When moving into ROS, add parser for backwards
+    if(len(self.global_conv) > 1):
+      cmd = self.global_conv[len(self.global_conv)-1]["content"]
+      for s in cmd.split("\n"):
+        if(CMD_FORWARD in s):
+          self.pub_forwards()
+        elif(CMD_BACKWARDS in s):
+          self.pub_backwards()
+        elif(CMD_ROTATE_CLOCKWISE in s):
+          self.pub_clockwise()
+        elif(CMD_ROTATE_ANTICLOCKWISE in s):
+          self.pub_anticlockwise()
+        elif(CMD_SUPERVISOR in s):
+          pass
+        else:
+          print(f"Unrecognised command: {s}")
         
   def _delay(self, t_target):
     sleep(t_target)
     print(f"Delayed for {t_target} seconds")
     
+  def linear_delay(self):
+    self._delay(LINEAR_TIME)
+    
+  def angular_delay(self):
+    self._delay(ANGULAR_TIME)
+    
   def wait_delay(self):
     self._delay(WAITING_TIME)
+    
+  
+  def _publish_zero(self):
+    print("ZERO")
+    
+  def _pub_linear(self, dir: int):    
+    self.linear_delay()
+    self._publish_zero()
+    
+  def pub_forwards(self):
+    print(f"Forwards command")
+    self.grid.forwards()
+    self._pub_linear(1)
+    
+  def pub_backwards(self):
+    print(f"Backwards command")
+    self.grid.backwards()
+    self._pub_linear(-1)
+    
+  def _pub_rotation(self, dir: int):
+    self.angular_delay()
+    self._publish_zero()
+    
+  def pub_anticlockwise(self):
+    print(f"Anticlockwise command")
+    self.grid.anticlockwise()
+    self._pub_rotation(1)
+    
+  def pub_clockwise(self):
+    print(f"Clockwise command")
+    self.grid.clockwise()
+    self._pub_rotation(-1)
     
   def t(self, sn_ctrl: SwarmNet):
     while(not self.is_ready()):
