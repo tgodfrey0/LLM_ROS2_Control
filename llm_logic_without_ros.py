@@ -317,7 +317,7 @@ class LLM():
     current_stage = 0
     
     if self.this_agents_turn:
-      self.global_conv.append({"role": "user", "content": f"I am at {self.current_square}, you are at {ENDING_GRID_LOC}. I must end at {ENDING_GRID_LOC} and you must end at {STARTING_GRID_LOC}"})
+      self.global_conv.append({"role": "user", "content": f"I am at {self.grid}, you are at {ENDING_GRID_LOC}. I must end at {ENDING_GRID_LOC} and you must end at {STARTING_GRID_LOC}"})
     
     while(current_stage < self.max_stages):
       if(len(self.global_conv) > 0 and self.global_conv[len(self.global_conv)-1]["content"].endswith("@SUPERVISOR")):
