@@ -34,7 +34,7 @@ WAITING_TIME = 1
 
 #* Update these constants
 INITIALLY_THIS_AGENTS_TURN = True # Only one agent should have true
-STARTING_GRID_LOC = "D1" 
+STARTING_GRID_LOC = "D1"
 STARTING_GRID_HEADING = Grid.Heading.UP
 ENDING_GRID_LOC = "D7"
 
