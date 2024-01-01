@@ -136,10 +136,8 @@ class LLM():
     self.max_stages = 5
     self.this_agents_turn = INITIALLY_THIS_AGENTS_TURN
     self.other_agent_ready = False
-    self.can_finish = False
     self.turn_lock = Lock()
     self.ready_lock = Lock()
-    self.finish_lock = Lock()
     self.grid = Grid(STARTING_GRID_LOC, Grid.Heading.UP, 8, 8) #! When moving into ROS update grid position
   
     self.create_plan()
@@ -285,7 +283,7 @@ class LLM():
       print(f"{m['role']}: {m['content']}")
       
     self.sn_ctrl.send("FINISHED")
-    self.finished_recv(None)
+    self.generate_summary()
     
   def generate_summary(self):
     self.global_conv.append({"role": "user", "content": "Generate a summarised numerical list of the plan for the steps that I should complete"})
@@ -300,10 +298,6 @@ class LLM():
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
   
   def finished_recv(self, msg: Optional[str]) -> None:
-    self.finish_lock.acquire()
-    self.can_finish = True
-    self.finish_lock.release()
-    
     self.generate_summary()
   
   def llm_recv(self, msg: Optional[str]) -> None: 
@@ -347,7 +341,8 @@ class LLM():
     self.plan_completed()
     current_stage = 0
     
-    while(not self.can_finish):
+    while(not (self.sn_ctrl.rx_queue.empty() and self.sn_ctrl.tx_queue.empty())):
+      print("Waiting for message queues to clear")
       self.wait_delay()
 
 if __name__ == '__main__':
