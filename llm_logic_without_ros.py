@@ -215,7 +215,7 @@ class LLM():
     
   def create_plan(self):
     print(f"Initialising SwarmNet")
-    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.generate_summary}, device_list = dl)
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.generate_summary}, device_list = dl) #! Publish INFO messages which can then be subscribed to by observers
     self.sn_ctrl.start()
     print(f"SwarmNet initialised") 
     
