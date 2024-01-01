@@ -16,6 +16,13 @@ dl: List[Tuple[str, int]] = [("192.168.0.120", 51000), ("192.168.0.64", 51000)] 
 # dl: List[Tuple[str, int]] = [("192.168.0.121", 51000), ("192.168.0.64", 51000)] # Other device
 # dl: List[Tuple[str, int]] = [("192.168.0.64", 51000)] # Other device
 
+#* Update these constants
+INITIALLY_THIS_AGENTS_TURN = True # Only one agent should have true
+STARTING_GRID_LOC = "D1"
+STARTING_GRID_HEADING = Grid.Heading.UP
+ENDING_GRID_LOC = "D7"
+MAX_NUM_NEGOTIATION_MESSAGES = 15
+
 CMD_FORWARD = "@FORWARD"
 CMD_BACKWARDS = "@BACKWARDS"
 CMD_ROTATE_CLOCKWISE = "@CLOCKWISE"
@@ -32,19 +39,13 @@ ANGULAR_TIME = ANGULAR_DISTANCE / ANGULAR_SPEED
 
 WAITING_TIME = 1
 
-#* Update these constants
-INITIALLY_THIS_AGENTS_TURN = True # Only one agent should have true
-STARTING_GRID_LOC = "D1"
-STARTING_GRID_HEADING = Grid.Heading.UP
-ENDING_GRID_LOC = "D7"
-
 class VelocityPublisher(Node):
   def __init__(self):
     super().__init__("velocity_publisher")
     self.publisher_ = self.create_publisher(Twist, "/cmd_vel", 10)
     self.global_conv = []
     self.client: OpenAI = None
-    self.max_stages = 10
+    self.max_stages = MAX_NUM_NEGOTIATION_MESSAGES
     self.this_agents_turn = INITIALLY_THIS_AGENTS_TURN
     self.other_agent_ready = False
     self.other_agent_loc = ""
