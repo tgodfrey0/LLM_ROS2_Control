@@ -12,8 +12,8 @@ from geometry_msgs.msg import Twist
 #! Will need some way of determining which command in the plan is for which agent
 #! Use some ID prefixed to the command?
 
-dl: List[Tuple[str, int]] = [("192.168.0.120", 51000)] # Other device
-# dl: List[Tuple[str, int]] = [("192.168.0.121", 51000)] # Other device
+dl: List[Tuple[str, int]] = [("192.168.0.120", 51000), ("192.168.0.64", 51000)] # Other device
+# dl: List[Tuple[str, int]] = [("192.168.0.121", 51000), ("192.168.0.64", 51000)] # Other device
 # dl: List[Tuple[str, int]] = [("192.168.0.64", 51000)] # Other device
 
 CMD_FORWARD = "@FORWARD"
@@ -46,6 +46,7 @@ class VelocityPublisher(Node):
     self.max_stages = 5
     self.this_agents_turn = INITIALLY_THIS_AGENTS_TURN
     self.other_agent_ready = False
+    self.other_agent_loc = ""
     self.turn_lock = Lock()
     self.ready_lock = Lock()
     self.grid = Grid(STARTING_GRID_LOC,STARTING_GRID_HEADING, 8, 8)
@@ -157,18 +158,20 @@ class VelocityPublisher(Node):
     
   def create_plan(self):
     self.get_logger().info(f"Initialising SwarmNet")
-    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv}, device_list = dl) #! Publish INFO messages which can then be subscribed to by observers
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": self.info_recv}, device_list = dl) #! Publish INFO messages which can then be subscribed to by observers
     self.sn_ctrl.start()
     self.get_logger().info(f"SwarmNet initialised") 
+    self.sn_ctrl.send("INFO SwarmNet initialised successfully")
     
     while(not self.is_ready()):
       self.sn_ctrl.send("READY")
       self.get_logger().info("Waiting for an agent to be ready")
       self.wait_delay()
       
-    self.sn_ctrl.send("READY")
+    self.sn_ctrl.send(f"READY {self.grid}")
       
     self.sn_ctrl.clear_rx_queue()
+    self.sn_ctrl.send("INFO Agents ready for negotiation")
         
     self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
     self.global_conv = [
@@ -181,6 +184,7 @@ class VelocityPublisher(Node):
             - '{CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise \
             The final plan should be a numbered list only containing these commands."}]
     self.negotiate()
+    self.sn_ctrl.send("INFO Negotiation finished")
     self.sn_ctrl.kill()
     
   def is_my_turn(self):
@@ -241,6 +245,9 @@ class VelocityPublisher(Node):
 
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
   
+  def info_recv(self, msg: Optional[str]) -> None:
+    pass
+  
   def finished_recv(self, msg: Optional[str]) -> None:
     self.generate_summary()
   
@@ -254,6 +261,7 @@ class VelocityPublisher(Node):
   def ready_recv(self, msg: Optional[str]) -> None:
     self.ready_lock.acquire()
     self.other_agent_ready = True
+    self.other_agent_loc = msg
     self.ready_lock.release()
   
   def is_ready(self):
@@ -266,7 +274,7 @@ class VelocityPublisher(Node):
     current_stage = 0
     
     if self.this_agents_turn:
-      self.global_conv.append({"role": "user", "content": f"I am at {self.grid}, you are at {ENDING_GRID_LOC}. I must end at {ENDING_GRID_LOC} and you must end at {STARTING_GRID_LOC}"})
+      self.global_conv.append({"role": "user", "content": f"I am at {self.grid}, you are at {self.other_agent_loc}. I must end at {self.other_agent_loc} and you must end at {self.grid}"})
     
     while(current_stage < self.max_stages):
       if(len(self.global_conv) > 0 and self.global_conv[len(self.global_conv)-1]["content"].rstrip().endswith("@SUPERVISOR")):
