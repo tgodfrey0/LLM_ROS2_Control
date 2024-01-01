@@ -7,7 +7,7 @@ def llm_recv(msg: Optional[str]) -> None:
   print("SwarmNet LLM message sent")
 
 def ready_recv(msg: Optional[str]) -> None:
-  print("SwarmNet READY message sent")
+  print(f"SwarmNet READY: {msg}")
 
 def finished_recv(msg: Optional[str]) -> None:
   print("SwarmNet FINISHED message sent")

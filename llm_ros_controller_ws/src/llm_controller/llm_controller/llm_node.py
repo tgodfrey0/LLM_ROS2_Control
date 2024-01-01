@@ -277,18 +277,20 @@ class VelocityPublisher(Node):
     
     if self.this_agents_turn:
       self.global_conv.append({"role": "user", "content": f"I am at {self.grid}, you are at {self.other_agent_loc}. I must end at {self.other_agent_loc} and you must end at {self.grid}"})
+    else:
+      current_stage = 1
     
     while(current_stage < self.max_stages):
-      if(len(self.global_conv) > 0 and self.global_conv[len(self.global_conv)-1]["content"].rstrip().endswith("@SUPERVISOR")):
-        break;
-      
       while(not self.is_my_turn()): # Wait to receive from the other agent
         self.wait_delay()
         self.get_logger().info(f"Waiting for a response from another agent")
+        
+      if(len(self.global_conv) > 0 and self.global_conv[len(self.global_conv)-1]["content"].rstrip().endswith("@SUPERVISOR")):
+        break;
       
       self.send_req()
       self.toggle_turn()
-      current_stage += 1
+      current_stage += 2 # Shares the current_stage
       self.get_logger().info(f"Stage {current_stage}")
       self.sn_ctrl.send(f"INFO Negotiation stage {current_stage}")
       self.get_logger().info(f"{self.global_conv}");
