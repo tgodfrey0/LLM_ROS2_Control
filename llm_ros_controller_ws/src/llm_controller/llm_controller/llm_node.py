@@ -44,7 +44,7 @@ class VelocityPublisher(Node):
     self.publisher_ = self.create_publisher(Twist, "/cmd_vel", 10)
     self.global_conv = []
     self.client: OpenAI = None
-    self.max_stages = 5
+    self.max_stages = 10
     self.this_agents_turn = INITIALLY_THIS_AGENTS_TURN
     self.other_agent_ready = False
     self.other_agent_loc = ""
@@ -178,7 +178,7 @@ class VelocityPublisher(Node):
     self.global_conv = [
       {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
         We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
-          Once this has been decided you should call the '\f{CMD_SUPERVISOR}' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
+          You cannot go outside of the grid. Once this has been decided you should call the '\f{CMD_SUPERVISOR}' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
             - '{CMD_FORWARD}' to move one square forwards\
             - '{CMD_BACKWARDS}' to move one square backwards \
             - '{CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise \
