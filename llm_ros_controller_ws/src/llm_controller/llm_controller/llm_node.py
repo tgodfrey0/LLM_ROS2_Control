@@ -3,7 +3,7 @@ from openai import OpenAI
 from math import pi
 from threading import Lock
 from typing import Optional, List, Tuple
-from grid import Grid
+from .grid import Grid
 
 import rclpy
 from rclpy.node import Node
