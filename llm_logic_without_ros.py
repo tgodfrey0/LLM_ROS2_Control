@@ -136,8 +136,10 @@ class LLM():
     self.max_stages = 5
     self.this_agents_turn = INITIALLY_THIS_AGENTS_TURN
     self.other_agent_ready = False
+    self.can_finish = False
     self.turn_lock = Lock()
     self.ready_lock = Lock()
+    self.finish_lock = Lock()
     self.grid = Grid(STARTING_GRID_LOC, Grid.Heading.UP, 8, 8) #! When moving into ROS update grid position
   
     self.create_plan()
@@ -154,6 +156,8 @@ class LLM():
         elif(CMD_ROTATE_ANTICLOCKWISE in s):
           self.pub_anticlockwise()
         elif(CMD_SUPERVISOR in s):
+          pass
+        elif(s.strip() == ""):
           pass
         else:
           print(f"Unrecognised command: {s}")
@@ -215,7 +219,7 @@ class LLM():
     
   def create_plan(self):
     print(f"Initialising SwarmNet")
-    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.generate_summary}, device_list = dl) #! Publish INFO messages which can then be subscribed to by observers
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv}, device_list = dl) #! Publish INFO messages which can then be subscribed to by observers
     self.sn_ctrl.start()
     print(f"SwarmNet initialised") 
     
@@ -281,9 +285,9 @@ class LLM():
       print(f"{m['role']}: {m['content']}")
       
     self.sn_ctrl.send("FINISHED")
-    self.generate_summary(None)
+    self.finished_recv(None)
     
-  def generate_summary(self, msg: Optional[str]):
+  def generate_summary(self):
     self.global_conv.append({"role": "user", "content": "Generate a summarised numerical list of the plan for the steps that I should complete"})
     
     completion = self.client.chat.completions.create(
@@ -294,7 +298,14 @@ class LLM():
 
     # print(completion.choices[0].message)
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
+  
+  def finished_recv(self, msg: Optional[str]) -> None:
+    self.finish_lock.acquire()
+    self.can_finish = True
+    self.finish_lock.release()
     
+    self.generate_summary()
+  
   def llm_recv(self, msg: Optional[str]) -> None: 
     m = msg.split(" ", 1) # Msg are LLM ROLE CONTENT
     r = m[0]
@@ -335,6 +346,9 @@ class LLM():
         
     self.plan_completed()
     current_stage = 0
+    
+    while(not self.can_finish):
+      self.wait_delay()
 
 if __name__ == '__main__':
   x = LLM()
