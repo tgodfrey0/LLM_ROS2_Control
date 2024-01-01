@@ -200,6 +200,11 @@ class VelocityPublisher(Node):
     self.this_agents_turn = not self.this_agents_turn
     self.turn_lock.release()
     
+  def set_turn(self, b):
+    self.turn_lock.acquire()
+    self.this_agents_turn = b
+    self.turn_lock.release()
+    
   def send_req(self):
     completion = self.client.chat.completions.create(
       model="gpt-3.5-turbo",
@@ -252,6 +257,7 @@ class VelocityPublisher(Node):
     pass
   
   def finished_recv(self, msg: Optional[str]) -> None:
+    self.set_turn(True) # Prevent being stuck waiting for the other
     self.generate_summary()
   
   def llm_recv(self, msg: Optional[str]) -> None: 
