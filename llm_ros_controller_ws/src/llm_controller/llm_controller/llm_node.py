@@ -244,6 +244,7 @@ class VelocityPublisher(Node):
     )
 
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
+    self.sn_ctrl.send(f"INFO Final plan for {self.sn_ctrl.addr}: {completion.choices[0].message.content}")
   
   def info_recv(self, msg: Optional[str]) -> None:
     pass
@@ -288,6 +289,7 @@ class VelocityPublisher(Node):
       self.toggle_turn()
       current_stage += 1
       self.get_logger().info(f"Stage {current_stage}")
+      self.sn_ctrl.send(f"INFO Negotiation stage {current_stage}")
       self.get_logger().info(f"{self.global_conv}");
         
     self.plan_completed()
