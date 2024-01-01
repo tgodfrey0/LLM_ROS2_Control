@@ -1,5 +1,5 @@
 from swarmnet import SwarmNet
-from typing import Optional
+from typing import Optional, List, Tuple
 
 dl: List[Tuple[str, int]] = [("192.168.0.120", 51000), ("192.168.0.121", 51000)] # Other device
 
