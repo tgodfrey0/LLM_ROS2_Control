@@ -3,7 +3,7 @@ from openai import OpenAI
 from math import pi
 from threading import Lock
 from typing import Optional, List, Tuple
-from enum import Enum
+from grid import Grid
 from time import sleep
 import threading
 
@@ -32,103 +32,9 @@ WAITING_TIME = 1
 
 INITIALLY_THIS_AGENTS_TURN = True # Only one agent should have true
 STARTING_GRID_LOC = "D1" # This should be updated to ensure the grid is set up correctly
+STARTING_GRID_HEADING = Grid.Heading.UP # This should be updated to ensure the grid is set up correctly
 ENDING_GRID_LOC = "D7" # This only needs updating if INITIALLY_THIS_AGENTS_TURN is true
 
-class Grid():
-  class Heading(Enum):
-    UP = 0
-    RIGHT = 1
-    DOWN = 2
-    LEFT = 3
-  
-  def __init__(self, loc: str, heading: Heading, width: int, height: int):
-    self.col = loc[0].upper()
-    self.row = int(loc[1])
-    self.max_height = height
-    self.max_width = width
-    self.heading = heading
-    
-  def __repr__(self) -> str:
-    return f"{self.col}{self.row}"
-  
-  def _check_bound_min_row(self) -> bool:
-    b = self.row < 0
-    
-    if(b):
-      print("Row clipped at lower bound")
-    
-    return b
-  
-  def _check_bound_max_row(self) -> bool:
-    b = self.row >= self.max_height
-    
-    if(b):
-      print("Row clipped at upper bound")
-    
-    return b
-  
-  def _check_bound_min_col(self) -> bool:
-    b = (ord(self.col)-ord('A')) < 0
-    
-    if(b):
-      print("Column clipped at lower bound")
-    
-    return b
-  
-  def _check_bound_max_col(self) -> bool:
-    b = (ord(self.col)-ord('A')) >= self.max_width
-    
-    if(b):
-      print("Column clipped at upper bound")
-    
-    return b
-  
-  def _bound_loc(self):
-    self.row = 0 if self._check_bound_min_row() else self.row
-    self.row = (self.max_height-1) if self._check_bound_max_row() else self.row
-    self.col = 'A' if self._check_bound_min_col() else self.col
-    self.col = chr((self.max_width-1) + ord('A')) if self._check_bound_max_col() else self.col
-    
-  def _finish_move(self):
-    self._bound_loc()
-    print(f"Current grid location: {self}")
-    print(f"Current heading: {self.heading.name}")
-  
-  def forwards(self):
-    match self.heading:
-      case Grid.Heading.UP:
-        self.row += 1
-      case Grid.Heading.DOWN:
-        self.row -= 1
-      case Grid.Heading.LEFT:
-        self.col = chr(ord(self.col)-1)
-      case Grid.Heading.RIGHT:
-        self.col = chr(ord(self.col)+1)
-    
-    self._finish_move()
-  
-  def backwards(self):
-    match self.heading:
-      case Grid.Heading.UP:
-        self.row -= 1
-      case Grid.Heading.DOWN:
-        self.row += 1
-      case Grid.Heading.LEFT:
-        self.col = chr(ord(self.col)+1)
-      case Grid.Heading.RIGHT:
-        self.col = chr(ord(self.col)-1)
-
-    self._finish_move()
-  
-  def clockwise(self):
-    self.heading = Grid.Heading((self.heading.value + 1) % 4)
-      
-    self._finish_move()
-  
-  def anticlockwise(self):
-    self.heading = Grid.Heading((self.heading.value - 1) % 4)
-      
-    self._finish_move()
 class LLM():
   def __init__(self):
     self.global_conv = []
@@ -138,7 +44,7 @@ class LLM():
     self.other_agent_ready = False
     self.turn_lock = Lock()
     self.ready_lock = Lock()
-    self.grid = Grid(STARTING_GRID_LOC, Grid.Heading.UP, 8, 8) #! When moving into ROS update grid position
+    self.grid = Grid(STARTING_GRID_LOC,STARTING_GRID_HEADING, 8, 8) #! When moving into ROS update grid position
   
     self.create_plan()
     
