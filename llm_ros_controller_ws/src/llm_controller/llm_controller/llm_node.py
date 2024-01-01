@@ -32,10 +32,11 @@ ANGULAR_TIME = ANGULAR_DISTANCE / ANGULAR_SPEED
 
 WAITING_TIME = 1
 
+#* Update these constants
 INITIALLY_THIS_AGENTS_TURN = True # Only one agent should have true
-STARTING_GRID_LOC = "D1" # This should be updated to ensure the grid is set up correctly
-STARTING_GRID_HEADING = Grid.Heading.UP # This should be updated to ensure the grid is set up correctly
-ENDING_GRID_LOC = "D7" # This only needs updating if INITIALLY_THIS_AGENTS_TURN is true
+STARTING_GRID_LOC = "D1" 
+STARTING_GRID_HEADING = Grid.Heading.UP
+ENDING_GRID_LOC = "D7"
 
 class VelocityPublisher(Node):
   def __init__(self):
@@ -164,7 +165,7 @@ class VelocityPublisher(Node):
     self.sn_ctrl.send("INFO SwarmNet initialised successfully")
     
     while(not self.is_ready()):
-      self.sn_ctrl.send("READY")
+      self.sn_ctrl.send(f"READY {self.grid}")
       self.get_logger().info("Waiting for an agent to be ready")
       self.wait_delay()
       
