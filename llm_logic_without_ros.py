@@ -3,7 +3,7 @@ from openai import OpenAI
 from math import pi
 from threading import Lock
 from typing import Optional, List, Tuple
-import os
+from enum import Enum
 from time import sleep
 import threading
 
@@ -12,8 +12,10 @@ import threading
 
 dl: List[Tuple[str, int]] = [("192.168.0.120", 51000)] # Other device
 # dl: List[Tuple[str, int]] = [("192.168.0.121", 51000)] # Other device
+# dl: List[Tuple[str, int]] = [("192.168.0.64", 51000)] # Other device
 
 CMD_FORWARD = "@FORWARD"
+CMD_BACKWARDS = "@BACKWARDS"
 CMD_ROTATE_CLOCKWISE = "@CLOCKWISE"
 CMD_ROTATE_ANTICLOCKWISE = "@ANTICLOCKWISE"
 CMD_SUPERVISOR = "@SUPERVISOR"
@@ -28,19 +30,120 @@ ANGULAR_TIME = ANGULAR_DISTANCE / ANGULAR_SPEED
 
 WAITING_TIME = 1
 
+INITIALLY_THIS_AGENTS_TURN = True
+STARTING_GRID_LOC = "D1"
+ENDING_GRID_LOC = "D7"
+
+class Grid():
+  class Heading(Enum):
+    UP = 0
+    RIGHT = 1
+    DOWN = 2
+    LEFT = 3
+  
+  def __init__(self, loc: str, heading: Heading, width: int, height: int):
+    self.col = loc[0].upper()
+    self.row = int(loc[1])
+    self.max_height = height
+    self.max_width = width
+    self.heading = heading
+    
+  def __repr__(self) -> str:
+    return f"{self.col}{self.row}"
+  
+  def _check_bound_min_row(self) -> bool:
+    b = self.row < 0
+    
+    if(b):
+      print("Row clipped at lower bound")
+    
+    return b
+  
+  def _check_bound_max_row(self) -> bool:
+    b = self.row >= self.max_height
+    
+    if(b):
+      print("Row clipped at upper bound")
+    
+    return b
+  
+  def _check_bound_min_col(self) -> bool:
+    b = (ord(self.col)-ord('A')) < 0
+    
+    if(b):
+      print("Column clipped at lower bound")
+    
+    return b
+  
+  def _check_bound_max_col(self) -> bool:
+    b = (ord(self.col)-ord('A')) >= self.max_width
+    
+    if(b):
+      print("Column clipped at upper bound")
+    
+    return b
+  
+  def _bound_loc(self):
+    self.row = 0 if self._check_bound_min_row() else self.row
+    self.row = (self.max_height-1) if self._check_bound_max_row() else self.row
+    self.col = 'A' if self._check_bound_min_col() else self.col
+    self.col = chr((self.max_width-1) + ord('A')) if self._check_bound_max_col() else self.col
+    
+  def _finish_move(self):
+    self._bound_loc()
+    print(f"Current grid location: {self}")
+    print(f"Current heading: {self.heading.name}")
+  
+  def forwards(self):
+    match self.heading:
+      case Grid.Heading.UP:
+        self.row += 1
+      case Grid.Heading.DOWN:
+        self.row -= 1
+      case Grid.Heading.LEFT:
+        self.col = chr(ord(self.col)-1)
+      case Grid.Heading.RIGHT:
+        self.col = chr(ord(self.col)+1)
+    
+    self._finish_move()
+  
+  def backwards(self):
+    match self.heading:
+      case Grid.Heading.UP:
+        self.row -= 1
+      case Grid.Heading.DOWN:
+        self.row += 1
+      case Grid.Heading.LEFT:
+        self.col = chr(ord(self.col)+1)
+      case Grid.Heading.RIGHT:
+        self.col = chr(ord(self.col)-1)
+
+    self._finish_move()
+  
+  def clockwise(self):
+    self.heading = Grid.Heading((self.heading.value + 1) % 4)
+      
+    self._finish_move()
+  
+  def anticlockwise(self):
+    self.heading = Grid.Heading((self.heading.value - 1) % 4)
+      
+    self._finish_move()
 class LLM():
   def __init__(self):
     self.global_conv = []
     self.client: OpenAI = None
     self.max_stages = 5
-    self.this_agents_turn = True
+    self.this_agents_turn = INITIALLY_THIS_AGENTS_TURN
     self.other_agent_ready = False
     self.turn_lock = Lock()
     self.ready_lock = Lock()
+    
+    self.grid = Grid(STARTING_GRID_LOC, Grid.Heading.UP, 8, 8) #! When moving into ROS update grid position
   
     self.create_plan()
     
-    print(f"Full plan parsed")
+    print(f"Full plan parsed") #! When moving into ROS, add parser for backwards
         
   def _delay(self, t_target):
     sleep(t_target)
@@ -84,8 +187,9 @@ class LLM():
         We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
           Once this has been decided you should call the '\f{CMD_SUPERVISOR}' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
             - '{CMD_FORWARD}' to move one square forwards\
-            - '{CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise\
-            - '{CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise\
+            - '{CMD_BACKWARDS}' to move one square backwards \
+            - '{CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise \
+            - '{CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise \
             The final plan should be a numbered list only containing these commands."}]
     self.negotiate()
     self.sn_ctrl.kill()
@@ -162,7 +266,7 @@ class LLM():
     current_stage = 0
     
     if self.this_agents_turn:
-      self.global_conv.append({"role": "user", "content": "I am at D1, you are at D7. I must end at D7 and you must end at D1"})
+      self.global_conv.append({"role": "user", "content": f"I am at {self.current_square}, you are at {ENDING_GRID_LOC}. I must end at {ENDING_GRID_LOC} and you must end at {STARTING_GRID_LOC}"})
     
     while(current_stage < self.max_stages):
       if(len(self.global_conv) > 0 and self.global_conv[len(self.global_conv)-1]["content"].endswith("@SUPERVISOR")):
