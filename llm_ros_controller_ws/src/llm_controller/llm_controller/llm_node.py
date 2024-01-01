@@ -227,7 +227,11 @@ class VelocityPublisher(Node):
     self.generate_summary()
     
   def generate_summary(self):
-    self.global_conv.append({"role": "user", "content": "Generate a summarised numerical list of the plan for the steps that I should complete"})
+    self.global_conv.append({"role": "user", "content": f"Generate a summarised numerical list of the plan for the steps that I should complete. Use only the commands:\
+      - '{CMD_FORWARD}' to move one square forwards\
+      - '{CMD_BACKWARDS}' to move one square backwards \
+      - '{CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise \
+      - '{CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise "})
     
     completion = self.client.chat.completions.create(
       model="gpt-3.5-turbo",
