@@ -283,6 +283,11 @@ class LLM():
       print(f"{m['role']}: {m['content']}")
       
     self.sn_ctrl.send("FINISHED")
+    
+    while(not (self.sn_ctrl.rx_queue.empty() and self.sn_ctrl.tx_queue.empty())):
+      print("Waiting for message queues to clear")
+      self.wait_delay()
+    
     self.generate_summary()
     
   def generate_summary(self):
@@ -325,7 +330,7 @@ class LLM():
       self.global_conv.append({"role": "user", "content": f"I am at {self.grid}, you are at {ENDING_GRID_LOC}. I must end at {ENDING_GRID_LOC} and you must end at {STARTING_GRID_LOC}"})
     
     while(current_stage < self.max_stages):
-      if(len(self.global_conv) > 0 and self.global_conv[len(self.global_conv)-1]["content"].endswith("@SUPERVISOR")):
+      if(len(self.global_conv) > 0 and self.global_conv[len(self.global_conv)-1]["content"].rstrip().endswith("@SUPERVISOR")):
         break;
       
       while(not self.is_my_turn()): # Wait to receive from the other agent
@@ -337,10 +342,6 @@ class LLM():
       current_stage += 1
       print(f"Stage {current_stage}")
       print(f"{self.global_conv}");
-        
-    while(not (self.sn_ctrl.rx_queue.empty() and self.sn_ctrl.tx_queue.empty())):
-      print("Waiting for message queues to clear")
-      self.wait_delay()
         
     self.plan_completed()
     current_stage = 0
