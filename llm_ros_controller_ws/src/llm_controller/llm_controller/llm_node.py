@@ -72,6 +72,7 @@ class VelocityPublisher(Node):
           pass
         else:
           self.get_logger().error(f"Unrecognised command: {s}")
+        self.wait_delay()
             
     self.get_logger().info(f"Full plan parsed")
         
