@@ -79,7 +79,7 @@ class VelocityPublisher(Node):
       for s in cmd.split("\n"):
         min_dist_reached = False
         with self.scan_mutex:
-          min_dist_reached = any(map(lambda r: r <= THRESHOLD_M, self.lidar_ranges))
+          min_dist_reached = any(map(lambda r: r <= THRESHOLD_M, self.lidar_ranges)) # TODO Limit to only the values in front
           self.info(f"{len(self.lidar_ranges)} ranges in topic")
           self.restart()
         if(min_dist_reached):
