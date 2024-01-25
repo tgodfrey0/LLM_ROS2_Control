@@ -1,5 +1,5 @@
 from swarmnet import SwarmNet
-from openai import OpenAI
+from openai import OpenAI, ChatCompletion
 from math import pi
 from threading import Lock
 from typing import Optional, List, Tuple
@@ -8,10 +8,14 @@ from .grid import Grid
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
+from sensor_msgs.msg import LaserScan
+from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
+
 
 #! Will need some way of determining which command in the plan is for which agent
 #! Use some ID prefixed to the command?
 
+AGENT_NAME = "Alice"
 dl: List[Tuple[str, int]] = [("192.168.0.120", 51000), ("192.168.0.64", 51000)] # Other device
 # dl: List[Tuple[str, int]] = [("192.168.0.121", 51000), ("192.168.0.64", 51000)] # Other device
 # dl: List[Tuple[str, int]] = [("192.168.0.64", 51000)] # Other device
@@ -38,11 +42,24 @@ ANGULAR_DISTANCE = pi/2.0 # rad
 ANGULAR_TIME = ANGULAR_DISTANCE / ANGULAR_SPEED
 
 WAITING_TIME = 1
+THRESHOLD_M = 0.3
 
 class VelocityPublisher(Node):
   def __init__(self):
     super().__init__("velocity_publisher")
     self.publisher_ = self.create_publisher(Twist, "/cmd_vel", 10)
+    qos = QoSProfile(
+      reliability=ReliabilityPolicy.BEST_EFFORT,
+      history=HistoryPolicy.KEEP_LAST,
+      depth=10
+    )
+    
+    self.subscription = self.create_subscription(
+      LaserScan,
+      "/scan",
+      self.listener_callback,
+      qos_profile=qos
+    )
     self.global_conv = []
     self.client: OpenAI = None
     self.max_stages = MAX_NUM_NEGOTIATION_MESSAGES
@@ -52,13 +69,23 @@ class VelocityPublisher(Node):
     self.turn_lock = Lock()
     self.ready_lock = Lock()
     self.grid = Grid(STARTING_GRID_LOC,STARTING_GRID_HEADING, 8, 8)
+    self.scan_mutex = Lock()
+    self.lidar_ranges = False
   
     self.create_plan()
     
     if(len(self.global_conv) > 1):
       cmd = self.global_conv[len(self.global_conv)-1]["content"]
       for s in cmd.split("\n"):
-        if(CMD_FORWARD in s):
+        min_dist_reached = False
+        with self.scan_mutex:
+          min_dist_reached = any(map(lambda r: r <= THRESHOLD_M, self.lidar_ranges))
+          self.info(f"{len(self.lidar_ranges)} ranges in topic")
+          self.restart()
+        if(min_dist_reached):
+          self.info("Min LIDAR reading")
+          self.pub_backwards()
+        elif(CMD_FORWARD in s):
           self.pub_forwards()
         elif(CMD_BACKWARDS in s):
           self.pub_backwards()
@@ -74,7 +101,25 @@ class VelocityPublisher(Node):
           self.get_logger().error(f"Unrecognised command: {s}")
         self.wait_delay()
             
-    self.get_logger().info(f"Full plan parsed")
+    self.info(f"Full plan parsed")
+    
+  # TODO Replan and restart from current position 
+  def restart(self):
+    self.info("TODO REPLAN")
+    pass
+    
+  def info(self, s: str) -> None:
+    self.get_logger().info(s)
+    self.sn_ctrl.send(f"INFO {AGENT_NAME}: {s}")
+    
+  def listener_callback(self, msg):
+      rs: List[float] = msg.ranges
+      
+      # for r in rs:
+      #   less_than_min = r < THRESHOLD_M
+      
+      with self.scan_mutex:
+        self.lidar_ranges = rs
         
   def _delay(self, t_target):
     t0 = self.get_clock().now()
@@ -140,35 +185,35 @@ class VelocityPublisher(Node):
     self._publish_zero()
     
   def pub_forwards(self):
-    self.get_logger().info(f"Forwards command")
+    self.info(f"Forwards command")
     self.grid.forwards()
     self._pub_linear(1)
     
   def pub_backwards(self):
-    self.get_logger().info(f"Backwards command")
+    self.info(f"Backwards command")
     self.grid.backwards()
     self._pub_linear(-1)
     
   def pub_anticlockwise(self):
-    self.get_logger().info(f"Anticlockwise command")
+    self.info(f"Anticlockwise command")
     self.grid.anticlockwise()
     self._pub_rotation(1)
     
   def pub_clockwise(self):
-    self.get_logger().info(f"Clockwise command")
+    self.info(f"Clockwise command")
     self.grid.clockwise()
     self._pub_rotation(-1)
     
   def create_plan(self):
     self.get_logger().info(f"Initialising SwarmNet")
-    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": self.info_recv}, device_list = dl) #! Publish INFO messages which can then be subscribed to by observers
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": None}, device_list = dl) #! Publish INFO messages which can then be subscribed to by observers
     self.sn_ctrl.start()
     self.get_logger().info(f"SwarmNet initialised") 
     self.sn_ctrl.send("INFO SwarmNet initialised successfully")
     
     while(not self.is_ready()):
       self.sn_ctrl.send(f"READY {self.grid}")
-      self.get_logger().info("Waiting for an agent to be ready")
+      self.info("Waiting for an agent to be ready")
       self.wait_delay()
       
     self.sn_ctrl.send(f"READY {self.grid}")
@@ -206,12 +251,15 @@ class VelocityPublisher(Node):
     self.this_agents_turn = b
     self.turn_lock.release()
     
-  def send_req(self):
-    completion = self.client.chat.completions.create(
-      model="gpt-3.5-turbo",
+  def _llm_req(self) -> ChatCompletion:
+    return self.client.chat.completions.create(
+      model="gpt-4-turbo",
       messages=self.global_conv,
       max_tokens=750
     )
+    
+  def send_req(self):
+    completion = self._llm_req()
 
     # print(completion.choices[0].message)
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
@@ -226,9 +274,9 @@ class VelocityPublisher(Node):
       return ""
     
   def plan_completed(self):
-    self.get_logger().info(f"Plan completed:")
+    self.info(f"Plan completed:")
     for m in self.global_conv:
-      self.get_logger().info(f"{m['role']}: {m['content']}")
+      self.info(f"{m['role']}: {m['content']}")
       
     self.sn_ctrl.send("FINISHED")
     
@@ -245,17 +293,10 @@ class VelocityPublisher(Node):
       - '{CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise \
       - '{CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise "})
     
-    completion = self.client.chat.completions.create(
-      model="gpt-3.5-turbo",
-      messages=self.global_conv,
-      max_tokens=750
-    )
+    completion = self._llm_req()
 
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
     self.sn_ctrl.send(f"INFO Final plan for {self.sn_ctrl.addr}: {completion.choices[0].message.content}")
-  
-  def info_recv(self, msg: Optional[str]) -> None:
-    pass
   
   def finished_recv(self, msg: Optional[str]) -> None:
     self.generate_summary()
