@@ -241,3 +241,5 @@ AMENT_IGNORE
 
 #openai_key
 **/openai_key
+
+.$layout.drawio.bkp

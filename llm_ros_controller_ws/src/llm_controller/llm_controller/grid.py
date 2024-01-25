@@ -7,11 +7,11 @@ class Grid():
     DOWN = 2
     LEFT = 3
   
-  def __init__(self, loc: str, heading: Heading, width: int, height: int):
+  def __init__(self, loc: str, heading: Heading, columns: int, rows: int):
     self.col = loc[0].upper()
     self.row = int(loc[1])
-    self.max_height = height
-    self.max_width = width
+    self.max_height = rows
+    self.max_width = columns
     self.heading = heading
     
   def __repr__(self) -> str:

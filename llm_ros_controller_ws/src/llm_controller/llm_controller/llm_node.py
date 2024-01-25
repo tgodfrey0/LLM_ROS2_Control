@@ -15,16 +15,16 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 #! Will need some way of determining which command in the plan is for which agent
 #! Use some ID prefixed to the command?
 
-AGENT_NAME = "Alice"
 dl: List[Tuple[str, int]] = [("192.168.0.120", 51000), ("192.168.0.64", 51000)] # Other device
 # dl: List[Tuple[str, int]] = [("192.168.0.121", 51000), ("192.168.0.64", 51000)] # Other device
 # dl: List[Tuple[str, int]] = [("192.168.0.64", 51000)] # Other device
 
 #* Update these constants
 INITIALLY_THIS_AGENTS_TURN = True # Only one agent should have true
-STARTING_GRID_LOC = "D1"
+AGENT_NAME = "Alice"
+STARTING_GRID_LOC = "B0"
 STARTING_GRID_HEADING = Grid.Heading.UP
-ENDING_GRID_LOC = "D7"
+ENDING_GRID_LOC = "B7"
 MAX_NUM_NEGOTIATION_MESSAGES = 15
 
 CMD_FORWARD = "@FORWARD"
@@ -68,7 +68,7 @@ class VelocityPublisher(Node):
     self.other_agent_loc = ""
     self.turn_lock = Lock()
     self.ready_lock = Lock()
-    self.grid = Grid(STARTING_GRID_LOC,STARTING_GRID_HEADING, 8, 8)
+    self.grid = Grid(STARTING_GRID_LOC,STARTING_GRID_HEADING, 3, 8)
     self.scan_mutex = Lock()
     self.lidar_ranges = False
   
