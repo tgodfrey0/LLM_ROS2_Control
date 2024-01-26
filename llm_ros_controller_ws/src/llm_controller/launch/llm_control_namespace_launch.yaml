@@ -1,0 +1,14 @@
+launch:
+  arguments:
+    namespace:
+      description: Namespace for llm_node
+      default: "/default_namespace"
+
+  output: screen
+  nodes:
+    - name: llm_node
+      namespace: "${launch.arguments.namespace}"
+      package: llm_controller
+      executable: llm_node
+  
+# Launch with --namespace ns
