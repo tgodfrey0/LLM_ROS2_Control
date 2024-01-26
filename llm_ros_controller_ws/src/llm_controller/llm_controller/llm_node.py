@@ -74,6 +74,9 @@ class VelocityPublisher(Node):
   
     self.create_plan()
     
+    self.parse_plan()
+    
+  def parse_plan(self):
     if(len(self.global_conv) > 1):
       cmd = self.global_conv[len(self.global_conv)-1]["content"]
       for s in cmd.split("\n"):
@@ -100,7 +103,7 @@ class VelocityPublisher(Node):
         else:
           self.get_logger().error(f"Unrecognised command: {s}")
         self.wait_delay()
-            
+
     self.info(f"Full plan parsed")
     
   # TODO Replan and restart from current position 
