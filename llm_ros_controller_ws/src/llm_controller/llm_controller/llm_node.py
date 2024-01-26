@@ -70,7 +70,7 @@ class VelocityPublisher(Node):
     self.ready_lock = Lock()
     self.grid = Grid(STARTING_GRID_LOC,STARTING_GRID_HEADING, 3, 8)
     self.scan_mutex = Lock()
-    self.lidar_ranges = False
+    self.scan_ranges = False
   
     self.create_plan()
     
@@ -79,8 +79,8 @@ class VelocityPublisher(Node):
       for s in cmd.split("\n"):
         min_dist_reached = False
         with self.scan_mutex:
-          min_dist_reached = any(map(lambda r: r <= THRESHOLD_M, self.lidar_ranges)) # TODO Limit to only the values in front
-          self.info(f"{len(self.lidar_ranges)} ranges in topic")
+          min_dist_reached = any(map(lambda r: r <= THRESHOLD_M, self.scan_ranges)) # TODO Limit to only the values in front
+          self.info(f"{len(self.scan_ranges)} ranges in topic")
           self.restart()
         if(min_dist_reached):
           self.info("Min LIDAR reading")
@@ -119,7 +119,7 @@ class VelocityPublisher(Node):
       #   less_than_min = r < THRESHOLD_M
       
       with self.scan_mutex:
-        self.lidar_ranges = rs
+        self.scan_ranges = rs
         
   def _delay(self, t_target):
     t0 = self.get_clock().now()
