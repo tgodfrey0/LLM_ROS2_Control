@@ -71,6 +71,11 @@ class VelocityPublisher(Node):
     self.grid = Grid(STARTING_GRID_LOC,STARTING_GRID_HEADING, 3, 8)
     self.scan_mutex = Lock()
     self.scan_ranges = False
+    
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": None, "RESTART": self.restart_recv}, device_list = dl) #! Publish INFO messages which can then be subscribed to by observers
+    self.sn_ctrl.start()
+    self.get_logger().info(f"SwarmNet initialised") 
+    self.sn_ctrl.send("INFO SwarmNet initialised successfully")
   
     self.create_plan()
     
@@ -84,6 +89,7 @@ class VelocityPublisher(Node):
         with self.scan_mutex:
           min_dist_reached = any(map(lambda r: r <= THRESHOLD_M, self.scan_ranges)) # TODO Limit to only the values in front
           self.info(f"{len(self.scan_ranges)} ranges in topic")
+          self.sn_ctrl.send("RESTART")
           self.restart()
         if(min_dist_reached):
           self.info("Min LIDAR reading")
@@ -209,10 +215,6 @@ class VelocityPublisher(Node):
     
   def create_plan(self):
     self.get_logger().info(f"Initialising SwarmNet")
-    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": None}, device_list = dl) #! Publish INFO messages which can then be subscribed to by observers
-    self.sn_ctrl.start()
-    self.get_logger().info(f"SwarmNet initialised") 
-    self.sn_ctrl.send("INFO SwarmNet initialised successfully")
     
     while(not self.is_ready()):
       self.sn_ctrl.send(f"READY {self.grid}")
@@ -236,7 +238,6 @@ class VelocityPublisher(Node):
             The final plan should be a numbered list only containing these commands."}]
     self.negotiate()
     self.sn_ctrl.send("INFO Negotiation finished")
-    self.sn_ctrl.kill()
     
   def is_my_turn(self):
     self.turn_lock.acquire()
@@ -300,6 +301,9 @@ class VelocityPublisher(Node):
 
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
     self.sn_ctrl.send(f"INFO Final plan for {self.sn_ctrl.addr}: {completion.choices[0].message.content}")
+  
+  def restart_recv(self, msg: Optional[str]) -> None:
+    self.restart()
   
   def finished_recv(self, msg: Optional[str]) -> None:
     self.generate_summary()
@@ -366,6 +370,7 @@ def main(args=None):
   # global_conv = [
   #   {"role": "system", "content": f"@FORWARD"}]
   rclpy.spin_once(velocity_publisher) #* spin_once will parse the given plan then return
+  velocity_publisher.sn_ctrl.kill()
   velocity_publisher.destroy_node()
   rclpy.shutdown()
 
