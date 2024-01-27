@@ -1,0 +1,32 @@
+swarmnet:
+  devices:
+    - ip: 192.168.0.120
+      port: 51000
+    - ip: 192.168.0.64
+      port: 51000
+  log_level: warn
+
+agent:
+  agent_name: Alice
+  max_num_negotiation_messages: 15
+  initially_this_agents_turn: True
+  starting_grid_loc: B0
+  starting_grid_heading: UP
+  ending_grid_loc: B7
+
+commands:
+  forward: "@FORWARD"
+  backwards: "@BACKWARDS"
+  rotate_clockwise: "@CLOCKWISE"
+  rotate_anticlockwise: "@ANTICLOCKWISE"
+  supervisor: "@SUPERVISOR"
+
+movement:
+  linear:
+    speed: 0.15  # m/s
+    distance: 0.45  # m
+  angular:
+    speed: 45  # deg/s
+    distance: 90 # degrees
+  waiting_time: 1
+  lidar_threshold: 0.3

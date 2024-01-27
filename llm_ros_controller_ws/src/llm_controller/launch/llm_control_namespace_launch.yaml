@@ -3,6 +3,9 @@ launch:
     namespace:
       description: Namespace for llm_node
       default: "/default_namespace"
+    config:
+      description: Path to the config file
+      default: "config.yaml"
 
   output: screen
   nodes:
@@ -10,5 +13,7 @@ launch:
       namespace: "${launch.arguments.namespace}"
       package: llm_controller
       executable: llm_node
+      args: ["--config", "${launch.arguments.config}"]  # Pass the new argument
+
   
 # Launch with --namespace ns
