@@ -4,15 +4,15 @@ swarmnet:
       port: 51000
     - ip: 192.168.0.64
       port: 51000
-  log_level: warn
+  log_level: info
 
 agent:
   agent_name: Alice
-  max_num_negotiation_messages: 15
   initially_this_agents_turn: True
   starting_grid_loc: B0
-  starting_grid_heading: UP
+  starting_grid_heading: up
   ending_grid_loc: B7
+  max_num_negotiation_messages: 15
 
 commands:
   forward: "@FORWARD"

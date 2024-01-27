@@ -391,7 +391,7 @@ class VelocityPublisher(Node):
       self.SN_DEVICE_LIST: List[Tuple[str, int]] = list(map(lambda d: (str(d["ip"]), int(d["port"])), data["swarmnet"]["devices"]))
       self.SN_LOG_LEVEL = self._parse_log_level(data["swarmnet"]["log_level"])
       self.AGENT_NAME: str = data["agent"]["agent_name"]
-      self.INITIALLY_THIS_AGENTS_TURN: bool = data["agent"]["initially_this_agents_turn"]
+      self.INITIALLY_THIS_AGENTS_TURN: bool = bool(data["agent"]["initially_this_agents_turn"])
       self.STARTING_GRID_LOC: str = data["agent"]["starting_grid_loc"]
       self.STARTING_GRID_HEADING: Grid.Heading = self._parse_heading(data["agent"]["starting_grid_heading"])
       self.ENDING_GRID_LOC: str = data["agent"]["ending_grid_loc"]
