@@ -16,6 +16,8 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 # Local package imports
 from .grid import Grid
 
+#TODO store stats to flash, e.g. number of rounds of negotiation
+
 class VelocityPublisher(Node):
   def __init__(self, config_path: str):
     super().__init__("velocity_publisher")
