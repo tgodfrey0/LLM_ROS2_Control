@@ -1,0 +1,8 @@
+launch:
+- node:
+    name: llm_node
+    namespace: "/alice"
+    pkg: llm_controller
+    exec: llm_node
+    output: "screen"
+    args: ["~/LLM_ROS2_Control/configs/config_alice.yaml"]
