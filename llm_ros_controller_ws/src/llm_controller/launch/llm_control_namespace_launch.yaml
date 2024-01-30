@@ -6,7 +6,6 @@ launch:
     config:
       description: Path to the config file
       default: "config.yaml"
-
   output: screen
   nodes:
     - name: llm_node
