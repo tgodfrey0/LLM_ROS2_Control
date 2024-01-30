@@ -24,10 +24,10 @@ from .grid import Grid
 image_path = "~/LLM_ROS2_Control/layout.drawio.png"
 
 class VelocityPublisher(Node):
-  def __init__(self, config_path: str):
+  def __init__(self):
     super().__init__("velocity_publisher")
     
-    if(not self.load_config(config_path)):
+    if(not self.load_config()):
       self.get_logger().error("!!! FAILED TO LOAD CONFIG")
       return
     
@@ -419,6 +419,9 @@ class VelocityPublisher(Node):
     return hd
     
   def load_config(self, path) -> bool:
+    
+    #TODO Create param and get
+    
     status: bool = False
     
     self.get_logger().info(f"Config file: {path}")
@@ -463,7 +466,7 @@ class VelocityPublisher(Node):
 def main(args=None):
   
   rclpy.init()
-  velocity_publisher = VelocityPublisher(args)
+  velocity_publisher = VelocityPublisher()
   
   rclpy.spin_once(velocity_publisher) #* spin_once will parse the given plan then return
   velocity_publisher.sn_ctrl.kill()
@@ -472,4 +475,4 @@ def main(args=None):
 
 
 if __name__ == '__main__':
-    main(sys.argv[0])
+    main()
