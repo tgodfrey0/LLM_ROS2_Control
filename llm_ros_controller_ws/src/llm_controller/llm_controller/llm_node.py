@@ -325,7 +325,7 @@ class VelocityPublisher(Node):
     writer = csv.writer(csvfile)
 
     today = datetime.date.today().strftime("%Y-%m-%d")
-    writer.writerow([today, str(n_stages)])
+    writer.writerow([today, self.model, str(self.MAX_NUM_NEGOTIATION_MESSAGES), str(n_stages)])
 
   def restart_recv(self, msg: Optional[str]) -> None:
     self.restart()
