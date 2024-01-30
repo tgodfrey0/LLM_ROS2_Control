@@ -1,10 +1,15 @@
+import base64
+import csv
+import datetime
+import openai
+import os
 import sys
 import yaml
 from math import pi
 from openai import OpenAI, ChatCompletion
 from swarmnet import SwarmNet, Log_Level, set_log_level
 from threading import Lock
-from typing import Optional, List, Tuple
+from typing import Dict, Optional, List, Tuple
 
 # ROS2 imports
 import rclpy
@@ -16,7 +21,7 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 # Local package imports
 from .grid import Grid
 
-#TODO store stats to flash, e.g. number of rounds of negotiation
+image_path = "~/LLM_ROS2_Control/layout.drawio.png"
 
 class VelocityPublisher(Node):
   def __init__(self, config_path: str):
@@ -218,14 +223,35 @@ class VelocityPublisher(Node):
         
     self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
     self.global_conv = [
-      {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
-        We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
-          You cannot go outside of the grid. Once this has been decided you should call the '\f{self.CMD_SUPERVISOR}' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
-            - '{self.CMD_FORWARD}' to move one square forwards\
-            - '{self.CMD_BACKWARDS}' to move one square backwards \
-            - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise \
-            - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise \
-            The final plan should be a numbered list only containing these commands."}]
+        {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
+          We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
+            You cannot go outside of the grid and we cannot be in the same grid square at once. Once this has been decided you should call the '\f{self.CMD_SUPERVISOR}' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
+              - '{self.CMD_FORWARD}' to move one square forwards\
+              - '{self.CMD_BACKWARDS}' to move one square backwards \
+              - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise \
+              - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise \
+              The final plan should be a numbered list only containing these commands."}]
+    
+    if("vision" in self.MODEL_NAME):
+      with open(image_path, "rb") as image:
+        image_data = base64.b64encode(image.read()).decode("utf-8")
+      
+      self.global_conv.append({
+        "role": "user",
+        "content": [
+            {
+              "type": "text",
+              "text": "This is a diagram of the layout of the area."
+            },
+            {
+              "type": "image_url",
+              "image_url": {
+                "url": f"data:image/{image_path.split('.')[-1]};base64,{image_data}"
+              }
+            }
+          ]
+      })
+      
     self.negotiate()
     self.sn_ctrl.send("INFO Negotiation finished")
     
@@ -247,11 +273,11 @@ class VelocityPublisher(Node):
     
   def _llm_req(self) -> ChatCompletion:
     return self.client.chat.completions.create(
-      model="gpt-4-turbo",
+      model=self.MODEL_NAME,
       messages=self.global_conv,
       max_tokens=750
     )
-    
+
   def send_req(self):
     completion = self._llm_req()
 
@@ -267,7 +293,7 @@ class VelocityPublisher(Node):
     else:
       return ""
     
-  def plan_completed(self):
+  def plan_completed(self, n_stages: int):
     self.info(f"Plan completed:")
     for m in self.global_conv:
       self.info(f"{m['role']}: {m['content']}")
@@ -292,6 +318,15 @@ class VelocityPublisher(Node):
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
     self.sn_ctrl.send(f"INFO Final plan for {self.sn_ctrl.addr}: {completion.choices[0].message.content}")
   
+  def _log_negotiations(self, n_stages: int):
+   path = self.LOG_FILE_DIR + "negotiation_log.csv"
+
+   with open(path, "a", newline="") as csvfile:
+    writer = csv.writer(csvfile)
+
+    today = datetime.date.today().strftime("%Y-%m-%d")
+    writer.writerow([today, str(n_stages)])
+
   def restart_recv(self, msg: Optional[str]) -> None:
     self.restart()
   
@@ -344,7 +379,7 @@ class VelocityPublisher(Node):
       self.sn_ctrl.send(f"INFO Negotiation stage {current_stage}")
       self.get_logger().info(f"{self.global_conv}");
         
-    self.plan_completed()
+    self.plan_completed(current_stage)
     current_stage = 0
     
   def _parse_log_level(self, s: str) -> Log_Level:
@@ -398,6 +433,8 @@ class VelocityPublisher(Node):
       self.STARTING_GRID_HEADING: Grid.Heading = self._parse_heading(data["agent"]["starting_grid_heading"])
       self.ENDING_GRID_LOC: str = data["agent"]["ending_grid_loc"]
       self.MAX_NUM_NEGOTIATION_MESSAGES: int = data["agent"]["max_num_negotiation_messages"]
+      self.LOG_FILE_DIR: str = data["agent"]["log_dir"]
+      self.MODEL_NAME = data["agent"]["model"]
       self.CMD_FORWARD: str = data["commands"]["forwards"]
       self.CMD_BACKWARDS: str = data["commands"]["backwards"]
       self.CMD_ROTATE_CLOCKWISE: str = data["commands"]["rotate_clockwise"]

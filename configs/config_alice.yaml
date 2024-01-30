@@ -13,6 +13,8 @@ agent:
   starting_grid_heading: up
   ending_grid_loc: B7
   max_num_negotiation_messages: 15
+  log_dir: "~/LLM_ROS2_Control/log/"
+  model: "gpt-4-vision-preview"
 
 commands:
   forward: "@FORWARD"
