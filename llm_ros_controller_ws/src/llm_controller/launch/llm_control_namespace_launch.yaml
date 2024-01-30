@@ -7,7 +7,7 @@ launch:
       description: Path to the config file
       default: "config.yaml"
   output: screen
-  nodes:
+  - node:
     - name: llm_node
       namespace: "${launch.arguments.namespace}"
       package: llm_controller
