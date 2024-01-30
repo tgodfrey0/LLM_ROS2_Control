@@ -5,4 +5,4 @@ launch:
     pkg: llm_controller
     exec: llm_node
     output: "screen"
-    args: ["~/LLM_ROS2_Control/configs/config_bob.yaml"]
+    args: "~/LLM_ROS2_Control/configs/config_bob.yaml"
