@@ -424,6 +424,8 @@ class VelocityPublisher(Node):
     try:
       with open(path, "r") as file:
         data = yaml.safe_load(file)
+        
+      self.get_logger().info(f"Opened file {path}")
       
       self.SN_DEVICE_LIST: List[Tuple[str, int]] = list(map(lambda d: (str(d["ip"]), int(d["port"])), data["swarmnet"]["devices"]))
       self.SN_LOG_LEVEL = self._parse_log_level(data["swarmnet"]["log_level"])
