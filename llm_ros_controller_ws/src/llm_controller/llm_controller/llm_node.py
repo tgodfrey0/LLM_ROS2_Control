@@ -235,6 +235,7 @@ class VelocityPublisher(Node):
               The final plan should be a numbered list only containing these commands."}]
     
     if("vision" in self.MODEL_NAME):
+      self.info("Vision model provided, appending image")
       with open(image_path, "rb") as image:
         image_data = base64.b64encode(image.read()).decode("utf-8")
       
