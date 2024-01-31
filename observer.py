@@ -1,21 +1,26 @@
 from swarmnet import SwarmNet, Log_Level, set_log_level
 from typing import Optional, List, Tuple
+import datetime
 
 dl: List[Tuple[str, int]] = [("10.0.1.112", 51000), ("10.0.1.191", 51000)] # Other device
+filename = "/home/tg/projects/p3p/LLM_ROS2_Control/logs/observer_logs/" + datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S.txt")
 
 def llm_recv(msg: Optional[str]) -> None:
-  print("SwarmNet LLM message sent")
+  print("LLM message sent")
 
 def ready_recv(msg: Optional[str]) -> None:
-  print(f"SwarmNet READY: {msg.strip()}")
+  print(f"READY: {msg.strip()}")
 
 def finished_recv(msg: Optional[str]) -> None:
-  print("SwarmNet FINISHED message sent")
+  print("FINISHED message sent")
 
 def info_recv(msg: Optional[str]) -> None:
-  print(f"SwarmNet INFO from {msg.strip()}")
+  print(f"INFO from {msg.strip()}")
+  with open(filename, "a") as file:
+      file.write(f"INFO from {msg.strip()}")
 
 if __name__=="__main__":
+  global now
   sn = SwarmNet({"LLM": llm_recv, "READY": ready_recv, "FINISHED": finished_recv, "INFO": info_recv}, device_list = dl)
   set_log_level(Log_Level.WARN)
   sn.start()
