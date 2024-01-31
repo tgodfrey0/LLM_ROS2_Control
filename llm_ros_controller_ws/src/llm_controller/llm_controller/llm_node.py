@@ -75,7 +75,7 @@ class VelocityPublisher(Node):
       for s in cmd.split("\n"):
         min_dist_reached = False
         with self.scan_mutex:
-          info(f"RANGES: {self.scan_ranges}")
+          self.info(f"RANGES: {self.scan_ranges}")
           min_dist_reached = any(map(lambda r: r <= self.LIDAR_THRESHOLD, self.scan_ranges))
           self.info(f"{len(self.scan_ranges)} ranges in topic")
           self.sn_ctrl.send("RESTART")
@@ -280,7 +280,7 @@ class VelocityPublisher(Node):
     return self.client.chat.completions.create(
       model=self.MODEL_NAME,
       messages=self.global_conv,
-      max_tokens=750
+      max_tokens=500
     )
 
   def send_req(self):
