@@ -423,7 +423,7 @@ class VelocityPublisher(Node):
   def load_config(self) -> bool:
     
     #TODO Create param and get
-    path = self.get_parameter("config_file")
+    path = self.get_parameter("config_file").get_parameter_value().string_value()
     
     status: bool = False
     
