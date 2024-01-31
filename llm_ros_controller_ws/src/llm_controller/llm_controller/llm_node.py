@@ -372,7 +372,7 @@ class VelocityPublisher(Node):
           if(isinstance(self.global_conv[len(self.global_conv)-1]["content"], list)):
             continue
           
-          self.info("STRING: " + {self.global_conv[-1:]["content"].strip().split("\n")[-1:]})
+          self.info("STRING: " + self.global_conv[-1:])#["content"].strip().split("\n")[-1:])
           
           if(self.CMD_SUPERVISOR in self.global_conv[-1:]["content"].strip().split("\n")[-1:]):
             self.info("\n\n\n\n\n\nSUPERVISOR CALLED =====================================================================================================\n\n\n\n\n\n")
