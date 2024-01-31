@@ -323,15 +323,15 @@ class VelocityPublisher(Node):
     completion = self._llm_req()
 
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
-    self.sn_ctrl.send(f"INFO Final plan for {self.sn_ctrl.addr}: {completion.choices[0].message.content}")
+    self.info(f"Final plan for {self.sn_ctrl.addr}: {completion.choices[0].message.content}")
   
   def _log_negotiations(self, n_stages: int):
-   path = self.WORKING_DIR + "logs/negotiation_log.csv"
+    path = self.WORKING_DIR + "logs/negotiation_log.csv"
 
-   with open(path, "a", newline="") as csvfile:
-    writer = csv.writer(csvfile)
-    today = datetime.date.today().strftime("%Y-%m-%d")
-    writer.writerow([today, self.model, str(self.MAX_NUM_NEGOTIATION_MESSAGES), str(n_stages)])
+    with open(path, "a", newline="") as csvfile:
+      writer = csv.writer(csvfile)
+      today = datetime.date.today().strftime("%Y-%m-%d")
+      writer.writerow([today, self.model, str(self.MAX_NUM_NEGOTIATION_MESSAGES), str(n_stages)])
 
   def restart_recv(self, msg: Optional[str]) -> None:
     self.restart()
