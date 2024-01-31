@@ -19,7 +19,7 @@ agent:
   model: "gpt-4-vision-preview"
 
 commands:
-  forward: "@FORWARD"
+  forwards: "@FORWARD"
   backwards: "@BACKWARDS"
   rotate_clockwise: "@CLOCKWISE"
   rotate_anticlockwise: "@ANTICLOCKWISE"
