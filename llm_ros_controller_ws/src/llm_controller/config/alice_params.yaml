@@ -1,0 +1,4 @@
+llm_node:
+  ros__parameters:
+    ns: "/alice"
+    conf: "~/LLM_ROS2_Control/configs/config_alice.yaml"
