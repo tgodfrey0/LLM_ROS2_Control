@@ -228,7 +228,7 @@ class VelocityPublisher(Node):
     self.global_conv = [
         {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
           We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
-            You cannot go outside of the grid and we cannot be in the same grid square at once. Only one of us can fit in a square at once. \ 
+            You cannot go outside of the grid and we cannot be in the same grid square at once. Only one of us can fit in a square at once.\
             Once this has been decided you should call the '\f{self.CMD_SUPERVISOR}' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
               - '{self.CMD_FORWARD}' to move one square forwards\
               - '{self.CMD_BACKWARDS}' to move one square backwards \
