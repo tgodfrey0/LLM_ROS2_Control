@@ -373,6 +373,7 @@ class VelocityPublisher(Node):
             continue
           
           if(self.global_conv[len(self.global_conv)-1]["content"].rstrip().endswith(f"{self.CMD_SUPERVISOR}")):
+            self.info("\n\n\n\n\n\nSUPERVISOR CALLED =====================================================================================================\n\n\n\n\n\n")
             break
         
         self.wait_delay()
