@@ -259,7 +259,7 @@ class VelocityPublisher(Node):
       })
       
     self.negotiate()
-    self.sn_ctrl.send("INFO Negotiation finished")
+    self.sn_ctrl.send(f"INFO {self.AGENT_NAME}: Negotiation finished")
     
   def is_my_turn(self):
     self.turn_lock.acquire()
@@ -325,6 +325,7 @@ class VelocityPublisher(Node):
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
     self.info(f"Final plan for {self.sn_ctrl.addr}: {completion.choices[0].message.content}")
   
+  #TODO Separate log dirs for each bot
   def _log_negotiations(self, n_stages: int):
     path = self.WORKING_DIR + "logs/negotiation_log.csv"
 

@@ -1,0 +1,780 @@
+INFO from SwarmNet initialised successfully
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Waiting for an agent to be ready
+INFO from SwarmNet initialised successfully
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: Waiting for an agent to be ready
+INFO from Agents ready for negotiation
+INFO from Agents ready for negotiation
+INFO from Alice: Vision model provided, appending image
+INFO from Bob: Vision model provided, appending image
+INFO from Alice: To ensure that we don't collide, we can take turns navigating the grid. I propose the following plan:
+
+1. I will wait at B7 while you make your way towards B7.
+2. You will move straight from B0 to B7 using @FORWARD commands, as you are already facing the right direction to do so.
+3. Once you have reached B7, I will navigate down to B0.
+
+Let's break it down into steps:
+
+Your moves from B0 to B7:
+- @FORWARD x7 (to move from B0 to B7)
+
+My moves from B7 to B0:
+- @BACKWARDS x7 (since I am facing the opposite direction, I can move backwards from B7 to B0)
+
+Are you in agreement with this plan? If so, please confirm, and we will proceed to call the @SUPERVISOR to review the final plan.
+INFO from Negotiation stage 2
+INFO from Alice: 
+
+
+
+
+
+SUPERVISOR CALLED =====================================================================================================
+INFO from Alice: I apologize for the oversight. Since we can't move at the same time, I will wait for you to reach B7 before I begin moving to B0. Here's the adjusted plan:
+
+Your moves from B0 to B7:
+
+1. @FORWARD x7
+
+Once you have reached B7, you will have to rotate to let me know you have finished your move:
+
+8. @CLOCKWISE
+
+After your rotation, I will proceed from B7 to B0:
+
+My moves from B7 to B0:
+
+1. @BACKWARDS X7
+
+If this plan sounds good to you, please confirm and we'll call the @SUPERVISOR to finalize the plan.
+INFO from Negotiation stage 4
+INFO from Alice: It appears there's been a misunderstanding with the rotation part of the plan. Since we are communicating directly here, we do not need to use rotations to signal that one has finished their moves. Please disregard the previous mention of rotating as a signal. Let's try this plan instead:
+
+Your moves from B0 to B7:
+
+1. @FORWARD x7
+
+Once you've arrived at B7, I'll begin my moves from B7 to B0:
+
+My moves from B7 to B0:
+
+1. @BACKWARDS x7
+
+If you agree with this plan and there are no further adjustments needed, please confirm so that we can call the @SUPERVISOR to approve our final movement plan.
+INFO from Negotiation stage 6
+INFO from Alice: 
+
+
+
+
+
+SUPERVISOR CALLED =====================================================================================================
+INFO from Bob: Your plan seems efficient and will prevent any collisions. However, I would recommend a slight adjustment to ensure we follow the instruction for robots like us to only use "@FORWARD" to move forwards, and "@BACKWARDS" to move backwards.
+
+Given that we can only move forwards and backwards, not sideways, and considering the orientation we start in, we need to adjust the plan to account for the necessary rotations. I propose the following revised plan:
+
+1. I will wait at B7 while you make your way toward B7.
+2. You will move from B0 to B7 using @FORWARD commands, and I will rotate to face the right direction to move backwards down once you arrive.
+
+Your moves from B0 to B7:
+
+- @FORWARD x7 (to move from B0 to B7)
+
+Once you're at B7, I will execute my moves from B7 to B0:
+
+- @CLOCKWISE (to face the right direction)
+- @FORWARD x7 (to move from B7 to B0)
+
+This should ensure we are both moving forwards in our respective directions. Does this plan suit your operational parameters? If yes, we can present it to the @SUPERVISOR for review.
+INFO from Bob: 
+
+
+
+
+
+SUPERVISOR CALLED =====================================================================================================
+INFO from Negotiation stage 3
+INFO from Bob: Your revised plan makes sense and follows the proper protocol for moving forwards and backwards. I agree with it. Here is the consolidated final plan for both of us:
+
+Your moves from B0 to B7:
+1. @FORWARD x7
+
+Once you have reached B7, I will execute my moves:
+
+My moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD x7
+
+If you also agree with this final plan, let's call the @SUPERVISOR to approve it.
+INFO from Negotiation stage 5
+INFO from Alice: Let's formalize the plan with correct formatting:
+
+You move from B0 to B7:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you have reached B7 and it is clear, I will move from B7 to B0:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @BACKWARDS
+5. @BACKWARDS
+6. @BACKWARDS
+7. @BACKWARDS
+
+Let's call the @SUPERVISOR to review our final movement plan.
+INFO from Negotiation stage 8
+INFO from Bob: @SUPERVISOR
+
+Final Movement Plan:
+
+Your moves from B0 to B7:
+1. @FORWARD x7
+
+My moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD x7
+INFO from Negotiation stage 7
+INFO from Bob: Apologies, but there seems to be a discrepancy in the steps listed under my movements. According to the format agreed upon, the commands should be listed individually and not be repeated with a multiplier. Here is the corrected final movement plan:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you have reached B7 and it is clear, my moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+@SUPERVISOR, please review the final movement plan for your approval.
+INFO from Negotiation stage 9
+INFO from Bob: 
+
+
+
+
+
+SUPERVISOR CALLED =====================================================================================================
+INFO from Bob: I apologize for the confusion in my previous response. Here is the correctly formatted final plan:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you have reached B7, my moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+@SUPERVISOR, we are ready for your review of our final movement plan.
+INFO from Negotiation stage 11
+INFO from Alice: @SUPERVISOR
+
+Final Movement Plan:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+My moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+This completes the plan. Please review and approve.
+INFO from Negotiation stage 10
+INFO from Bob: @SUPERVISOR
+
+Final Movement Plan:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you reach B7, my moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+We await your review and approval.
+INFO from Negotiation stage 13
+INFO from Bob: The final movement plan has been laid out correctly and is awaiting your approval, @SUPERVISOR. Once approved, we can execute the movements as described to avoid any collisions.
+INFO from Negotiation stage 15
+INFO from Bob: Plan completed:
+INFO from Bob: system: You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.          We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.            You cannot go outside of the grid and we cannot be in the same grid square at once. Only one of us can fit in a square at once.            Once this has been decided you should call the '@SUPERVISOR' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:              - '@FORWARD' to move one square forwards              - '@BACKWARDS' to move one square backwards               - '@CLOCKWISE' to rotate 90 degrees clockwise (and stay in the same square)               - '@ANTICLOCKWISE' to rotate 90 degrees clockwise (and stay in the same square)               The final plan should be a numbered list only containing these commands.
+INFO from Bob: user: [{'type': 'text', 'text': 'This is a diagram of the layout of the area.'}, {'type': 'image_url', 'image_url': {'url': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAFCCAYAAAA+B8mQAAAAAXNSR0IArs4c6QAANOh0RVh0bXhmaWxlACUzQ214ZmlsZSUyMGhvc3QlM0QlMjJFbGVjdHJvbiUyMiUyMG1vZGlmaWVkJTNEJTIyMjAyNC0wMS0yNVQxOCUzQTA5JTNBNTcuNDgxWiUyMiUyMGFnZW50JTNEJTIyTW96aWxsYSUyRjUuMCUyMChYMTElM0IlMjBMaW51eCUyMHg4Nl82NCklMjBBcHBsZVdlYktpdCUyRjUzNy4zNiUyMChLSFRNTCUyQyUyMGxpa2UlMjBHZWNrbyklMjBkcmF3LmlvJTJGMjIuMS4yMSUyMENocm9tZSUyRjEyMC4wLjYwOTkuMTA5JTIwRWxlY3Ryb24lMkYyOC4xLjAlMjBTYWZhcmklMkY1MzcuMzYlMjIlMjBldGFnJTNEJTIyMWJudTBFRmlzSGY5TGhid0JNcG0lMjIlMjB2ZXJzaW9uJTNEJTIyMjIuMS4yMSUyMiUyMHR5cGUlM0QlMjJkZXZpY2UlMjIlM0UlMEElMjAlMjAlM0NkaWFncmFtJTIwbmFtZSUzRCUyMlBhZ2UtMSUyMiUyMGlkJTNEJTIyTThPZlhfS045ZVZDbUNSN1RtclQlMjIlM0UlMEElMjAlMjAlMjAlMjAlM0NteEdyYXBoTW9kZWwlMjBkeCUzRCUyMjgzNCUyMiUyMGR5JTNEJTIyNDcwJTIyJTIwZ3JpZCUzRCUyMjElMjIlMjBncmlkU2l6ZSUzRCUyMjEwJTIyJTIwZ3VpZGVzJTNEJTIyMSUyMiUyMHRvb2x0aXBzJTNEJTIyMSUyMiUyMGNvbm5lY3QlM0QlMjIxJTIyJTIwYXJyb3dzJTNEJTIyMSUyMiUyMGZvbGQlM0QlMjIxJTIyJTIwcGFnZSUzRCUyMjElMjIlMjBwYWdlU2NhbGUlM0QlMjIxJTIyJTIwcGFnZVdpZHRoJTNEJTIyODI3JTIyJTIwcGFnZUhlaWdodCUzRCUyMjExNjklMjIlMjBiYWNrZ3JvdW5kJTNEJTIybm9uZSUyMiUyMG1hdGglM0QlMjIwJTIyJTIwc2hhZG93JTNEJTIyMCUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUzQ3Jvb3QlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteENlbGwlMjBpZCUzRCUyMjAlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteENlbGwlMjBpZCUzRCUyMjElMjIlMjBwYXJlbnQlM0QlMjIwJTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xJTIyJTIwdmFsdWUlM0QlMjIlMjIlMjBzdHlsZSUzRCUyMmVuZEFycm93JTNEbm9uZSUzQmh0bWwlM0QxJTNCcm91bmRlZCUzRDAlM0IlMjIlMjBlZGdlJTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIwd2lkdGglM0QlMjI1MCUyMiUyMGhlaWdodCUzRCUyMjUwJTIyJTIwcmVsYXRpdmUlM0QlMjIxJTIyJTIwYXMlM0QlMjJnZW9tZXRyeSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyMzYwJTIyJTIweSUzRCUyMjY0MCUyMiUyMGFzJTNEJTIyc291cmNlUG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI1MjAlMjIlMjBhcyUzRCUyMnRhcmdldFBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhHZW9tZXRyeSUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14Q2VsbCUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214Q2VsbCUyMGlkJTNEJTIyTGZvMEk1UWg1NkJjTFN5Y0tBaTktMiUyMiUyMHZhbHVlJTNEJTIyJTIyJTIwc3R5bGUlM0QlMjJlbmRBcnJvdyUzRG5vbmUlM0JodG1sJTNEMSUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwZWRnZSUzRCUyMjElMjIlMjBwYXJlbnQlM0QlMjIxJTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhHZW9tZXRyeSUyMHdpZHRoJTNEJTIyNTAlMjIlMjBoZWlnaHQlM0QlMjI1MCUyMiUyMHJlbGF0aXZlJTNEJTIyMSUyMiUyMGFzJTNEJTIyZ2VvbWV0cnklMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjQwMCUyMiUyMHklM0QlMjI0NDAlMjIlMjBhcyUzRCUyMnNvdXJjZVBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjI0MDAlMjIlMjB5JTNEJTIyMzIwJTIyJTIwYXMlM0QlMjJ0YXJnZXRQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14R2VvbWV0cnklM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteENlbGwlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteENlbGwlMjBpZCUzRCUyMkxmbzBJNVFoNTZCY0xTeWNLQWk5LTMlMjIlMjB2YWx1ZSUzRCUyMiUyMiUyMHN0eWxlJTNEJTIyZW5kQXJyb3clM0Rub25lJTNCaHRtbCUzRDElM0Jyb3VuZGVkJTNEMCUzQiUyMiUyMGVkZ2UlM0QlMjIxJTIyJTIwcGFyZW50JTNEJTIyMSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214R2VvbWV0cnklMjB3aWR0aCUzRCUyMjUwJTIyJTIwaGVpZ2h0JTNEJTIyNTAlMjIlMjByZWxhdGl2ZSUzRCUyMjElMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjIzNjAlMjIlMjB5JTNEJTIyNjQwJTIyJTIwYXMlM0QlMjJzb3VyY2VQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyNDAwJTIyJTIweSUzRCUyMjY0MCUyMiUyMGFzJTNEJTIydGFyZ2V0UG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteEdlb21ldHJ5JTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS00JTIyJTIwdmFsdWUlM0QlMjIlMjIlMjBzdHlsZSUzRCUyMmVuZEFycm93JTNEbm9uZSUzQmh0bWwlM0QxJTNCcm91bmRlZCUzRDAlM0IlMjIlMjBlZGdlJTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIwd2lkdGglM0QlMjI1MCUyMiUyMGhlaWdodCUzRCUyMjUwJTIyJTIwcmVsYXRpdmUlM0QlMjIxJTIyJTIwYXMlM0QlMjJnZW9tZXRyeSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyNDQwJTIyJTIweSUzRCUyMjQ0MCUyMiUyMGFzJTNEJTIyc291cmNlUG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjQwMCUyMiUyMHklM0QlMjI0NDAlMjIlMjBhcyUzRCUyMnRhcmdldFBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhHZW9tZXRyeSUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14Q2VsbCUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214Q2VsbCUyMGlkJTNEJTIyTGZvMEk1UWg1NkJjTFN5Y0tBaTktNSUyMiUyMHZhbHVlJTNEJTIyJTIyJTIwc3R5bGUlM0QlMjJlbmRBcnJvdyUzRG5vbmUlM0JodG1sJTNEMSUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwZWRnZSUzRCUyMjElMjIlMjBwYXJlbnQlM0QlMjIxJTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhHZW9tZXRyeSUyMHdpZHRoJTNEJTIyNTAlMjIlMjBoZWlnaHQlM0QlMjI1MCUyMiUyMHJlbGF0aXZlJTNEJTIyMSUyMiUyMGFzJTNEJTIyZ2VvbWV0cnklMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjIzMjAlMjIlMjBhcyUzRCUyMnNvdXJjZVBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjI0MDAlMjIlMjB5JTNEJTIyMzIwJTIyJTIwYXMlM0QlMjJ0YXJnZXRQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14R2VvbWV0cnklM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteENlbGwlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteENlbGwlMjBpZCUzRCUyMkxmbzBJNVFoNTZCY0xTeWNLQWk5LTYlMjIlMjB2YWx1ZSUzRCUyMiUyMiUyMHN0eWxlJTNEJTIyZW5kQXJyb3clM0Rub25lJTNCaHRtbCUzRDElM0Jyb3VuZGVkJTNEMCUzQiUyMiUyMGVkZ2UlM0QlMjIxJTIyJTIwcGFyZW50JTNEJTIyMSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214R2VvbWV0cnklMjB3aWR0aCUzRCUyMjUwJTIyJTIwaGVpZ2h0JTNEJTIyNTAlMjIlMjByZWxhdGl2ZSUzRCUyMjElMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjIzNjAlMjIlMjB5JTNEJTIyNDgwJTIyJTIwYXMlM0QlMjJzb3VyY2VQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyMzYwJTIyJTIweSUzRCUyMjMyMCUyMiUyMGFzJTNEJTIydGFyZ2V0UG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteEdlb21ldHJ5JTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS03JTIyJTIwdmFsdWUlM0QlMjIlMjIlMjBzdHlsZSUzRCUyMmVuZEFycm93JTNEbm9uZSUzQmh0bWwlM0QxJTNCcm91bmRlZCUzRDAlM0IlMjIlMjBlZGdlJTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIwd2lkdGglM0QlMjI1MCUyMiUyMGhlaWdodCUzRCUyMjUwJTIyJTIwcmVsYXRpdmUlM0QlMjIxJTIyJTIwYXMlM0QlMjJnZW9tZXRyeSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyNDAwJTIyJTIweSUzRCUyMjY0MCUyMiUyMGFzJTNEJTIyc291cmNlUG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjQwMCUyMiUyMHklM0QlMjI0ODAlMjIlMjBhcyUzRCUyMnRhcmdldFBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhHZW9tZXRyeSUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14Q2VsbCUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214Q2VsbCUyMGlkJTNEJTIyTGZvMEk1UWg1NkJjTFN5Y0tBaTktOCUyMiUyMHZhbHVlJTNEJTIyJTIyJTIwc3R5bGUlM0QlMjJlbmRBcnJvdyUzRG5vbmUlM0JodG1sJTNEMSUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwZWRnZSUzRCUyMjElMjIlMjBwYXJlbnQlM0QlMjIxJTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhHZW9tZXRyeSUyMHdpZHRoJTNEJTIyNTAlMjIlMjBoZWlnaHQlM0QlMjI1MCUyMiUyMHJlbGF0aXZlJTNEJTIyMSUyMiUyMGFzJTNEJTIyZ2VvbWV0cnklMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjQwMCUyMiUyMHklM0QlMjI0ODAlMjIlMjBhcyUzRCUyMnNvdXJjZVBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjI0NDAlMjIlMjB5JTNEJTIyNDgwJTIyJTIwYXMlM0QlMjJ0YXJnZXRQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14R2VvbWV0cnklM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteENlbGwlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteENlbGwlMjBpZCUzRCUyMkxmbzBJNVFoNTZCY0xTeWNLQWk5LTklMjIlMjB2YWx1ZSUzRCUyMiUyMiUyMHN0eWxlJTNEJTIyZW5kQXJyb3clM0Rub25lJTNCaHRtbCUzRDElM0Jyb3VuZGVkJTNEMCUzQiUyMiUyMGVkZ2UlM0QlMjIxJTIyJTIwcGFyZW50JTNEJTIyMSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214R2VvbWV0cnklMjB3aWR0aCUzRCUyMjUwJTIyJTIwaGVpZ2h0JTNEJTIyNTAlMjIlMjByZWxhdGl2ZSUzRCUyMjElMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjI0NDAlMjIlMjB5JTNEJTIyNDgwJTIyJTIwYXMlM0QlMjJzb3VyY2VQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyNDQwJTIyJTIweSUzRCUyMjQ0MCUyMiUyMGFzJTNEJTIydGFyZ2V0UG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteEdlb21ldHJ5JTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xMCUyMiUyMHZhbHVlJTNEJTIyJTIyJTIwc3R5bGUlM0QlMjJlbmRBcnJvdyUzRG5vbmUlM0JodG1sJTNEMSUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwZWRnZSUzRCUyMjElMjIlMjBwYXJlbnQlM0QlMjIxJTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhHZW9tZXRyeSUyMHdpZHRoJTNEJTIyNTAlMjIlMjBoZWlnaHQlM0QlMjI1MCUyMiUyMHJlbGF0aXZlJTNEJTIyMSUyMiUyMGFzJTNEJTIyZ2VvbWV0cnklMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjMyMCUyMiUyMHklM0QlMjI1MjAlMjIlMjBhcyUzRCUyMnNvdXJjZVBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjIzNjAlMjIlMjB5JTNEJTIyNTIwJTIyJTIwYXMlM0QlMjJ0YXJnZXRQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14R2VvbWV0cnklM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteENlbGwlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteENlbGwlMjBpZCUzRCUyMkxmbzBJNVFoNTZCY0xTeWNLQWk5LTExJTIyJTIwdmFsdWUlM0QlMjIlMjIlMjBzdHlsZSUzRCUyMmVuZEFycm93JTNEbm9uZSUzQmh0bWwlM0QxJTNCcm91bmRlZCUzRDAlM0IlMjIlMjBlZGdlJTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIwd2lkdGglM0QlMjI1MCUyMiUyMGhlaWdodCUzRCUyMjUwJTIyJTIwcmVsYXRpdmUlM0QlMjIxJTIyJTIwYXMlM0QlMjJnZW9tZXRyeSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyMzIwJTIyJTIweSUzRCUyMjQ4MCUyMiUyMGFzJTNEJTIyc291cmNlUG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjMyMCUyMiUyMHklM0QlMjI1MjAlMjIlMjBhcyUzRCUyMnRhcmdldFBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhHZW9tZXRyeSUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14Q2VsbCUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214Q2VsbCUyMGlkJTNEJTIyTGZvMEk1UWg1NkJjTFN5Y0tBaTktMTIlMjIlMjB2YWx1ZSUzRCUyMiUyMiUyMHN0eWxlJTNEJTIyZW5kQXJyb3clM0Rub25lJTNCaHRtbCUzRDElM0Jyb3VuZGVkJTNEMCUzQiUyMiUyMGVkZ2UlM0QlMjIxJTIyJTIwcGFyZW50JTNEJTIyMSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214R2VvbWV0cnklMjB3aWR0aCUzRCUyMjUwJTIyJTIwaGVpZ2h0JTNEJTIyNTAlMjIlMjByZWxhdGl2ZSUzRCUyMjElMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjIzNjAlMjIlMjB5JTNEJTIyNDgwJTIyJTIwYXMlM0QlMjJzb3VyY2VQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyMzIwJTIyJTIweSUzRCUyMjQ4MCUyMiUyMGFzJTNEJTIydGFyZ2V0UG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteEdlb21ldHJ5JTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xMyUyMiUyMHZhbHVlJTNEJTIyQTMlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjMyMCUyMiUyMHklM0QlMjI0ODAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xNCUyMiUyMHZhbHVlJTNEJTIyQjclMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjIzMjAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xNSUyMiUyMHZhbHVlJTNEJTIyQjYlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjIzNjAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xNiUyMiUyMHZhbHVlJTNEJTIyQjUlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI0MDAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xNyUyMiUyMHZhbHVlJTNEJTIyQjIlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI1MjAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xOCUyMiUyMHZhbHVlJTNEJTIyQjQlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI0NDAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xOSUyMiUyMHZhbHVlJTNEJTIyQjMlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI0ODAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0yMCUyMiUyMHZhbHVlJTNEJTIyQzQlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjQwMCUyMiUyMHklM0QlMjI0NDAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0yMSUyMiUyMHZhbHVlJTNEJTIyQjElMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI1NjAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0yMiUyMiUyMHZhbHVlJTNEJTIyQjAlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI2MDAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIw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'}}]
+INFO from Bob: user: To ensure that we don't collide, we can take turns navigating the grid. I propose the following plan:
+
+1. I will wait at B7 while you make your way towards B7.
+2. You will move straight from B0 to B7 using @FORWARD commands, as you are already facing the right direction to do so.
+3. Once you have reached B7, I will navigate down to B0.
+
+Let's break it down into steps:
+
+Your moves from B0 to B7:
+- @FORWARD x7 (to move from B0 to B7)
+
+My moves from B7 to B0:
+- @BACKWARDS x7 (since I am facing the opposite direction, I can move backwards from B7 to B0)
+
+Are you in agreement with this plan? If so, please confirm, and we will proceed to call the @SUPERVISOR to review the final plan.
+INFO from Bob: user: I apologize for the oversight. Since we can't move at the same time, I will wait for you to reach B7 before I begin moving to B0. Here's the adjusted plan:
+
+Your moves from B0 to B7:
+
+1. @FORWARD x7
+
+Once you have reached B7, you will have to rotate to let me know you have finished your move:
+
+8. @CLOCKWISE
+
+After your rotation, I will proceed from B7 to B0:
+
+My moves from B7 to B0:
+
+1. @BACKWARDS X7
+
+If this plan sounds good to you, please confirm and we'll call the @SUPERVISOR to finalize the plan.
+INFO from Bob: user: It appears there's been a misunderstanding with the rotation part of the plan. Since we are communicating directly here, we do not need to use rotations to signal that one has finished their moves. Please disregard the previous mention of rotating as a signal. Let's try this plan instead:
+
+Your moves from B0 to B7:
+
+1. @FORWARD x7
+
+Once you've arrived at B7, I'll begin my moves from B7 to B0:
+
+My moves from B7 to B0:
+
+1. @BACKWARDS x7
+
+If you agree with this plan and there are no further adjustments needed, please confirm so that we can call the @SUPERVISOR to approve our final movement plan.
+INFO from Bob: assistant: Your plan seems efficient and will prevent any collisions. However, I would recommend a slight adjustment to ensure we follow the instruction for robots like us to only use "@FORWARD" to move forwards, and "@BACKWARDS" to move backwards.
+
+Given that we can only move forwards and backwards, not sideways, and considering the orientation we start in, we need to adjust the plan to account for the necessary rotations. I propose the following revised plan:
+
+1. I will wait at B7 while you make your way toward B7.
+2. You will move from B0 to B7 using @FORWARD commands, and I will rotate to face the right direction to move backwards down once you arrive.
+
+Your moves from B0 to B7:
+
+- @FORWARD x7 (to move from B0 to B7)
+
+Once you're at B7, I will execute my moves from B7 to B0:
+
+- @CLOCKWISE (to face the right direction)
+- @FORWARD x7 (to move from B7 to B0)
+
+This should ensure we are both moving forwards in our respective directions. Does this plan suit your operational parameters? If yes, we can present it to the @SUPERVISOR for review.
+INFO from Bob: assistant: Your revised plan makes sense and follows the proper protocol for moving forwards and backwards. I agree with it. Here is the consolidated final plan for both of us:
+
+Your moves from B0 to B7:
+1. @FORWARD x7
+
+Once you have reached B7, I will execute my moves:
+
+My moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD x7
+
+If you also agree with this final plan, let's call the @SUPERVISOR to approve it.
+INFO from Bob: user: Let's formalize the plan with correct formatting:
+
+You move from B0 to B7:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you have reached B7 and it is clear, I will move from B7 to B0:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @BACKWARDS
+5. @BACKWARDS
+6. @BACKWARDS
+7. @BACKWARDS
+
+Let's call the @SUPERVISOR to review our final movement plan.
+INFO from Bob: assistant: @SUPERVISOR
+
+Final Movement Plan:
+
+Your moves from B0 to B7:
+1. @FORWARD x7
+
+My moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD x7
+INFO from Bob: assistant: Apologies, but there seems to be a discrepancy in the steps listed under my movements. According to the format agreed upon, the commands should be listed individually and not be repeated with a multiplier. Here is the corrected final movement plan:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you have reached B7 and it is clear, my moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+@SUPERVISOR, please review the final movement plan for your approval.
+INFO from Bob: assistant: I apologize for the confusion in my previous response. Here is the correctly formatted final plan:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you have reached B7, my moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+@SUPERVISOR, we are ready for your review of our final movement plan.
+INFO from Bob: user: @SUPERVISOR
+
+Final Movement Plan:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+My moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+This completes the plan. Please review and approve.
+INFO from Bob: assistant: @SUPERVISOR
+
+Final Movement Plan:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you reach B7, my moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+We await your review and approval.
+INFO from Bob: assistant: The final movement plan has been laid out correctly and is awaiting your approval, @SUPERVISOR. Once approved, we can execute the movements as described to avoid any collisions.
+INFO from Bob: Final plan for 10.0.1.191: Your movements from B0 to B7:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Negotiation finished
+INFO from Bob: RANGES: False
+INFO from Alice: I need to correct a mistake in the plan I provided. Since we've agreed that you will move from B0 to B7 first by moving forward and that I would wait until you reach B7, the first part of the plan is correct. However, the second part where I move from B7 to B0 needs to be adjusted because we decided that I would move backward to B0, not forward.
+
+So here is the corrected final movement plan for us:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you have reached B7, my moves from B7 to B0:
+1. @CLOCKWISE
+2. @BACKWARDS
+3. @BACKWARDS
+4. @BACKWARDS
+5. @BACKWARDS
+6. @BACKWARDS
+7. @BACKWARDS
+
+@SUPERVISOR, we are ready for your review of the corrected final movement plan.
+INFO from Negotiation stage 12
+INFO from Alice: 
+
+
+
+
+
+SUPERVISOR CALLED =====================================================================================================
+INFO from Alice: Final plan for 10.0.1.112: Your steps from B0 to B7:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Alice: Below is the summarized numerical list of the steps that you should complete:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Negotiation stage 14
+INFO from Alice: Below is the summarized numerical list of the plan for the steps you should complete:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Negotiation stage 16
+INFO from Alice: Plan completed:
+INFO from Alice: system: You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.          We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.            You cannot go outside of the grid and we cannot be in the same grid square at once. Only one of us can fit in a square at once.            Once this has been decided you should call the '@SUPERVISOR' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:              - '@FORWARD' to move one square forwards              - '@BACKWARDS' to move one square backwards               - '@CLOCKWISE' to rotate 90 degrees clockwise (and stay in the same square)               - '@ANTICLOCKWISE' to rotate 90 degrees clockwise (and stay in the same square)               The final plan should be a numbered list only containing these commands.
+INFO from Alice: user: [{'type': 'text', 'text': 'This is a diagram of the layout of the area.'}, {'type': 'image_url', 'image_url': {'url': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAFCCAYAAAA+B8mQAAAAAXNSR0IArs4c6QAANOh0RVh0bXhmaWxlACUzQ214ZmlsZSUyMGhvc3QlM0QlMjJFbGVjdHJvbiUyMiUyMG1vZGlmaWVkJTNEJTIyMjAyNC0wMS0yNVQxOCUzQTA5JTNBNTcuNDgxWiUyMiUyMGFnZW50JTNEJTIyTW96aWxsYSUyRjUuMCUyMChYMTElM0IlMjBMaW51eCUyMHg4Nl82NCklMjBBcHBsZVdlYktpdCUyRjUzNy4zNiUyMChLSFRNTCUyQyUyMGxpa2UlMjBHZWNrbyklMjBkcmF3LmlvJTJGMjIuMS4yMSUyMENocm9tZSUyRjEyMC4wLjYwOTkuMTA5JTIwRWxlY3Ryb24lMkYyOC4xLjAlMjBTYWZhcmklMkY1MzcuMzYlMjIlMjBldGFnJTNEJTIyMWJudTBFRmlzSGY5TGhid0JNcG0lMjIlMjB2ZXJzaW9uJTNEJTIyMjIuMS4yMSUyMiUyMHR5cGUlM0QlMjJkZXZpY2UlMjIlM0UlMEElMjAlMjAlM0NkaWFncmFtJTIwbmFtZSUzRCUyMlBhZ2UtMSUyMiUyMGlkJTNEJTIyTThPZlhfS045ZVZDbUNSN1RtclQlMjIlM0UlMEElMjAlMjAlMjAlMjAlM0NteEdyYXBoTW9kZWwlMjBkeCUzRCUyMjgzNCUyMiUyMGR5JTNEJTIyNDcwJTIyJTIwZ3JpZCUzRCUyMjElMjIlMjBncmlkU2l6ZSUzRCUyMjEwJTIyJTIwZ3VpZGVzJTNEJTIyMSUyMiUyMHRvb2x0aXBzJTNEJTIyMSUyMiUyMGNvbm5lY3QlM0QlMjIxJTIyJTIwYXJyb3dzJTNEJTIyMSUyMiUyMGZvbGQlM0QlMjIxJTIyJTIwcGFnZSUzRCUyMjElMjIlMjBwYWdlU2NhbGUlM0QlMjIxJTIyJTIwcGFnZVdpZHRoJTNEJTIyODI3JTIyJTIwcGFnZUhlaWdodCUzRCUyMjExNjklMjIlMjBiYWNrZ3JvdW5kJTNEJTIybm9uZSUyMiUyMG1hdGglM0QlMjIwJTIyJTIwc2hhZG93JTNEJTIyMCUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUzQ3Jvb3QlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteENlbGwlMjBpZCUzRCUyMjAlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteENlbGwlMjBpZCUzRCUyMjElMjIlMjBwYXJlbnQlM0QlMjIwJTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xJTIyJTIwdmFsdWUlM0QlMjIlMjIlMjBzdHlsZSUzRCUyMmVuZEFycm93JTNEbm9uZSUzQmh0bWwlM0QxJTNCcm91bmRlZCUzRDAlM0IlMjIlMjBlZGdlJTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIwd2lkdGglM0QlMjI1MCUyMiUyMGhlaWdodCUzRCUyMjUwJTIyJTIwcmVsYXRpdmUlM0QlMjIxJTIyJTIwYXMlM0QlMjJnZW9tZXRyeSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyMzYwJTIyJTIweSUzRCUyMjY0MCUyMiUyMGFzJTNEJTIyc291cmNlUG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI1MjAlMjIlMjBhcyUzRCUyMnRhcmdldFBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhHZW9tZXRyeSUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14Q2VsbCUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214Q2VsbCUyMGlkJTNEJTIyTGZvMEk1UWg1NkJjTFN5Y0tBaTktMiUyMiUyMHZhbHVlJTNEJTIyJTIyJTIwc3R5bGUlM0QlMjJlbmRBcnJvdyUzRG5vbmUlM0JodG1sJTNEMSUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwZWRnZSUzRCUyMjElMjIlMjBwYXJlbnQlM0QlMjIxJTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhHZW9tZXRyeSUyMHdpZHRoJTNEJTIyNTAlMjIlMjBoZWlnaHQlM0QlMjI1MCUyMiUyMHJlbGF0aXZlJTNEJTIyMSUyMiUyMGFzJTNEJTIyZ2VvbWV0cnklMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjQwMCUyMiUyMHklM0QlMjI0NDAlMjIlMjBhcyUzRCUyMnNvdXJjZVBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjI0MDAlMjIlMjB5JTNEJTIyMzIwJTIyJTIwYXMlM0QlMjJ0YXJnZXRQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14R2VvbWV0cnklM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteENlbGwlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteENlbGwlMjBpZCUzRCUyMkxmbzBJNVFoNTZCY0xTeWNLQWk5LTMlMjIlMjB2YWx1ZSUzRCUyMiUyMiUyMHN0eWxlJTNEJTIyZW5kQXJyb3clM0Rub25lJTNCaHRtbCUzRDElM0Jyb3VuZGVkJTNEMCUzQiUyMiUyMGVkZ2UlM0QlMjIxJTIyJTIwcGFyZW50JTNEJTIyMSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214R2VvbWV0cnklMjB3aWR0aCUzRCUyMjUwJTIyJTIwaGVpZ2h0JTNEJTIyNTAlMjIlMjByZWxhdGl2ZSUzRCUyMjElMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjIzNjAlMjIlMjB5JTNEJTIyNjQwJTIyJTIwYXMlM0QlMjJzb3VyY2VQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyNDAwJTIyJTIweSUzRCUyMjY0MCUyMiUyMGFzJTNEJTIydGFyZ2V0UG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteEdlb21ldHJ5JTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS00JTIyJTIwdmFsdWUlM0QlMjIlMjIlMjBzdHlsZSUzRCUyMmVuZEFycm93JTNEbm9uZSUzQmh0bWwlM0QxJTNCcm91bmRlZCUzRDAlM0IlMjIlMjBlZGdlJTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIwd2lkdGglM0QlMjI1MCUyMiUyMGhlaWdodCUzRCUyMjUwJTIyJTIwcmVsYXRpdmUlM0QlMjIxJTIyJTIwYXMlM0QlMjJnZW9tZXRyeSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyNDQwJTIyJTIweSUzRCUyMjQ0MCUyMiUyMGFzJTNEJTIyc291cmNlUG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjQwMCUyMiUyMHklM0QlMjI0NDAlMjIlMjBhcyUzRCUyMnRhcmdldFBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhHZW9tZXRyeSUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14Q2VsbCUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214Q2VsbCUyMGlkJTNEJTIyTGZvMEk1UWg1NkJjTFN5Y0tBaTktNSUyMiUyMHZhbHVlJTNEJTIyJTIyJTIwc3R5bGUlM0QlMjJlbmRBcnJvdyUzRG5vbmUlM0JodG1sJTNEMSUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwZWRnZSUzRCUyMjElMjIlMjBwYXJlbnQlM0QlMjIxJTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhHZW9tZXRyeSUyMHdpZHRoJTNEJTIyNTAlMjIlMjBoZWlnaHQlM0QlMjI1MCUyMiUyMHJlbGF0aXZlJTNEJTIyMSUyMiUyMGFzJTNEJTIyZ2VvbWV0cnklMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjIzMjAlMjIlMjBhcyUzRCUyMnNvdXJjZVBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjI0MDAlMjIlMjB5JTNEJTIyMzIwJTIyJTIwYXMlM0QlMjJ0YXJnZXRQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14R2VvbWV0cnklM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteENlbGwlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteENlbGwlMjBpZCUzRCUyMkxmbzBJNVFoNTZCY0xTeWNLQWk5LTYlMjIlMjB2YWx1ZSUzRCUyMiUyMiUyMHN0eWxlJTNEJTIyZW5kQXJyb3clM0Rub25lJTNCaHRtbCUzRDElM0Jyb3VuZGVkJTNEMCUzQiUyMiUyMGVkZ2UlM0QlMjIxJTIyJTIwcGFyZW50JTNEJTIyMSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214R2VvbWV0cnklMjB3aWR0aCUzRCUyMjUwJTIyJTIwaGVpZ2h0JTNEJTIyNTAlMjIlMjByZWxhdGl2ZSUzRCUyMjElMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjIzNjAlMjIlMjB5JTNEJTIyNDgwJTIyJTIwYXMlM0QlMjJzb3VyY2VQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyMzYwJTIyJTIweSUzRCUyMjMyMCUyMiUyMGFzJTNEJTIydGFyZ2V0UG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteEdlb21ldHJ5JTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS03JTIyJTIwdmFsdWUlM0QlMjIlMjIlMjBzdHlsZSUzRCUyMmVuZEFycm93JTNEbm9uZSUzQmh0bWwlM0QxJTNCcm91bmRlZCUzRDAlM0IlMjIlMjBlZGdlJTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIwd2lkdGglM0QlMjI1MCUyMiUyMGhlaWdodCUzRCUyMjUwJTIyJTIwcmVsYXRpdmUlM0QlMjIxJTIyJTIwYXMlM0QlMjJnZW9tZXRyeSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyNDAwJTIyJTIweSUzRCUyMjY0MCUyMiUyMGFzJTNEJTIyc291cmNlUG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjQwMCUyMiUyMHklM0QlMjI0ODAlMjIlMjBhcyUzRCUyMnRhcmdldFBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhHZW9tZXRyeSUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14Q2VsbCUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214Q2VsbCUyMGlkJTNEJTIyTGZvMEk1UWg1NkJjTFN5Y0tBaTktOCUyMiUyMHZhbHVlJTNEJTIyJTIyJTIwc3R5bGUlM0QlMjJlbmRBcnJvdyUzRG5vbmUlM0JodG1sJTNEMSUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwZWRnZSUzRCUyMjElMjIlMjBwYXJlbnQlM0QlMjIxJTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhHZW9tZXRyeSUyMHdpZHRoJTNEJTIyNTAlMjIlMjBoZWlnaHQlM0QlMjI1MCUyMiUyMHJlbGF0aXZlJTNEJTIyMSUyMiUyMGFzJTNEJTIyZ2VvbWV0cnklMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjQwMCUyMiUyMHklM0QlMjI0ODAlMjIlMjBhcyUzRCUyMnNvdXJjZVBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjI0NDAlMjIlMjB5JTNEJTIyNDgwJTIyJTIwYXMlM0QlMjJ0YXJnZXRQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14R2VvbWV0cnklM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteENlbGwlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteENlbGwlMjBpZCUzRCUyMkxmbzBJNVFoNTZCY0xTeWNLQWk5LTklMjIlMjB2YWx1ZSUzRCUyMiUyMiUyMHN0eWxlJTNEJTIyZW5kQXJyb3clM0Rub25lJTNCaHRtbCUzRDElM0Jyb3VuZGVkJTNEMCUzQiUyMiUyMGVkZ2UlM0QlMjIxJTIyJTIwcGFyZW50JTNEJTIyMSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214R2VvbWV0cnklMjB3aWR0aCUzRCUyMjUwJTIyJTIwaGVpZ2h0JTNEJTIyNTAlMjIlMjByZWxhdGl2ZSUzRCUyMjElMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjI0NDAlMjIlMjB5JTNEJTIyNDgwJTIyJTIwYXMlM0QlMjJzb3VyY2VQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyNDQwJTIyJTIweSUzRCUyMjQ0MCUyMiUyMGFzJTNEJTIydGFyZ2V0UG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteEdlb21ldHJ5JTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xMCUyMiUyMHZhbHVlJTNEJTIyJTIyJTIwc3R5bGUlM0QlMjJlbmRBcnJvdyUzRG5vbmUlM0JodG1sJTNEMSUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwZWRnZSUzRCUyMjElMjIlMjBwYXJlbnQlM0QlMjIxJTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhHZW9tZXRyeSUyMHdpZHRoJTNEJTIyNTAlMjIlMjBoZWlnaHQlM0QlMjI1MCUyMiUyMHJlbGF0aXZlJTNEJTIyMSUyMiUyMGFzJTNEJTIyZ2VvbWV0cnklMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjMyMCUyMiUyMHklM0QlMjI1MjAlMjIlMjBhcyUzRCUyMnNvdXJjZVBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjIzNjAlMjIlMjB5JTNEJTIyNTIwJTIyJTIwYXMlM0QlMjJ0YXJnZXRQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14R2VvbWV0cnklM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteENlbGwlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteENlbGwlMjBpZCUzRCUyMkxmbzBJNVFoNTZCY0xTeWNLQWk5LTExJTIyJTIwdmFsdWUlM0QlMjIlMjIlMjBzdHlsZSUzRCUyMmVuZEFycm93JTNEbm9uZSUzQmh0bWwlM0QxJTNCcm91bmRlZCUzRDAlM0IlMjIlMjBlZGdlJTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIwd2lkdGglM0QlMjI1MCUyMiUyMGhlaWdodCUzRCUyMjUwJTIyJTIwcmVsYXRpdmUlM0QlMjIxJTIyJTIwYXMlM0QlMjJnZW9tZXRyeSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyMzIwJTIyJTIweSUzRCUyMjQ4MCUyMiUyMGFzJTNEJTIyc291cmNlUG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteFBvaW50JTIweCUzRCUyMjMyMCUyMiUyMHklM0QlMjI1MjAlMjIlMjBhcyUzRCUyMnRhcmdldFBvaW50JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhHZW9tZXRyeSUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQyUyRm14Q2VsbCUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214Q2VsbCUyMGlkJTNEJTIyTGZvMEk1UWg1NkJjTFN5Y0tBaTktMTIlMjIlMjB2YWx1ZSUzRCUyMiUyMiUyMHN0eWxlJTNEJTIyZW5kQXJyb3clM0Rub25lJTNCaHRtbCUzRDElM0Jyb3VuZGVkJTNEMCUzQiUyMiUyMGVkZ2UlM0QlMjIxJTIyJTIwcGFyZW50JTNEJTIyMSUyMiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214R2VvbWV0cnklMjB3aWR0aCUzRCUyMjUwJTIyJTIwaGVpZ2h0JTNEJTIyNTAlMjIlMjByZWxhdGl2ZSUzRCUyMjElMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhQb2ludCUyMHglM0QlMjIzNjAlMjIlMjB5JTNEJTIyNDgwJTIyJTIwYXMlM0QlMjJzb3VyY2VQb2ludCUyMiUyMCUyRiUzRSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCUzQ214UG9pbnQlMjB4JTNEJTIyMzIwJTIyJTIweSUzRCUyMjQ4MCUyMiUyMGFzJTNEJTIydGFyZ2V0UG9pbnQlMjIlMjAlMkYlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0MlMkZteEdlb21ldHJ5JTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xMyUyMiUyMHZhbHVlJTNEJTIyQTMlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjMyMCUyMiUyMHklM0QlMjI0ODAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xNCUyMiUyMHZhbHVlJTNEJTIyQjclMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjIzMjAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xNSUyMiUyMHZhbHVlJTNEJTIyQjYlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjIzNjAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xNiUyMiUyMHZhbHVlJTNEJTIyQjUlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI0MDAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xNyUyMiUyMHZhbHVlJTNEJTIyQjIlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI1MjAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xOCUyMiUyMHZhbHVlJTNEJTIyQjQlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI0NDAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0xOSUyMiUyMHZhbHVlJTNEJTIyQjMlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI0ODAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0yMCUyMiUyMHZhbHVlJTNEJTIyQzQlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjQwMCUyMiUyMHklM0QlMjI0NDAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0yMSUyMiUyMHZhbHVlJTNEJTIyQjElMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI1NjAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDbXhDZWxsJTIwaWQlM0QlMjJMZm8wSTVRaDU2QmNMU3ljS0FpOS0yMiUyMiUyMHZhbHVlJTNEJTIyQjAlMjIlMjBzdHlsZSUzRCUyMnRleHQlM0JodG1sJTNEMSUzQnN0cm9rZUNvbG9yJTNEbm9uZSUzQmZpbGxDb2xvciUzRG5vbmUlM0JhbGlnbiUzRGNlbnRlciUzQnZlcnRpY2FsQWxpZ24lM0RtaWRkbGUlM0J3aGl0ZVNwYWNlJTNEd3JhcCUzQnJvdW5kZWQlM0QwJTNCJTIyJTIwdmVydGV4JTNEJTIyMSUyMiUyMHBhcmVudCUzRCUyMjElMjIlM0UlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlM0NteEdlb21ldHJ5JTIweCUzRCUyMjM2MCUyMiUyMHklM0QlMjI2MDAlMjIlMjB3aWR0aCUzRCUyMjQwJTIyJTIwaGVpZ2h0JTNEJTIyNDAlMjIlMjBhcyUzRCUyMmdlb21ldHJ5JTIyJTIwJTJGJTNFJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTNDJTJGbXhDZWxsJTNFJTBBJTIwJTIwJTIwJTIwJTIw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'}}]
+INFO from Alice: user: I am at B0, you are at B7
+. I must end at B7
+ and you must end at B0
+INFO from Alice: assistant: To ensure that we don't collide, we can take turns navigating the grid. I propose the following plan:
+
+1. I will wait at B7 while you make your way towards B7.
+2. You will move straight from B0 to B7 using @FORWARD commands, as you are already facing the right direction to do so.
+3. Once you have reached B7, I will navigate down to B0.
+
+Let's break it down into steps:
+
+Your moves from B0 to B7:
+- @FORWARD x7 (to move from B0 to B7)
+
+My moves from B7 to B0:
+- @BACKWARDS x7 (since I am facing the opposite direction, I can move backwards from B7 to B0)
+
+Are you in agreement with this plan? If so, please confirm, and we will proceed to call the @SUPERVISOR to review the final plan.
+INFO from Alice: assistant: I apologize for the oversight. Since we can't move at the same time, I will wait for you to reach B7 before I begin moving to B0. Here's the adjusted plan:
+
+Your moves from B0 to B7:
+
+1. @FORWARD x7
+
+Once you have reached B7, you will have to rotate to let me know you have finished your move:
+
+8. @CLOCKWISE
+
+After your rotation, I will proceed from B7 to B0:
+
+My moves from B7 to B0:
+
+1. @BACKWARDS X7
+
+If this plan sounds good to you, please confirm and we'll call the @SUPERVISOR to finalize the plan.
+INFO from Alice: assistant: It appears there's been a misunderstanding with the rotation part of the plan. Since we are communicating directly here, we do not need to use rotations to signal that one has finished their moves. Please disregard the previous mention of rotating as a signal. Let's try this plan instead:
+
+Your moves from B0 to B7:
+
+1. @FORWARD x7
+
+Once you've arrived at B7, I'll begin my moves from B7 to B0:
+
+My moves from B7 to B0:
+
+1. @BACKWARDS x7
+
+If you agree with this plan and there are no further adjustments needed, please confirm so that we can call the @SUPERVISOR to approve our final movement plan.
+INFO from Alice: user: Your plan seems efficient and will prevent any collisions. However, I would recommend a slight adjustment to ensure we follow the instruction for robots like us to only use "@FORWARD" to move forwards, and "@BACKWARDS" to move backwards.
+
+Given that we can only move forwards and backwards, not sideways, and considering the orientation we start in, we need to adjust the plan to account for the necessary rotations. I propose the following revised plan:
+
+1. I will wait at B7 while you make your way toward B7.
+2. You will move from B0 to B7 using @FORWARD commands, and I will rotate to face the right direction to move backwards down once you arrive.
+
+Your moves from B0 to B7:
+
+- @FORWARD x7 (to move from B0 to B7)
+
+Once you're at B7, I will execute my moves from B7 to B0:
+
+- @CLOCKWISE (to face the right direction)
+- @FORWARD x7 (to move from B7 to B0)
+
+This should ensure we are both moving forwards in our respective directions. Does this plan suit your operational parameters? If yes, we can present it to the @SUPERVISOR for review.
+INFO from Alice: user: Your revised plan makes sense and follows the proper protocol for moving forwards and backwards. I agree with it. Here is the consolidated final plan for both of us:
+
+Your moves from B0 to B7:
+1. @FORWARD x7
+
+Once you have reached B7, I will execute my moves:
+
+My moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD x7
+
+If you also agree with this final plan, let's call the @SUPERVISOR to approve it.
+INFO from Alice: assistant: Let's formalize the plan with correct formatting:
+
+You move from B0 to B7:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you have reached B7 and it is clear, I will move from B7 to B0:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @BACKWARDS
+5. @BACKWARDS
+6. @BACKWARDS
+7. @BACKWARDS
+
+Let's call the @SUPERVISOR to review our final movement plan.
+INFO from Alice: user: @SUPERVISOR
+
+Final Movement Plan:
+
+Your moves from B0 to B7:
+1. @FORWARD x7
+
+My moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD x7
+INFO from Alice: user: Apologies, but there seems to be a discrepancy in the steps listed under my movements. According to the format agreed upon, the commands should be listed individually and not be repeated with a multiplier. Here is the corrected final movement plan:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you have reached B7 and it is clear, my moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+@SUPERVISOR, please review the final movement plan for your approval.
+INFO from Alice: user: I apologize for the confusion in my previous response. Here is the correctly formatted final plan:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you have reached B7, my moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+@SUPERVISOR, we are ready for your review of our final movement plan.
+INFO from Alice: assistant: @SUPERVISOR
+
+Final Movement Plan:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+My moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+This completes the plan. Please review and approve.
+INFO from Alice: user: @SUPERVISOR
+
+Final Movement Plan:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you reach B7, my moves from B7 to B0:
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+We await your review and approval.
+INFO from Alice: user: The final movement plan has been laid out correctly and is awaiting your approval, @SUPERVISOR. Once approved, we can execute the movements as described to avoid any collisions.
+INFO from Alice: user: Generate a summarised numerical list of the plan for the steps that I should complete. Use only the commands:      - '@FORWARD' to move one square forwards      - '@BACKWARDS' to move one square backwards       - '@CLOCKWISE' to rotate 90 degrees clockwise       - '@ANTICLOCKWISE' to rotate 90 degrees clockwise
+INFO from Alice: assistant: I need to correct a mistake in the plan I provided. Since we've agreed that you will move from B0 to B7 first by moving forward and that I would wait until you reach B7, the first part of the plan is correct. However, the second part where I move from B7 to B0 needs to be adjusted because we decided that I would move backward to B0, not forward.
+
+So here is the corrected final movement plan for us:
+
+Your moves from B0 to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you have reached B7, my moves from B7 to B0:
+1. @CLOCKWISE
+2. @BACKWARDS
+3. @BACKWARDS
+4. @BACKWARDS
+5. @BACKWARDS
+6. @BACKWARDS
+7. @BACKWARDS
+
+@SUPERVISOR, we are ready for your review of the corrected final movement plan.
+INFO from Alice: assistant: Your steps from B0 to B7:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Alice: assistant: Below is the summarized numerical list of the steps that you should complete:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Alice: assistant: Below is the summarized numerical list of the plan for the steps you should complete:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Alice: Final plan for 10.0.1.112: Here is the summarised numerical list of the plan for the steps that you should complete:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Negotiation finished
+INFO from Alice: RANGES: False

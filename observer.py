@@ -3,7 +3,7 @@ from typing import Optional, List, Tuple
 import datetime
 
 dl: List[Tuple[str, int]] = [("10.0.1.112", 51000), ("10.0.1.191", 51000)] # Other device
-filename = "/home/tg/projects/p3p/LLM_ROS2_Control/logs/observer_logs/" + datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S.txt")
+filename = "/home/tg/projects/p3p/LLM_ROS2_Control/logs/observer/" + datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S.txt")
 
 def llm_recv(msg: Optional[str]) -> None:
   print("LLM message sent")
@@ -13,11 +13,13 @@ def ready_recv(msg: Optional[str]) -> None:
 
 def finished_recv(msg: Optional[str]) -> None:
   print("FINISHED message sent")
+  with open(filename, "a") as file:
+    file.write(f"FINISHED message sent\n")
 
 def info_recv(msg: Optional[str]) -> None:
   print(f"INFO from {msg.strip()}")
   with open(filename, "a") as file:
-      file.write(f"INFO from {msg.strip()}")
+    file.write(f"INFO from {msg.strip()}\n")
 
 if __name__=="__main__":
   global now
