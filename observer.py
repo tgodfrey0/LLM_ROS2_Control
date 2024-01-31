@@ -7,13 +7,13 @@ def llm_recv(msg: Optional[str]) -> None:
   print("SwarmNet LLM message sent")
 
 def ready_recv(msg: Optional[str]) -> None:
-  print(f"SwarmNet READY: {msg}")
+  print(f"SwarmNet READY: {msg.strip()}")
 
 def finished_recv(msg: Optional[str]) -> None:
   print("SwarmNet FINISHED message sent")
 
 def info_recv(msg: Optional[str]) -> None:
-  print(f"SwarmNet INFO: {msg}")
+  print(f"SwarmNet INFO: {msg.strip()}")
 
 if __name__=="__main__":
   sn = SwarmNet({"LLM": llm_recv, "READY": ready_recv, "FINISHED": finished_recv, "INFO": info_recv}, device_list = dl)
