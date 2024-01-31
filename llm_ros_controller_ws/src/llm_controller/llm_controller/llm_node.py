@@ -21,6 +21,9 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 # Local package imports
 from .grid import Grid
 
+#TODO Check moves in grid before IRL then replan if not working
+#TODO Ensure no more messages are sent if the negotiation exit clause is hit
+
 image_name = "layout.drawio.png"
 
 class VelocityPublisher(Node):
