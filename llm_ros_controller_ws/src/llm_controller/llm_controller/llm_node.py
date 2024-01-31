@@ -288,6 +288,7 @@ class VelocityPublisher(Node):
     # print(completion.choices[0].message)
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
     self.sn_ctrl.send(f"LLM {completion.choices[0].message.role} {completion.choices[0].message.content}")
+    self.info(completion.choices[0].message.content)
     
   def toggle_role(self, r: str):
     if r == "assistant":
@@ -366,8 +367,15 @@ class VelocityPublisher(Node):
     
     while(current_stage < self.MAX_NUM_NEGOTIATION_MESSAGES):
       while(not self.is_my_turn()): # Wait to receive from the other agent
-        if(len(self.global_conv) > 0 and self.global_conv[len(self.global_conv)-1]["content"].rstrip().endswith(f"{self.CMD_SUPERVISOR}")):
-          break;
+        if(len(self.global_conv) > 0):
+          finished = False
+          if(isinstance(self.global_conv[len(self.global_conv)-1]["content"], list)):
+            finished = self.global_conv[len(self.global_conv)-1]["content"]["text"].rstrip().endswith(f"{self.CMD_SUPERVISOR}")
+          else:
+            finished = self.global_conv[len(self.global_conv)-1]["content"].rstrip().endswith(f"{self.CMD_SUPERVISOR}")
+          
+          if(finished):
+            break
         
         self.wait_delay()
         self.get_logger().info(f"Waiting for a response from another agent")
