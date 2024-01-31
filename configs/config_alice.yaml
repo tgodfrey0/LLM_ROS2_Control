@@ -4,7 +4,7 @@ swarmnet:
       port: 51000
     - ip: 10.0.1.112
       port: 51000
-    - ip: 10.0.1.191
+    - ip: 10.0.1.192
       port: 51000
   log_level: info
 
