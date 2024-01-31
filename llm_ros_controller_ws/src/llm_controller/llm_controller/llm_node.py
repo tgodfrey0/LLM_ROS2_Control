@@ -21,7 +21,7 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 # Local package imports
 from .grid import Grid
 
-image_path = "~/LLM_ROS2_Control/layout.drawio.png"
+image_name = "layout.drawio.png"
 
 class VelocityPublisher(Node):
   def __init__(self):
@@ -236,6 +236,7 @@ class VelocityPublisher(Node):
     
     if("vision" in self.MODEL_NAME):
       self.info("Vision model provided, appending image")
+      image_path = self.WORKING_DIR + image_name
       with open(image_path, "rb") as image:
         image_data = base64.b64encode(image.read()).decode("utf-8")
       
@@ -322,7 +323,7 @@ class VelocityPublisher(Node):
     self.sn_ctrl.send(f"INFO Final plan for {self.sn_ctrl.addr}: {completion.choices[0].message.content}")
   
   def _log_negotiations(self, n_stages: int):
-   path = self.LOG_FILE_DIR + "negotiation_log.csv"
+   path = self.WORKING_DIR + "logs/negotiation_log.csv"
 
    with open(path, "a", newline="") as csvfile:
     writer = csv.writer(csvfile)
@@ -442,7 +443,7 @@ class VelocityPublisher(Node):
       self.STARTING_GRID_HEADING: Grid.Heading = self._parse_heading(data["agent"]["starting_grid_heading"])
       self.ENDING_GRID_LOC: str = data["agent"]["ending_grid_loc"]
       self.MAX_NUM_NEGOTIATION_MESSAGES: int = data["agent"]["max_num_negotiation_messages"]
-      self.LOG_FILE_DIR: str = data["agent"]["log_dir"]
+      self.WORKING_DIR: str = data["agent"]["working_dir"]
       self.MODEL_NAME = data["agent"]["model"]
       self.CMD_FORWARD: str = data["commands"]["forwards"]
       self.CMD_BACKWARDS: str = data["commands"]["backwards"]
