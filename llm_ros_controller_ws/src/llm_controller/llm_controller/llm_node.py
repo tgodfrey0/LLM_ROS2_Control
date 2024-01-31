@@ -27,7 +27,7 @@ class VelocityPublisher(Node):
   def __init__(self):
     super().__init__("velocity_publisher")
     
-    self.declare_parameter('my_str', rclpy.Parameter.Type.STRING) 
+    self.declare_parameter('config_file', rclpy.Parameter.Type.STRING) 
     
     if(not self.load_config()):
       self.get_logger().error("!!! FAILED TO LOAD CONFIG")
