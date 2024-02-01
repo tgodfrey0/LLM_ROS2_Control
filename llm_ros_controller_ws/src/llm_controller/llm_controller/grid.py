@@ -18,17 +18,15 @@ class Grid():
     return f"{self.col}{self.row}"
   
   def _print_heading(self) -> str:
-    s: str
     match self.heading:
       case 0:
-        s = "Up"
+        return "Up"
       case 1:
-        s = "Right"
+        return "Right"
       case 2:
-        s = "Down"
+        return "Down"
       case 3:
-        s = "Left"
-    return s
+        return "Left"
   
   def _check_bound_min_row(self, r) -> bool:
     b = r < 0
