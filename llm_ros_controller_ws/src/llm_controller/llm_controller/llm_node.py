@@ -267,11 +267,11 @@ class VelocityPublisher(Node):
     
   def create_plan(self):
     while(not self.is_ready()):
-      self.sn_ctrl.send(f"READY {self.grid}")
+      self.sn_ctrl.send(f"READY {self.grid} {self.grid._print_heading()}")
       self.info("Waiting for an agent to be ready")
       self.wait_delay()
       
-    self.sn_ctrl.send(f"READY {self.grid}")
+    self.sn_ctrl.send(f"READY {self.grid} {self.grid._print_heading()}")
       
     self.sn_ctrl.clear_rx_queue()
     self.info("Agents ready for negotiation")
@@ -370,7 +370,8 @@ class VelocityPublisher(Node):
   def ready_recv(self, msg: Optional[str]) -> None:
     self.ready_lock.acquire()
     self.other_agent_ready = True
-    self.other_agent_loc = msg
+    self.other_agent_loc = msg.split(" ")[0]
+    self.other_agent_heading = msg.split(" ")[1]
     self.ready_lock.release()
   
   def is_ready(self):
@@ -397,7 +398,7 @@ class VelocityPublisher(Node):
     current_stage = 0
     
     if self.this_agents_turn:
-      self.global_conv.append({"role": "user", "content": f"I am at {self.grid}, you are at {self.other_agent_loc}. I must end at {self.ENDING_GRID_LOC} and you must end at {self.STARTING_GRID_LOC}. I am facing {self.grid._print_heading()}."})
+      self.global_conv.append({"role": "user", "content": f"I am at {self.grid}, you are at {self.other_agent_loc}. I must end at {self.ENDING_GRID_LOC} and you must end at {self.STARTING_GRID_LOC}. I am facing {self.grid._print_heading()} and you are facing {self.other_agent_heading}."})
     else:
       current_stage = 1
     
