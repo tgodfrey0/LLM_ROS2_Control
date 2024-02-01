@@ -77,7 +77,7 @@ class VelocityPublisher(Node):
               - '{self.CMD_BACKWARDS}' to move one square backwards \
               - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
               - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
-              The final plan should be a numbered list only containing these commands."}]
+              The final plan should be a numbered list only containing these commands and we should try to complete the task as quickly as possible."}]
     
     if("vision" in self.MODEL_NAME):
       self.info("Vision model provided, appending image")
@@ -217,7 +217,7 @@ class VelocityPublisher(Node):
   def _pub_linear(self, dir: int):
     msg = Twist()
     
-    msg.linear.x = dir * self.LINEAR_SPEED #? X, Y or Z?
+    msg.linear.x = float(dir * self.LINEAR_SPEED) #? X, Y or Z?
     msg.linear.y = 0.0
     msg.linear.z = 0.0
     
@@ -238,7 +238,7 @@ class VelocityPublisher(Node):
     
     msg.angular.x = 0.0
     msg.angular.y = 0.0
-    msg.angular.z = dir * self.ANGULAR_SPEED #? X Y or Z
+    msg.angular.z = float(dir * self.ANGULAR_SPEED) #? X Y or Z
     
     self._publish_cmd(msg)
     self.angular_delay()
