@@ -60,7 +60,7 @@ class VelocityPublisher(Node):
     self.ready_lock = Lock()
     self.grid = Grid(self.STARTING_GRID_LOC,self.STARTING_GRID_HEADING, 3, 8)
     self.scan_mutex = Lock()
-    self.scan_ranges = False
+    self.scan_ranges = []
     
     self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": None, "RESTART": self.restart_recv}, device_list = self.SN_DEVICE_LIST) #! Publish INFO messages which can then be subscribed to by observers
     self.sn_ctrl.start()
