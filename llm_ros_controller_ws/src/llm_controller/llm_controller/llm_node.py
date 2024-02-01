@@ -51,7 +51,40 @@ class VelocityPublisher(Node):
       self.listener_callback,
       qos_profile=qos
     )
-    self.global_conv = []
+    
+    self.global_conv = [
+        {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
+          We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
+            You cannot go outside of the grid and we cannot be in the same grid square at once. Only one of us can fit in a square at once.\
+            Once this has been decided you should call the '\f{self.CMD_SUPERVISOR}' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
+              - '{self.CMD_FORWARD}' to move one square forwards\
+              - '{self.CMD_BACKWARDS}' to move one square backwards \
+              - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
+              - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
+              The final plan should be a numbered list only containing these commands."}]
+    
+    if("vision" in self.MODEL_NAME):
+      self.info("Vision model provided, appending image")
+      image_path = self.WORKING_DIR + image_name
+      with open(image_path, "rb") as image:
+        image_data = base64.b64encode(image.read()).decode("utf-8")
+      
+      self.global_conv.append({
+        "role": "user",
+        "content": [
+            {
+              "type": "text",
+              "text": "This is a diagram of the layout of the area."
+            },
+            {
+              "type": "image_url",
+              "image_url": {
+                "url": f"data:image/{image_path.split('.')[-1]};base64,{image_data}"
+              }
+            }
+          ]
+      })
+      
     self.client: OpenAI = None
     self.this_agents_turn = self.INITIALLY_THIS_AGENTS_TURN
     self.other_agent_ready = False
@@ -68,9 +101,11 @@ class VelocityPublisher(Node):
     set_log_level(self.SN_LOG_LEVEL)
     self.sn_ctrl.send("INFO SwarmNet initialised successfully")
   
-    self.create_plan()
-    
-    self.parse_plan()
+    while(True):
+      self.create_plan()
+      self.parse_plan()
+      if(f"{self.grid}" != self.ENDING_GRID_LOC):
+        self.restart(True)
     
   def parse_plan(self):
     if(len(self.global_conv) > 1):
@@ -81,14 +116,21 @@ class VelocityPublisher(Node):
           self.info(f"RANGES: {self.scan_ranges}")
           min_dist_reached = any(map(lambda r: r <= self.LIDAR_THRESHOLD, self.scan_ranges))
           self.info(f"{len(self.scan_ranges)} ranges in topic")
-          self.sn_ctrl.send("RESTART")
-          self.restart()
+          if(min_dist_reached):
+            self.sn_ctrl.send("RESTART")
+            break
         if(min_dist_reached):
           self.info("Min LIDAR reading")
           self.pub_backwards()
         elif(self.CMD_FORWARD in s):
+          if(self.grid.check_forwards()):
+            self.info("Invalid move in plan")
+            break
           self.pub_forwards()
         elif(self.CMD_BACKWARDS in s):
+          if(self.grid.check_backwards()):
+            self.info("Invalid move in plan")
+            break
           self.pub_backwards()
         elif(self.CMD_ROTATE_CLOCKWISE in s):
           self.pub_clockwise()
@@ -102,12 +144,20 @@ class VelocityPublisher(Node):
           self.get_logger().error(f"Unrecognised command: {s}")
         self.wait_delay()
 
-    self.info(f"Full plan parsed")
+      self.info(f"Full plan parsed")
     
   # TODO Replan and restart from current position 
-  def restart(self):
-    self.info("TODO REPLAN")
-    pass
+  def restart(self, this_agent_stuck: bool):
+    self.info("Replanning")
+    
+    with self.ready_lock:
+      self.other_agent_ready = False
+      
+    with self.turn_lock:
+      self.this_agents_turn = this_agent_stuck
+    
+    if(this_agent_stuck):
+      self.global_conv.append({"role": "user", "content": f"I am stuck, we need to replan."})
     
   def info(self, s: str) -> None:
     self.get_logger().info(s)
@@ -215,8 +265,6 @@ class VelocityPublisher(Node):
     self._pub_rotation(-1)
     
   def create_plan(self):
-    self.get_logger().info(f"Initialising SwarmNet")
-    
     while(not self.is_ready()):
       self.sn_ctrl.send(f"READY {self.grid}")
       self.info("Waiting for an agent to be ready")
@@ -228,38 +276,6 @@ class VelocityPublisher(Node):
     self.sn_ctrl.send("INFO Agents ready for negotiation")
         
     self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
-    self.global_conv = [
-        {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
-          We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
-            You cannot go outside of the grid and we cannot be in the same grid square at once. Only one of us can fit in a square at once.\
-            Once this has been decided you should call the '\f{self.CMD_SUPERVISOR}' tag at the end of your plan and print your plan in a concise numbered list using only the following command words:\
-              - '{self.CMD_FORWARD}' to move one square forwards\
-              - '{self.CMD_BACKWARDS}' to move one square backwards \
-              - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
-              - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
-              The final plan should be a numbered list only containing these commands."}]
-    
-    if("vision" in self.MODEL_NAME):
-      self.info("Vision model provided, appending image")
-      image_path = self.WORKING_DIR + image_name
-      with open(image_path, "rb") as image:
-        image_data = base64.b64encode(image.read()).decode("utf-8")
-      
-      self.global_conv.append({
-        "role": "user",
-        "content": [
-            {
-              "type": "text",
-              "text": "This is a diagram of the layout of the area."
-            },
-            {
-              "type": "image_url",
-              "image_url": {
-                "url": f"data:image/{image_path.split('.')[-1]};base64,{image_data}"
-              }
-            }
-          ]
-      })
       
     self.negotiate()
     self.sn_ctrl.send(f"INFO {self.AGENT_NAME}: Negotiation finished")
@@ -328,9 +344,8 @@ class VelocityPublisher(Node):
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
     self.info(f"Final plan for {self.sn_ctrl.addr}: {completion.choices[0].message.content}")
   
-  #TODO Separate log dirs for each bot
   def _log_negotiations(self, n_stages: int):
-    path = self.WORKING_DIR + "logs/negotiation_log.csv"
+    path = self.WORKING_DIR + f"logs/{self.AGENT_NAME}_negotiation_log.csv"
 
     with open(path, "a", newline="") as csvfile:
       writer = csv.writer(csvfile)
@@ -338,7 +353,7 @@ class VelocityPublisher(Node):
       writer.writerow([today, self.model, str(self.MAX_NUM_NEGOTIATION_MESSAGES), str(n_stages)])
 
   def restart_recv(self, msg: Optional[str]) -> None:
-    self.restart()
+    self.restart(False)
   
   def finished_recv(self, msg: Optional[str]) -> None:
     self.generate_summary()
@@ -366,7 +381,7 @@ class VelocityPublisher(Node):
     current_stage = 0
     
     if self.this_agents_turn:
-      self.global_conv.append({"role": "user", "content": f"I am at {self.grid}, you are at {self.other_agent_loc}. I must end at {self.other_agent_loc} and you must end at {self.grid}"})
+      self.global_conv.append({"role": "user", "content": f"I am at {self.grid}, you are at {self.other_agent_loc}. I must end at {self.ENDING_GRID_LOC} and you must end at {self.STARTING_GRID_LOC}. I am facing {self.grid._print_heading()}."})
     else:
       current_stage = 1
     

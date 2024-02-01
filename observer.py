@@ -20,10 +20,15 @@ def info_recv(msg: Optional[str]) -> None:
   print(f"INFO from {msg.strip()}")
   with open(filename, "a") as file:
     file.write(f"INFO from {msg.strip()}\n")
+    
+def restart_recv(msg: Optional[str]) -> None:
+  print("Restart message sent")
+  with open(filename, "a") as file:
+    file.write(f"Restart message sent\n")
 
 if __name__=="__main__":
   global now
-  sn = SwarmNet({"LLM": llm_recv, "READY": ready_recv, "FINISHED": finished_recv, "INFO": info_recv}, device_list = dl)
+  sn = SwarmNet({"LLM": llm_recv, "READY": ready_recv, "FINISHED": finished_recv, "INFO": info_recv, "RESTART": restart_recv}, device_list = dl)
   set_log_level(Log_Level.WARN)
   sn.start()
   

@@ -1,4 +1,4 @@
-from enum import Enum 
+from enum import EnumMeta, Enum 
 
 class Grid():
   class Heading(Enum):
@@ -17,32 +17,45 @@ class Grid():
   def __repr__(self) -> str:
     return f"{self.col}{self.row}"
   
-  def _check_bound_min_row(self) -> bool:
-    b = self.row < 0
+  def _print_heading(self) -> str:
+    s: str
+    match self.heading:
+      case 0:
+        s = "Up"
+      case 1:
+        s = "Right"
+      case 2:
+        s = "Down"
+      case 3:
+        s = "Left"
+    return s
+  
+  def _check_bound_min_row(self, r) -> bool:
+    b = r < 0
     
     if(b):
       print("Row clipped at lower bound")
     
     return b
   
-  def _check_bound_max_row(self) -> bool:
-    b = self.row >= self.max_height
+  def _check_bound_max_row(self, r) -> bool:
+    b = r >= self.max_height
     
     if(b):
       print("Row clipped at upper bound")
     
     return b
   
-  def _check_bound_min_col(self) -> bool:
-    b = (ord(self.col)-ord('A')) < 0
+  def _check_bound_min_col(self, c) -> bool:
+    b = (ord(c)-ord('A')) < 0
     
     if(b):
       print("Column clipped at lower bound")
     
     return b
   
-  def _check_bound_max_col(self) -> bool:
-    b = (ord(self.col)-ord('A')) >= self.max_width
+  def _check_bound_max_col(self, c) -> bool:
+    b = (ord(c)-ord('A')) >= self.max_width
     
     if(b):
       print("Column clipped at upper bound")
@@ -50,15 +63,47 @@ class Grid():
     return b
   
   def _bound_loc(self):
-    self.row = 0 if self._check_bound_min_row() else self.row
-    self.row = (self.max_height-1) if self._check_bound_max_row() else self.row
-    self.col = 'A' if self._check_bound_min_col() else self.col
-    self.col = chr((self.max_width-1) + ord('A')) if self._check_bound_max_col() else self.col
+    self.row = 0 if self._check_bound_min_row(self.row) else self.row
+    self.row = (self.max_height-1) if self._check_bound_max_row(self.row) else self.row
+    self.col = 'A' if self._check_bound_min_col(self.col) else self.col
+    self.col = chr((self.max_width-1) + ord('A')) if self._check_bound_max_col(self.col) else self.col
     
   def _finish_move(self):
     self._bound_loc()
     print(f"Current grid location: {self}")
     print(f"Current heading: {self.heading.name}")
+  
+  def check_forwards(self):
+    r = self.row
+    c = self.col
+
+    match self.heading:
+      case Grid.Heading.UP:
+        r += 1
+      case Grid.Heading.DOWN:
+        r -= 1
+      case Grid.Heading.LEFT:
+        c = chr(ord(c)-1)
+      case Grid.Heading.RIGHT:
+        c = chr(ord(c)+1)
+    
+    return (self._check_bound_min_col(c)) or (self._check_bound_max_col(c)) or (self._check_bound_min_row(r)) or (self._check_bound_max_row(r))
+  
+  def check_backwards(self):
+    r = self.row
+    c = self.col
+
+    match self.heading:
+      case Grid.Heading.UP:
+        r -= 1
+      case Grid.Heading.DOWN:
+        r += 1
+      case Grid.Heading.LEFT:
+        c = chr(ord(c)+1)
+      case Grid.Heading.RIGHT:
+        c = chr(ord(c)-1)
+
+    return (self._check_bound_min_col(c)) or (self._check_bound_max_col(c)) or (self._check_bound_min_row(r)) or (self._check_bound_max_row(r))
   
   def forwards(self):
     match self.heading:
