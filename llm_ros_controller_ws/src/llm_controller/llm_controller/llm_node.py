@@ -66,7 +66,7 @@ class VelocityPublisher(Node):
     self.sn_ctrl.start()
     self.get_logger().info(f"SwarmNet initialised") 
     set_log_level(self.SN_LOG_LEVEL)
-    self.sn_ctrl.send("INFO SwarmNet initialised successfully")
+    self.info("SwarmNet initialised successfully")
     
     self.global_conv = [
         {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
@@ -273,7 +273,7 @@ class VelocityPublisher(Node):
     self.sn_ctrl.send(f"READY {self.grid}")
       
     self.sn_ctrl.clear_rx_queue()
-    self.sn_ctrl.send("INFO Agents ready for negotiation")
+    self.info("Agents ready for negotiation")
         
     self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
       
@@ -408,7 +408,7 @@ class VelocityPublisher(Node):
       self.toggle_turn()
       current_stage += 2 # Shares the current_stage
       self.get_logger().info(f"Stage {current_stage}")
-      self.sn_ctrl.send(f"INFO Negotiation stage {current_stage}")
+      self.info(f"Negotiation stage {current_stage}")
       self.get_logger().info(f"{self.global_conv}");
         
     self.plan_completed(current_stage)
