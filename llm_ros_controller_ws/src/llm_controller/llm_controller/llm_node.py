@@ -385,7 +385,8 @@ class VelocityPublisher(Node):
     else:
       current_stage = 1
     
-    while(current_stage < self.MAX_NUM_NEGOTIATION_MESSAGES):
+    finished = False
+    while(current_stage < self.MAX_NUM_NEGOTIATION_MESSAGES and not finished):
       while(not self.is_my_turn()): # Wait to receive from the other agent
         if(len(self.global_conv) > 0):
           if(isinstance(self.global_conv[len(self.global_conv)-1]["content"], list)):
@@ -393,6 +394,7 @@ class VelocityPublisher(Node):
           
           if(self.CMD_SUPERVISOR in self.global_conv[-1:][0]["content"].strip().split("\n")[-1:][0]):
             self.info("\n\n\n\n\n\nSUPERVISOR CALLED =====================================================================================================\n\n\n\n\n\n")
+            finished = True
             break
         
         self.wait_delay()
