@@ -23,14 +23,15 @@ commands:
   backwards: "@BACKWARDS"
   rotate_clockwise: "@CLOCKWISE"
   rotate_anticlockwise: "@ANTICLOCKWISE"
+  wait: "@WAIT"
   supervisor: "@SUPERVISOR"
 
 movement:
   linear:
     speed: 0.15  # m/s
-    distance: 0.45  # m
+    distance: 0.30  # m
   angular:
     speed: 45  # deg/s
     distance: 90 # degrees
-  waiting_time: 1
+  waiting_time: 2 # Match time for other movements
   lidar_threshold: 0.3

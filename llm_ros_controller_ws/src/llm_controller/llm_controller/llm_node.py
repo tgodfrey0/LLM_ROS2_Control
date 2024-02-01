@@ -21,8 +21,6 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 # Local package imports
 from .grid import Grid
 
-#TODO Add wait command
-
 image_name = "layout.drawio.png"
 
 class VelocityPublisher(Node):
@@ -76,6 +74,7 @@ class VelocityPublisher(Node):
               - '{self.CMD_BACKWARDS}' to move one square backwards \
               - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
               - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
+              - '{self.CMD_WAIT}' to wait for the time taken to move one square \
             Do not create new commands and we should both move at the same time.\
             The final plan should be a numbered list only containing these commands and we should try to complete the task as quickly as possible."}]
     
@@ -136,6 +135,8 @@ class VelocityPublisher(Node):
           self.pub_clockwise()
         elif(self.CMD_ROTATE_ANTICLOCKWISE in s):
           self.pub_anticlockwise()
+        elif(self.CMD_WAIT in s):
+          self.wait_delay()
         elif(self.CMD_SUPERVISOR in s):
           pass
         elif(s.strip() == ""):
@@ -334,10 +335,11 @@ class VelocityPublisher(Node):
     
   def generate_summary(self):
     self.global_conv.append({"role": "user", "content": f"Generate a summarised numerical list of the plan for the steps that I should complete. Use only the commands:\
-      - '{self.CMD_FORWARD}' to move one square forwards\
+      - '{self.CMD_FORWARD}' to move one square forwards \
       - '{self.CMD_BACKWARDS}' to move one square backwards \
-      - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise \
-      - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise "})
+      - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
+      - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
+      - '{self.CMD_WAIT}' to wait for the time taken to move one square"})
     
     completion = self._llm_req()
 
@@ -376,6 +378,20 @@ class VelocityPublisher(Node):
     b = self.other_agent_ready
     self.ready_lock.release()
     return b
+  
+  def _supervisor_called(self, s: str) -> bool:
+    lines = s.split("\n")
+    status = False
+    
+    if(self.CMD_SUPERVISOR in lines[-1:][0]):
+      status = True
+    else:
+      status = any(map(lambda l: l.strip() == self.CMD_SUPERVISOR, lines[:-1]))
+
+    if(status):
+      self.info("Supervisor called")
+    
+    return status
 
   def negotiate(self):
     current_stage = 0
@@ -392,11 +408,7 @@ class VelocityPublisher(Node):
           if(isinstance(self.global_conv[len(self.global_conv)-1]["content"], list)):
             continue
           
-          #TODO Make this more rigorous
-          if(self.CMD_SUPERVISOR in self.global_conv[-1:][0]["content"].strip().split("\n")[-1:][0]):
-            self.info("\n\n\n\n\n\nSUPERVISOR CALLED =====================================================================================================\n\n\n\n\n\n")
-            finished = True
-            break
+          finished = self._supervisor_called(self.global_conv[-1:][0]["content"].strip())
         
         self.wait_delay()
         self.get_logger().info(f"Waiting for a response from another agent")
@@ -478,6 +490,7 @@ class VelocityPublisher(Node):
       self.CMD_BACKWARDS: str = data["commands"]["backwards"]
       self.CMD_ROTATE_CLOCKWISE: str = data["commands"]["rotate_clockwise"]
       self.CMD_ROTATE_ANTICLOCKWISE: str = data["commands"]["rotate_anticlockwise"]
+      self.CMD_WAIT: str = data["commands"]["wait"]
       self.CMD_SUPERVISOR: str = data["commands"]["supervisor"]
       self.LINEAR_SPEED: float = data["movement"]["linear"]["speed"]
       self.LINEAR_DISTANCE: float = data["movement"]["linear"]["distance"]
