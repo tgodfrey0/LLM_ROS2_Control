@@ -52,6 +52,22 @@ class VelocityPublisher(Node):
       qos_profile=qos
     )
     
+    self.client: OpenAI = None
+    self.this_agents_turn = self.INITIALLY_THIS_AGENTS_TURN
+    self.other_agent_ready = False
+    self.other_agent_loc = ""
+    self.turn_lock = Lock()
+    self.ready_lock = Lock()
+    self.grid = Grid(self.STARTING_GRID_LOC,self.STARTING_GRID_HEADING, 3, 8)
+    self.scan_mutex = Lock()
+    self.scan_ranges = False
+    
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": None, "RESTART": self.restart_recv}, device_list = self.SN_DEVICE_LIST) #! Publish INFO messages which can then be subscribed to by observers
+    self.sn_ctrl.start()
+    self.get_logger().info(f"SwarmNet initialised") 
+    set_log_level(self.SN_LOG_LEVEL)
+    self.sn_ctrl.send("INFO SwarmNet initialised successfully")
+    
     self.global_conv = [
         {"role": "system", "content": f"You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
           We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
@@ -84,22 +100,6 @@ class VelocityPublisher(Node):
             }
           ]
       })
-      
-    self.client: OpenAI = None
-    self.this_agents_turn = self.INITIALLY_THIS_AGENTS_TURN
-    self.other_agent_ready = False
-    self.other_agent_loc = ""
-    self.turn_lock = Lock()
-    self.ready_lock = Lock()
-    self.grid = Grid(self.STARTING_GRID_LOC,self.STARTING_GRID_HEADING, 3, 8)
-    self.scan_mutex = Lock()
-    self.scan_ranges = False
-    
-    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": None, "RESTART": self.restart_recv}, device_list = self.SN_DEVICE_LIST) #! Publish INFO messages which can then be subscribed to by observers
-    self.sn_ctrl.start()
-    self.get_logger().info(f"SwarmNet initialised") 
-    set_log_level(self.SN_LOG_LEVEL)
-    self.sn_ctrl.send("INFO SwarmNet initialised successfully")
   
     while(True):
       self.create_plan()
