@@ -36,6 +36,7 @@ class VelocityPublisher(Node):
     self.get_logger().info("Successfully loaded configuration")
     
     self.publisher_ = self.create_publisher(Twist, "/cmd_vel", 10)
+    
     qos = QoSProfile(
       reliability=ReliabilityPolicy.BEST_EFFORT,
       history=HistoryPolicy.KEEP_LAST,
