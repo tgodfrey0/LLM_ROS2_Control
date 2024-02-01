@@ -323,7 +323,7 @@ class VelocityPublisher(Node):
     self.info(f"Plan completed:")
     # for m in self.global_conv:
     #   self.info(f"{m['role']}: {m['content']}")
-      
+    self._log_negotiations(n_stages)
     self.sn_ctrl.send("FINISHED")
     
     while(not (self.sn_ctrl.rx_queue.empty() and self.sn_ctrl.tx_queue.empty())):
