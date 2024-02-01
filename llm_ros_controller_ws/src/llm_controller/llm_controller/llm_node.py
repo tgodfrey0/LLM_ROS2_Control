@@ -21,8 +21,7 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 # Local package imports
 from .grid import Grid
 
-#TODO Check moves in grid before IRL then replan if not working
-#TODO Ensure no more messages are sent if the negotiation exit clause is hit
+#TODO Add wait command
 
 image_name = "layout.drawio.png"
 
