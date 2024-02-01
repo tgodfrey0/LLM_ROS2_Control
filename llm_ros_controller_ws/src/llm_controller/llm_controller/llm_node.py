@@ -321,8 +321,8 @@ class VelocityPublisher(Node):
     
   def plan_completed(self, n_stages: int):
     self.info(f"Plan completed:")
-    for m in self.global_conv:
-      self.info(f"{m['role']}: {m['content']}")
+    # for m in self.global_conv:
+    #   self.info(f"{m['role']}: {m['content']}")
       
     self.sn_ctrl.send("FINISHED")
     
