@@ -137,6 +137,7 @@ class VelocityPublisher(Node):
         elif(self.CMD_ROTATE_ANTICLOCKWISE in s):
           self.pub_anticlockwise()
         elif(self.CMD_WAIT in s):
+          self.info("Wait command")
           self.wait_delay()
         elif(self.CMD_SUPERVISOR in s):
           pass
@@ -302,7 +303,7 @@ class VelocityPublisher(Node):
     return self.client.chat.completions.create(
       model=self.MODEL_NAME,
       messages=self.global_conv,
-      max_tokens=500
+      max_tokens=self.MAX_TOKENS
     )
 
   def send_req(self):
@@ -340,12 +341,13 @@ class VelocityPublisher(Node):
       - '{self.CMD_BACKWARDS}' to move one square backwards \
       - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
       - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
-      - '{self.CMD_WAIT}' to wait for the time taken to move one square"})
+      - '{self.CMD_WAIT}' to wait for the time taken to move one square\
+      You must list every individual step."})
     
     completion = self._llm_req()
 
     self.global_conv.append({"role": completion.choices[0].message.role, "content": completion.choices[0].message.content})
-    self.info(f"Final plan for {self.sn_ctrl.addr}: {completion.choices[0].message.content}")
+    self.info(f"Final plan for {self.sn_ctrl.addr}\n{completion.choices[0].message.content}")
   
   def _log_negotiations(self, n_stages: int):
     path = self.WORKING_DIR + f"logs/{self.AGENT_NAME}_negotiation_log.csv"
@@ -353,7 +355,7 @@ class VelocityPublisher(Node):
     with open(path, "a", newline="") as csvfile:
       writer = csv.writer(csvfile)
       today = datetime.date.today().strftime("%Y-%m-%d")
-      writer.writerow([today, self.MODEL_NAME, str(self.MAX_NUM_NEGOTIATION_MESSAGES), str(n_stages)])
+      writer.writerow([today, self.MODEL_NAME, self.MAX_TOKENS, str(self.MAX_NUM_NEGOTIATION_MESSAGES), str(n_stages)])
 
   def restart_recv(self, msg: Optional[str]) -> None:
     self.restart(False)
@@ -411,6 +413,9 @@ class VelocityPublisher(Node):
             continue
           
           finished = self._supervisor_called(self.global_conv[-1:][0]["content"].strip())
+          
+          if(current_stage >= self.MAX_NUM_NEGOTIATION_MESSAGES or finished):
+            break
         
         self.wait_delay()
         self.get_logger().info(f"Waiting for a response from another agent")
@@ -488,6 +493,7 @@ class VelocityPublisher(Node):
       self.MAX_NUM_NEGOTIATION_MESSAGES: int = data["agent"]["max_num_negotiation_messages"]
       self.WORKING_DIR: str = data["agent"]["working_dir"]
       self.MODEL_NAME = data["agent"]["model"]
+      self.MAX_TOKENS = data["agent"]["max_tokens"]
       self.CMD_FORWARD: str = data["commands"]["forwards"]
       self.CMD_BACKWARDS: str = data["commands"]["backwards"]
       self.CMD_ROTATE_CLOCKWISE: str = data["commands"]["rotate_clockwise"]

@@ -17,6 +17,7 @@ agent:
   max_num_negotiation_messages: 15
   working_dir: "/home/ubuntu/LLM_ROS2_Control/"
   model: "gpt-4-vision-preview"
+  max_tokens: 500
 
 commands:
   forwards: "@FORWARD"
