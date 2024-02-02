@@ -18,7 +18,7 @@ class Grid():
     return f"{self.col}{self.row}"
   
   def _print_heading(self) -> str:
-    match self.heading:
+    match self.heading.value:
       case 0:
         return "Up"
       case 1:
