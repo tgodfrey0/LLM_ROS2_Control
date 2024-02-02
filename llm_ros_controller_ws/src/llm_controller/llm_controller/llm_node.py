@@ -463,7 +463,6 @@ class VelocityPublisher(Node):
       case _:
         self.get_logger().error(f"Unrecognised grid heading: {s}")
         
-    self.get_logger().info(f"====================== {hd}")
     return hd
     
   def load_config(self) -> bool:
