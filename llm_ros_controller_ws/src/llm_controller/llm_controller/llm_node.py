@@ -56,7 +56,7 @@ class VelocityPublisher(Node):
     self.other_agent_loc = ""
     self.turn_lock = Lock()
     self.ready_lock = Lock()
-    self.grid = Grid(self.STARTING_GRID_LOC,self.STARTING_GRID_HEADING, 3, 8)
+    self.grid = Grid(self.STARTING_GRID_LOC, self.STARTING_GRID_HEADING, 3, 8)
     self.scan_mutex = Lock()
     self.scan_ranges = []
     
@@ -463,6 +463,7 @@ class VelocityPublisher(Node):
       case _:
         self.get_logger().error(f"Unrecognised grid heading: {s}")
         
+    self.info(f"{hd}")
     return hd
     
   def load_config(self) -> bool:
