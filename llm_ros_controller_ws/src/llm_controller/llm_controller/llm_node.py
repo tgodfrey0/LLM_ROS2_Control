@@ -56,6 +56,8 @@ class VelocityPublisher(Node):
     self.other_agent_loc = ""
     self.turn_lock = Lock()
     self.ready_lock = Lock()
+    self.finish_lock = Lock()
+    self.other_agent_finished = False
     self.grid = Grid(self.STARTING_GRID_LOC, self.STARTING_GRID_HEADING, 3, 8)
     self.scan_mutex = Lock()
     self.scan_ranges = []
@@ -361,6 +363,8 @@ class VelocityPublisher(Node):
     self.restart(False)
   
   def finished_recv(self, msg: Optional[str]) -> None:
+    with self.finish_lock:
+      self.other_agent_finished = True
     self.generate_summary()
   
   def llm_recv(self, msg: Optional[str]) -> None: 
@@ -406,7 +410,7 @@ class VelocityPublisher(Node):
       current_stage = 1
     
     finished = False
-    while(current_stage < self.MAX_NUM_NEGOTIATION_MESSAGES and not finished):
+    while(current_stage < self.MAX_NUM_NEGOTIATION_MESSAGES and not finished and not self.other_agent_finished):
       while(not self.is_my_turn()): # Wait to receive from the other agent
         if(len(self.global_conv) > 0):
           if(isinstance(self.global_conv[len(self.global_conv)-1]["content"], list)):
@@ -414,7 +418,7 @@ class VelocityPublisher(Node):
           
           finished = self._supervisor_called(self.global_conv[-1:][0]["content"].strip())
           
-          if(current_stage >= self.MAX_NUM_NEGOTIATION_MESSAGES or finished):
+          if(current_stage >= self.MAX_NUM_NEGOTIATION_MESSAGES or finished or self.other_agent_finished):
             break
         
         self.wait_delay()
