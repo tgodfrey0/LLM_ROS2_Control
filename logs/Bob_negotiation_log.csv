@@ -1,5 +1,1 @@
-date,model,max_rounds,rounds
-2024-02-01,gpt-4-vision-preview,15,7
-2024-02-01,gpt-4-vision-preview,15,15
-2024-02-01,gpt-4-vision-preview,15,15
-2024-02-02,gpt-4-vision-preview,15,13
+date,model,max_tokens,max_rounds,rounds
