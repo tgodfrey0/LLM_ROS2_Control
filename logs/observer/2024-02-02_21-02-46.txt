@@ -1,0 +1,82 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Vision model provided, appending image
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Vision model provided, appending image
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: To accomplish this task without colliding, we will need to coordinate our moves so that we pass each other without occupying the same square at the same time. Given the narrow path, the best strategy will involve using the spaces A3 and C4 as passing points. Here's the plan I suggest:
+
+1. I will move up to B3 and then to A3 to make room for you to pass.
+2. You will move down to B4, where we are still in a vertical line but separated by one empty square.
+3. From A3, I will continue to move up to A4 while you move down to C3. This will place us in adjacent columns, allowing us to pass each other without collision.
+4. I will then move back into the B column at B5 while you continue down to C2.
+5. I will move up to B6 and then to B7, while simultaneously, you continue moving down to C1 and then to B0.
+
+We will both rotate when necessary to ensure we are facing the correct direction for each move. Now let's lay out the plan in detail using the commands:
+
+1. [@FORWARD] x3 (I move from B0 to B3)
+2. [@FORWARD] x3 (You move from B7 to B4)
+3. [@CLOCKWISE] x2 (I rotate to face left)
+4. [@FORWARD] (I move from B3 to A3)
+5
+INFO from Alice: Negotiation stage 2
+INFO from Bob: Actually, I apologize for the interruption, but there seems to be a misunderstanding in your plan. I need to point out that we need to ensure we can pass each other without occupying the same square at any point in time. We should head towards the designated passing points A3 and C4, as proposed, but we need to maneuver in a way that ensures safety and efficiency. 
+
+Considering I am at the top of the grid (B7) and you are at the bottom (B0), here is an adjusted plan that allows us to pass each other:
+
+1. I will move down towards B4, and then over to C4, which is a safe spot for us to pass.
+2. You will move up toward B3, and wait for me to clear B4, before you move into A3.
+
+This way, we can bypass each other by using the extra columns on the sides (A and C) and continue towards our respective targets without collision. Now let's refine the maneuvers and set the plan:
+
+1. I will rotate clockwise to face downwards, move forwards three times to reach B4, rotate clockwise to face right, and then move forwards to C4.
+2. You first wait for me to clear B4, rotate counter-clockwise to face upwards, move forwards three times to reach B3, rotate counterclockwise to face left, and then move forwards to A3.
+
+Let's confirm the series of commands:
+
+1. You: [@ANT
+INFO from Bob: Negotiation stage 3
+INFO from Alice: It seems there was some confusion earlier about the maneuvers. We need to pass by using A3 and C4 without ever occupying the same square. Let's devise a plan that works:
+
+1. I'll move up towards B3, and then over to A3, while you'll move down towards B4, and then over to C4.
+2. Once I'm at A3 and you're at C4, we'll both be safe to continue to our respective destinations by moving up and down the A and C columns before merging back onto the B column.
+
+Let's refine the plan in terms of the actions we need to take:
+
+1. I'll move forward three squares, rotate anti-clockwise, and move forward into A3.
+2. You'll move forward three squares, rotate clockwise, and move forward into C4.
+
+We'll execute these moves simultaneously. Once I reach A3 and you reach C4, I will proceed up and you will proceed down, without any risk of collision. After passing each other safely, we'll rotate back towards the B column and move toward our destinations.
+
+Let's confirm the series of commands:
+
+1. [@FORWARD] x3 - I move from B0 to B3.
+2. [@ANTICLOCKWISE] - I rotate to face left.
+3. [@FORWARD] - I move from B3 to A3.
+4. [@FORWARD] x3 - You move from B7 to B4.
+5.
+INFO from Alice: Negotiation stage 4
+INFO from Bob: It looks like there's still some confusion regarding our movements. We need to ensure that we're not in the same row at the same time to avoid a collision. We'll continue to use A3 and C4 as our passing points but with some timing adjustments to ensure we pass each other safely. Let me propose a synchronized plan where we move in turns to keep the path clear for each other:
+
+1. I will wait while you move down from B7 to B4.
+2. Once you're at B4, you will rotate clockwise to face right and move into C4.
+3. After you have moved into C4, I will move forward from B0 to B3.
+4. When I'm at B3, I will rotate anticlockwise to face left and move into A3.
+5. Now that I'm in A3 and you're in C4, we can safely pass by each other.
+
+Let's define the specific moves in turns:
+
+1. You: [@FORWARD] x3 - You move from B7 to B4.
+2. You: [@CLOCKWISE] - You rotate to face right.
+3. You: [@FORWARD] - You move from B4 to C4.
+4. Me: [@FORWARD] x3 - I move from B0 to B3 after you have cleared B4.
+5. Me: [@ANTICLOCKWISE] - I rotate to face left once you are in C4.
+6
+INFO from Bob: Negotiation stage 5

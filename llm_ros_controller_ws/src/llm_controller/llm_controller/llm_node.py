@@ -302,7 +302,7 @@ class VelocityPublisher(Node):
     return self.client.chat.completions.create(
       model=self.MODEL_NAME,
       messages=self.global_conv,
-      max_tokens=300
+      max_tokens=500
     )
 
   def send_req(self):
