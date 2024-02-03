@@ -1,0 +1,11 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Supervisor called
+INFO from Bob: To create an effective plan, we need to clarify our starting positions and intended destinations within the grid, as well as our initial orientations (e.g., facing north, south, east, or west). Could you provide this information, please?
+INFO from Bob: Negotiation stage 3
+INFO from Bob: Plan completed
+FINISHED message sent

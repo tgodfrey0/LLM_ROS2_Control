@@ -403,6 +403,7 @@ class VelocityPublisher(Node):
     return b
   
   def _supervisor_called(self, s: str) -> bool:
+    self.info("=================================== " + s)
     lines = s.split("\n")
     status = False
     
