@@ -1,0 +1,341 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Supervisor called
+INFO from Bob: 1. I propose that we both move one square forward at the same time. This way, we can clear a path for each other without colliding.
+2. If there are obstacles or other robots in our path, we can adjust our plan accordingly. We can negotiate with the other robots to coordinate our movements and ensure a collision-free path.
+3. Once we have cleared a path, we can continue moving forward until we reach our destination.
+4. If we encounter any obstacles or need to avoid collisions, we can use the commands '@BACKWARDS' to move one square backwards and '@CLOCKWISE' or '@ANTICLOCKWISE' to rotate 90 degrees in the desired direction.
+5. Throughout the negotiation and planning process, we should use the command '@WAIT' to wait for the time taken to move one square in order to synchronize our movements.
+6. Finally, when we have agreed upon a plan, we can call the '@SUPERVISOR' tag to indicate the end of the negotiation process and print our concise numbered plan.
+INFO from Bob: Negotiation stage 3
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: Final plan for 10.0.1.112
+1. @FORWARD
+2. @WAIT
+3. @WAIT
+4. @WAIT
+5. @WAIT
+6. @WAIT
+7. @WAIT
+8. @BACKWARDS
+9. @WAIT
+10. @BACKWARDS
+11. @WAIT
+12. @WAIT
+13. @WAIT
+14. @WAIT
+15. @ANTICLOCKWISE
+16. @FORWARD
+INFO from Alice: 1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @CLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+13. @FORWARD
+14. @WAIT
+15. @WAIT
+16. @WAIT
+17. @WAIT
+18. @WAIT
+19. @WAIT
+20. @CLOCKWISE
+21. @FORWARD
+22. @FORWARD
+23. @FORWARD
+24. @FORWARD
+25. @FORWARD
+26. @FORWARD
+27. @WAIT
+28. @WAIT
+29. @WAIT
+30. @WAIT
+31. @WAIT
+32. @WAIT
+33. @CLOCKWISE
+34. @BACKWARDS
+35. @BACKWARDS
+36. @BACKWARDS
+37. @BACKWARDS
+38. @BACKWARDS
+39. @BACKWARDS
+40. @FORWARD
+41. @FORWARD
+42. @FORWARD
+43. @FORWARD
+44. @FORWARD
+45. @FORWARD
+46. @FORWARD
+47. @BACKWARDS
+48. @CLOCKWISE
+49. @FORWARD
+50. @FORWARD
+51. @FORWARD
+52. @FORWARD
+53. @FORWARD
+54. @FORWARD
+55. @FORWARD
+56. @BACKWARDS
+57. @CLOCKWISE
+58. @FORWARD
+59. @FORWARD
+60. @FORWARD
+61. @FORWARD
+62. @FORWARD
+63. @FORWARD
+64. @ANTICLOCKWISE
+65. @FORWARD
+66. @FORWARD
+67. @FORWARD
+68. @FORWARD
+69. @FORWARD
+70. @FORWARD
+71. @FORWARD
+72. @FORWARD
+73. @WAIT
+74. @WAIT
+75. @WAIT
+76. @WAIT
+77. @WAIT
+78. @WAIT
+79. @WAIT
+80. @CLOCKWISE
+81. @FORWARD
+82. @FORWARD
+83. @FORWARD
+84. @FORWARD
+85. @FORWARD
+86
+INFO from Alice: Negotiation stage 2
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Bob: Final plan for 10.0.1.192
+Sure! Here is the summarised numerical list of the plan:
+
+1. @FORWARD
+2. @WAIT
+3. @BACKWARDS
+4. @WAIT
+5. @CLOCKWISE
+6. @WAIT
+7. @ANTICLOCKWISE
+8. @WAIT
+9. @FORWARD
+10. @WAIT
+11. @BACKWARDS
+12. @WAIT
+13. @CLOCKWISE
+14. @WAIT
+15. @ANTICLOCKWISE
+16. @WAIT
+17. @FORWARD
+18. @WAIT
+19. @BACKWARDS
+20. @WAIT
+21. @CLOCKWISE
+22. @WAIT
+23. @ANTICLOCKWISE
+
+Remember to call the '@SUPERVISOR' tag at the end of the message to indicate the completion of the negotiation process.
+INFO from Bob: Negotiation finished
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: Final plan for 10.0.1.112
+1. @FORWARD
+2. @WAIT
+3. @WAIT
+4. @WAIT
+5. @WAIT
+6. @WAIT
+7. @WAIT
+8. @BACKWARDS
+9. @WAIT
+10. @BACKWARDS
+11. @WAIT
+12. @WAIT
+13. @WAIT
+14. @WAIT
+15. @ANTICLOCKWISE
+16. @FORWARD
+INFO from Alice: Negotiation finished
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Backwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Clockwise command
+INFO from Bob: Final plan for 10.0.1.192
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @CLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+13. @FORWARD
+14. @WAIT
+15. @WAIT
+16. @WAIT
+17. @WAIT
+18. @WAIT
+19. @WAIT
+20. @CLOCKWISE
+21. @FORWARD
+22. @FORWARD
+23. @FORWARD
+24. @FORWARD
+25. @FORWARD
+26. @FORWARD
+27. @WAIT
+28. @WAIT
+29. @WAIT
+30. @WAIT
+31. @WAIT
+32. @WAIT
+33. @CLOCKWISE
+34. @BACKWARDS
+35. @BACKWARDS
+36. @BACKWARDS
+37. @BACKWARDS
+38. @BACKWARDS
+39. @BACKWARDS
+40. @FORWARD
+41. @FORWARD
+42. @FORWARD
+43. @FORWARD
+44. @FORWARD
+45. @FORWARD
+46. @FORWARD
+47. @BACKWARDS
+48. @CLOCKWISE
+49. @FORWARD
+50. @FORWARD
+51. @FORWARD
+52. @FORWARD
+53. @FORWARD
+54. @FORWARD
+55. @FORWARD
+56. @BACKWARDS
+57. @CLOCKWISE
+58. @FORWARD
+59. @FORWARD
+60. @FORWARD
+61. @FORWARD
+62. @FORWARD
+63. @FORWARD
+64. @ANTICLOCKWISE
+65. @FORWARD
+66. @FORWARD
+67. @FORWARD
+68. @FORWARD
+69. @FORWARD
+70. @FORWARD
+71. @FORWARD
+72. @FORWARD
+73. @WAIT
+74. @WAIT
+75. @WAIT
+76. @WAIT
+77. @WAIT
+78. @WAIT
+79. @WAIT
+80. @CLOCKWISE
+81. @FORWARD
+82. @FORWARD
+83. @FORWARD
+84. @FORWARD
+85. @FORWARD
+86
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Anticlockwise command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Backwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Invalid move in plan
+INFO from Alice: Full plan parsed
+INFO from Alice: Replanning
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Backwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Clockwise command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Anticlockwise command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
