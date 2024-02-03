@@ -325,7 +325,7 @@ class VelocityPublisher(Node):
       return ""
     
   def plan_completed(self, n_stages: int):
-    self.info(f"Plan completed:")
+    self.info(f"Plan completed")
     # for m in self.global_conv:
     #   self.info(f"{m['role']}: {m['content']}")
     self._log_negotiations(n_stages)
@@ -433,7 +433,8 @@ class VelocityPublisher(Node):
       current_stage += 2 # Shares the current_stage
       self.get_logger().info(f"Stage {current_stage}")
       self.info(f"Negotiation stage {current_stage}")
-      self.get_logger().info(f"{self.global_conv}");
+      self.get_logger().info(f"{self.global_conv}")
+      self.wait_delay()
         
     self.plan_completed(current_stage)
     current_stage = 0
