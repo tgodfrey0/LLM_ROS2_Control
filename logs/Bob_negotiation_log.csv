@@ -1,1 +1,10 @@
-date,model,max_tokens,max_rounds,rounds
+date,model,max_tokens,max_rounds,rounds2024-02-02,gpt-4-vision-preview,500,15,15
+2024-02-03,gpt-4-vision-preview,500,15,13
+2024-02-03,gpt-4-vision-preview,500,15,1
+2024-02-03,gpt-3.5-turbo,500,15,3
+2024-02-03,gpt-3.5-turbo,500,15,3
+2024-02-03,gpt-3.5-turbo,500,15,0
+2024-02-03,gpt-3.5-turbo,500,15,0
+2024-02-03,gpt-4-turbo-preview,500,15,3
+2024-02-03,gpt-4-turbo-preview,500,15,0
+2024-02-03,gpt-4-turbo-preview,500,15,0
