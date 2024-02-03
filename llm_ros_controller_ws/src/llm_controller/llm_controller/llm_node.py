@@ -407,6 +407,8 @@ class VelocityPublisher(Node):
     self.info(f"=================================== {lines}")
     status = False
     
+    if(len(lines) == 1 and lines[0] != self.CMD_SUPERVISOR):
+      status = False
     if(self.CMD_SUPERVISOR in lines[-1:][0]): #! Triggers in instruction message
       status = True
     else:
