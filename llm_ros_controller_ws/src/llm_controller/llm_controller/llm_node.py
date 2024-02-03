@@ -409,7 +409,7 @@ class VelocityPublisher(Node):
     
     if(len(lines) == 1 and lines[0] != self.CMD_SUPERVISOR):
       status = False
-    if(self.CMD_SUPERVISOR in lines[-1:][0]): #! Triggers in instruction message
+    elif(self.CMD_SUPERVISOR in lines[-1:][0]):
       status = True
     else:
       status = any(map(lambda l: l.strip() == self.CMD_SUPERVISOR, lines[:-1]))
