@@ -1,0 +1,173 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Given the starting conditions and objectives, here's a proposed plan for us to switch places without collisions, adhering to the movement restrictions and capabilities of wheeled robots like us:
+
+1. I will:
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+
+   You will:
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+
+This sequence ensures that we move straight towards our destination squares, swapping places directly because our starting and ending faces allow for immediate forward movement towards the goal. Do you agree with this plan?
+INFO from Alice: Negotiation stage 2
+INFO from Bob: Given the constraints and our goal to switch places efficiently, I've identified a potential issue with the proposed plan. Without knowing the exact layout of the grid and our initial orientations, we might be missing some critical details to ensure a collision-free swap. 
+
+For instance, if our initial orientations don't align with a direct path towards our swap locations or if there are obstacles (like needing to rotate to face the right direction before moving forward), we'd need to adjust the plan.
+
+Assuming we start facing each other with a clear path:
+1. You and I both:
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+
+The plan assumes direct movement without the need for rotations. However, if we need to rotate to face the correct direction initially, we should adjust the plan accordingly. Could you provide details on our starting orientations and the grid layout to ensure accuracy in our plan?
+INFO from Bob: Negotiation stage 3
+INFO from Alice: Given your input and clarification needs, it's important to reiterate the starting conditions for accuracy, as they were provided in the initial setup:
+
+- You start at B7, facing South.
+- I start at B0, facing North.
+
+Considering these starting positions and orientations, we are already aligned perfectly for a direct swap without needing any rotations, assuming there's a clear path between us as there seem to be no obstacles mentioned. Our initial plan accounts for direct forward movement only, based on these orientations and the goal to switch places. 
+
+Here's the plan following the instructions and considering our orientations which are indeed aligned correctly for a straight path:
+
+1. You and I both:
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+
+This straightforward plan should cater to the efficient swapping of positions under the given conditions without necessitating additional rotations or movements to face the right direction. Since our starting orientations are directly facing each other's final destination with a clear path (assuming no obstacles as none were mentioned), no adjustments to the initial plan are needed. 
+
+Do you agree with this assessment based on the provided conditions?
+INFO from Alice: Negotiation stage 4
+INFO from Bob: Given the detailed clarification and considering our starting points and orientations (B7 facing South for you, B0 facing North for me), I agree with the reassessment and the proposed plan for us to switch places. Our alignment and direct path allow for a straightforward execution without the need for any rotations or adjustments.
+
+Hence, our synchronized movement plan should be:
+
+1. Both of us:
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+
+This plan should allow us to swap places efficiently, considering our starting positions and facing directions, without any risk of collision or the need for adjustments. Your assessment is accurate, and I agree with proceeding as outlined.
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 5
+INFO from Bob: Supervisor called
+INFO from Bob: @SUPERVISOR
+INFO from Bob: Negotiation stage 7
+INFO from Alice: Great, we have come to an agreement on the plan. Here's the final action plan to swap our positions:
+
+1. Both of us:
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+   - @FORWARD
+
+@SUPERVISOR
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: Negotiation stage 6
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Alice: Final plan for 10.0.1.112
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Bob: Final plan for 10.0.1.192
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Bob: Negotiation finished
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Bob: Final plan for 10.0.1.192
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: Final plan for 10.0.1.112
+Certainly! Here's the summarised numerical list of the steps for you to complete the task, considering our agreed plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Alice: Negotiation finished
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command

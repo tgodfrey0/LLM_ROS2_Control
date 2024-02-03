@@ -82,6 +82,7 @@ class VelocityPublisher(Node):
               - '{self.CMD_WAIT}' to wait for the time taken to move one square \
             Do not create new commands and we should both move at the same time.\
             We should keep our messages as short as possible.\
+            We cannot fit past each other in the narrow corridor.\
             The final plan should be a numbered list only containing these commands and we should try to complete the task as quickly as possible."}]
     
     if("vision" in self.MODEL_NAME):
