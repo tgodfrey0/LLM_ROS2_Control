@@ -58,6 +58,8 @@ class VelocityPublisher(Node):
     self.ready_lock = Lock()
     self.finish_lock = Lock()
     self.other_agent_finished = False
+    self.restart_lock = Lock()
+    self.should_restart = False
     self.grid = Grid(self.STARTING_GRID_LOC, self.STARTING_GRID_HEADING, 3, 8)
     self.scan_mutex = Lock()
     self.scan_ranges = []
@@ -107,13 +109,22 @@ class VelocityPublisher(Node):
     while(True):
       self.create_plan()
       self.parse_plan()
-      if(f"{self.grid}" != self.ENDING_GRID_LOC):
+      if(self.should_restart):
+        continue
+      elif(f"{self.grid}" != self.ENDING_GRID_LOC):
+        self.sn_ctrl.send("RESTART")
         self.restart(True)
+      else:
+        self.info("Task completed :)")
+        break
     
   def parse_plan(self):
     if(len(self.global_conv) > 1):
       cmd = self.global_conv[len(self.global_conv)-1]["content"]
       for s in cmd.split("\n"):
+        if(self.should_restart):
+          break
+        
         min_dist_reached = False
         with self.scan_mutex:
           self.info(f"RANGES: {self.scan_ranges}")
@@ -164,6 +175,9 @@ class VelocityPublisher(Node):
     
     if(this_agent_stuck):
       self.global_conv.append({"role": "user", "content": f"I am stuck, we need to replan."})
+    
+    with self.restart_lock:
+      self.should_restart = True
     
   def info(self, s: str) -> None:
     self.get_logger().info(s)
