@@ -403,11 +403,11 @@ class VelocityPublisher(Node):
     return b
   
   def _supervisor_called(self, s: str) -> bool:
-    self.info("=================================== " + s)
     lines = s.split("\n")
+    self.info("=================================== " + lines)
     status = False
     
-    if(self.CMD_SUPERVISOR in lines[-1:][0]):
+    if(self.CMD_SUPERVISOR in lines[-1:][0]): #! Triggers in instruction message
       status = True
     else:
       status = any(map(lambda l: l.strip() == self.CMD_SUPERVISOR, lines[:-1]))
