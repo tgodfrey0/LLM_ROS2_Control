@@ -270,9 +270,9 @@ class VelocityPublisher(Node):
     self._pub_rotation(-1)
     
   def create_plan(self):
+    self.info("Waiting for an agent to be ready")
     while(not self.is_ready()):
       self.sn_ctrl.send(f"READY {self.grid} {self.grid._print_heading()}")
-      self.info("Waiting for an agent to be ready")
       self.wait_delay()
       
     self.sn_ctrl.send(f"READY {self.grid} {self.grid._print_heading()}")
@@ -331,8 +331,8 @@ class VelocityPublisher(Node):
     self._log_negotiations(n_stages)
     self.sn_ctrl.send("FINISHED")
     
+    self.get_logger().info("Waiting for message queues to clear")
     while(not (self.sn_ctrl.rx_queue.empty() and self.sn_ctrl.tx_queue.empty())):
-      self.get_logger().info("Waiting for message queues to clear")
       self.wait_delay()
     
     self.generate_summary()
