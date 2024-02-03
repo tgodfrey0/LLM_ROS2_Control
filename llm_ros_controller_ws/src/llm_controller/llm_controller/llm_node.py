@@ -476,17 +476,17 @@ class VelocityPublisher(Node):
     return ll
     
   def _parse_heading(self, s: str) -> Grid.Heading:
-    hd: Grid.Heading = Grid.Heading.UP
+    hd: Grid.Heading = Grid.Heading.NORTH
     
     match s.upper():
       case "UP":
         pass
       case "DOWN":
-        hd = Grid.Heading.DOWN
+        hd = Grid.Heading.SOUTH
       case "LEFT":
-        hd = Grid.Heading.LEFT
+        hd = Grid.Heading.WEST
       case "RIGHT":
-        hd = Grid.Heading.RIGHT
+        hd = Grid.Heading.EAST
       case _:
         self.get_logger().error(f"Unrecognised grid heading: {s}")
         

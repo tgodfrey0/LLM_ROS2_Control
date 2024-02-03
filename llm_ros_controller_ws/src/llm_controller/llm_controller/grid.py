@@ -2,10 +2,10 @@ from enum import EnumMeta, Enum
 
 class Grid():
   class Heading(Enum):
-    UP = 0
-    RIGHT = 1
-    DOWN = 2
-    LEFT = 3
+    NORTH = 0
+    EAST = 1
+    SOUTH = 2
+    WEST = 3
   
   def __init__(self, loc: str, heading: Heading, columns: int, rows: int):
     self.col = loc[0].upper()
@@ -20,13 +20,13 @@ class Grid():
   def _print_heading(self) -> str:
     match self.heading.value:
       case 0:
-        return "Up"
+        return "North"
       case 1:
-        return "Right"
+        return "East"
       case 2:
-        return "Down"
+        return "South"
       case 3:
-        return "Left"
+        return "West"
   
   def _check_bound_min_row(self, r) -> bool:
     b = r < 0
@@ -76,13 +76,13 @@ class Grid():
     c = self.col
 
     match self.heading:
-      case Grid.Heading.UP:
+      case Grid.Heading.NORTH:
         r += 1
-      case Grid.Heading.DOWN:
+      case Grid.Heading.SOUTH:
         r -= 1
-      case Grid.Heading.LEFT:
+      case Grid.Heading.WEST:
         c = chr(ord(c)-1)
-      case Grid.Heading.RIGHT:
+      case Grid.Heading.EAST:
         c = chr(ord(c)+1)
     
     return (self._check_bound_min_col(c)) or (self._check_bound_max_col(c)) or (self._check_bound_min_row(r)) or (self._check_bound_max_row(r))
@@ -92,39 +92,39 @@ class Grid():
     c = self.col
 
     match self.heading:
-      case Grid.Heading.UP:
+      case Grid.Heading.NORTH:
         r -= 1
-      case Grid.Heading.DOWN:
+      case Grid.Heading.SOUTH:
         r += 1
-      case Grid.Heading.LEFT:
+      case Grid.Heading.WEST:
         c = chr(ord(c)+1)
-      case Grid.Heading.RIGHT:
+      case Grid.Heading.EAST:
         c = chr(ord(c)-1)
 
     return (self._check_bound_min_col(c)) or (self._check_bound_max_col(c)) or (self._check_bound_min_row(r)) or (self._check_bound_max_row(r))
   
   def forwards(self):
     match self.heading:
-      case Grid.Heading.UP:
+      case Grid.Heading.NORTH:
         self.row += 1
-      case Grid.Heading.DOWN:
+      case Grid.Heading.SOUTH:
         self.row -= 1
-      case Grid.Heading.LEFT:
+      case Grid.Heading.WEST:
         self.col = chr(ord(self.col)-1)
-      case Grid.Heading.RIGHT:
+      case Grid.Heading.EAST:
         self.col = chr(ord(self.col)+1)
     
     self._finish_move()
   
   def backwards(self):
     match self.heading:
-      case Grid.Heading.UP:
+      case Grid.Heading.NORTH:
         self.row -= 1
-      case Grid.Heading.DOWN:
+      case Grid.Heading.SOUTH:
         self.row += 1
-      case Grid.Heading.LEFT:
+      case Grid.Heading.WEST:
         self.col = chr(ord(self.col)+1)
-      case Grid.Heading.RIGHT:
+      case Grid.Heading.EAST:
         self.col = chr(ord(self.col)-1)
 
     self._finish_move()
