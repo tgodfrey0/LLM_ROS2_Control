@@ -1,0 +1,16 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Understood. Given the initial conditions, here is a suggested plan that allows us to swap positions without collision:
+
+1. I will perform a @FORWARD movement to position A0 and you will perform a @BACKWARDS movement to position C7. 
+2. We both perform a @CLOCKWISE rotation to face towards each other's starting points. 
+3. I will then execute a @FORWARD movement to position A7 while you perform a @BACKWARDS movement to position C0.
+4. We both perform a @CLOCKWISE rotation to prepare for the swap direction.
+5. I will execute a @FORWARD movement to position B7 while you perform a @BACKWARDS movement to position B0. This brings us to our final desired positions.
+
+Do you agree with this plan, or would you like to suggest any adjustments?
+INFO from Alice: Negotiation stage 2
