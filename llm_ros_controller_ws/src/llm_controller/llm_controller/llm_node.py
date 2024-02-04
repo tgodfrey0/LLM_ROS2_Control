@@ -480,13 +480,13 @@ class VelocityPublisher(Node):
     hd: Grid.Heading = Grid.Heading.NORTH
     
     match s.upper():
-      case "UP":
+      case "NORTH":
         pass
-      case "DOWN":
+      case "SOUTH":
         hd = Grid.Heading.SOUTH
-      case "LEFT":
+      case "WEST":
         hd = Grid.Heading.WEST
-      case "RIGHT":
+      case "EAST":
         hd = Grid.Heading.EAST
       case _:
         self.get_logger().error(f"Unrecognised grid heading: {s}")

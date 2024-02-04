@@ -12,12 +12,12 @@ agent:
   agent_name: Alice
   initially_this_agents_turn: True
   starting_grid_loc: B0
-  starting_grid_heading: up
+  starting_grid_heading: north
   ending_grid_loc: B7
   max_num_negotiation_messages: 15
   working_dir: "/home/ubuntu/LLM_ROS2_Control/"
-  model: "gpt-4-turbo-preview"
-  max_tokens: 500
+  model: "gpt-4-vision-preview"
+  max_tokens: 400
 
 commands:
   forwards: "@FORWARD"

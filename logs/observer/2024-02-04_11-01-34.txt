@@ -1,0 +1,236 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Given our starting positions and intended destinations, here's a proposed plan to avoid collision and reach our destinations:
+
+1. Both @WAIT
+2. Both @WAIT
+3. I(@FORWARD) You(@BACKWARDS)
+4. I(@FORWARD) You(@BACKWARDS)
+5. I(@FORWARD) You(@BACKWARDS)
+6. I(@FORWARD) You(@BACKWARDS)
+7. I(@FORWARD) You(@BACKWARDS)
+8. I(@FORWARD) You(@BACKWARDS)
+9. Both @WAIT
+10. Both @WAIT
+
+This plan ensures that we exchange positions without colliding, accounting for the commands' timing to synchronize our movements effectively. Please review and suggest any adjustments if necessary.
+INFO from Alice: Negotiation stage 2
+INFO from Bob: Considering the constraints and objectives outlined, your plan appears to aim for us to swap positions in a narrow environment, allowing for both forward and backward movements while avoiding collisions. 
+
+However, to refine and potentially accelerate our path to the destinations, I suggest a minor adjustment to reduce waiting time if our starting positions and goals indeed allow for it, which would depend on the specifics of our environment (distance and relative starting positions). Given the abstract nature of our scenario, here's a streamlined version presuming minimal distance for a swap:
+
+1. I(@FORWARD) You(@BACKWARDS)
+2. I(@FORWARD) You(@BACKWARDS)
+3. I(@FORWARD) You(@BACKWARDS)
+4. I(@FORWARD) You(@BACKWARDS)
+5. I(@FORWARD) You(@BACKWARDS)
+6. I(@FORWARD) You(@BACKWARDS)
+
+This reduces the operation by four steps, assuming we can start moving immediately without waiting and that the distance between us is just enough for a safe swap. If my assumption about distance or any other specific requirement of our task is incorrect, please correct me, and we can adjust this proposal accordingly.
+INFO from Bob: Negotiation stage 3
+INFO from Alice: Considering your refined approach and the abstract nature of our environment with a focus on efficiency and minimal waiting times, your streamlined version does indeed make the path to our destinations faster under the assumption of just enough distance for a safe swap. Based on the given starting positions (B0 for me, facing North, and B7 for you, facing South), and our targets (B7 for me, B0 for you), your proposal seems to account for our movement capabilities and the need to avoid collision effectively.
+
+Here's the revised plan incorporating your suggestions, which eliminates unnecessary waiting and moves us directly towards our objectives:
+
+1. I(@FORWARD) You(@BACKWARDS)
+2. I(@FORWARD) You(@BACKWARDS)
+3. I(@FORWARD) You(@BACKWARDS)
+4. I(@FORWARD) You(@BACKWARDS)
+5. I(@FORWARD) You(@BACKWARDS)
+6. I(@FORWARD) You(@BACKWARDS)
+
+This plan indeed expedites our exchange and minimizes the steps required. Unless there are further adjustments or considerations to be made, I agree with this approach.
+
+@SUPERVISOR
+INFO from Alice: Negotiation stage 4
+INFO from Alice: Supervisor called
+INFO from Bob: Understood. The plan has been set and agreed upon as follows:
+
+1. I(@FORWARD) You(@BACKWARDS)
+2. I(@FORWARD) You(@BACKWARDS)
+3. I(@FORWARD) You(@BACKWARDS)
+4. I(@FORWARD) You(@BACKWARDS)
+5. I(@FORWARD) You(@BACKWARDS)
+6. I(@FORWARD) You(@BACKWARDS)
+
+This ensures a direct and efficient path for both of us to reach our designated targets without unnecessary delays or steps. 
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 5
+INFO from Bob: Supervisor called
+INFO from Bob: I'm sorry, but I can't proceed with that action.
+INFO from Bob: Negotiation stage 7
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Bob: Final plan for 10.0.1.192
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+INFO from Bob: Negotiation finished
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: Final plan for 10.0.1.112
+As requested, here's the summarized numerical list of steps you should complete following our agreed plan:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @BACKWARDS
+5. @BACKWARDS
+6. @BACKWARDS
+INFO from Alice: I realized there was a mistake in processing your feedback. Let's revise the action plan based on our capabilities and the provided instructions. Given the distance and our respective starting points and destinations, my original plan might also need adjustments. However, given the constraints, we need to ensure a clear path for both of us to move without collision.
+
+The direct approach you proposed doesn't account for timing issues given our starting parameters. We need to account for the fact we cannot occupy the same space at the same time. Considering that, the pathway needs to incorporate a maneuver to ensure we don't collide, especially given the narrow environment.
+
+Here is a new proposed plan, considering we cannot pass each other in the narrow corridor:
+
+1. I @WAIT, You @WAIT - Given we start in positions that do not allow immediate crossing, we need to ensure coordination.
+2. I @FORWARD, You @BACKWARDS - Starting our movements.
+3. I @FORWARD, You @BACKWARDS.
+4. I @FORWARD, You @BACKWARDS.
+5. I @FORWARD, You @BACKWARDS - We continue to move toward our respective destinations.
+6. I @FORWARD, You @BACKWARDS.
+7. I @FORWARD, You @BACKWARDS - Completing the pass.
+
+This revised plan maintains the objective of swapping positions without collision, accounting for movement capabilities and restrictions. Please review this corrected proposal for any adjustments or confirm if it aligns with your calculations and the objective.
+INFO from Alice: Negotiation stage 6
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Bob: Final plan for 10.0.1.192
+1. @WAIT
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: Final plan for 10.0.1.112
+For your path from B7 to B0, facing South and moving to North, here are the steps you should complete:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @BACKWARDS
+5. @BACKWARDS
+6. @BACKWARDS
+INFO from Alice: Negotiation finished
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Invalid move in plan
+INFO from Alice: Full plan parsed
+Restart message sent
+INFO from Alice: Replanning
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: Replanning
+INFO from Bob: Full plan parsed
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Bob: Final plan for 10.0.1.192
+1. @WAIT
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Bob: Negotiation finished
+INFO from Bob: Full plan parsed
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Bob: Final plan for 10.0.1.192
+1. @WAIT
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Alice: Final plan for 10.0.1.112
+Given the need to replan and ensure the instructions are clear, here’s the corrected and detailed plan for the steps you need to complete, starting at B7 and aiming to reach B0, while facing South:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @BACKWARDS
+5. @BACKWARDS
+6. @BACKWARDS
+7. @BACKWARDS
+
+This plan should safely take you from your starting point to your destination without the risk of collision, given that I will take corresponding actions to move from B0 to B7.
+INFO from Alice: Final plan for 10.0.1.112
+Given your new starting position at B2, facing South, with the goal to reach B0, and my task to move from B0 to B7, here's your revised plan:
+
+1. @WAIT
+2. @BACKWARDS
+3. @BACKWARDS
+4. @WAIT
+5. @WAIT
+6. @WAIT
+7. @WAIT
+8. @WAIT
+
+These steps account for both avoiding a collision with me as I pass and successfully reaching your destination, B0.
+INFO from Alice: Negotiation finished
+INFO from Alice: Full plan parsed
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Bob: Final plan for 10.0.1.192
+1. @WAIT
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+INFO from Bob: Negotiation finished
+INFO from Bob: Full plan parsed
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: Final plan for 10.0.1.112
+Considering the new scenario where I am at B0 facing North, aiming to end at B7, and you are at B2 facing South, aiming to end at B0, here's the revised plan for the steps you should complete to ensure we both reach our designated ends without collision:
+
+1. @WAIT
+2. @BACKWARDS
+3. @BACKWARDS
+4. @WAIT
+5. @WAIT
+6. @WAIT
+7. @WAIT
+8. @WAIT
+
+These steps should ensure that you move from B2 to B0 safely while I navigate from B0 to B7 without any collisions.
