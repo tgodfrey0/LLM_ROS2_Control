@@ -355,7 +355,7 @@ class VelocityPublisher(Node):
     self.this_agents_turn = b
     self.turn_lock.release()
     
-  def _llm_req(self) -> ChatCompletion:
+  def _llm_req(self) -> ChatCompletion: #TODO Exponential backoff
     return self.client.chat.completions.create(
       model=self.MODEL_NAME,
       messages=self.global_conv,
