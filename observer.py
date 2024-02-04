@@ -28,7 +28,7 @@ def restart_recv(msg: Optional[str]) -> None:
 
 if __name__=="__main__":
   global now
-  sn = SwarmNet({"LLM": llm_recv, "READY": ready_recv, "FINISHED": finished_recv, "INFO": info_recv, "RESTART": restart_recv}, device_list = dl)
+  sn = SwarmNet({"LLM": llm_recv, "READY": ready_recv, "FINISHED": finished_recv, "INFO": info_recv, "RESTART": restart_recv, "MOVE": None}, device_list = dl)
   set_log_level(Log_Level.WARN)
   sn.start()
   

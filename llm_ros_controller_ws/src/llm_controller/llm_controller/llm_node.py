@@ -63,8 +63,10 @@ class VelocityPublisher(Node):
     self.grid = Grid(self.STARTING_GRID_LOC, self.STARTING_GRID_HEADING, 3, 8)
     self.scan_mutex = Lock()
     self.scan_ranges = []
+    self.ready_movement_lock = Lock()
+    self.other_agent_ready_movement = False
     
-    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": None, "RESTART": self.restart_recv}, device_list = self.SN_DEVICE_LIST) #! Publish INFO messages which can then be subscribed to by observers
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": None, "RESTART": self.restart_recv, "MOVE": self.move_recv}, device_list = self.SN_DEVICE_LIST) #! Publish INFO messages which can then be subscribed to by observers
     self.sn_ctrl.start()
     self.get_logger().info(f"SwarmNet initialised") 
     set_log_level(self.SN_LOG_LEVEL)
@@ -121,6 +123,17 @@ class VelocityPublisher(Node):
     
   def parse_plan(self):
     if(len(self.global_conv) > 1):
+      
+      self.info("Waiting for an agent to be ready for movement")
+      while(not self.is_ready_movement()):
+        self.sn_ctrl.send(f"MOVE")
+        self.wait_delay()
+        
+      self.sn_ctrl.send(f"MOVE")
+        
+      self.sn_ctrl.clear_rx_queue()
+      self.info("Agents ready for movement")
+      
       cmd = self.global_conv[len(self.global_conv)-1]["content"]
       for s in cmd.split("\n"):
         if(self.should_restart):
@@ -155,11 +168,13 @@ class VelocityPublisher(Node):
           self.info("Wait command")
           self.wait_delay()
         elif(self.CMD_SUPERVISOR in s):
-          pass
+          continue
         elif(s.strip() == ""):
           pass
+          continue
         else:
           self.get_logger().error(f"Unrecognised command: {s}")
+          continue
         self.wait_delay()
 
       self.info(f"Full plan parsed")
@@ -396,11 +411,21 @@ class VelocityPublisher(Node):
     self.other_agent_loc = msg.split(" ")[0]
     self.other_agent_heading = msg.split(" ")[1]
     self.ready_lock.release()
+    
+  def move_recv(self, msg: Optional[str]) -> None:
+    with self.ready_movement_lock:
+      self.other_agent_ready_movement = True
   
   def is_ready(self):
     self.ready_lock.acquire()
     b = self.other_agent_ready
     self.ready_lock.release()
+    return b
+  
+  def is_ready_movement(self):
+    self.ready_movement_lock.acquire()
+    b = self.other_agent_ready_movement
+    self.ready_movement_lock.release()
     return b
   
   def _supervisor_called(self, s: str) -> bool:

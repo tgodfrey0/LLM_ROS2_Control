@@ -1,0 +1,253 @@
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Vision model provided, appending image
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Vision model provided, appending image
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Understood. We must pass each other to reach our respective destinations. We can use the space at B4 and C4 to maneuver around each other. Let's plan our moves:
+
+1. Both of us will: @FORWARD to move from B0 to B1 and from B7 to B6, respectively. (We will now be at B1 and B6.)
+2. Both of us will: @FORWARD to move from B1 to B2 and from B6 to B5, respectively. (We will now be at B2 and B5.)
+3. I will: @FORWARD to move from B5 to B4. You will: @WAIT. (I will now be at B4, and you will remain at B2.)
+4. I will: @ANTICLOCKWISE to rotate and face East. You will: @FORWARD to move from B2 to B3. (I will now be facing East at B4, and you will be at B3.)
+5. I will: @FORWARD to move into C4. You will: @WAIT. (I will now be in C4, and you will remain at B3.)
+6. I will: @ANTICLOCKWISE to rotate and face South. You will: @FORWARD to move from B3 to B4. (I will now be facing South in C4, and you will be at B4.)
+7. I will: @WAIT. You will: @ANTICLOCKWISE to rotate and face East. (I will remain in C4, and you will be facing East at B4.)
+8. I will: @FORWARD to move from C4 to B4. You will: @FORWARD to move from B4 to C4. (We will now switch places; I will be at B4 facing South, and you will be at C4 facing East.)
+9. I will: @CLOCK
+INFO from Alice: Negotiation stage 2
+INFO from Bob: Sorry for the confusion, but it seems there was an error in the last command. Let's correct the plan from step 9 and complete it to ensure we both reach our destinations without colliding.
+
+Here's the revised and complete plan:
+
+1. Both of us will: @FORWARD to move from B0 to B1 and from B7 to B6, respectively.
+2. Both of us will: @FORWARD to move from B1 to B2 and from B6 to B5, respectively.
+3. I will: @FORWARD to move from B2 to B3. You will: @WAIT at B5.
+4. I will: @FORWARD to move from B3 to B4. You will: @WAIT at B5.
+5. I will: @ANTICLOCKWISE to rotate and face East. You will: @ANTICLOCKWISE to rotate and face West.
+6. I will: @FORWARD to move into C4. You will: @BACKWARDS to move from B5 to B4.
+7. I will: @ANTICLOCKWISE to rotate and face South. You will: @FORWARD to move into C4.
+8. I will: @FORWARD to move from C4 to B4. You will: @ANTICLOCKWISE to rotate and face South.
+9. I will: @FORWARD to move from B4 to B5. You will: @FORWARD to move from C4 to B4.
+10. I will: @FORWARD to move from B5 to B6. You will: @FORWARD to move from B4 to B3.
+11. I will: @FORWARD to move from B6 to B7. You will: @FORWARD to move from B3 to B2.
+12. You will: @FORWARD to move from B2 to B1. I will: @WAIT at B7.
+13. You will
+INFO from Bob: Negotiation stage 3
+INFO from Alice: Apologies for the interruption. There seems to have been a mistake in the continuation of the plan after step 12. Here's the corrected completion of the plan, taking up from where we left off:
+
+1. Both of us will: @FORWARD to move from B0 to B1 and from B7 to B6, respectively.
+2. Both of us will: @FORWARD to move from B1 to B2 and from B6 to B5, respectively.
+3. I will: @FORWARD to move from B2 to B3. You will: @WAIT at B5.
+4. I will: @FORWARD to move from B3 to B4. You will: @WAIT at B5.
+5. I will: @ANTICLOCKWISE to rotate and face East. You will: @ANTICLOCKWISE to rotate and face West.
+6. I will: @FORWARD to move into C4. You will: @FORWARD to move into B4.
+7. I will: @ANTICLOCKWISE to rotate and face South. You will: @ANTICLOCKWISE to rotate and face East.
+8. I will: @FORWARD to move from C4 to B4. You will: @FORWARD to move from B4 to C4.
+9. I will: @FORWARD to continue moving from B4 to B5. You will: @ANTICLOCKWISE to rotate and face South.
+10. I will: @FORWARD to move from B5 to B6. You will: @FORWARD to move from C4 to B4.
+11. I will: @FORWARD to move from B6 to B7. You will: @FORWARD to move from B4 to B3.
+12. You will: @FORWARD to move from B3 to B2. I will: @WAIT at B7.
+13. You will: @FORWARD to move from
+INFO from Alice: Negotiation stage 4
+INFO from Bob: It seems the message has been cut off again. Let's finalize the plan ensuring both of us reach our destinations safely:
+
+1. Both of us will: @FORWARD to move from B0 to B1 and from B7 to B6, respectively.
+2. Both of us will: @FORWARD to move from B1 to B2 and from B6 to B5, respectively.
+3. I will: @FORWARD to move from B2 to B3. You will: @WAIT at B5.
+4. I will: @FORWARD to move from B3 to B4. You will: @WAIT at B5.
+5. I will: @ANTICLOCKWISE to rotate and face East. You will: @ANTICLOCKWISE to rotate and face West.
+6. I will: @FORWARD to move into C4. You will: @FORWARD to move into B4.
+7. I will: @ANTICLOCKWISE to rotate and face South. You will: @ANTICLOCKWISE to rotate and face East.
+8. I will: @FORWARD to move from C4 to B4. You will: @FORWARD to move from B4 to C4.
+9. I will: @FORWARD to continue moving from B4 to B5. You will: @ANTICLOCKWISE to rotate and face South.
+10. I will: @FORWARD to move from B5 to B6. You will: @FORWARD to move from C4 to B4.
+11. I will: @FORWARD to move from B6 to B7. You will: @FORWARD to move from B4 to B3.
+12. You will: @FORWARD to move from B3 to B2. I will: @WAIT at B7.
+13. You will: @FORWARD to move from B2 to B1. I will: @WAIT at B7.
+14.
+INFO from Bob: Negotiation stage 5
+INFO from Alice: Let's finish the plan with the last few steps:
+
+14. You will: @FORWARD to move from B1 to B0. I will: @WAIT at B7.
+
+We both have reached our destinations according to this plan. 
+
+@SUPERVISOR
+INFO from Alice: Negotiation stage 6
+INFO from Alice: Supervisor called
+INFO from Bob: With the completion of step 14, we have both reached our destinations without any collisions. The plan is now complete.
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 7
+INFO from Bob: Supervisor called
+INFO from Alice: I apologize for any confusion. Let's clarify the final steps of the plan without interruptions:
+
+1. Both of us will: @FORWARD to move from B0 to B1 and from B7 to B6, respectively.
+2. Both of us will: @FORWARD to move from B1 to B2 and from B6 to B5, respectively.
+3. I will: @FORWARD to move from B2 to B3. You will: @WAIT at B5.
+4. I will: @FORWARD to move from B3 to B4. You will: @WAIT at B5.
+5. I will: @ANTICLOCKWISE to rotate and face East. You will: @ANTICLOCKWISE to rotate and face West.
+6. I will: @FORWARD to move into C4. You will: @FORWARD to move into B4.
+7. I will: @ANTICLOCKWISE to rotate and face South. You will: @ANTICLOCKWISE to rotate and face East.
+8. I will: @FORWARD to move from C4 to B4. You will: @FORWARD to move from B4 to C4.
+9. I will: @FORWARD to continue moving from B4 to B5. You will: @ANTICLOCKWISE to rotate and face South.
+10. I will: @FORWARD to move from B5 to B6. You will: @FORWARD to move from C4 to B4.
+11. I will: @FORWARD to move from B6 to B7. You will: @FORWARD to move from B4 to B3.
+12. You will: @FORWARD to move from B3 to B2. I will: @WAIT at B7.
+13. You will: @FORWARD to move from B2 to B1. I will: @WAIT at B7.
+14. You will: @FORWARD
+INFO from Alice: Negotiation stage 8
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Bob: Final plan for 10.0.1.192
+Certainly, here is the summarized list of commands for each of the steps you (as the robot starting at B7) should complete:
+
+1. @FORWARD (move from B7 to B6)
+2. @FORWARD (move from B6 to B5)
+3. @WAIT (stay at B5)
+4. @WAIT (stay at B5)
+5. @ANTICLOCKWISE (rotate to face West at B5)
+6. @FORWARD (move into B4 from B5)
+7. @ANTICLOCKWISE (rotate to face East at B4)
+8. @FORWARD (move from B4 into C4)
+9. @ANTICLOCKWISE (rotate to face South at C4)
+10. @FORWARD (move from C4 to B4)
+11. @WAIT (stay at B4)
+12. @FORWARD (move from B4 to B3)
+13. @FORWARD (move from B3 to B2)
+14. @FORWARD (move from B2 to B1)
+15. @FORWARD (move from B1 to B0)
+INFO from Alice: Final plan for 10.0.1.112
+Here's the summarised numerical list of your individual steps:
+
+1. @FORWARD (Move from B0 to B1)
+2. @FORWARD (Move from B1 to B2)
+3. @FORWARD (Move from B2 to B3)
+4. @FORWARD (Move from B3 to B4)
+5. @ANTICLOCKWISE (Rotate to face East at B4)
+6. @FORWARD (Move from B4 to C4)
+7. @ANTICLOCKWISE (Rotate to face South at C4)
+8. @FORWARD (Move from C4 to B4)
+9. @WAIT
+10. @WAIT
+11. @WAIT
+12. @FORWARD (Move from B4 to B3)
+13. @FORWARD (Move from B3 to B2)
+14. @FORWARD (Move from B2 to B1)
+15. @FORWARD (Move from B1 to B0)
+INFO from Alice: Negotiation finished
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: I'm ready to discuss our movement plan. Let's start by assuming we are both facing north initially and need to pass each other in the corridor. If you start at B0 and need to get to B7, and I start at B7 needing to get to B0, we can coordinate as follows:
+
+1. I will: @FORWARD to B6. You will: @FORWARD to B1.
+2. I will: @FORWARD to B5. You will: @FORWARD to B2.
+3. I will: @FORWARD to B4. You will: @WAIT.
+4. I will: @ANTICLOCKWISE and then @FORWARD to C4. You will: @FORWARD to B3.
+5. I will: @WAIT. You will: @ANTICLOCKWISE and then @FORWARD to C4.
+6. I will: @ANTICLOCKWISE and then @FORWARD to B4. You will: @FORWARD to B4 (now we swapped places).
+7. I will: @FORWARD to B3. You will: @WAIT.
+8. I will: @FORWARD to B2. You will: @FORWARD to C4.
+9. I will: @FORWARD to B1. You will: @FORWARD to B5.
+10. I will: @FORWARD to B0. You will: @FORWARD to B6.
+11. You will: @FORWARD to B7. (Now you've reached your destination).
+
+Please review the plan and propose any necessary adjustments. Once we agree, we can submit the finalized version.
+INFO from Bob: Negotiation stage 9
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Alice: Final plan for 10.0.1.112
+Certainly! Here's the summarised numerical list of the steps you should take according to the plan:
+
+1. @FORWARD (Move from B0 to B1)
+2. @FORWARD (Move from B1 to B2)
+3. @WAIT
+4. @FORWARD (Move from B2 to B3)
+5. @ANTICLOCKWISE (Rotate to face East at B3)
+6. @FORWARD (Move from B3 to C4)
+7. @WAIT
+8. @FORWARD (Move from C4 to B4)
+9. @WAIT
+10. @WAIT
+11. @WAIT
+
+This list should help you reach your destination at B7 in coordination with my movements to reach B0.
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Anticlockwise command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Anticlockwise command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: Final plan for 10.0.1.192
+Here is the summarized list of commands for each step that you should complete, starting from B0 and moving towards B7:
+
+1. @FORWARD (move from B0 to B1)
+2. @FORWARD (move from B1 to B2)
+3. @WAIT (remain at B2)
+4. @FORWARD (move from B2 to B3)
+5. @ANTICLOCKWISE (rotate to face West at B3)
+6. @FORWARD (move into C4 from B3)
+7. @FORWARD (move from C4 to B4, after I move out of B4 to C4)
+8. @FORWARD (move from B4 to B5)
+9. @FORWARD (move from B5 to B6)
+10. @FORWARD (move from B6 to B7)
+
+Please confirm this plan works for you or suggest any changes if needed. Once we agree on the plan, we can call the @SUPERVISOR.
+INFO from Bob: Negotiation finished
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Anticlockwise command
