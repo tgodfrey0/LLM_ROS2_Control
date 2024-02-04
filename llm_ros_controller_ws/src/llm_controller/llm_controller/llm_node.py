@@ -8,6 +8,7 @@ import yaml
 from math import pi
 from openai import OpenAI, ChatCompletion
 from swarmnet import SwarmNet, Log_Level, set_log_level
+from tenacity import retry, stop_after_attempt, wait_random_exponential
 from threading import Lock
 from typing import Dict, Optional, List, Tuple
 
@@ -354,8 +355,9 @@ class VelocityPublisher(Node):
     self.turn_lock.acquire()
     self.this_agents_turn = b
     self.turn_lock.release()
-    
-  def _llm_req(self) -> ChatCompletion: #TODO Exponential backoff
+  
+  @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6)) # Exponential backoff
+  def _llm_req(self) -> ChatCompletion:
     return self.client.chat.completions.create(
       model=self.MODEL_NAME,
       messages=self.global_conv,
