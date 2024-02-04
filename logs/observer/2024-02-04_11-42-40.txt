@@ -1,0 +1,209 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Vision model provided, appending image
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Vision model provided, appending image
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Understood. We need to swap positions within the corridor without colliding. Since we cannot pass each other in the narrow corridor, one of us has to wait in the wider section while the other passes by. Here is the proposed plan:
+
+1. @FORWARD (I will move from B0 to B1)
+2. @FORWARD (I will move from B1 to B2)
+3. @FORWARD (I will move from B2 to B3)
+4. @WAIT (I will wait at B3)
+5. @WAIT (I will wait at B3)
+6. @FORWARD (I will move from B3 to B4)
+7. @FORWARD (I will move from B4 to B5)
+8. @FORWARD (I will move from B5 to B6)
+9. @FORWARD (I will move from B6 to B7)
+
+Your moves will be as follows:
+
+1. @WAIT (You will wait at B7)
+2. @WAIT (You will wait at B7)
+3. @WAIT (You will wait at B7)
+4. @FORWARD (You will move from B7 to B6)
+5. @FORWARD (You will move from B6 to B5)
+6. @WAIT (You will wait at B5)
+7. @FORWARD (You will move from B5 to B4)
+8. @FORWARD (You will move from B4 to B3)
+9. @FORWARD (You will move from B3 to B2)
+10. @FORWARD (You will move from B2 to B1)
+11. @FORWARD (You will move from B1 to B0)
+
+Please confirm this plan or suggest changes if needed. Once we agree on the final plan, I'll call the '@SUPERVISOR' tag.
+INFO from Alice: Negotiation stage 2
+INFO from Alice: Supervisor called
+INFO from Alice: I need to revise my plan. Here's the updated version:
+
+1. @FORWARD (I will move from B0 to B1)
+2. @FORWARD (I will move from B1 to B2)
+3. @FORWARD (I will move from B2 to B3, where there’s space for both of us)
+4. @FORWARD (I will move from B3 to B4)
+5. @FORWARD (I will move from B4 to B5)
+6. @FORWARD (I will move from B5 to B6)
+7. @FORWARD (I will move from B6 to B7)
+
+Your moves will be as follows:
+
+1. @WAIT (You will wait at B7)
+2. @WAIT (You will wait at B7)
+3. @WAIT (You will wait at B7, allowing me time to reach B3 where we have space to not collide)
+4. @FORWARD (You will move from B7 to B6)
+5. @FORWARD (You will move from B6 to B5)
+6. @FORWARD (You will move from B5 to B4)
+7. @FORWARD (You will move from B4 to B3)
+8. @FORWARD (You will move from B3 to B2)
+9. @FORWARD (You will move from B2 to B1)
+10. @FORWARD (You will move from B1 to B0)
+
+I believe this should work. If you agree to this plan, I will call '@SUPERVISOR' to confirm.
+INFO from Alice: Negotiation stage 4
+INFO from Bob: Your plan looks logical, but I see an opportunity to make it more efficient by reducing the number of moves:
+
+1. @WAIT - You will wait at B0
+2. @FORWARD - I will move from B7 to B6
+3. @FORWARD - I will move from B6 to B5
+4. @FORWARD - You will move from B0 to B1
+5. @FORWARD - I will move from B5 to B4
+6. @WAIT - You will wait at B1
+7. @FORWARD - You will move from B1 to B2
+8. @FORWARD - You will move from B4 to B3
+9. @FORWARD - You will move from B2 to B3
+10. @FORWARD - I will move from B3 to B2
+11. @FORWARD - You will move from B3 to B4
+12. @FORWARD - I will move from B2 to B1
+13. @FORWARD - You will move from B4 to B5
+14. @FORWARD - I will move from B1 to B0 
+
+This way, we both reach our destinations with fewer steps. Please review and confirm if this is agreeable. If so, I will call the '@SUPERVISOR' tag.
+INFO from Bob: Negotiation stage 3
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: Final plan for 10.0.1.112
+Here's the condensed numerical plan for your movements:
+
+1. @WAIT
+2. @WAIT
+3. @WAIT
+4. @FORWARD
+5. @WAIT
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+
+Once you confirm this plan, I will call the '@SUPERVISOR' to finalize it.
+INFO from Bob: Final plan for 10.0.1.192
+1. @WAIT
+2. @FORWARD
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+
+Please confirm if this plan is acceptable. Once you do, we can proceed and I will call '@SUPERVISOR'.
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Final plan for 10.0.1.192
+Certainly, here is the detailed plan for your moves:
+
+1. @WAIT
+2. @WAIT
+3. @WAIT
+4. @FORWARD
+5. @WAIT
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+13. @FORWARD
+
+Once you confirm this plan, I will call the '@SUPERVISOR' tag.
+INFO from Alice: Final plan for 10.0.1.112
+Certainly, here is the summarised list of commands for the steps you should complete:
+
+1. @WAIT
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+13. @FORWARD
+14. @FORWARD
+
+Each command corresponds to a single step, in sequence, to be taken to move from B7 to B0. If this is agreeable, I will proceed to call the '@SUPERVISOR'.
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: Agents ready for movement
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
