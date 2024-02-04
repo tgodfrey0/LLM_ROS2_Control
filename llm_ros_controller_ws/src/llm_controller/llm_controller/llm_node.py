@@ -110,9 +110,17 @@ class VelocityPublisher(Node):
       })
   
     while(True):
-      self.create_plan()
+      with self.restart_lock:
+        b = self.should_restart
+        
+      self.create_plan(b)
       self.parse_plan()
-      if(self.should_restart):
+      
+      with self.restart_lock:
+        b = self.should_restart
+        self.should_restart = False
+        
+      if(b):
         continue
       elif(f"{self.grid}" != self.ENDING_GRID_LOC):
         self.sn_ctrl.send("RESTART")
@@ -300,7 +308,7 @@ class VelocityPublisher(Node):
     self.grid.clockwise()
     self._pub_rotation(-1)
     
-  def create_plan(self):
+  def create_plan(self, is_restart: bool):
     self.info("Waiting for an agent to be ready")
     while(not self.is_ready()):
       self.sn_ctrl.send(f"READY {self.grid} {self.grid._print_heading()}")
@@ -313,7 +321,7 @@ class VelocityPublisher(Node):
         
     self.client = OpenAI() # Use the OPENAI_API_KEY environment variable
       
-    self.negotiate()
+    self.negotiate(is_restart)
     self.sn_ctrl.send(f"INFO {self.AGENT_NAME}: Negotiation finished")
     
   def is_my_turn(self):
@@ -428,7 +436,10 @@ class VelocityPublisher(Node):
     self.ready_movement_lock.release()
     return b
   
-  def _supervisor_called(self, s: str) -> bool:
+  def _supervisor_called(self, s: str, is_restart: bool) -> bool:
+    if(is_restart):
+      return False
+    
     lines = s.split("\n")
     status = False
     
@@ -444,7 +455,7 @@ class VelocityPublisher(Node):
     
     return status
 
-  def negotiate(self):
+  def negotiate(self, is_restart: bool):
     current_stage = 0
     
     if self.this_agents_turn:
@@ -459,7 +470,7 @@ class VelocityPublisher(Node):
           if(isinstance(self.global_conv[len(self.global_conv)-1]["content"], list)):
             continue
           
-          finished = self._supervisor_called(self.global_conv[-1:][0]["content"].strip())
+          finished = self._supervisor_called(self.global_conv[-1:][0]["content"].strip(), (current_stage == 0) and is_restart)
           
           if(current_stage >= self.MAX_NUM_NEGOTIATION_MESSAGES or finished or self.other_agent_finished):
             break
