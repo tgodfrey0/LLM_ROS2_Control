@@ -22,7 +22,7 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 # Local package imports
 from .grid import Grid
 
-image_name = "layout.drawio.png"
+image_name = "layout.drawio.png" #TODO Update image to remove grid outside of area
 
 class VelocityPublisher(Node):
   def __init__(self):
