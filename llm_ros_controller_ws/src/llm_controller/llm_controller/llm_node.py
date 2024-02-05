@@ -175,7 +175,7 @@ class VelocityPublisher(Node):
           self.info("Min LIDAR reading")
           self.pub_backwards()
         elif(self.CMD_FORWARD in s):
-          if(self.grid.check_forwards()):
+          if(self.grid.check_forwards()): #TODO None of these checks will work. Maybe get new position then check with LLM as to whether it is in the grid?
             self.info("Invalid move in plan")
             break
           self.pub_forwards()
