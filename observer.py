@@ -20,7 +20,11 @@ def finished_recv(msg: Optional[str]) -> None:
     file.write(f"FINISHED message sent\n")
 
 def info_recv(msg: Optional[str]) -> None:
-  print(f"INFO from {msg.strip()}")
+  name = msg.split(":", 1)
+  if(name == "Alice"):
+    print(f"\033[91mINFO from {msg.strip()}\033[0m")
+  else:
+    print(f"\033[94mINFO from {msg.strip()}\033[0m")
   with open(filename, "a") as file:
     file.write(f"INFO from {msg.strip()}\n")
     
