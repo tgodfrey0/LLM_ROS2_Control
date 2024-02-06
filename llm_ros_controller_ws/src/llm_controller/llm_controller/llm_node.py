@@ -91,6 +91,21 @@ class VelocityPublisher(Node):
     #         We cannot fit past each other in the narrow corridor and we cannot leave the corridor.\
     #         The final plan should be a numbered list only containing these commands and we should try to complete the task as quickly as possible."}]
     
+    # self.global_conv = [
+    #     {"role": "system", "content": f"You and I are on a grid and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
+    #       We will negotiate with each other to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
+    #         We cannot go outside of the grid and we cannot be in the same grid square at once. Only one of us can fit in a square at once.\
+    #         Once this has been decided you should call the '\f{self.CMD_SUPERVISOR}' tag at the end of the message but you should agree on the plan first. And print your plan in a concise numbered list using only the following command words:\
+    #           - '{self.CMD_FORWARD}' to move one square forwards\
+    #           - '{self.CMD_BACKWARDS}' to move one square backwards \
+    #           - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
+    #           - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
+    #           - '{self.CMD_WAIT}' to wait for the time taken to move one square \
+    #         Do not create new commands and we should both move at the same time.\
+    #         We should keep our messages as short as possible.\
+    #         We cannot fit past each other in the narrow corridor and we cannot leave the corridor. We cannot move past\
+    #         The final plan should be a numbered list only containing these commands and we should try to complete the task as quickly as possible."}]
+    
     self.global_conv = [
         {"role": "system", "content": f"You and I are on a grid and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
           We will negotiate with each other to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
@@ -103,8 +118,9 @@ class VelocityPublisher(Node):
               - '{self.CMD_WAIT}' to wait for the time taken to move one square \
             Do not create new commands and we should both move at the same time.\
             We should keep our messages as short as possible.\
-            We cannot fit past each other in the narrow corridor and we cannot leave the corridor. We cannot move past\
+            We cannot fit past each other in the narrow corridor and we cannot leave the corridor. Areas A3 and C4 allow one of us to move out of the way of the other.\
             The final plan should be a numbered list only containing these commands and we should try to complete the task as quickly as possible."}]
+    
     
     if("vision" in self.MODEL_NAME):
       self.info("Vision model provided, appending image")
