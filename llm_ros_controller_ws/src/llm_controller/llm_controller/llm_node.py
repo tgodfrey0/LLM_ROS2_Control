@@ -52,6 +52,7 @@ class VelocityPublisher(Node):
       self.listener_callback,
       qos_profile=qos
     )
+    self.subscription
     
     self.client: OpenAI = None
     self.this_agents_turn = self.INITIALLY_THIS_AGENTS_TURN
