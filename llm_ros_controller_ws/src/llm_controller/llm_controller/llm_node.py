@@ -5,7 +5,7 @@ import openai
 import os
 import sys
 import yaml
-from math import pi
+from math import pi, radians
 from openai import OpenAI, ChatCompletion
 from swarmnet import SwarmNet, Log_Level, set_log_level
 from tenacity import retry, stop_after_attempt, wait_random_exponential
@@ -579,8 +579,8 @@ class VelocityPublisher(Node):
       self.LINEAR_SPEED: float = data["movement"]["linear"]["speed"]
       self.LINEAR_DISTANCE: float = data["movement"]["linear"]["distance"]
       self.LINEAR_TIME: float = self.LINEAR_DISTANCE / self.LINEAR_SPEED
-      self.ANGULAR_SPEED: float = data["movement"]["angular"]["speed"]
-      self.ANGULAR_DISTANCE: float = data["movement"]["angular"]["distance"]
+      self.ANGULAR_SPEED: float = radians(float(data["movement"]["angular"]["speed"]))
+      self.ANGULAR_DISTANCE: float = radians(float(data["movement"]["angular"]["distance"]))
       self.ANGULAR_TIME: float = self.ANGULAR_DISTANCE / self.ANGULAR_SPEED
       self.WAITING_TIME: float = data["movement"]["waiting_time"]
       self.LIDAR_THRESHOLD: float = data["movement"]["lidar_threshold"]
