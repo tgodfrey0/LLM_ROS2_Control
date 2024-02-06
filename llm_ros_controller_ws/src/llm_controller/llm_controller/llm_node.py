@@ -162,7 +162,7 @@ class VelocityPublisher(Node):
         self.restart(True)
       else:
         self.info("Task completed :)")
-        break
+        self.destroy_node()
     
   def parse_plan(self):
     if(len(self.global_conv) > 1):
@@ -620,7 +620,8 @@ def main(args=None):
   rclpy.init()
   velocity_publisher = VelocityPublisher()
   
-  rclpy.spin_once(velocity_publisher) #* spin_once will parse the given plan then return
+  # rclpy.spin_once(velocity_publisher) #* spin_once will parse the given plan then return
+  rclpy.spin(velocity_publisher)
   velocity_publisher.sn_ctrl.kill()
   velocity_publisher.destroy_node()
   rclpy.shutdown()
