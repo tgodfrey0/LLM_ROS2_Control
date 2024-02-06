@@ -71,7 +71,7 @@ class Grid():
     print(f"Current grid location: {self}")
     print(f"Current heading: {self.heading.name}")
   
-  def check_forwards(self):
+  def sim_forwards(self) -> str:
     r = self.row
     c = self.col
 
@@ -85,9 +85,9 @@ class Grid():
       case Grid.Heading.EAST:
         c = chr(ord(c)+1)
     
-    return (self._check_bound_min_col(c)) or (self._check_bound_max_col(c)) or (self._check_bound_min_row(r)) or (self._check_bound_max_row(r))
+    return f"{c}{r}"
   
-  def check_backwards(self):
+  def sim_backwards(self) -> str:
     r = self.row
     c = self.col
 
@@ -101,7 +101,7 @@ class Grid():
       case Grid.Heading.EAST:
         c = chr(ord(c)-1)
 
-    return (self._check_bound_min_col(c)) or (self._check_bound_max_col(c)) or (self._check_bound_min_row(r)) or (self._check_bound_max_row(r))
+    return f"{c}{r}"
   
   def forwards(self):
     match self.heading:

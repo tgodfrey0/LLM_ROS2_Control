@@ -22,7 +22,9 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 # Local package imports
 from .grid import Grid
 
-image_name = "layout.drawio.png" #TODO Update image to remove grid outside of area
+valid_grid_positions: List[str] = ["A3", "B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "C4"]
+
+image_name = "layout.drawio.png"
 
 class VelocityPublisher(Node):
   def __init__(self):
@@ -175,13 +177,15 @@ class VelocityPublisher(Node):
           self.info("Min LIDAR reading")
           self.pub_backwards()
         elif(self.CMD_FORWARD in s):
-          if(self.grid.check_forwards()): #TODO None of these checks will work. Maybe get new position then check with LLM as to whether it is in the grid?
-            self.info("Invalid move in plan")
+          new_pos = self.grid.sim_forwards()
+          if(new_pos not in valid_grid_positions):
+            self.info(f"Invalid move in plan, {new_pos} is not a valid position")
             break
           self.pub_forwards()
         elif(self.CMD_BACKWARDS in s):
-          if(self.grid.check_backwards()):
-            self.info("Invalid move in plan")
+          new_pos = self.grid.sim_backwards()
+          if(new_pos not in valid_grid_positions):
+            self.info(f"Invalid move in plan, {new_pos} is not a valid position")
             break
           self.pub_backwards()
         elif(self.CMD_ROTATE_CLOCKWISE in s):
@@ -200,8 +204,7 @@ class VelocityPublisher(Node):
           self.get_logger().error(f"Unrecognised command: {s}")
           continue
         self.wait_delay()
-
-      self.info(f"Full plan parsed")
+      
     
   # TODO Replan and restart from current position 
   def restart(self, this_agent_stuck: bool):

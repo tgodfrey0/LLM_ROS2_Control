@@ -1,5 +1,6 @@
 from swarmnet import SwarmNet, Log_Level, set_log_level
 from typing import Optional, List, Tuple
+from colorama import Fore, Style
 import datetime
 
 dl: List[Tuple[str, int]] = [("10.0.1.112", 51000), ("10.0.1.192", 51000)] # Other device
@@ -21,10 +22,11 @@ def finished_recv(msg: Optional[str]) -> None:
 
 def info_recv(msg: Optional[str]) -> None:
   name = msg.split(":", 1)
-  if(name == "Alice"):
-    print(f"\033[91mINFO from {msg.strip()}\033[0m")
+  if name[0] == "Alice":
+    print(f"{Fore.RED}INFO from {msg.strip()}{Style.RESET_ALL}")
   else:
-    print(f"\033[94mINFO from {msg.strip()}\033[0m")
+    print(f"{Fore.BLUE}INFO from {msg.strip()}{Style.RESET_ALL}")
+
   with open(filename, "a") as file:
     file.write(f"INFO from {msg.strip()}\n")
     

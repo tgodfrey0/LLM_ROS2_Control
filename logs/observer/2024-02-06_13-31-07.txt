@@ -1,0 +1,368 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: To achieve our goal of swapping positions without colliding in the narrow corridor, we need to carefully plan our moves. Here's a proposal for our movements:
+
+1. I will start by moving forward to allow us some space for maneuvering.
+2. You will need to wait initially since we are starting directly opposed and need to prevent a collision.
+3. Once we have enough space between us, we can both move towards our intended goals.
+4. We might need to incorporate rotational moves to ensure we are facing the correct direction upon reaching our destinations.
+
+Given the conditions, here's a simplified plan:
+
+1. @FORWARD - I move forward to B1.
+2. @WAIT - You wait, maintaining your position at B7.
+3. @FORWARD - I move forward to B2.
+4. @FORWARD - You move forward to B6 (since you are facing South, forward for you is towards B0).
+5. We repeat the @FORWARD command six more times, allowing me to reach B7 and you to reach B0.
+6. No rotations are necessary since we are already facing the correct directions for our intended destinations.
+
+Does this plan sound agreeable, or would you like to propose adjustments?
+INFO from Alice: Negotiation stage 2
+INFO from Bob: Your proposal has a good foundation, but it seems there might be a misunderstanding in the spatial arrangement based on the commands mentioned. If we are in a narrow corridor and start directly opposed, it implies we are facing each other. Therefore, if I wait and you move forward, we'd quickly run into each other. Also, the repeated forward commands without rotations or additional waits would lead to a collision given we are facing each other from the start. 
+
+Considering the need for both of us to swap positions without colliding and the constraints described, here’s an adjusted plan focusing on avoiding collision through careful maneuvering:
+
+1. @FORWARD - You move forward to create some space.
+2. @WAIT - I wait, allowing you to make necessary space.
+3. @FORWARD - You move forward again to ensure enough distance between us.
+4. @CLOCKWISE - I rotate clockwise to face away and avoid collision.
+5. @BACKWARDS - I move backwards, essentially moving away from you to create space.
+6. @BACKWARDS - I continue moving backwards towards your initial position.
+7. @CLOCKWISE - You rotate clockwise to prepare for moving backwards.
+8. @BACKWARDS - You move backwards towards my initial position.
+9. @BACKWARDS - Continue moving backwards to ensure we've fully swapped positions.
+
+We both end up facing away from the direction we initially were, but we achieve the goal without collision. Rotations help to align our movements to prevent direct confrontation. Let me know if you agree with this plan or if there are modifications you'd suggest!
+INFO from Bob: Negotiation stage 3
+INFO from Alice: Your adjustment to the plan makes sense, considering the need to avoid collision in the narrow corridor and given that we start facing each other. Your emphasis on using rotations and backwards movements to maintain safe distances and ultimately swap positions is logical. However, it appears we both overlooked specifying enough steps to fully swap our starting positions from B0 to B7 and B7 to B0, respectively. Given the length of the corridor, more forward or backward movements are needed.
+
+Here’s a revision of the plan incorporating your feedback and ensuring we complete the swap:
+
+1. @FORWARD - I move forward to B1 to initiate space creation.
+2. @WAIT - You wait, allowing me to move without us colliding.
+3. @FORWARD (x3) - I continue forward to B4, creating significant space.
+4. @CLOCKWISE - You rotate clockwise to face East.
+5. @CLOCKWISE - I rotate clockwise to face West, ensuring we don’t collide.
+6. @BACKWARDS (x3) - You move backwards toB4, moving south but towards B0 due to the previous rotation.
+7. @BACKWARDS (x3) - I move backwards to B3, but effectively moving north towards B7.
+8. @CLOCKWISE - You rotate clockwise to face South again.
+9. @CLOCKWISE - I rotate clockwise to face North again, aligning us with our target destinations.
+10. @FORWARD (x3) - You move forward (now effectively backwards towards B0) to B1.
+11. @FORWARD (x3) - I move forward to B6, nearing my destination.
+
+We would need to adjust the number of @FORWARD and @BACKWARDS commands to accurately reflect the distance between our starting and ending points, considering the rotation adjustments. Would you agree with these adjustments and the necessity for more forward/backwards commands to ensure we complete the swap successfully?
+INFO from Alice: Negotiation stage 4
+INFO from Bob: Your revised plan addresses the oversight in calculating the necessary movements to ensure a complete swap from B0 to B7 and vice versa. However, there seems to be a misunderstanding in the execution of moving backwards and forwards in relation to rotations, as well as an underestimation of the total moves required considering the length of the corridor (assuming it spans from B0 to B7). Let's refine the plan with precise movements to ensure we cover the entire distance without collisions and correct directional orientation at the end.
+
+Given the new considerations and clarifying the roles (you starting at B0, moving towards B7, and I starting at B7 moving towards B0), here's a tailored plan:
+
+1. @FORWARD - You move forward to B1 to create initial spacing.
+2. @WAIT - I wait, giving you room to move without collision.
+3. @FORWARD x5 - You continue forward to B6, creating substantial space between us.
+4. @CLOCKWISE - I rotate clockwise to face East.
+5. @CLOCKWISE - You rotate clockwise to face West, ensuring we avoid collision.
+6. @BACKWARDS x5 - I move backward (towards B1 but effectively North due to rotation) to create even more space.
+7. @BACKWARDS x5 - You move backward (towards B6 but effectively South due to rotation) to further our swap.
+8. @CLOCKWISE - I rotate clockwise to face South, readying for the final move.
+9. @CLOCKWISE - You rotate clockwise to face North, aligning for the end positions.
+10. @FORWARD x1 - I move forward to reach B0, completing my journey.
+11. @FORWARD x1 - You move forward to reach B7, finalizing your path.
+
+This plan ensures we maintain a safe distance throughout our maneuvers, utilize rotations to avoid a collision, and accurately cover the distance required to swap positions from B0 to B7
+INFO from Bob: Negotiation stage 5
+INFO from Alice: Your refined plan precisely addresses the distance and directionality concerns while ensuring safety and efficiency in our movement plan. Thank you for clarifying and improving the strategy to ensure we both successfully reach our intended destinations without collision and with the correct orientation. The step-by-step instructions now consider the entire corridor length and necessary rotations for proper alignment. 
+
+I agree with your tailored plan. This approach guarantees that we both utilize the space effectively, rotate to avoid direct confrontation, and ultimately swap positions from B0 to B7 and B7 to B0, with the correct final orientations. 
+
+Here's the agreed-upon plan for our records:
+
+1. @FORWARD - I move forward to B1 to create initial spacing.
+2. @WAIT - You wait, giving me room to move without collision.
+3. @FORWARD x5 - I continue forward to B6, creating substantial space between us.
+4. @CLOCKWISE - You rotate clockwise to face East.
+5. @CLOCKWISE - I rotate clockwise to face West, ensuring we avoid collision.
+6. @BACKWARDS x5 - You move backward (towards B1 but effectively North due to rotation) to create even more space.
+7. @BACKWARDS x5 - I move backward (towards B6 but effectively South due to rotation) to further our swap.
+8. @CLOCKWISE - You rotate clockwise to face South, readying for the final move.
+9. @CLOCKWISE - I rotate clockwise to face North, aligning for the end positions.
+10. @FORWARD x1 - You move forward to reach B0, completing your journey.
+11. @FORWARD x1 - I move forward to reach B7, finalizing my path.
+
+This comprehensive plan ensures we avoid collisions and reach our targeted destinations effectively.
+INFO from Alice: Negotiation stage 6
+INFO from Bob: @SUPERVISOR
+INFO from Bob: Negotiation stage 7
+INFO from Bob: Supervisor called
+INFO from Alice: It appears I'm running in a simulation-only mode and thus don't have the capability to execute or notify a "@SUPERVISOR" in your context or engage in actual movement. My role is to assist in planning and strategizing within provided scenarios. If there's anything more I can help you with related to planning, strategizing, or further clarifications on this scenario, feel free to ask!
+INFO from Alice: Negotiation stage 8
+INFO from Bob: The agreed-upon plan has been noted and confirmed for execution:
+
+1. @FORWARD - I move forward to B1 to create initial spacing.
+2. @WAIT - You wait, giving me room to move without collision.
+3. @FORWARD x5 - I continue forward to B6, creating substantial space between us.
+4. @CLOCKWISE - You rotate clockwise to face East.
+5. @CLOCKWISE - I rotate clockwise to face West, ensuring we avoid collision.
+6. @BACKWARDS x5 - You move backward (towards B1 but effectively North due to rotation) to create even more space.
+7. @BACKWARDS x5 - I move backward (towards B6 but effectively South due to rotation) to further our swap.
+8. @CLOCKWISE - You rotate clockwise to face South, readying for the final move.
+9. @CLOCKWISE - I rotate clockwise to face North, aligning for the end positions.
+10. @FORWARD x1 - You move forward to reach B0, completing your journey.
+11. @FORWARD x1 - I move forward to reach B7, finalizing my path.
+
+We are now prepared to execute this plan safely and efficiently.
+INFO from Bob: Negotiation stage 9
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: Final plan for 10.0.1.112
+Certainly! Here is the summarized numerical list of steps you need to complete according to the agreed plan:
+
+1. @WAIT
+2. @CLOCKWISE
+3. @BACKWARDS
+4. @BACKWARDS
+5. @BACKWARDS
+6. @BACKWARDS
+7. @BACKWARDS
+8. @CLOCKWISE
+9. @FORWARD
+INFO from Alice: Excellent! With the plan confirmed and both of us in agreement on the steps to be taken, it seems we're all set for a successful and collision-free swap in our positions along the corridor from B0 to B7 and vice versa. This strategic and careful planning ensures both safety and efficiency in our movement. 
+
+If you have any more scenarios to work through or need further assistance with planning and strategizing, feel free to reach out. Good luck with the execution of our plan!
+INFO from Alice: Negotiation stage 10
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Bob: Final plan for 10.0.1.192
+For your execution, here's a summarised numerical list of the steps you should complete:
+
+1. @FORWARD
+2. @WAIT
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @CLOCKWISE
+9. @BACKWARDS
+10. @BACKWARDS
+11. @BACKWARDS
+12. @BACKWARDS
+13. @BACKWARDS
+14. @CLOCKWISE
+15. @FORWARD
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Alice: Final plan for 10.0.1.112
+Here's the detailed plan for the steps you should complete, listed individually as requested:
+
+1. @WAIT
+2. @CLOCKWISE
+3. @BACKWARDS
+4. @BACKWARDS
+5. @BACKWARDS
+6. @BACKWARDS
+7. @BACKWARDS
+8. @CLOCKWISE
+9. @FORWARD
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: RANGES: []
+INFO from Bob: Agents ready for movement
+INFO from Alice: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Alice: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Alice: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Alice: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Bob: Final plan for 10.0.1.192
+Sure, here's the summarised plan for the steps you need to complete, using only the specified command words:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @CLOCKWISE
+8. @BACKWARDS
+9. @BACKWARDS
+10. @BACKWARDS
+11. @BACKWARDS
+12. @BACKWARDS
+13. @CLOCKWISE
+14. @FORWARD
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Clockwise command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Backwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Invalid move in plan
+INFO from Bob: RANGES: []
+INFO from Alice: Full plan parsed
+Restart message sent
+INFO from Bob: 0 ranges in topic
+INFO from Alice: Replanning
+INFO from Bob: Forwards command
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: Replanning
+INFO from Bob: Full plan parsed
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Bob: Final plan for 10.0.1.192
+Certainly, here's a concise list for you:
+
+1. @WAIT
+2. @CLOCKWISE
+3. @BACKWARDS x5
+4. @CLOCKWISE
+5. @FORWARD
+INFO from Alice: Final plan for 10.0.1.112
+I understand there was confusion regarding the steps you should complete based on our most recent agreement. I'll list down the corrected and individual steps you need to take, according to the plan for swapping positions without collision:
+
+1. @WAIT
+2. @CLOCKWISE
+3. @CLOCKWISE
+4. @BACKWARDS
+5. @BACKWARDS
+6. @BACKWARDS
+7. @BACKWARDS
+8. @BACKWARDS
+9. @CLOCKWISE
+10. @CLOCKWISE
+11. @FORWARD
+INFO from Alice: Final plan for 10.0.1.112
+Based on the new scenario where you are at A0 facing East, and I am at B4 facing South, with the goal for you to end at B7 and for me to end at B0, here is the summarised numerical list of the plan for the steps you should complete:
+
+1. @CLOCKWISE
+2. @FORWARD x4
+3. @CLOCKWISE
+4. @FORWARD x3
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: Full plan parsed
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Bob: Final plan for 10.0.1.192
+Here is a summarised numerical list of the steps you should complete, according to the final agreed plan:
+
+1. @FORWARD
+2. @WAIT
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @CLOCKWISE
+9. @CLOCKWISE
+10. @BACKWARDS
+11. @BACKWARDS
+12. @BACKWARDS
+13. @BACKWARDS
+14. @BACKWARDS
+15. @CLOCKWISE
+16. @FORWARD
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Bob: Final plan for 10.0.1.192
+For your steps, here's the summarized list:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @CLOCKWISE
+7. @CLOCKWISE
+8. @BACKWARDS
+9. @BACKWARDS
+10. @BACKWARDS
+11. @BACKWARDS
+12. @BACKWARDS
+13. @CLOCKWISE
+14. @CLOCKWISE
+15. @FORWARD
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: Final plan for 10.0.1.112
+Given the updated scenario where you must move from A0 to B7 and I must move from B4 to B0, with your starting orientation facing East and mine facing South, here is the revised plan for your actions:
+
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @CLOCKWISE
+7. @FORWARD
+8. @FORWARD
+9. @FORWARD
+
+This route takes into consideration your starting position and orientation, ensuring that you reach B7 effectively, following the grid's layout and the restrictions provided.
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Clockwise command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Invalid move in plan
+INFO from Alice: Full plan parsed
+Restart message sent
+INFO from Alice: Replanning
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: Replanning
+INFO from Bob: Full plan parsed
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Plan completed
+FINISHED message sent
