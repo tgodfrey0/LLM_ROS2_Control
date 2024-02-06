@@ -226,7 +226,8 @@ class VelocityPublisher(Node):
     self.get_logger().info(s)
     self.sn_ctrl.send(f"INFO {self.AGENT_NAME}: {s}")
     
-  def listener_callback(self, msg: LaserScan) -> None:      
+  def listener_callback(self, msg: LaserScan) -> None:
+    self.info(f"{msg}") 
     # Clip ranges to those in front
     angle_increment = msg.angle_increment
     angle_min = msg.angle_min

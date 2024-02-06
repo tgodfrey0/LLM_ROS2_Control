@@ -1,0 +1,259 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Given these starting positions and our respective goals, here is a suggested plan for us to switch positions without colliding, moving efficiently within the constraints given:
+
+1. I will perform `@FORWARD` 3 times to move to B3.
+2. Meanwhile, you will perform `@BACKWARDS` 3 times to move to B4.
+3. After these moves, I will be at B3 facing North, and you will be at B4 facing South. This ensures that we are one square apart, avoiding collision.
+4. Then, I will perform `@FORWARD` 3 times to reach B6.
+5. Simultaneously, you will perform `@BACKWARDS` 3 times to reach B1.
+6. At this point, I will be at B6 and you will be at B1. We'll both be facing in the direction of our final destinations but separated by more than one square to avoid collision.
+7. Finally, I will perform `@FORWARD` to reach B7, and you will perform `@BACKWARDS` to reach B0.
+
+To summarize in a clean, numbered list:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+Your list should parallel mine but in reverse, starting with three `@BACKWARDS` moves, a `@WAIT`, followed by four `@BACKWARDS` moves to reach B0. 
+
+Please confirm or suggest an adjustment to this plan.
+INFO from Alice: Negotiation stage 2
+INFO from Bob: Your plan is clear and follows the rules well. However, there seems to be a misunderstanding regarding our initial positions and available actions in alignment with the grid's properties. Your instructions combined actions in groups which might lead to confusion, and the positions B0, B1, etc., aren't defined in the initial problem statement, making it unclear. Let's establish a clear grid starting point to ensure our plan is based on common understanding.
+
+Presuming we start in a corridor with enough room to pass each other if one of us waits, but not enough to move past simultaneously, a simple plan assuming you're ahead of me and we need to swap positions could be:
+
+You:
+1. @WAIT
+2. @BACKWARDS
+3. @WAIT
+4. @BACKWARDS
+5. @WAIT
+6. @BACKWARDS
+
+Me:
+1. @FORWARD
+2. @WAIT
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @WAIT
+
+This plan ensures we successfully swap positions with minimal wait time, adhering to the rules of moving simultaneously without collision. Shall we proceed with this or adjust further?
+INFO from Bob: Negotiation stage 3
+INFO from Alice: Your proposed plan is clear and resolves the misunderstanding regarding the grid and our movement within it. Following your structure ensures we adhere to the rules, move efficiently, and avoid collision by incorporating waiting periods appropriately. Moving based on this plan will indeed allow us to swap positions successfully, taking into account the necessity to pass each other safely in the corridor.
+
+Given the clarity and efficiency of your plan, I agree to proceed with it as outlined:
+
+**Your movements:**
+
+1. @WAIT
+2. @BACKWARDS
+3. @WAIT
+4. @BACKWARDS
+5. @WAIT
+6. @BACKWARDS
+
+**My movements:**
+
+1. @FORWARD
+2. @WAIT
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @WAIT
+
+This plan aligns our actions in such a way that ensures a safe passage, fulfilling the task's criteria. Let's adopt this plan.
+INFO from Alice: Negotiation stage 4
+INFO from Bob: @SUPERVISOR
+
+Following our agreement, here is the concise and final plan for both of us to swap positions safely within the corridor constraints:
+
+**Your movements:**
+
+1. @WAIT
+2. @BACKWARDS
+3. @WAIT
+4. @BACKWARDS
+5. @WAIT
+6. @BACKWARDS
+
+**My movements:**
+
+1. @FORWARD
+2. @WAIT
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @WAIT
+INFO from Bob: Negotiation stage 5
+INFO from Bob: Supervisor called
+INFO from Bob: Confirmed, proceeding with the agreed plan.
+INFO from Bob: Negotiation stage 7
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: Final plan for 10.0.1.112
+1. @FORWARD
+2. @WAIT
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @WAIT
+INFO from Bob: Final plan for 10.0.1.192
+1. @FORWARD
+2. @WAIT
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @WAIT
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Alice: @SUPERVISOR
+
+The negotiation has been completed, and we have agreed on a mutual plan to swap positions in the corridor safely, respecting the movement constraints and ensuring no collisions occur. Below is the finalized plan for both parties to follow:
+
+**Your movements:**
+
+1. @WAIT
+2. @BACKWARDS
+3. @WAIT
+4. @BACKWARDS
+5. @WAIT
+6. @BACKWARDS
+
+**My movements:**
+
+1. @FORWARD
+2. @WAIT
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @WAIT
+
+This plan ensures that each party moves alternately, allowing safe passing in the corridor, and achieving our goal of swapping positions efficiently.
+INFO from Alice: Negotiation stage 6
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Bob: Final plan for 10.0.1.192
+1. @FORWARD
+2. @WAIT
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @WAIT
+INFO from Alice: Final plan for 10.0.1.112
+1. @FORWARD
+2. @WAIT
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @WAIT
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: Agents ready for movement
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+Restart message sent
+INFO from Alice: Replanning
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: Replanning
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Alice: Final plan for 10.0.1.112
+1. @FORWARD
+2. @WAIT
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @WAIT
+INFO from Bob: Final plan for 10.0.1.192
+1. @FORWARD
+2. @WAIT
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @WAIT
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Bob: Final plan for 10.0.1.192
+1. @FORWARD
+2. @WAIT
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @WAIT
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Wait command
+INFO from Alice: Final plan for 10.0.1.112
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Plan completed
+FINISHED message sent

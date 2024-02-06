@@ -1,0 +1,155 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Given our starting positions and objectives, here is a proposed plan that allows us to swap places without collision:
+
+1. I will @FORWARD to B1.
+2. I will @FORWARD to B2.
+3. I will @FORWARD to B3 and you will @BACKWARDS to B6.
+4. I will @FORWARD to B4 and you will @BACKWARDS to B5.
+5. I will @FORWARD to B5 and you will @BACKWARDS to B4.
+6. I will @FORWARD to B6 and you will @BACKWARDS to B3.
+7. I will @FORWARD to B7 and you will @BACKWARDS to B2.
+8. You will @BACKWARDS to B1.
+9. You will @BACKWARDS to B0.
+
+This sequence allows us to move towards our respective destinations simultaneously without colliding. If you agree with this plan, we can finalize it.
+INFO from Alice: Negotiation stage 2
+INFO from Bob: Your plan seems logical, but it doesn't adhere to the instructions for planning. We need to condense the instructions into a numbered list using only the commands provided (@FORWARD, @BACKWARDS, @CLOCKWISE, @ANTICLOCKWISE, @WAIT) and ensure that we both move simultaneously with each step. Additionally, the grid positions like B1, B2, etc., were not part of the initial instructions for planning. Let's adapt your plan to the command format specified and correct the approach based on mutual movements. Assuming we're starting at opposite ends of a corridor with enough space to swap places with the moves outlined in the correct command format, here's a revised strategy for us to review:
+
+1. @FORWARD (I move forward) - @WAIT (You wait)
+2. @WAIT (I wait) - @BACKWARDS (You move backwards)
+3. @FORWARD (I move forward) - @WAIT (You wait)
+4. @WAIT (I wait) - @BACKWARDS (You move backwards)
+5. @FORWARD (I move forward) - @WAIT (You wait)
+6. @WAIT (I wait) - @BACKWARDS (You move backwards)
+
+This sequence should allow us to swap places in a straightforward manner. Each of us performs an action per turn, aligning with the rules of moving simultaneously. If this adjustment matches our objectives and follows the guidelines correctly, do you agree to proceed with this plan? If you have any modifications or suggestions, let's discuss them before finalizing.
+INFO from Bob: Negotiation stage 3
+INFO from Alice: Your revision better aligns with the constraints and instructions provided. Having each action paired with a corresponding action from the other ensures we are moving simultaneously, which adheres to the guidelines. However, to ensure that we fully swap places without waiting unnecessarily and without violating the rules of never occupying the same square at the same time, we must refine the plan considering the total distance between us. Here's the corrected and condensed plan for us to swap places:
+
+1. @FORWARD - @WAIT
+2. @FORWARD - @WAIT
+3. @FORWARD - @BACKWARDS
+4. @FORWARD - @BACKWARDS
+5. @FORWARD - @BACKWARDS
+6. @FORWARD - @BACKWARDS
+7. @WAIT - @BACKWARDS
+
+This sequence ensures we both start moving at the same time and switch positions efficiently without any collision, following all provided instructions for a corridor that allows for such movements. If you agree with this refined plan, we can finalize it.
+INFO from Alice: Negotiation stage 4
+INFO from Bob: Your refined plan appears to effectively address the guidelines and constraints we are operating under, ensuring that we both engage in simultaneous movement with each step and successfully swap places without any unnecessary waiting or violating the rule against occupying the same square at the same time. 
+
+The sequence you proposed meets the objective of switching our positions in the corridor efficiently and adheres to the instructions provided. This approach allows for an orderly exchange with the alternating movement pattern, which is essential for preventing any potential collisions given our inability to occupy the same grid square simultaneously.
+
+I agree with this refined plan. It seems like the most efficient and rule-compliant method to achieve our goal given the constraints we discussed. Let's proceed with this plan to swap places.
+
+Final plan:
+
+1. @FORWARD - @WAIT
+2. @FORWARD - @WAIT
+3. @FORWARD - @BACKWARDS
+4. @FORWARD - @BACKWARDS
+5. @FORWARD - @BACKWARDS
+6. @FORWARD - @BACKWARDS
+7. @WAIT - @BACKWARDS
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 5
+INFO from Bob: Supervisor called
+INFO from Alice: @SUPERVISOR
+INFO from Alice: Negotiation stage 6
+INFO from Bob: @SUPERVISOR
+INFO from Bob: Negotiation stage 7
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: I'm here to help! However, it seems you've already completed your task with the other participant. If you have another task or need further assistance, feel free to let me know!
+INFO from Alice: Negotiation stage 8
+INFO from Alice: Final plan for 10.0.1.112
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @WAIT
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Bob: Final plan for 10.0.1.192
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @WAIT
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Final plan for 10.0.1.192
+Here is the summarised numerical list of the steps you should complete based on the final agreed plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @WAIT
+INFO from Alice: Final plan for 10.0.1.112
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @WAIT
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: Agents ready for movement
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Wait command
