@@ -122,7 +122,7 @@ class VelocityPublisher(Node):
     #         The final plan should be a numbered list only containing these commands and we should try to complete the task as quickly as possible"}]
     
     self.global_conv = [
-        {"role": "system", "content": f"You are on a grid and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
+        {"role": "system", "content": f"You are {self.AGENT_NAME} and you are an agent on a grid and can only move forwards, backwards, and rotate clockwise or anticlockwise.\
           You will negotiate with another agent on the grid to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.\
             You cannot go outside of the grid and you cannot be in the same grid square as another other agent at the same time. Only one agent can fit in a square at once.\
             Once this has been decided you should call the '\f{self.CMD_SUPERVISOR}' tag at the end of the message but you should agree on the plan first. And print your plan in a concise numbered list using only the following command words:\
@@ -437,7 +437,7 @@ class VelocityPublisher(Node):
       - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
       - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
       - '{self.CMD_WAIT}' to wait for the time taken to move one square\
-      You must list every individual step."})
+      You must list every individual step and only the steps agreed for me to execute."})
     
     completion = self._llm_req()
 
@@ -515,6 +515,7 @@ class VelocityPublisher(Node):
     if self.this_agents_turn:
       self.global_conv.append({"role": "user", "content": f"I am at {self.grid}, you are at {self.other_agent_loc}. I must end at {self.ENDING_GRID_LOC} and you must end at {self.STARTING_GRID_LOC}. I am facing {self.grid._print_heading()} and you are facing {self.other_agent_heading}."})
     else:
+      self.global_conv.append({"role": "assistant", "content": f"I am at {self.grid}, you are at {self.other_agent_loc}. I must end at {self.ENDING_GRID_LOC} and you must end at {self.STARTING_GRID_LOC}. I am facing {self.grid._print_heading()} and you are facing {self.other_agent_heading}."}) #TODO This may not work
       current_stage = 1
     
     finished = False
