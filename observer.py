@@ -23,7 +23,7 @@ def finished_recv(msg: Optional[str]) -> None:
 def info_recv(msg: Optional[str]) -> None:
   name = msg.split(":", 1)
   if name[0] == "Alice":
-    print(f"{Fore.RED}INFO from {msg.strip()}{Style.RESET_ALL}")
+    print(f"{Fore.LIGHTRED_EX}INFO from {msg.strip()}{Style.RESET_ALL}")
   else:
     print(f"{Fore.BLUE}INFO from {msg.strip()}{Style.RESET_ALL}")
 
