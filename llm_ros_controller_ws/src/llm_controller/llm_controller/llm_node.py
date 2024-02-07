@@ -652,6 +652,7 @@ def main(args=None):
   scan_thread.start()
   
   llm_thread.join()
+  scan_thread.join()
   
   # rclpy.spin_once(velocity_publisher) #* spin_once will parse the given plan then return
   # rclpy.spin(velocity_publisher)
