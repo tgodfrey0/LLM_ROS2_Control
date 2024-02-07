@@ -3,7 +3,7 @@ from typing import Optional, List, Tuple
 from colorama import Fore, Style
 import datetime
 
-dl: List[Tuple[str, int]] = [("10.0.1.112", 51000), ("10.0.1.192", 51000)] # Other device
+dl: List[Tuple[str, int]] = [("10.0.1.112", 51000), ("10.0.1.191", 51000)] # Other device
 filename = "/home/tg/projects/p3p/LLM_ROS2_Control/logs/observer/" + datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S.txt")
 
 def llm_recv(msg: Optional[str]) -> None:
