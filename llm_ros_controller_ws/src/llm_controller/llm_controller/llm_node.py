@@ -32,6 +32,7 @@ scan_ranges = []
 class ScanSubscriber(Node):
   def __init__(self):
     super().__init__("scan_subscriber")
+    self.get_logger().info("==================================================================================\n\n\n\n\n")
     
     qos = QoSProfile(
       reliability=ReliabilityPolicy.BEST_EFFORT,
@@ -56,6 +57,7 @@ class ScanSubscriber(Node):
   def run(self):
     self.get_logger().info("Scan subscriber started")
     while(not rclpy.is_shutdown()):
+      self.get_logger().info("Scan subscriber started")
       rclpy.spin_once(self)
 
 class VelocityPublisher(Node):
@@ -152,6 +154,7 @@ class VelocityPublisher(Node):
             The space is discrete and so you can think of it in terms of the grid.\
             You should try to keep your messages as short as possible.\
             You cannot fit past other agents in the narrow corridor and you cannot leave the corridor. Areas A3 and C4 allow one agent to move out of the way of another, but only have space for one agent.\
+            The x-value (the letter) of the grid increases as you move East and decreases as you move West. The y-value (the number) of the grid increases as you head North and decreases as you head South.
             The final plan should be a numbered list only containing these commands and we should try to complete the task as quickly as possible. Make the plan specific for this discrete environment."}]
     
     
