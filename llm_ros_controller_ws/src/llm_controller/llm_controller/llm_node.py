@@ -14,6 +14,7 @@ from typing import Dict, Optional, List, Tuple
 
 # ROS2 imports
 import rclpy
+from rclpy.executors import MultiThreadedExecutor
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
@@ -25,6 +26,32 @@ from .grid import Grid
 valid_grid_positions: List[str] = ["A3", "B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "C4"]
 
 image_name = "layout.drawio.png"
+
+scan_mutex = Lock()
+scan_ranges = []
+
+class ScanSubscriber(Node):
+  def __init__(self):
+    super().__init__("scan_subscriber")
+    
+    qos = QoSProfile(
+      reliability=ReliabilityPolicy.BEST_EFFORT,
+      history=HistoryPolicy.KEEP_LAST,
+      depth=10
+    )
+    
+    self.subscription = self.create_subscription(
+      LaserScan,
+      "/scan",
+      self.listener_callback,
+      qos_profile=qos
+    )
+    self.subscription
+  
+  def listener_callback(self, msg: LaserScan) -> None:
+    global scan_ranges
+    with scan_mutex:
+      scan_ranges = msg.ranges
 
 class VelocityPublisher(Node):
   def __init__(self):
@@ -41,20 +68,6 @@ class VelocityPublisher(Node):
     
     self.publisher_ = self.create_publisher(Twist, "/cmd_vel", 10)
     
-    qos = QoSProfile(
-      reliability=ReliabilityPolicy.BEST_EFFORT,
-      history=HistoryPolicy.KEEP_LAST,
-      depth=10
-    )
-    
-    self.subscription = self.create_subscription(
-      LaserScan,
-      "/scan",
-      self.listener_callback,
-      qos_profile=qos
-    )
-    self.subscription
-    
     self.client: OpenAI = None
     self.this_agents_turn = self.INITIALLY_THIS_AGENTS_TURN
     self.other_agent_ready = False
@@ -66,8 +79,6 @@ class VelocityPublisher(Node):
     self.restart_lock = Lock()
     self.should_restart = False
     self.grid = Grid(self.STARTING_GRID_LOC, self.STARTING_GRID_HEADING, 3, 8)
-    self.scan_mutex = Lock()
-    self.scan_ranges = []
     self.ready_movement_lock = Lock()
     self.other_agent_ready_movement = False
     
@@ -201,8 +212,8 @@ class VelocityPublisher(Node):
         
         min_dist_reached = False
         
-        with self.scan_mutex:
-          rs = self.scan_ranges
+        with scan_mutex:
+          rs = scan_ranges
         
         self.info(f"RANGES: {rs}")
         min_dist_reached = any(map(lambda r: r <= self.LIDAR_THRESHOLD, rs))
@@ -260,10 +271,6 @@ class VelocityPublisher(Node):
   def info(self, s: str) -> None:
     self.get_logger().info(s)
     self.sn_ctrl.send(f"INFO {self.AGENT_NAME}: {s}")
-    
-  def listener_callback(self, msg: LaserScan) -> None:
-    with self.scan_mutex:
-      self.scan_ranges = msg.ranges
         
   def _delay(self, t_target):
     t0 = self.get_clock().now()
@@ -625,11 +632,18 @@ def main(args=None):
   
   rclpy.init()
   velocity_publisher = VelocityPublisher()
+  scan_subscriber = ScanSubscriber()
+  executor = MultiThreadedExecutor()
+  
+  executor.add_node(velocity_publisher)
+  executor.add_node(scan_subscriber)
+  executor.spin()
   
   # rclpy.spin_once(velocity_publisher) #* spin_once will parse the given plan then return
-  rclpy.spin(velocity_publisher)
+  # rclpy.spin(velocity_publisher)
   velocity_publisher.sn_ctrl.kill()
   velocity_publisher.destroy_node()
+  scan_subscriber.destroy_node()
   rclpy.shutdown()
 
 
