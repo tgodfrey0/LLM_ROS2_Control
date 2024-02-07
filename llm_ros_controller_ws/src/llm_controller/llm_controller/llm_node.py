@@ -9,12 +9,11 @@ from math import pi, radians
 from openai import OpenAI, ChatCompletion
 from swarmnet import SwarmNet, Log_Level, set_log_level
 from tenacity import retry, stop_after_attempt, wait_random_exponential
-from threading import Lock
+from threading import Lock, Thread
 from typing import Dict, Optional, List, Tuple
 
 # ROS2 imports
 import rclpy
-from rclpy.executors import MultiThreadedExecutor
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan
@@ -44,23 +43,24 @@ class ScanSubscriber(Node):
       LaserScan,
       "/scan",
       self.listener_callback,
-      10 #qos_profile=qos
+      qos_profile=qos
     )
     self.subscription
-    
-    self.get_logger().info("Scan subscriber started ==========================")
   
   def listener_callback(self, msg: LaserScan) -> None:
     global scan_ranges
     self.get_logger().info(f"{msg.ranges}")
     with scan_mutex:
       scan_ranges = msg.ranges
+      
+  def run(self):
+    self.get_logger().info("Scan subscriber started")
+    while(not rclpy.is_shutdown()):
+      rclpy.spin_once(self)
 
 class VelocityPublisher(Node):
   def __init__(self):
     super().__init__("velocity_publisher")
-    
-    return
     
     self.declare_parameter('config_file', rclpy.Parameter.Type.STRING) 
     
@@ -87,7 +87,7 @@ class VelocityPublisher(Node):
     self.ready_movement_lock = Lock()
     self.other_agent_ready_movement = False
     
-    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": None, "RESTART": self.restart_recv, "MOVE": self.move_recv}, device_list = self.SN_DEVICE_LIST) #! Publish INFO messages which can then be subscribed to by observers
+    self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": None, "RESTART": self.restart_recv, "MOVE": self.move_recv}, device_list = self.SN_DEVICE_LIST)
     self.sn_ctrl.start()
     self.get_logger().info(f"SwarmNet initialised") 
     set_log_level(self.SN_LOG_LEVEL)
@@ -177,6 +177,8 @@ class VelocityPublisher(Node):
           ]
       })
   
+  def run(self):
+    self.get_logger().info("LLM node started")
     while(True):
       with self.restart_lock:
         b = self.should_restart
@@ -195,7 +197,8 @@ class VelocityPublisher(Node):
         self.restart(True)
       else:
         self.info("Task completed :)")
-        self.destroy_node()
+        break
+    self.destroy_node()
     
   def parse_plan(self):
     if(len(self.global_conv) > 1):
@@ -638,11 +641,14 @@ def main(args=None):
   rclpy.init()
   velocity_publisher = VelocityPublisher()
   scan_subscriber = ScanSubscriber()
-  executor = MultiThreadedExecutor()
   
-  executor.add_node(scan_subscriber)
-  executor.add_node(velocity_publisher)
-  executor.spin()
+  llm_thread = Thread(target=velocity_publisher.run())
+  scan_thread = Thread(target=scan_subscriber.run())
+  
+  llm_thread.start()
+  scan_thread.start()
+  
+  llm_thread.join()
   
   # rclpy.spin_once(velocity_publisher) #* spin_once will parse the given plan then return
   # rclpy.spin(velocity_publisher)
