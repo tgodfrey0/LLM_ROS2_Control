@@ -260,7 +260,6 @@ class VelocityPublisher(Node):
           self.get_logger().error(f"Unrecognised command: {s}")
           continue
         self.wait_delay()
-      
     
   # TODO Replan and restart from current position 
   def restart(self, this_agent_stuck: bool):
@@ -648,9 +647,9 @@ def main(args=None):
   scan_thread = Thread(target=scan_subscriber.run())
   
   scan_thread.start()
-  # llm_thread.start() #TODO Scan sub doesn't start
+  llm_thread.start() #TODO Scan sub doesn't start
   
-  # llm_thread.join()
+  llm_thread.join()
   scan_thread.join()
   
   # rclpy.spin_once(velocity_publisher) #* spin_once will parse the given plan then return
