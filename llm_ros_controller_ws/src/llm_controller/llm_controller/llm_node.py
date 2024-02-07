@@ -200,16 +200,17 @@ class VelocityPublisher(Node):
           break
         
         min_dist_reached = False
+        
         with self.scan_mutex:
-          self.info(f"RANGES: {self.scan_ranges}")
-          min_dist_reached = any(map(lambda r: r <= self.LIDAR_THRESHOLD, self.scan_ranges))
-          self.info(f"{len(self.scan_ranges)} ranges in topic")
-          if(min_dist_reached):
-            self.sn_ctrl.send("RESTART")
-            break
+          rs = self.scan_ranges
+        
+        self.info(f"RANGES: {rs}")
+        min_dist_reached = any(map(lambda r: r <= self.LIDAR_THRESHOLD, rs))
+        self.info(f"{len(rs)} ranges in topic")
         if(min_dist_reached):
           self.info("Min LIDAR reading")
-          self.pub_backwards()
+          self.sn_ctrl.send("RESTART")
+          break
         elif(self.CMD_FORWARD in s):
           new_pos = self.grid.sim_forwards()
           if(new_pos not in valid_grid_positions):
@@ -261,23 +262,8 @@ class VelocityPublisher(Node):
     self.sn_ctrl.send(f"INFO {self.AGENT_NAME}: {s}")
     
   def listener_callback(self, msg: LaserScan) -> None:
-    self.info(f"{msg}") 
-    # Clip ranges to those in front
-    angle_increment = msg.angle_increment
-    angle_min = msg.angle_min
-    angle_max = msg.angle_max
-    ranges = msg.ranges
-
-    # Calculate the start and end indices for the 90-degree cone
-    start_index = int((45 - angle_min) / angle_increment)
-    end_index = int((45 - angle_max) / angle_increment)
-
-    # Ensure indices are within bounds
-    start_index = max(0, start_index)
-    end_index = min(len(ranges) - 1, end_index)
-      
     with self.scan_mutex:
-      self.scan_ranges = ranges[start_index:end_index + 1]
+      self.scan_ranges = msg.ranges
         
   def _delay(self, t_target):
     t0 = self.get_clock().now()
