@@ -60,6 +60,8 @@ class VelocityPublisher(Node):
   def __init__(self):
     super().__init__("velocity_publisher")
     
+    return
+    
     self.declare_parameter('config_file', rclpy.Parameter.Type.STRING) 
     
     if(not self.load_config()):
