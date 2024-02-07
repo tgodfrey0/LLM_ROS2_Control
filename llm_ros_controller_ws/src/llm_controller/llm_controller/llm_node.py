@@ -499,10 +499,12 @@ class VelocityPublisher(Node):
   def negotiate(self, is_restart: bool):
     current_stage = 0
     
+    s = f"I am at {self.grid}, you are at {self.other_agent_loc}. I must end at {self.ENDING_GRID_LOC} and you must end at {self.STARTING_GRID_LOC}. I am facing {self.grid._print_heading()} and you are facing {self.other_agent_heading}. One of us should move into either grid square A3 or C4 to allow the other to pass."
+    
     if self.this_agents_turn:
-      self.global_conv.append({"role": "user", "content": f"I am at {self.grid}, you are at {self.other_agent_loc}. I must end at {self.ENDING_GRID_LOC} and you must end at {self.STARTING_GRID_LOC}. I am facing {self.grid._print_heading()} and you are facing {self.other_agent_heading}."})
+      self.global_conv.append({"role": "user", "content": s})
     else:
-      self.global_conv.append({"role": "assistant", "content": f"I am at {self.grid}, you are at {self.other_agent_loc}. I must end at {self.ENDING_GRID_LOC} and you must end at {self.STARTING_GRID_LOC}. I am facing {self.grid._print_heading()} and you are facing {self.other_agent_heading}."}) #TODO This may not work
+      self.global_conv.append({"role": "assistant", "content": s}) #TODO This may not work
       current_stage = 1
     
     finished = False
