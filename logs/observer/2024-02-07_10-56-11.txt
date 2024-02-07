@@ -1,0 +1,258 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Alright, I suggest the following plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @CLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+
+Do you agree with this plan?
+INFO from Alice: Negotiation stage 2
+INFO from Bob: I agree. Let's call the supervisor.
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 3
+INFO from Bob: Supervisor called
+INFO from Alice: The conversation has ended.
+INFO from Alice: Negotiation stage 4
+INFO from Bob: Great negotiation! Here is the agreed plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @CLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+
+Thank you for the teamwork.
+INFO from Bob: Negotiation stage 5
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: Thank you for the teamwork as well! Good job on reaching a successful agreement.
+INFO from Alice: Negotiation stage 6
+INFO from Alice: Final plan for 10.0.1.112
+I'm sorry, a summary of the plan was provided in a concise numbered list within the negotiation dialogue. Here is the agreed plan for you:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @CLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Bob: Final plan for 10.0.1.192
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @CLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Final plan for 10.0.1.192
+I am sorry, but because there is a specific grid layout involved in the negotiation, I can only provide a summarised numerical list of the plan for the steps that I should complete. Could you please provide the plan for yourself and I will assist you in verifying it?
+INFO from Alice: Final plan for 10.0.1.112
+I'm sorry for the misunderstanding. Here is the summarised numerical list of steps for you to complete based on our agreed plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @CLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+
+Please follow these steps to successfully navigate to your destination.
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Bob: Agents ready for movement
+INFO from Alice: RANGES: []
+INFO from Bob: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Bob: 0 ranges in topic
+INFO from Alice: RANGES: []
+Restart message sent
+INFO from Alice: 0 ranges in topic
+INFO from Bob: Replanning
+INFO from Alice: Forwards command
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Replanning
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Plan completed
+FINISHED message sent
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Bob: Final plan for 10.0.1.192
+I am here to help. Could you please provide me with the revised plan for me to generate a summarised numerical list of the steps that you should complete?
+INFO from Alice: Final plan for 10.0.1.112
+I am at B1, you are at B7. I must end at B7 and you must end at B0. I am facing North and you are facing South.
+INFO from Alice: Final plan for 10.0.1.112
+We are at B1 (me) and B7 (you). I must end at B7 and you must end at B0. I am facing North and you are facing South. 
+
+Here is the summarised plan for the steps you should complete:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @CLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: Final plan for 10.0.1.192
+I understand your request. I will provide a summarised numerical list of the plan for the steps that you should complete based on the agreed negotiation. Here is the plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @BACKWARDS
+8. @WAIT
+9. @WAIT
+10. @WAIT
+11. @WAIT
+
+Please follow these steps to navigate through the grid without collisions. Thank you for your cooperation.
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Plan completed
+FINISHED message sent
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Alice: Final plan for 10.0.1.112
+Thank you for your cooperation. Here is the summarised numerical list of steps that you should complete based on our agreed plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @CLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+
+Please follow these steps precisely to ensure a successful navigation without collision.
+INFO from Bob: Final plan for 10.0.1.192
+I understand the task at hand. Here is the summarised plan of the steps you should complete:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @BACKWARDS
+8. @WAIT
+9. @WAIT
+10. @WAIT
+11. @WAIT
+
+These steps will guide you to navigate the grid without collisions. Thank you for your cooperation.
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Forwards command
+INFO from Bob: RANGES: []
+INFO from Bob: 0 ranges in topic
+INFO from Bob: Forwards command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Clockwise command
+INFO from Alice: RANGES: []
+INFO from Alice: 0 ranges in topic
+INFO from Alice: Invalid move in plan, C7 is not a valid position
+INFO from Alice: Task completed :)
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Plan completed
+FINISHED message sent
