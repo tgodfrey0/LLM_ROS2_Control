@@ -47,6 +47,8 @@ class ScanSubscriber(Node):
       10 #qos_profile=qos
     )
     self.subscription
+    
+    self.get_logger().info("Scan subscriber started ==========================")
   
   def listener_callback(self, msg: LaserScan) -> None:
     global scan_ranges
