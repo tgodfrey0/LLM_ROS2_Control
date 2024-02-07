@@ -32,7 +32,6 @@ scan_ranges = []
 class ScanSubscriber(Node):
   def __init__(self):
     super().__init__("scan_subscriber")
-    self.get_logger().info("==================================================================================\n\n\n\n\n")
     
     qos = QoSProfile(
       reliability=ReliabilityPolicy.BEST_EFFORT,
@@ -47,7 +46,6 @@ class ScanSubscriber(Node):
       qos_profile=qos
     )
     self.subscription
-    self.get_logger().info("==================================================================================\n\n\n\n\n")
   
   def listener_callback(self, msg: LaserScan) -> None:
     global scan_ranges
@@ -650,9 +648,9 @@ def main(args=None):
   scan_thread = Thread(target=scan_subscriber.run())
   
   scan_thread.start()
-  llm_thread.start()
+  # llm_thread.start() #TODO Scan sub doesn't start
   
-  llm_thread.join()
+  # llm_thread.join()
   scan_thread.join()
   
   # rclpy.spin_once(velocity_publisher) #* spin_once will parse the given plan then return
