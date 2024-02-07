@@ -50,6 +50,7 @@ class ScanSubscriber(Node):
   
   def listener_callback(self, msg: LaserScan) -> None:
     global scan_ranges
+    self.get_logger().info(f"{msg.ranges}")
     with scan_mutex:
       scan_ranges = msg.ranges
 
