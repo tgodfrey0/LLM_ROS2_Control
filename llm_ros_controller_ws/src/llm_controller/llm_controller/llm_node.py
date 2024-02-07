@@ -47,6 +47,7 @@ class ScanSubscriber(Node):
       qos_profile=qos
     )
     self.subscription
+    self.get_logger().info("==================================================================================\n\n\n\n\n")
   
   def listener_callback(self, msg: LaserScan) -> None:
     global scan_ranges
