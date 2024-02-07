@@ -638,8 +638,8 @@ def main(args=None):
   scan_subscriber = ScanSubscriber()
   executor = MultiThreadedExecutor()
   
-  executor.add_node(velocity_publisher)
   executor.add_node(scan_subscriber)
+  executor.add_node(velocity_publisher)
   executor.spin()
   
   # rclpy.spin_once(velocity_publisher) #* spin_once will parse the given plan then return

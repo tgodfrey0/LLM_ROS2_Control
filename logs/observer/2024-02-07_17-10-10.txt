@@ -1,0 +1,3 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Vision model provided, appending image
+INFO from Alice: Waiting for an agent to be ready
