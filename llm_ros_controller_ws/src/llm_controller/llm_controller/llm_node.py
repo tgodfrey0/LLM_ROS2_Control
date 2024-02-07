@@ -34,6 +34,7 @@ class VelocityPublisher(Node):
     
     if(not self.load_config()):
       self.get_logger().error("!!! FAILED TO LOAD CONFIG")
+      self.destroy_node()
       return
     
     self.get_logger().info("Successfully loaded configuration")
