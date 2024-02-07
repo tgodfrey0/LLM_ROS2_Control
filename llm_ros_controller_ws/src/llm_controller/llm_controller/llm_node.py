@@ -648,8 +648,8 @@ def main(args=None):
   llm_thread = Thread(target=velocity_publisher.run())
   scan_thread = Thread(target=scan_subscriber.run())
   
-  llm_thread.start()
   scan_thread.start()
+  llm_thread.start()
   
   llm_thread.join()
   scan_thread.join()
