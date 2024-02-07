@@ -44,7 +44,7 @@ class ScanSubscriber(Node):
       LaserScan,
       "/scan",
       self.listener_callback,
-      qos_profile=qos
+      10 #qos_profile=qos
     )
     self.subscription
   
