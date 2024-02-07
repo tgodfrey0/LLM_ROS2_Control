@@ -135,7 +135,7 @@ class VelocityPublisher(Node):
             Do not create new commands and all agents start movement at the same time.\
             The space is discrete and so you can think of it in terms of the grid.\
             You should try to keep your messages as short as possible.\
-            You cannot fit past other agents in the narrow corridor and you cannot leave the corridor. Areas A3 and C4 allow one of us to move out of the way of the other.\
+            You cannot fit past other agents in the narrow corridor and you cannot leave the corridor. Areas A3 and C4 allow one agent to move out of the way of another, but only have space for one agent.\
             The final plan should be a numbered list only containing these commands and we should try to complete the task as quickly as possible. Make the plan specific for this discrete environment."}]
     
     
@@ -419,7 +419,7 @@ class VelocityPublisher(Node):
       return ""
     
   def plan_completed(self, n_stages: int):
-    self.info(f"Plan completed")
+    self.info(f"Negotiations completed")
     # for m in self.global_conv:
     #   self.info(f"{m['role']}: {m['content']}")
     self._log_negotiations(n_stages)
