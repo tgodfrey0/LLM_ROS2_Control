@@ -272,7 +272,6 @@ class VelocityPublisher(Node):
           continue
         self.wait_delay()
     
-  # TODO Replan and restart from current position 
   def restart(self, this_agent_stuck: bool):
     self.info("Replanning")
     
@@ -603,7 +602,6 @@ class VelocityPublisher(Node):
     
   def load_config(self) -> bool:
     
-    #TODO Create param and get
     path = self.get_parameter("config_file").get_parameter_value().string_value
     
     status: bool = False
@@ -659,7 +657,7 @@ def main(args=None):
   scan_thread = Thread(target=scan_subscriber.run)
   
   scan_thread.start()
-  llm_thread.start() #TODO Scan sub doesn't start
+  llm_thread.start()
   
   llm_thread.join()
   scan_thread.join()
