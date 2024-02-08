@@ -85,3 +85,6 @@ date,model,max_tokens,max_rounds,rounds
 2024-02-07,gpt-4-turbo-preview,400,15,1
 2024-02-07,gpt-4-turbo-preview,400,15,0
 2024-02-07,gpt-4-turbo-preview,400,15,0
+2024-02-07,gpt-4-vision-preview,400,15,7
+2024-02-07,gpt-4-vision-preview,400,15,0
+2024-02-07,gpt-4-vision-preview,400,15,0
