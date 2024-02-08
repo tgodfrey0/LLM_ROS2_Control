@@ -1,0 +1,54 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: 1. @ANTICLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @WAIT
+8. @WAIT
+9. @WAIT
+10. @FORWARD
+11. @WAIT
+12. @WAIT
+13. @WAIT
+14. @WAIT
+15. @WAIT
+16. @WAIT
+17. @WAIT
+18. @WAIT
+19. @WAIT
+20. @WAIT
+21. @CLOCKWISE
+22. @FORWARD
+23. @FORWARD
+24. @FORWARD
+25. @FORWARD
+26. @FORWARD
+27. @FORWARD
+28. @WAIT
+29. @WAIT
+30. @WAIT
+31. @FORWARD
+32. @WAIT
+33. @WAIT
+34. @ANTICLOCKWISE
+INFO from Alice: Negotiation stage 2
+INFO from Bob: Great plan! I will follow the steps accordingly. Let's call the supervisor now. 
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 3
+INFO from Bob: Supervisor called
+INFO from Alice: Thank you! I will inform the supervisor now.
+INFO from Alice: Negotiation stage 4
+INFO from Bob: @SUPERVISOR
+INFO from Bob: Negotiation stage 5
+INFO from Bob: Negotiations completed
+FINISHED message sent
+INFO from Alice: Thank you for your assistance!
+INFO from Alice: Negotiation stage 6

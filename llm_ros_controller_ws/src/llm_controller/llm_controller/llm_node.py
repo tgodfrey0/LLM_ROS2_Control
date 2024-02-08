@@ -52,7 +52,6 @@ class ScanSubscriber(Node):
   
   def listener_callback(self, msg: LaserScan) -> None:
     global scan_ranges
-    self.get_logger().info(f"{msg.ranges}")
     with scan_mutex:
       scan_ranges = msg.ranges
 
@@ -64,7 +63,6 @@ class ScanSubscriber(Node):
   def run(self):
     self.get_logger().info("Scan subscriber started")
     while(not self._is_finished()):
-      self.get_logger().info("Scan subscriber started")
       rclpy.spin_once(self)
 
 class VelocityPublisher(Node):
