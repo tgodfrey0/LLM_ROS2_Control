@@ -10,6 +10,7 @@ from openai import OpenAI, ChatCompletion
 from swarmnet import SwarmNet, Log_Level, set_log_level
 from tenacity import retry, stop_after_attempt, wait_random_exponential
 from threading import Lock, Thread
+from timeit import default_timer
 from typing import Dict, Optional, List, Tuple
 
 # ROS2 imports
@@ -93,6 +94,7 @@ class VelocityPublisher(Node):
     self.grid = Grid(self.STARTING_GRID_LOC, self.STARTING_GRID_HEADING, 3, 8)
     self.ready_movement_lock = Lock()
     self.other_agent_ready_movement = False
+    self.t0 = default_timer()
     
     self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": None, "RESTART": self.restart_recv, "MOVE": self.move_recv}, device_list = self.SN_DEVICE_LIST)
     self.sn_ctrl.start()
@@ -462,7 +464,7 @@ class VelocityPublisher(Node):
     with open(path, "a", newline="") as csvfile:
       writer = csv.writer(csvfile)
       today = datetime.date.today().strftime("%Y-%m-%d")
-      writer.writerow([today, self.MODEL_NAME, self.MAX_TOKENS, str(self.MAX_NUM_NEGOTIATION_MESSAGES), str(n_stages)])
+      writer.writerow([today, self.MODEL_NAME, self.MAX_TOKENS, str(self.MAX_NUM_NEGOTIATION_MESSAGES), str(n_stages), str(default_timer() - self.t0)])
 
   def restart_recv(self, msg: Optional[str]) -> None:
     self.restart(False)

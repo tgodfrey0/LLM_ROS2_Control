@@ -14,7 +14,7 @@ agent:
   starting_grid_loc: B0
   starting_grid_heading: north
   ending_grid_loc: B7
-  max_num_negotiation_messages: 15
+  max_num_negotiation_messages: 8
   working_dir: "/home/ubuntu/LLM_ROS2_Control/"
   model: "gpt-3.5-turbo-0125"
   max_tokens: 400
