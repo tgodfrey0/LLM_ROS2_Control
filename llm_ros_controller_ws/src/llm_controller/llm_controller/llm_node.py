@@ -236,9 +236,7 @@ class VelocityPublisher(Node):
         with scan_mutex:
           rs = scan_ranges
         
-        self.info(f"RANGES: {rs}")
         min_dist_reached = any(map(lambda r: r <= self.LIDAR_THRESHOLD, rs))
-        self.info(f"{len(rs)} ranges in topic")
         if(min_dist_reached):
           self.info("Min LIDAR reading")
           self.sn_ctrl.send("RESTART")
@@ -283,7 +281,7 @@ class VelocityPublisher(Node):
       self.this_agents_turn = this_agent_stuck
     
     if(this_agent_stuck):
-      self.global_conv.append({"role": "user", "content": f"I am stuck, we need to replan."})
+      self.global_conv.append({"role": "user", "content": f"I am stuck, we need to replan. We should ignore the previous plan and create a new plan from out current positions."})
     
     with self.restart_lock:
       self.should_restart = True
@@ -451,7 +449,7 @@ class VelocityPublisher(Node):
       - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
       - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
       - '{self.CMD_WAIT}' to wait for the time taken to move one square\
-      You must list every individual step and only the steps agreed for me to execute."})
+      You must list every individual step and only the steps agreed for me to execute. Do not try to renegotiate."})
     
     completion = self._llm_req()
 
