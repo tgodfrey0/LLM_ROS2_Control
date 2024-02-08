@@ -29,6 +29,9 @@ image_name = "layout.drawio.png"
 scan_mutex = Lock()
 scan_ranges = []
 
+finished_lock = Lock()
+finished = False
+
 class ScanSubscriber(Node):
   def __init__(self):
     super().__init__("scan_subscriber")
@@ -52,10 +55,15 @@ class ScanSubscriber(Node):
     self.get_logger().info(f"{msg.ranges}")
     with scan_mutex:
       scan_ranges = msg.ranges
+
+  def _is_finished(self):
+    with finished_lock:
+      b = finished
+    return b
       
   def run(self):
     self.get_logger().info("Scan subscriber started")
-    while(not rclpy.is_shutdown()):
+    while(not self._is_finished()):
       self.get_logger().info("Scan subscriber started")
       rclpy.spin_once(self)
 
@@ -200,6 +208,11 @@ class VelocityPublisher(Node):
       else:
         self.info("Task completed :)")
         break
+    
+    global finished
+    with finished_lock:
+      finished = True
+      
     self.destroy_node()
     
   def parse_plan(self):
