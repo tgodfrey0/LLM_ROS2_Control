@@ -436,6 +436,7 @@ class VelocityPublisher(Node):
     # for m in self.global_conv:
     #   self.info(f"{m['role']}: {m['content']}")
     self._log_negotiations(n_stages)
+    self.info("Negotiation statistics logged")
     self.sn_ctrl.send("FINISHED")
     
     self.get_logger().info("Waiting for message queues to clear")
