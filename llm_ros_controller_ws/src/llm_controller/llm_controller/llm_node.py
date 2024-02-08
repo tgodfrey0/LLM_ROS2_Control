@@ -643,8 +643,8 @@ def main(args=None):
   velocity_publisher = VelocityPublisher()
   scan_subscriber = ScanSubscriber()
   
-  llm_thread = Thread(target=velocity_publisher.run())
-  scan_thread = Thread(target=scan_subscriber.run())
+  llm_thread = Thread(target=velocity_publisher.run)
+  scan_thread = Thread(target=scan_subscriber.run)
   
   scan_thread.start()
   llm_thread.start() #TODO Scan sub doesn't start
