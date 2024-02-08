@@ -280,9 +280,13 @@ class VelocityPublisher(Node):
       
     with self.turn_lock:
       self.this_agents_turn = this_agent_stuck
+      
+    s = "I am stuck, we need to replan. We should ignore the previous plan and create a new plan from out current positions."
     
     if(this_agent_stuck):
-      self.global_conv.append({"role": "user", "content": f"I am stuck, we need to replan. We should ignore the previous plan and create a new plan from out current positions."})
+      self.global_conv.append({"role": "user", "content": s})
+    else:
+      self.global_conv.append({"role": "assistant", "content": s})
     
     with self.restart_lock:
       self.should_restart = True
