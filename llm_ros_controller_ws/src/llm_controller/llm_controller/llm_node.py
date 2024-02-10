@@ -457,7 +457,7 @@ class VelocityPublisher(Node):
       - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
       - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
       - '{self.CMD_WAIT}' to wait for the time taken to move one square\
-      You must list every individual step and only the steps agreed for me to execute. Do not try to renegotiate."})
+      You must list every individual step and only the steps agreed for me to execute. Do not try to renegotiate. Only list the moves I should take"})
     
     completion = self._llm_req()
 

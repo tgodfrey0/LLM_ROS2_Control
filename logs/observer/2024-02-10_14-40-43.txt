@@ -1,0 +1,195 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Vision model provided, appending image
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Vision model provided, appending image
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Alright, let's devise a plan that ensures we both reach our destinations without collision. I'm at B7 facing South and you're at B0 facing North. One of us can use A3 or C4 as a passing point. Let's use A3 for the passing since it's closer to my starting point. I will move into A3 while you proceed north. Once you're adjacent to A3, I will then move back to B3, allowing you to pass by and head to B7. When you reach B6, I can proceed to B0.
+
+Here's the plan:
+
+Your movements from B0 to B7:
+
+1. @FORWARD (to B1)
+2. @FORWARD (to B2)
+3. @FORWARD (to B3)
+4. @WAIT (while I move from A3 to B3)
+5. @FORWARD (to B4)
+6. @FORWARD (to B5)
+7. @FORWARD (to B6)
+8. @FORWARD (to B7)
+
+My movements from B7 to B0:
+
+1. @BACKWARDS (to B6)
+2. @BACKWARDS (to B5)
+3. @BACKWARDS (to B4)
+4. @ANTICLOCKWISE
+5. @FORWARD (to A3)
+6. @WAIT (while you move from B2 to B3)
+7. @BACKWARDS (to B3)
+8. @CLOCKWISE
+9. @BACKWARDS (to B2)
+10. @BACKWARDS (to B1)
+11. @BACKWARDS (to B0)
+
+Once we are both clear on the plan and agree, we can call for the @SUPERVISOR to confirm. Do you agree with this plan or do you have any alterations to suggest?
+INFO from Alice: Negotiation stage 2
+INFO from Alice: Supervisor called
+INFO from Alice: Your movements from B0 to B7:
+
+1. @FORWARD (to B1)
+2. @FORWARD (to B2)
+3. @FORWARD (to B3)
+4. @WAIT (while I exit to A3)
+5. @FORWARD (to B4)
+6. @FORWARD (to B5)
+7. @FORWARD (to B6)
+8. @FORWARD (to B7)
+
+My movements from B7 to B0:
+
+1. @BACKWARDS (to B6)
+2. @BACKWARDS (to B5)
+3. @BACKWARDS (to B4)
+4. @ANTICLOCKWISE
+5. @FORWARD (into A3)
+6. @WAIT (while you pass from B3 to B4)
+7. @BACKWARDS (back into B3)
+8. @CLOCKWISE (to face South)
+9. @BACKWARDS (to B2)
+10. @BACKWARDS (to B1)
+11. @BACKWARDS (to B0)
+
+Please confirm if this plan works for you, and then we can notify the @SUPERVISOR to proceed.
+INFO from Alice: Negotiation stage 4
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Your proposed plan is clear, and it effectively utilizes the passing point A3. However, there is a slight inefficiency in your suggested movements. Since we start at the same time, there's no need for me to wait at B3 while you move from A3 to B3. I can move into A3 as you approach B3 and exit A3 after you have passed. This reduces the waiting time and optimizes the path. Let me suggest a revised plan:
+
+Your movements from B0 to B7:
+
+1. @FORWARD (to B1)
+2. @FORWARD (to B2)
+3. @FORWARD (to B3)
+4. @FORWARD (to B4)
+5. @FORWARD (to B5)
+6. @FORWARD (to B6)
+7. @FORWARD (to B7)
+
+My movements from B7 to B0:
+
+1. @BACKWARDS (to B6)
+2. @BACKWARDS (to B5)
+3. @BACKWARDS (to B4)
+4. @ANTICLOCKWISE
+5. @FORWARD (to A3)
+6. @WAIT (while you move from B3 to B4)
+7. @BACKWARDS (to B3)
+8. @CLOCKWISE
+9. @BACKWARDS (to B2)
+10. @BACKWARDS (to B1)
+11. @BACKWARDS (to B0)
+
+This plan has you moving continuously northwards without waiting, and I only wait once, while you move from B3 to B4, minimizing total wait time. If you agree to this plan, we can proceed to notify the @SUPERVISOR.
+INFO from Bob: Negotiation stage 3
+INFO from Bob: Final plan for 10.0.1.191
+Here is the summarised list of steps for you to execute from B0 to B7:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+@SUPERVISOR
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Final plan for 10.0.1.112
+Certainly, here is the summarised numerical list of commands for you to execute:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+@SUPERVISOR
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Bob: Final plan for 10.0.1.191
+Certainly, here is the detailed plan for your movements from B0 to B7:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD (into B4 while I am in A3)
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+@SUPERVISOR
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Forwards command
+INFO from Alice: Final plan for 10.0.1.112
+Here is the summary of the steps you should complete:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once you have confirmed this plan, we can call the @SUPERVISOR to proceed.
+INFO from Alice: Agents ready for movement
+INFO from Alice: Forwards command
+INFO from Bob: Forwards command
+INFO from Alice: Forwards command
+INFO from Bob: Forwards command
+INFO from Alice: Forwards command
+INFO from Bob: Forwards command
+INFO from Alice: Forwards command
+INFO from Bob: Min LIDAR reading
+Restart message sent
+Restart message sent
+INFO from Bob: Replanning
+INFO from Alice: Replanning
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Replanning
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Final plan for 10.0.1.112
+Apologies for any confusion earlier. Here is the correct summarized numerical list of the commands for the steps that you should complete, based on the agreed plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+@SUPERVISOR
