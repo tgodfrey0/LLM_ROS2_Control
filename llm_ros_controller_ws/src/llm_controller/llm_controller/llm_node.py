@@ -158,7 +158,7 @@ class VelocityPublisher(Node):
               - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
               - '{self.CMD_ROTATE_ANTICLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
               - '{self.CMD_WAIT}' to wait for the time taken to move one square \
-            Do not create new commands and all agents start movement at the same time.\
+            Do not create new commands and all agents start executing their plans at the same time.\
             The space is discrete and so you can think of it in terms of the grid.\
             You should try to keep your messages as short as possible.\
             You cannot fit past other agents in the narrow corridor and you cannot leave the corridor. Areas A3 and C4 allow one agent to move out of the way of another, but only have space for one agent.\
