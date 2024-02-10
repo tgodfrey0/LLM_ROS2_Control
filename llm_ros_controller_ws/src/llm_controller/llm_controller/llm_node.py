@@ -96,7 +96,6 @@ class VelocityPublisher(Node):
     self.grid = Grid(self.STARTING_GRID_LOC, self.STARTING_GRID_HEADING, 3, 8)
     self.ready_movement_lock = Lock()
     self.other_agent_ready_movement = False
-    self.t0 = default_timer()
     
     self.sn_ctrl = SwarmNet({"LLM": self.llm_recv, "READY": self.ready_recv, "FINISHED": self.finished_recv, "INFO": None, "RESTART": self.restart_recv, "MOVE": self.move_recv}, device_list = self.SN_DEVICE_LIST)
     self.sn_ctrl.start()
@@ -192,6 +191,7 @@ class VelocityPublisher(Node):
   def run(self):
     self.get_logger().info("LLM node started")
     while(True):
+      self.t0 = default_timer()
       with self.restart_lock:
         b = self.should_restart
         
