@@ -189,6 +189,8 @@ class VelocityPublisher(Node):
       })
   
   def run(self):
+    global finished
+    
     self.get_logger().info("LLM node started")
     while(True):
       self.t0 = default_timer()
@@ -217,7 +219,6 @@ class VelocityPublisher(Node):
         self.restart(True)
       else:
         self.info("Task completed :)")
-        global finished
         with finished_lock:
           finished = True
         break
