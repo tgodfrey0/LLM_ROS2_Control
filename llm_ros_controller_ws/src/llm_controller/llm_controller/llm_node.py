@@ -451,7 +451,7 @@ class VelocityPublisher(Node):
     self.generate_summary()
     
   def generate_summary(self):
-    self.global_conv.append({"role": "user", "content": f"Generate a summarised numerical list of the plan for the steps that I should complete. Use only the commands:\
+    self.global_conv.append({"role": "user", "content": f"Generate a summarised numerical list of the plan for the steps that {self.AGENT_NAME} should complete. Use only the commands:\
       - '{self.CMD_FORWARD}' to move one square forwards \
       - '{self.CMD_BACKWARDS}' to move one square backwards \
       - '{self.CMD_ROTATE_CLOCKWISE}' to rotate 90 degrees clockwise (and stay in the same square) \
