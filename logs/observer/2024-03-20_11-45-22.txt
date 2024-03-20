@@ -1,0 +1,255 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Vision model provided, appending image
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Vision model provided, appending image
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: To avoid collision while ensuring both of us achieve our goals in the most efficient manner, one of us needs to use A3 or C4 as a temporary waiting area while the other passes by. I suggest the following plan:
+
+Since I am closer to A3, I will use it to clear the path for you. I will move into A3, wait for you to pass, and then continue south to B0. Meanwhile, you will move straight north to B7.
+
+Here is the plan detailed:
+
+For me (starting at B7 facing South):
+
+1. @FORWARD (move from B7 to B6)
+2. @FORWARD (move from B6 to B5)
+3. @FORWARD (move from B5 to B4)
+4. @ANTICLOCKWISE (turn to face East at B4)
+5. @FORWARD (move from B4 to A3)
+6. @WAIT (wait in A3 for you to pass)
+7. @WAIT (wait in A3 for you to pass)
+8. @CLOCKWISE (turn to face South at A3)
+9. @FORWARD (move from A3 to B2)
+10. @FORWARD (move from B2 to B1)
+11. @FORWARD (move from B1 to B0)
+
+For you (starting at B0 facing North):
+
+1. @FORWARD (move from B0 to B1)
+2. @FORWARD (move from B1 to B2)
+3. @FORWARD (move from B2 to B3)
+4. @FORWARD (move from B3 to A3)
+5. @FORWARD (move from A3 to B4)
+6. @FORWARD (move from B4 to B5)
+7. @FORWARD (move from B5 to B6)
+8. @FORWARD (move from B6 to B7)
+
+Once we both agree on this plan, we
+INFO from Alice: Negotiation stage 2
+INFO from Bob: Your plan seems efficient, but there is a slight error. As an agent, when I move into A3, I would not be able to directly turn south because the grid A3 is an East-West corridor. The same error is present in your plan; after you reach A3, you should turn clockwise to face East before moving to B4.
+
+Here is the revised plan:
+
+For me (starting at B7 facing South):
+
+1. @FORWARD (move from B7 to B6)
+2. @FORWARD (move from B6 to B5)
+3. @FORWARD (move from B5 to B4)
+4. @ANTICLOCKWISE (turn to face East at B4)
+5. @FORWARD (move from B4 to A3)
+6. @WAIT (wait in A3 for you to pass)
+7. @WAIT (wait in A3 for you to pass)
+8. @CLOCKWISE (turn to face South from East at A3)
+9. @FORWARD (move from A3 to B4)
+10. @FORWARD (move from B4 to B3)
+11. @FORWARD (move from B3 to B2)
+12. @FORWARD (move from B2 to B1)
+13. @FORWARD (move from B1 to B0)
+
+For you (starting at B0 facing North):
+
+1. @FORWARD (move from B0 to B1)
+2. @FORWARD (move from B1 to B2)
+3. @FORWARD (move from B2 to B3)
+4. @FORWARD (move from B3 to B4)
+5. @CLOCKWISE (turn to face East at B4)
+6. @FORWARD (move from B4 to A3)
+7. @CLOCKWISE (turn to face South at A3)
+8. @FORWARD (move from A3 to B4)
+9.
+INFO from Bob: Negotiation stage 3
+INFO from Alice: My apologies for the oversight. We need to ensure no collision occurs and that our movements are correctly aligned with the layout of the corridors. Based on your movements, here is a revision for the completion of your actions after reaching A3:
+
+For you (continuing from B4 facing East):
+
+7. @FORWARD (move from A3 to B4)
+8. @CLOCKWISE (turn to face South at B4)
+9. @FORWARD (move from B4 to B5)
+10. @FORWARD (move from B5 to B6)
+11. @FORWARD (move from B6 to B7)
+
+Once we have both confirmed that this plan prevents any collisions and is efficient for our respective goals, we can proceed.
+
+@SUPERVISOR
+INFO from Alice: Negotiation stage 4
+INFO from Alice: Supervisor called
+INFO from Bob: Your revision seems correct. Let's finalize this as our plan to prevent collisions and allow both of us to reach our respective goals.
+
+For me (starting at B7 facing South):
+
+1. @FORWARD (move from B7 to B6)
+2. @FORWARD (move from B6 to B5)
+3. @FORWARD (move from B5 to B4)
+4. @ANTICLOCKWISE (turn to face East at B4)
+5. @FORWARD (move from B4 to A3)
+6. @WAIT (wait in A3 for you to pass B4)
+7. @WAIT (wait in A3 while you turn and move to A3)
+8. @WAIT (wait in A3 for you to head towards B4)
+9. @CLOCKWISE (turn to face South from East at A3)
+10. @FORWARD (move from A3 to B4)
+11. @FORWARD (move from B4 to B3)
+12. @FORWARD (move from B3 to B2)
+13. @FORWARD (move from B2 to B1)
+14. @FORWARD (move from B1 to B0)
+
+For you (starting at B0 facing North):
+
+1. @FORWARD (move from B0 to B1)
+2. @FORWARD (move from B1 to B2)
+3. @FORWARD (move from B2 to B3)
+4. @FORWARD (move from B3 to B4)
+5. @CLOCKWISE (turn to face East at B4)
+6. @FORWARD (move from B4 to A3)
+7. @CLOCKWISE (turn to face South at A3)
+8. @FORWARD (move from A3 to B4)
+9. @FORWARD (move from B4 to B5)
+10. @FORWARD (move from B5 to B6)
+11.
+INFO from Bob: Negotiation stage 5
+INFO from Alice: Acknowledged. The plan has been revised for both agents to reach their respective destinations without collision. Here’s the final agreed-upon plan:
+
+For me (starting at B7 facing South):
+
+1. @FORWARD (move from B7 to B6)
+2. @FORWARD (move from B6 to B5)
+3. @FORWARD (move from B5 to B4)
+4. @ANTICLOCKWISE (turn to face East at B4)
+5. @FORWARD (move from B4 to A3)
+6. @WAIT (wait in A3 for you to pass)
+7. @WAIT (wait in A3 for you to pass)
+8. @CLOCKWISE (turn to face South from East at A3)
+9. @FORWARD (move from A3 to B4)
+10. @FORWARD (move from B4 to B3)
+11. @FORWARD (move from B3 to B2)
+12. @FORWARD (move from B2 to B1)
+13. @FORWARD (move from B1 to B0)
+
+For you (starting at B0 facing North):
+
+1. @FORWARD (move from B0 to B1)
+2. @FORWARD (move from B1 to B2)
+3. @FORWARD (move from B2 to B3)
+4. @FORWARD (move from B3 to B4)
+5. @CLOCKWISE (turn to face East at B4)
+6. @FORWARD (move from B4 to A3)
+7. @CLOCKWISE (turn to face South at A3)
+8. @FORWARD (move from A3 to B4)
+9. @FORWARD (move from B4 to B5)
+10. @FORWARD (move from B5 to B6)
+11. @FORWARD (move from B6 to B7)
+
+@SUPERVISOR
+INFO from Alice: Negotiation stage 6
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Final plan for 192.168.193.203
+Here are the steps that you should execute:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @WAIT
+8. @CLOCKWISE
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+13. @FORWARD
+INFO from Bob: The final plans have been agreed upon for both agents to reach their respective destinations without collisions. This has been confirmed as the most efficient route considering the constraints of the environment and each agent's starting position and orientation. 
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 7
+INFO from Alice: Final plan for 192.168.193.58
+Certainly, here is the summarised numerical list of the steps you, Alice, should take to complete the plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @CLOCKWISE
+7. @FORWARD
+8. @CLOCKWISE
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Final plan for 192.168.193.58
+Apologies for the confusion earlier. As per our agreed plan for you, Alice, starting at B7 facing South, these are the steps you should take:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @WAIT
+8. @CLOCKWISE
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+13. @FORWARD
+INFO from Bob: Final plan for 192.168.193.203
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @WAIT
+8. @CLOCKWISE
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+13. @FORWARD
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Forwards command
+INFO from Alice: Agents ready for movement
+INFO from Alice: Forwards command
+INFO from Bob: Forwards command
+INFO from Alice: Forwards command
+INFO from Bob: Forwards command
+INFO from Alice: Forwards command
+INFO from Bob: Anticlockwise command
+INFO from Alice: Anticlockwise command
+INFO from Bob: Forwards command
+INFO from Alice: Forwards command
+INFO from Bob: Min LIDAR reading
+INFO from Bob: Backwards command
+INFO from Alice: Wait command
+Restart message sent
+Restart message sent
+INFO from Bob: Replanning
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Replanning
+INFO from Alice: Replanning
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent

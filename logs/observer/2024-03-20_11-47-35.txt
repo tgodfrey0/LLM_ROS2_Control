@@ -1,0 +1,104 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Vision model provided, appending image
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Vision model provided, appending image
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: To avoid any collision and ensure we both reach our goals in the most efficient manner, we should use the designated waiting areas A3 and C4. Since I'm already facing South, it will be easiest for me to move into C4 while you proceed North. Here’s the plan:
+
+Your Plan (Agent at B0 facing North):
+1. @FORWARD (Move to B1)
+2. @FORWARD (Move to B2)
+3. @FORWARD (Move to B3)
+4. @WAIT (Wait while I move into C4)
+5. @FORWARD (Move to B4)
+6. @FORWARD (Move to B5)
+7. @FORWARD (Move to B6)
+8. @FORWARD (Move to B7)
+
+My Plan (Agent at B7 facing South):
+1. @FORWARD (Move to B6)
+2. @FORWARD (Move to B5)
+3. @FORWARD (Move to B4)
+4. @RIGHT (Turn to face West)
+5. @FORWARD (Move to C4 and wait)
+6. @WAIT (Wait while you move from B3 to B4)
+7. @LEFT (Turn to face South)
+8. @FORWARD (Move to B4)
+9. @FORWARD (Move to B3)
+10. @FORWARD (Move to B2)
+11. @FORWARD (Move to B1)
+12. @FORWARD (Move to B0)
+
+This plan allows both of us one move at a time, with you, waiting while I clear the path by moving into C4, and then I wait for you to exit B4 before I continue. Once the path is clear, we can proceed to our destinations without any further waiting.
+
+@SUPERVISOR
+INFO from Alice: Negotiation stage 2
+INFO from Alice: Supervisor called
+INFO from Alice: Let's refine the plan slightly to ensure we comply with the rules that dictate only one agent can be in A3 or C4 at a time. Here is the revised and more synchronized plan:
+
+Your Plan (Starting at B0, facing North):
+1. @FORWARD (to B1)
+2. @FORWARD (to B2)
+3. @FORWARD (to B3)
+4. @WAIT (while I move into C4)
+5. @FORWARD (to B4)
+6. @FORWARD (to B5)
+7. @FORWARD (to B6)
+8. @FORWARD (to B7)
+
+My Plan (Starting at B7, facing South):
+1. @WAIT (while you move to B1)
+2. @WAIT (while you move to B2)
+3. @FORWARD (to B6)
+4. @FORWARD (to face West at B5)
+5. @CLOCKWISE (to face West)
+6. @FORWARD (to C4)
+7. @WAIT (while you move to B4)
+8. @ANTICLOCKWISE (to face South)
+9. @FORWARD (to B4)
+10. @FORWARD (to B3)
+11. @FORWARD (to B2)
+12. @FORWARD (to B1)
+13. @FORWARD (to B0)
+
+This plan includes the necessary waits to account for the time it will take each agent to move into a position that is safe and does not cause a collision.
+
+@SUPERVISOR
+INFO from Alice: Negotiation stage 4
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Final plan for 192.168.193.203
+Certainly! Here is the concise numerical list of the steps you should take:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+@SUPERVISOR
+INFO from Alice: Final plan for 192.168.193.58
+Alice's Plan (Starting at B7, facing South):
+1. @WAIT
+2. @WAIT
+3. @FORWARD
+4. @CLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @ANTICLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+
+@SUPERVISOR
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
