@@ -1,0 +1,60 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Vision model provided, appending image
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Vision model provided, appending image
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Alright, to ensure we do not collide and both reach our destinations efficiently, we should use the passing bays at A3 and C4. Since I am at B7, I will move towards C4 to let you pass, as it is closer to me than A3. Here's the plan:
+
+For you starting from B0:
+1. @FORWARD (Move to B1)
+2. @FORWARD (Move to B2)
+3. @FORWARD (Move to B3)
+4. @FORWARD (Move to B4)
+5. @WAIT (Wait while I move into C4 to clear the way)
+6. @FORWARD (Move to B5)
+7. @FORWARD (Move to B6)
+8. @FORWARD (Reach B7)
+
+For me starting from B7:
+1. @FORWARD (Move to B6)
+2. @FORWARD (Move to B5)
+3. @FORWARD (Move to B4)
+4. @CLOCKWISE (Rotate to face East)
+5. @FORWARD (Enter C4 to allow you to pass)
+6. @WAIT (Wait while you move from B4 to B6)
+7. @ANTICLOCKWISE (Rotate to face South)
+8. @BACKWARDS (Exit C4 to B4)
+9. @BACKWARDS (Move to B3)
+10. @BACKWARDS (Move to B2)
+11. @BACKWARDS (Move to B1)
+12. @BACKWARDS (Reach B0)
+
+Once we have confirmed our agreement on this plan, we can call the '@SUPERVISOR' to indicate that we are ready to proceed. Do you agree with the plan?
+INFO from Alice: Negotiation stage 2
+INFO from Alice: Supervisor called
+INFO from Bob: Your plan for navigating the corridor seems efficient and safe. I agree with the proposed movements. Once we both execute these steps, we should be able to swap positions without any collisions.
+
+Upon agreement, we'll alert the '@SUPERVISOR' to finalize our intended actions. Let's confirm and get started.
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 3
+INFO from Bob: Supervisor called
+INFO from Alice: @SUPERVISOR
+INFO from Alice: Negotiation stage 4
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Final plan for 192.168.193.58
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @WAIT
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement

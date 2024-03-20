@@ -1,0 +1,123 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Vision model provided, appending image
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Vision model provided, appending image
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: To ensure that we do not collide and can switch places efficiently, we should use A3 or C4 as passing points. I propose that I use A3 for this purpose. Here's the plan:
+
+You, from B0 heading to B7:
+1. @FORWARD - Move to B1.
+2. @FORWARD - Move to B2.
+3. @WAIT - Wait while I move into A3.
+4. @FORWARD - Move to B3.
+5. @FORWARD - Move to B4.
+6. @FORWARD - Move to B5.
+7. @FORWARD - Move to B6.
+8. @FORWARD - Reach B7, your destination.
+
+Me, from B7 heading to B0:
+1. @BACKWARDS - Move to B6.
+2. @ANTICLOCKWISE - Rotate to face West.
+3. @FORWARD - Move to A6.
+4. @FORWARD - Move to A5.
+5. @FORWARD - Move into A3, the passing point.
+6. @CLOCKWISE - Rotate to face North.
+7. @FORWARD - Move to A4.
+8. @CLOCKWISE - Rotate to face East.
+9. @FORWARD - Move to B4.
+10. @CLOCKWISE - Rotate to face South.
+11. @FORWARD - Move to B3.
+12. @FORWARD - Move to B2.
+13. @FORWARD - Move to B1.
+14. @FORWARD - Reach B0, my destination.
+
+We can start moving at the same time, with the understanding that you will pause at B2 while I get into A3. After I have passed A3, you can continue moving North, and I will continue moving South. This plan avoids any collisions and ensures that both of us reach our destinations.
+
+@SUPERVISOR
+INFO from Alice: Negotiation stage 2
+INFO from Alice: Supervisor called
+INFO from Bob: The plan looks well-considered, but there are some adjustments needed.
+
+Your initial plan was based on a misunderstanding of the grid configuration; there isn't a direct path through A3 or A6 as those grid squares do not exist. The grid only has paths through B and C columns, with A3 and C4 being holding areas for one of us to wait while the other passes.
+
+Considering this, allow me to propose an adjusted plan:
+
+You, starting at B0 and heading to B7:
+1. @FORWARD - Move to B1.
+2. @FORWARD - Move to B2.
+3. @FORWARD - Move to B3.
+4. @WAIT - Wait while I move into A3.
+5. @FORWARD - Move to B4.
+6. @FORWARD - Move to B5.
+7. @FORWARD - Move to B6.
+8. @FORWARD - Reach B7, your destination.
+
+Me, starting at B7 and heading to B0:
+1. @BACKWARDS - Move to B6.
+2. @BACKWARDS - Move to B5.
+3. @ANTICLOCKWISE - Rotate to face West.
+4. @FORWARD - Move into A3, the passing point.
+5. @WAIT - Wait for you to move out of B3.
+6. @ANTICLOCKWISE - Rotate to face South.
+7. @FORWARD - Move to A4 (Note: this actually refers to moving to B4 from A3).
+8. @FORWARD - Move to B3.
+9. @FORWARD - Move to B2.
+10. @FORWARD - Move to B1.
+11. @FORWARD - Reach B0, my destination.
+
+This plan accommodates the actual grid configuration, allowing us to switch places effectively without any collisions. We should be able to execute our moves safely now.
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 3
+INFO from Bob: Supervisor called
+INFO from Alice: Apologies for the confusion in the previous plan. The corridor connecting B4 and B5 makes it impossible for me to access A6 from B6, and there's an error in your path as well; we need to take the actual layout into account. Let's revise the plan.
+
+New plan considering we both start at the same time:
+
+Your path from B0 to B7:
+1. @FORWARD - Move to B1 to initiate movement.
+2. @FORWARD - Move to B2 to make way for negotiation.
+3. @WAIT - Wait for me to enter A3.
+4. @FORWARD - Move to B3 to proceed North.
+5. @FORWARD - Move to B4 to continue.
+6. @FORWARD - Move to B5 past the passing point.
+7. @FORWARD - Move to B6 nearing the destination.
+8. @FORWARD - Arrive at B7, the endpoint.
+
+My path from B7 to B0:
+1. @BACKWARDS - Move backward to B6 to make room.
+2. @ANTICLOCKWISE - Rotate to face West before moving sideways.
+3. @FORWARD - Enter A3 as a safe point to let you pass.
+4. @ANTICLOCKWISE - Rotate to face South to align with the exit.
+5. @FORWARD - Leave A3 after you pass.
+6. @BACKWARDS - Move back into B3 to head South.
+7. @BACKWARDS - Continue to B2 heading South.
+8. @BACKWARDS - Reach B1, almost there.
+9. @BACKWARDS - Arrive at B0, the destination.
+
+By waiting at B2 while I move into A3, you ensure a clear path for us both. Once I'm in A3 and facing South, you can proceed North beyond A3, and I will exit A3 to continue South. This plan should allow us both to arrive at our destinations without collision.
+INFO from Alice: Negotiation stage 4
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Certainly, here is the summarised list of steps that you, starting at B0 and aiming to reach B7, should take:
+
+1. @FORWARD - Enter B1.
+2. @FORWARD - Proceed to B2.
+3. @WAIT - Pause while Bob moves into A3.
+4. @FORWARD - Continue to B3.
+5. @FORWARD - Advance to B4.
+6. @FORWARD - Move to B5.
+7. @FORWARD - Go to B6.
+8. @FORWARD - Arrive at B7.
+
+This list represents the agreed-upon moves for you to execute in order to reach your destination without collision based on the given grid.
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 5
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
