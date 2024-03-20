@@ -1,0 +1,840 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Vision model provided, appending image
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Vision model provided, appending image
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Understood. To ensure we both reach our destinations without collision, one of us should use either A3 or C4 to make room for the other. Let's assume that you will take the detour since I am on the top and it will be more efficient for you to move into A3 as you approach from below. Let's plan our movements accordingly:
+
+Your plan to reach B7:
+1. @FORWARD (B1)
+2. @FORWARD (B2)
+3. @FORWARD (into A3 and wait)
+4. @WAIT (while I pass B3)
+5. @FORWARD (B3)
+6. @FORWARD (B4)
+7. @FORWARD (B5)
+8. @FORWARD (B6)
+9. @FORWARD (B7)
+
+My plan to reach B0:
+1. @FORWARD (B6)
+2. @FORWARD (B5)
+3. @FORWARD (B4)
+4. @FORWARD (B3 - while you wait in A3)
+5. @FORWARD (B2)
+6. @FORWARD (B1)
+7. @FORWARD (B0)
+
+By following this synchronized plan, you can make room for me to pass through B3 while you temporarily wait in A3. Once I've cleared that area, you can continue north to reach B7 while I make my way south to B0. With this plan, we will not collide, and our objectives will be efficiently met.
+
+@SUPERVISOR
+INFO from Alice: Negotiation stage 2
+INFO from Alice: Supervisor called
+INFO from Bob: Your plan is clear. Here is the updated concise version of the plans that we'll both follow, where I will move aside into A3 while you pass:
+
+Your Plan to reach B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @WAIT
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+9. @FORWARD
+
+My Plan to reach B0:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Once I've reached A3 and waited for you to pass B3, we can both continue our paths to our destinations. This plan prevents any collisions and achieves our goal efficiently.
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 3
+INFO from Bob: Supervisor called
+INFO from Alice: Your plan to reach B7:
+1. @FORWARD (B1)
+2. @FORWARD (B2)
+3. @ANTICLOCKWISE (face West)
+4. @FORWARD (into A3 and wait)
+5. @WAIT (while I pass B3)
+6. @CLOCKWISE (face North)
+7. @FORWARD (B3)
+8. @FORWARD (B4)
+9. @FORWARD (B5)
+10. @FORWARD (B6)
+11. @FORWARD (B7)
+
+My plan to reach B0:
+1. @FORWARD (B6)
+2. @FORWARD (B5)
+3. @FORWARD (B4)
+4. @FORWARD (B3 - while you wait in A3)
+5. @FORWARD (B2)
+6. @FORWARD (B1)
+7. @FORWARD (B0)
+
+Both our plans are designed to avoid any collision, letting you detour into A3 as I pass through B3, after which you proceed north to B7 and I continue south to B0.
+
+@SUPERVISOR
+INFO from Alice: Negotiation stage 4
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Confirmed, the plan ensures collision avoidance and destination reach for both agents. We can proceed with execution.
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 5
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Final plan for 192.168.193.58
+Your plan to reach B7:
+
+1. @FORWARD
+2. @FORWARD
+3. @ANTICLOCKWISE
+4. @FORWARD
+5. @WAIT
+6. @CLOCKWISE
+7. @FORWARD
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+INFO from Bob: Final plan for 192.168.193.203
+Here is the summarized numerical list of the plan for the steps you should complete:
+
+1. @FORWARD
+2. @FORWARD
+3. @ANTICLOCKWISE
+4. @FORWARD
+5. @WAIT
+6. @CLOCKWISE
+7. @FORWARD
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Bob: Final plan for 192.168.193.203
+Certainly, here is the list of steps you should follow according to the agreed-upon plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @CLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Forwards command
+INFO from Alice: Agents ready for movement
+INFO from Alice: Forwards command
+INFO from Alice: Final plan for 192.168.193.58
+Here is the summarised numerical list of the steps you should complete:
+
+1. @FORWARD
+2. @FORWARD
+3. @ANTICLOCKWISE
+4. @FORWARD
+5. @WAIT
+6. @CLOCKWISE
+7. @FORWARD
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+INFO from Bob: Forwards command
+INFO from Alice: Forwards command
+INFO from Bob: Forwards command
+INFO from Alice: Anticlockwise command
+INFO from Bob: Anticlockwise command
+INFO from Alice: Invalid move in plan, A2 is not a valid position
+Restart message sent
+INFO from Alice: Replanning
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: Replanning
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+INFO from Alice: Agents ready for negotiation
+FINISHED message sent
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Final plan for 192.168.193.203
+Apologies for the confusion earlier. Here's a summarised numerical list of the steps you should take, according to the agreed-upon plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @CLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Alice: Final plan for 192.168.193.58
+Understood, let's create a new plan from our current positions. Since you're at B2 facing West and need to end at B7, and I'm at B4 facing East and need to end at B0, I will move into C4 to let you pass. Here is the new plan for the steps you should take:
+
+Your plan to reach B7:
+1. @ANTICLOCKWISE (face South)
+2. @FORWARD (into A3 and wait)
+3. @WAIT (while I pass B3)
+4. @WAIT (while I pass B2)
+5. @CLOCKWISE (face East)
+6. @FORWARD (B3)
+7. @FORWARD (B4)
+8. @FORWARD (B5)
+9. @FORWARD (B6)
+10. @FORWARD (reach B7)
+
+Please wait for my confirmation that I have passed B3 before proceeding with step 6 to ensure we avoid a collision. 
+
+@SUPERVISOR
+INFO from Bob: Agents ready for movement
+INFO from Bob: Forwards command
+INFO from Bob: Final plan for 192.168.193.203
+My apologies for the confusion earlier. Here is the list of steps based on the first plan we agreed upon that you should complete:
+
+1. @FORWARD
+2. @FORWARD
+3. @ANTICLOCKWISE
+4. @FORWARD
+5. @WAIT
+6. @CLOCKWISE
+7. @FORWARD
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+INFO from Bob: Invalid move in plan, D4 is not a valid position
+Restart message sent
+INFO from Alice: Replanning
+INFO from Bob: Replanning
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Final plan for 192.168.193.58
+Given the updated scenario where you are currently at B2 facing West and I am at B4 facing East, and considering that we still need to swap positions without colliding, the following plan should work: 
+
+You will move into A3 to allow me to pass. Once I am past B3, headed towards B0, you can continue your path towards B7. Your summarized plan is as follows:
+
+Your Plan to reach B7:
+1. @ANTICLOCKWISE (to face South)
+2. @FORWARD (move to A3)
+3. @WAIT (wait for me to pass B3)
+4. @WAIT (wait for me to pass B2)
+5. @CLOCKWISE (to face East)
+6. @FORWARD (move to B3)
+7. @FORWARD (move to B4)
+8. @FORWARD (move to B5)
+9. @FORWARD (move to B6)
+10. @FORWARD (arrive at B7)
+
+Please confirm this plan, and once confirmed, I will proceed to call the @SUPERVISOR.
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Final plan for 192.168.193.203
+Certainly, here is the updated summary of the commands you need to execute according to the plan we agreed on for you to reach B7:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @CLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+INFO from Alice: Final plan for 192.168.193.58
+Here are the steps you should take to get from your current position at B2, facing West, to your destination at B7:
+
+1. @ANTICLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @CLOCKWISE
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+9. @FORWARD
+
+This plan assumes that I will be moving into C4 to allow you to pass, and then you will proceed north on the B column to your destination at B7. Please wait for confirmation from me that I have reached C4 before you proceed north from A3 to avoid any collision.
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: Anticlockwise command
+INFO from Alice: Final plan for 192.168.193.58
+Understood, here is the summarised plan for you to reach B7 from your current position at B2 facing West:
+
+1. @CLOCKWISE
+2. @FORWARD
+3. @ANTICLOCKWISE
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+This plan assumes that I will be moving into C4 to let you pass through to B7. Please execute these steps in order to reach your destination.
+INFO from Alice: Forwards command
+INFO from Alice: Forwards command
+INFO from Bob: Final plan for 192.168.193.203
+Apologies for any confusion. Based on the current positions you've given (you at C4 and me at B2), and the requirement for you to end at B0 and me to end at B7, here is a summarised plan with the allowed commands for the steps you should take:
+
+1. @ANTICLOCKWISE (face North)
+2. @FORWARD (move to B4)
+3. @ANTICLOCKWISE (face West)
+4. @FORWARD (move to A4)
+5. @ANTICLOCKWISE (face South)
+6. @FORWARD (move to A3)
+7. @CLOCKWISE (face West)
+8. @WAIT (while I move to B3)
+9. @WAIT
+10. @ANTICLOCKWISE (face South)
+11. @FORWARD (move to B3)
+12. @FORWARD (move to B2)
+13. @FORWARD (move to B1)
+14. @FORWARD (move to B0)
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Clockwise command
+INFO from Alice: Invalid move in plan, A0 is not a valid position
+Restart message sent
+INFO from Bob: Replanning
+INFO from Alice: Replanning
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Final plan for 192.168.193.58
+Apologies for the confusion earlier. Based on the updated scenario where you are at B2 and I am at B4, and considering our new locations and orientations, here's the revised and simplified plan for the steps you should take to reach B7:
+
+1. @ANTICLOCKWISE
+2. @FORWARD
+3. @CLOCKWISE
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+Execute these moves to navigate from B2 to B7. Please wait for the confirmation that I have moved into C4 before executing step 4 in order to avoid a collision.
+INFO from Bob: Final plan for 192.168.193.203
+Given that I am at C4 facing east and need to go to B0, and you are at B2 facing west and need to go to B7, the plan for my movements would be:
+
+1. @ANTICLOCKWISE (turn to face North)
+2. @FORWARD (move into B4)
+3. @FORWARD (move into B5)
+4. @FORWARD (move into B6)
+5. @FORWARD (move into B7)
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Final plan for 192.168.193.58
+Apologies for the repeated confusion. Here is a new revised plan based on your current position at B2 facing West and my position at B4 facing East, to ensure that you can reach B7 while I reach B0 without any collisions:
+
+Your plan to reach B7:
+
+1. @ANTICLOCKWISE
+2. @FORWARD
+3. @CLOCKWISE
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+This plan allows you to move from B2 to A3, wait for me to pass, and then continue northward to B7. Remember to move into A3 and wait as mentioned in steps 2 and 3 to avoid a collision with me.
+INFO from Bob: Final plan for 192.168.193.203
+Based on the information provided, here is a summarized numerical list of the commands you should execute to reach your destination from C4 to B7, assuming I will be taking the side step into A3:
+
+1. @FORWARD (move from C4 to B4)
+2. @FORWARD (move from B4 to B5)
+3. @FORWARD (move from B5 to B6)
+4. @FORWARD (move from B6 to B7)
+INFO from Alice: Final plan for 192.168.193.58
+Since you are currently at B0 facing West and need to get to B7, and I am at C4 facing East and need to get to B0, we need a plan that allows us to pass each other without collision. Here is your plan:
+
+Your Plan to reach B7:
+
+1. @CLOCKWISE (to face North)
+2. @FORWARD (to move to B1)
+3. @FORWARD (to move to B2)
+4. @FORWARD (to move to B3)
+5. @FORWARD (to move to B4)
+6. @FORWARD (to move to B5)
+7. @FORWARD (to move to B6)
+8. @FORWARD (to arrive at B7)
+
+You should execute these steps consecutively without stopping, as I am already in C4 and out of your path. Therefore, there should be no risk of collision, and you can proceed directly to B7.
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Final plan for 192.168.193.203
+Understood. As per our plan for you to move from C4 to B0, here is the list of steps you need to execute:
+
+1. @ANTICLOCKWISE (to face North from East at C4)
+2. @FORWARD (to move from C4 to B4)
+3. @FORWARD (to move from B4 to B3)
+4. @FORWARD (to move from B3 to B2)
+5. @FORWARD (to move from B2 to B1)
+6. @FORWARD (to reach your destination at B0)
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Anticlockwise command
+INFO from Bob: Invalid move in plan, C5 is not a valid position
+Restart message sent
+INFO from Alice: Replanning
+INFO from Bob: Replanning
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Final plan for 192.168.193.203
+My apologies for the confusion. Let's clarify your steps from C4 to B0 according to the latest plan:
+
+1. @ANTICLOCKWISE (turn to face North from East)
+2. @FORWARD (move from C4 to C3)
+3. @ANTICLOCKWISE (turn to face West)
+4. @FORWARD (move from C3 to B3)
+5. @FORWARD (move from B3 to B2)
+6. @FORWARD (move from B2 to B1)
+7. @FORWARD (move from B1 to B0)
+INFO from Alice: Final plan for 192.168.193.58
+To ensure we do not collide and both reach our destinations, here is the plan you should follow from your current position at B0 facing West to reach B7:
+
+Your Plan to reach B7:
+
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+Complete these steps in order to arrive at B7 without any collisions, as I will be waiting at C4 and will not interfere with your path.
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Final plan for 192.168.193.203
+Apologies for the oversight. Given your position at C4 and needing to get to B0, here is your updated list of steps:
+
+1. @ANTICLOCKWISE (to face North)
+2. @FORWARD (to move from C4 to C3)
+3. @ANTICLOCKWISE (to face West)
+4. @FORWARD (to move from C3 to B3)
+5. @FORWARD (to move from B3 to B2)
+6. @FORWARD (to move from B2 to B1)
+7. @FORWARD (to arrive at B0)
+INFO from Bob: Final plan for 192.168.193.203
+Apologies for any previous confusion. Based on the current scenario where you are at C4 facing North and need to get to B0, and I am at B0 facing West and need to get to B7, here are the steps you should take:
+
+1. @ANTICLOCKWISE (to face West from North)
+2. @FORWARD (to move from C4 to B4)
+3. @FORWARD (to move from B4 to B3)
+4. @FORWARD (to move from B3 to B2)
+5. @FORWARD (to move from B2 to B1)
+6. @FORWARD (to end at B0)
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Final plan for 192.168.193.58
+Your updated plan from B0, facing West, to reach B7 is as follows:
+
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+Since I am at C4 and you need to reach B7, you will not encounter any obstructions on your path using this plan.
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: Min LIDAR reading
+Restart message sent
+Restart message sent
+INFO from Bob: Replanning
+INFO from Alice: Replanning
+INFO from Bob: Replanning
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: Final plan for 192.168.193.203
+Given the current positions and directions, here is your list of moves from C4 to B0:
+
+1. @ANTICLOCKWISE (to face West from North)
+2. @FORWARD (to move from C4 to B4)
+3. @FORWARD (to move from B4 to B3)
+4. @FORWARD (to move from B3 to B2)
+5. @FORWARD (to move from B2 to B1)
+6. @FORWARD (to arrive at B0)
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Final plan for 192.168.193.203
+Here's a list of steps that you should follow from your starting position at C4, facing North, to reach B0:
+
+1. @ANTICLOCKWISE (turn to face West)
+2. @FORWARD (move from C4 to B4)
+3. @FORWARD (move from B4 to B3)
+4. @ANTICLOCKWISE (turn to face South)
+5. @FORWARD (move from B3 to B2)
+6. @FORWARD (move from B2 to B1)
+7. @FORWARD (reach B0)
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Anticlockwise command
+INFO from Bob: Forwards command
+INFO from Bob: Invalid move in plan, A4 is not a valid position
+Restart message sent
+INFO from Bob: Replanning
+INFO from Alice: Replanning
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Final plan for 192.168.193.58
+Based on the current scenario where you are at B0 facing West and need to end at B7, and I am at C4 facing East and need to end at B0, without renegotiating and focusing solely on your moves, your steps to reach B7 would be:
+
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+This plan allows you to turn around and head North up the B column, reaching B7 without interference as I am positioned in C4 out of your direct path.
+INFO from Alice: Final plan for 192.168.193.58
+To resolve the current situation, let's ignore the previous plans and create a new plan from our current positions. Since you are at B0 facing West, and I am at C4 facing North, your goal is to reach B7, and my goal is to reach B0, here is the new plan for your movements:
+
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+With this plan, you will turn to face North, then proceed straightforward to B7. I will remain in C4 until you pass B3, ensuring we do not collide. After you proceed beyond B3, I will move towards B0. Please wait for confirmation that I am at B0 before making your move from B3 to B4.
+INFO from Alice: Final plan for 192.168.193.58
+To ensure we do not collide and both reach our destinations, here is the plan you should follow from your current position at B0 facing West to reach B7:
+
+Your Plan to reach B7:
+
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+Complete these steps in order to arrive at B7 without any collisions, as I will be waiting at C4 and will not interfere with your path.
+INFO from Bob: Final plan for 192.168.193.203
+Understood, let's reassess our positions and determine a new plan. Currently, you are at C4, and I'm at B0. You need to reach B0, and I need to reach B7. You are facing North, and I'm facing West. 
+
+In this scenario, it's efficient for you to first move out of the way to allow me to pass through the corridor safely. Since you're closer to C4, you can temporarily move into C4 while I progress northwards. Once I am out of the corridor and no longer at risk of collision, you can proceed to B0.
+
+Here's your new plan:
+
+1. @FORWARD (from C4 into C3)
+2. @ANTICLOCKWISE (turn to face West)
+3. @FORWARD (from C3 into B3)
+4. @ANTICLOCKWISE (turn to face South)
+5. @FORWARD (to B2)
+6. @FORWARD (to B1)
+7. @FORWARD (to B0)
+
+Please confirm if this plan is acceptable for you. Once we agree, we will both execute our movements simultaneously to avoid collision.
+INFO from Alice: Final plan for 192.168.193.58
+Since you are currently at B0 facing West and I am at C4 facing East, and you need to end at B7 while I need to end at B0, the following plan will allow us to pass each other safely:
+
+Your Plan to reach B7:
+
+1. @CLOCKWISE (to face North)
+2. @FORWARD (to B1)
+3. @FORWARD (to B2)
+4. @FORWARD (to B3)
+5. @FORWARD (to B4)
+6. @FORWARD (to B5)
+7. @FORWARD (to B6)
+8. @FORWARD (to reach B7)
+
+Since I'm already in C4, you can proceed north without any need to wait, as there is no risk of collision. This plan will take you straight to B7.
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+INFO from Bob: Agents ready for negotiation
+FINISHED message sent
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Final plan for 192.168.193.203
+Based on the new information that you are at B4 facing West and need to reach B0, and I am at B0 also facing West needing to reach B7, here is your summarised list of moves:
+
+1. @FORWARD (from B4 to B3)
+2. @FORWARD (from B3 to B2)
+3. @FORWARD (from B2 to B1)
+4. @FORWARD (from B1 to B0)
+INFO from Bob: Final plan for 192.168.193.203
+To achieve our goal of switching places without collision, given our current positions and facing directions, here is your summarized list of steps:
+
+1. @CLOCKWISE (to face South from West at B4)
+2. @FORWARD (move from B4 to B3)
+3. @FORWARD (move from B3 to B2)
+4. @FORWARD (move from B2 to B1)
+5. @ANTICLOCKWISE (to face East at B1)
+6. @FORWARD (move from B1 to C1)
+7. @CLOCKWISE (to face North at C1)
+8. @FORWARD (move from C1 to C2)
+9. @FORWARD (move from C2 to C3)
+10. @FORWARD (move from C3 to C4)
+11. @CLOCKWISE (to face East at C4)
+12. @WAIT (allow me to pass from B0 to B1)
+13. @CLOCKWISE (to face South at C4)
+14. @FORWARD (from C4 to B4)
+15. @FORWARD (from B4 to B3)
+16. @FORWARD (from B3 to B2)
+17. @FORWARD (from B2 to B1)
+18. @FORWARD (from B1 to B0)
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Final plan for 192.168.193.58
+Here is the summarised numerical list of the movements you should complete, according to our agreement:
+
+1. @CLOCKWISE 
+2. @FORWARD 
+3. @FORWARD 
+4. @FORWARD 
+5. @FORWARD 
+6. @FORWARD 
+7. @FORWARD 
+8. @FORWARD 
+
+This plan allows you to turn around (since you are currently facing West) and then proceed straight from B0 to B7. As I am in C4, I'll be out of your way, and there'll be no risk of collision.
+INFO from Bob: Final plan for 192.168.193.203
+Apologies for the confusion. Based on your current position at B4 facing West and your need to end at B0, here is your list of commands:
+
+1. @BACKWARDS (to move from B4 to B5)
+2. @BACKWARDS (to move from B5 to B6)
+3. @BACKWARDS (to move from B6 to B7)
+4. @ANTICLOCKWISE (to face South at B7)
+5. @FORWARD (to move from B7 into C4 spot)
+6. @CLOCKWISE (to face West at C4)
+7. @WAIT (to wait for me to pass by and free up B3)
+8. @ANTICLOCKWISE (to face South at C4)
+9. @FORWARD (to move back into B7)
+10. @ANTICLOCKWISE (to face East at B7)
+11. @FORWARD (to move from B7 to B6)
+12. @FORWARD (to move from B6 to B5)
+13. @FORWARD (to move from B5 to B4)
+14. @FORWARD (to move from B4 to B3)
+15. @FORWARD (to move from B3 to B2)
+16. @FORWARD (to move from B2 to B1)
+17. @FORWARD (to move from B1 to B0)
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Backwards command
+INFO from Bob: Invalid move in plan, D4 is not a valid position
+Restart message sent
+INFO from Alice: Replanning
+INFO from Bob: Replanning
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Final plan for 192.168.193.58
+Let's create a new plan from our current positions to resolve the situation.
+
+Your updated plan to move from B0 to B7 with you facing West and me at C4 facing North is as follows:
+
+1. @CLOCKWISE (to face North)
+2. @FORWARD (to B1)
+3. @FORWARD (to B2)
+4. @FORWARD (to B3)
+5. @FORWARD (to B4)
+6. @FORWARD (to B5)
+7. @FORWARD (to B6)
+8. @FORWARD (to reach B7)
+
+Since I am at C4 and out of the way, you will be able to move north up column B without any obstructions. Please proceed with this plan to reach B7.
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: Waiting for an agent to be ready
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Final plan for 192.168.193.58
+Given that you are currently at B0 and need to reach B7, and I am at C4, here is the summarised list of steps for you to take:
+
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+With this plan, you rotate to face north and then move straight up the B column to reach B7. Since I am at C4, there is no risk of collision, and you can proceed without delay.
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: Clockwise command
+INFO from Alice: Final plan for 192.168.193.58
+Here is the summarised numerical list of the movements you should complete:
+
+1. @CLOCKWISE
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+8. @FORWARD
+
+This plan starts with you facing West at B0 and will take you straight to B7, while I am at C4 and will not interfere with your path. Proceed with these movements to reach your destination.
+INFO from Alice: Forwards command
+INFO from Alice: Forwards command
+INFO from Alice: Forwards command
+INFO from Alice: Forwards command
+INFO from Alice: Forwards command
+INFO from Alice: Forwards command
+INFO from Alice: Forwards command
+INFO from Bob: Final plan for 192.168.193.203
+Based on your new position at C4 facing West and the requirement to end at B0, while I am at B0 facing West and must end at B7, here is the list of moves you should take:
+
+1. @ANTICLOCKWISE (to face South from West)
+2. @FORWARD (to move from C4 into C3)
+3. @FORWARD (to move from C3 into C2)
+4. @FORWARD (to move from C2 into C1)
+5. @FORWARD (to move from C1 into C0)
+6. @CLOCKWISE (to face West at C0)
+7. @WAIT (allow me to pass from B0 to B1)
+8. @BACKWARDS (from C0 to B0)
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Task completed :)
+INFO from Bob: Final plan for 192.168.193.203
+Apologies for any confusion. Let's create a new plan from our current positions. Since you are at B4 facing West and need to reach B0, and I am at B0 facing West and need to reach B7, here is a list of steps for you to execute:
+
+1. @BACKWARDS (to move from B4 to B3)
+2. @BACKWARDS (to move from B3 to B2)
+3. @BACKWARDS (to move from B2 to B1)
+4. @BACKWARDS (to arrive at B0)
+INFO from Bob: Final plan for 192.168.193.203
+Based on your current position at C4 facing West and needing to end at B0, and with me at B0 also facing West but needing to end at B7, here are the steps that you should take:
+
+1. @FORWARD (from C4 to B4)
+2. @ANTICLOCKWISE (to face South at B4)
+3. @FORWARD (from B4 to B3)
+4. @FORWARD (from B3 to B2)
+5. @FORWARD (from B2 to B1)
+6. @FORWARD (from B1 to B0)
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Forwards command
+INFO from Bob: Anticlockwise command
+INFO from Bob: Forwards command
+INFO from Bob: Forwards command
+INFO from Bob: Forwards command
+INFO from Bob: Forwards command
+INFO from Bob: Task completed :)
