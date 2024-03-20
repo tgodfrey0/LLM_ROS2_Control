@@ -30,7 +30,7 @@ commands:
 movement:
   linear:
     speed: 0.15  # m/s
-    distance: 0.30  # m
+    distance: 0.50  # m
   angular:
     speed: 45  # deg/s
     distance: 90 # degrees
