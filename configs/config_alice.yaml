@@ -12,7 +12,7 @@ agent:
   agent_name: Alice
   initially_this_agents_turn: True
   starting_grid_loc: B3
-  starting_grid_heading: south
+  starting_grid_heading: north
   ending_grid_loc: B7
   max_num_negotiation_messages: 8
   working_dir: "/home/ubuntu/LLM_ROS2_Control/"

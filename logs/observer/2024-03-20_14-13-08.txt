@@ -1,0 +1,104 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Vision model provided, appending image
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Vision model provided, appending image
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: To achieve our goals efficiently, we should come up with a plan that minimizes the steps taken and ensures we both reach our destinations without any collisions. Since I am closer to C4 and you are closer to A3, it would be best for each of us to move to our nearest respective safe zone, which are A3 and C4.
+
+Here's a proposed plan:
+
+I will move first:
+1. @BACKWARDS - Move into C4 to clear the path.
+2. @CLOCKWISE - Rotate to face North while waiting.
+3. @CLOCKWISE - Rotate to face East while continuing to wait.
+4. @FORWARD - Move back onto B4, facing East.
+5. @CLOCKWISE - Rotate to face South.
+6. @FORWARD - Move from B4 to B3, completing my move.
+
+You will move after I clear B4:
+1. @WAIT - Wait for me to move into the holding area.
+2. @FORWARD - Move from B3 to B4 once I have moved into C4.
+3. @FORWARD - Move from B4 to B5.
+4. @FORWARD - Move from B5 to B6.
+5. @FORWARD - Continue forward from B6 to B7, completing your move.
+
+This plan should allow us to swap places without any collisions.
+
+@SUPERVISOR
+INFO from Alice: Negotiation stage 2
+INFO from Alice: Supervisor called
+INFO from Alice: As an alternative plan that allows both of us to reach our destinations while avoiding any collisions, let's consider the following sequence of actions:
+
+My moves:
+1. @CLOCKWISE - To face East and prepare to enter C4.
+2. @FORWARD - To move into C4 and allow you to pass.
+3. @CLOCKWISE - To rotate and face South after you pass.
+4. @BACKWARDS - To leave C4 and enter B4.
+5. @CLOCKWISE - To rotate and face East in B4.
+6. @CLOCKWISE - To rotate and face South to end at B3.
+
+Your moves:
+1. @WAIT - To wait for me to clear B4 and enter C4.
+2. @FORWARD - To move from B3 to B4 after I vacate.
+3. @FORWARD - To move from B4 to B5.
+4. @FORWARD - To move from B5 to B6.
+5. @FORWARD - To move from B6 to B7 and complete your journey.
+
+Let's verify this plan and proceed once we agree.
+
+@SUPERVISOR
+INFO from Alice: Negotiation stage 4
+INFO from Alice: Negotiations completed
+INFO from Bob: Your proposal is clear and avoids collision, but it requires me to rotate unnecessarily. Also, steps can be minimized by performing some actions simultaneously. I can wait at A3 while you pass through B3 to B4, rather than rotating twice. 
+
+Here is an optimized version of the plan:
+
+My moves:
+1. @FORWARD - Move from B4 to A3 to clear the path for you.
+2. @WAIT - Wait in A3 for you to pass.
+3. @WAIT - Continue waiting in A3 for you to reach B4.
+4. @BACKWARDS - Move from A3 back to B3, facing South.
+5. @FORWARD - Move from B3 to B2.
+6. @FORWARD - Move from B2 to B1.
+7. @FORWARD - Move from B1 to B0, completing my move.
+
+Your moves:
+1. @WAIT - Wait for me to clear the path.
+2. @FORWARD - Move from B3 to B4 after I have moved into A3.
+3. @FORWARD - Move from B4 to B5.
+4. @FORWARD - Move from B5 to B6.
+5. @FORWARD - Continue forward from B6 to B7, completing your move.
+
+We are using our time efficiently by waiting and moving in a coordinated manner, and it reduces unnecessary rotations. 
+
+@SUPERVISOR
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Negotiation stage 3
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Final plan for 192.168.193.203
+Bob's Plan:
+1. @FORWARD
+2. @WAIT
+3. @WAIT
+4. @BACKWARDS
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+@SUPERVISOR
+INFO from Alice: Final plan for 192.168.193.58
+Here is the summarized numerical list of the steps you should complete as agreed upon:
+
+1. @WAIT - To wait for Alice to move into A3.
+2. @FORWARD - To move from B3 to B4 after Alice has moved into A3.
+3. @FORWARD - To move from B4 to B5.
+4. @FORWARD - To move from B5 to B6.
+5. @FORWARD - To move from B6 to B7, completing your move.
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
