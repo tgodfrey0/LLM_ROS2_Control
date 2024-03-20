@@ -11,8 +11,8 @@ swarmnet:
 agent:
   agent_name: Bob
   initially_this_agents_turn: False
-  starting_grid_loc: B7
-  starting_grid_heading: south
+  starting_grid_loc: C4
+  starting_grid_heading: west
   ending_grid_loc: B0
   max_num_negotiation_messages: 8
   working_dir: "/home/ubuntu/LLM_ROS2_Control/"
