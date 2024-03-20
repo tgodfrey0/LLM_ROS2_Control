@@ -11,12 +11,12 @@ swarmnet:
 agent:
   agent_name: Bob
   initially_this_agents_turn: False
-  starting_grid_loc: C4
-  starting_grid_heading: west
+  starting_grid_loc: B4
+  starting_grid_heading: south
   ending_grid_loc: B0
   max_num_negotiation_messages: 8
   working_dir: "/home/ubuntu/LLM_ROS2_Control/"
-  model: "gpt-4"
+  model: "gpt-4-vision-preview"
   max_tokens: 400
 
 commands:
