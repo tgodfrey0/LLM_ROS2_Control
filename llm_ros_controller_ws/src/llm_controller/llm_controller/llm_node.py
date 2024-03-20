@@ -196,6 +196,14 @@ class VelocityPublisher(Node):
         b = self.should_restart
         
       self.create_plan(b)
+      
+      b = False
+      with finished_lock:
+        b = finished
+        
+      if b:
+        continue
+      
       self.parse_plan()
       
       with self.restart_lock:
@@ -209,13 +217,11 @@ class VelocityPublisher(Node):
         self.restart(True)
       else:
         self.info("Task completed :)")
+        global finished
+        with finished_lock:
+          finished = True
         break
-    
-    global finished
-    with finished_lock:
-      finished = True
-      
-    self.destroy_node()
+
     
   def parse_plan(self):
     if(len(self.global_conv) > 1):

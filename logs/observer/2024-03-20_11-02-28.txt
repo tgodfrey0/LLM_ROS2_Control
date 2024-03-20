@@ -1,0 +1,249 @@
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Vision model provided, appending image
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Vision model provided, appending image
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Given our starting positions and the necessity to avoid collision, I'll outline a plan where I move into the side space at C4 to allow you to pass. Once you're clear, I will continue south to B0. Please review the following plan for your movements and inform me if you agree or have any modifications before we proceed:
+
+Alice's Plan (Starting at B7 facing South):
+1. @FORWARD (Moves to B6)
+2. @FORWARD (Moves to B5)
+3. @FORWARD (Moves to B4)
+4. @CLOCKWISE (Faces West at B4)
+5. @FORWARD (Moves to C4)
+6. @WAIT (Waits while you pass through B4, B5, B6, B7)
+7. @WAIT
+8. @WAIT
+9. @WAIT
+10. @ANTICLOCKWISE (Faces South at C4)
+11. @FORWARD (Moves to B4)
+12. @FORWARD (Moves to B3)
+13. @FORWARD (Moves to B2)
+14. @FORWARD (Moves to B1)
+15. @FORWARD (Moves to B0)
+
+User's Plan (Starting at B0 facing North):
+1. @FORWARD (Moves to B1)
+2. @FORWARD (Moves to B2)
+3. @FORWARD (Moves to B3)
+4. @FORWARD (Moves to B4)
+5. @FORWARD (Moves to B5)
+6. @FORWARD (Moves to B6)
+7. @FORWARD (Moves to B7)
+
+Please confirm if this plan works for you or if there are adjustments needed.
+INFO from Alice: Negotiation stage 2
+INFO from Bob: Your plan for me as Alice seems clear and should allow us to avoid collision with the given condition that I move aside to C4 as you proceed to B7. However, there appears to be a small oversight in the timing of our moves. Since you have 7 forward moves to reach B7, I need to synchronize my wait periods accordingly.
+
+Here is the modified plan for both of us which includes the correct wait times:
+
+Alice's Plan (Starting at B7 facing South):
+1. @FORWARD (Moves to B6)
+2. @FORWARD (Moves to B5)
+3. @FORWARD (Moves to B4)
+4. @CLOCKWISE (Faces West at B4)
+5. @FORWARD (Moves to C4)
+6. @WAIT (Waits while you start passing through B4)
+7. @WAIT (Waits while you pass through B5)
+8. @WAIT (Waits while you pass through B6)
+9. @ANTICLOCKWISE (Faces South at C4 after you have cleared B6)
+10. @FORWARD (Moves to B4)
+11. @FORWARD (Moves to B3)
+12. @FORWARD (Moves to B2)
+13. @FORWARD (Moves to B1)
+14. @FORWARD (Moves to B0)
+
+User's Plan (Starting at B0 facing North):
+1. @FORWARD (Moves to B1)
+2. @FORWARD (Moves to B2)
+3. @FORWARD (Moves to B3)
+4. @FORWARD (Moves to B4)
+5. @FORWARD (Moves to B5)
+6. @FORWARD (Moves to B6)
+7. @FORWARD (Moves to B7)
+
+If you agree with this plan, please confirm and we can proceed to execute our maneuvers.
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 3
+INFO from Bob: Supervisor called
+INFO from Bob: Confirmed, the modified plan including the synchronized wait times should help us avoid collision and reach our respective destinations efficiently. Let's proceed with the execution of our maneuvers.
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 5
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Final plan for 192.168.193.58
+Alice's Plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @CLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @WAIT
+8. @WAIT
+9. @ANTICLOCKWISE
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+13. @FORWARD
+14. @FORWARD
+INFO from Bob: Final plan for 192.168.193.203
+Bob's Plan (Starting at B0 facing North):
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Please execute these steps to reach your destination at B7.
+
+@SUPERVISOR
+INFO from Bob: Negotiation finished
+INFO from Alice: The modified plan looks correct, and it ensures we avoid any collision with properly synchronized wait times.
+
+To confirm:
+
+Alice's Modified Plan (Starting at B7 facing South):
+1. @FORWARD (Moves to B6)
+2. @FORWARD (Moves to B5)
+3. @FORWARD (Moves to B4)
+4. @CLOCKWISE (Faces West at B4)
+5. @FORWARD (Moves to C4)
+6. @WAIT (Waits while you start passing through B4)
+7. @WAIT (Waits while you pass through B5)
+8. @WAIT (Waits while you pass through B6)
+9. @ANTICLOCKWISE (Faces South at C4 after you have cleared B6)
+10. @FORWARD (Moves to B4)
+11. @FORWARD (Moves to B3)
+12. @FORWARD (Moves to B2)
+13. @FORWARD (Moves to B1)
+14. @FORWARD (Moves to B0)
+
+User's Modified Plan (Starting at B0 facing North):
+1. @FORWARD (Moves to B1)
+2. @FORWARD (Moves to B2)
+3. @FORWARD (Moves to B3)
+4. @FORWARD (Moves to B4)
+5. @FORWARD (Moves to B5)
+6. @FORWARD (Moves to B6)
+7. @FORWARD (Moves to B7)
+
+With the plans set, we can initiate the movements upon your confirmation.
+
+@SUPERVISOR
+INFO from Alice: Negotiation stage 4
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Final plan for 192.168.193.203
+Bob's Plan (Starting at B0 facing North):
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+These are your steps to reach the destination at B7.
+
+@SUPERVISOR
+INFO from Alice: Final plan for 192.168.193.58
+Alice's Plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @CLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @WAIT
+8. @WAIT
+9. @ANTICLOCKWISE
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+13. @FORWARD
+14. @FORWARD
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: Forwards command
+INFO from Bob: Agents ready for movement
+INFO from Bob: Forwards command
+INFO from Alice: Forwards command
+INFO from Bob: Forwards command
+INFO from Alice: Forwards command
+INFO from Bob: Forwards command
+INFO from Alice: Clockwise command
+INFO from Bob: Forwards command
+INFO from Alice: Min LIDAR reading
+INFO from Alice: Backwards command
+INFO from Bob: Min LIDAR reading
+INFO from Bob: Backwards command
+Restart message sent
+Restart message sent
+INFO from Alice: Replanning
+INFO from Bob: Replanning
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: Replanning
+Restart message sent
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Alice: Replanning
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: Final plan for 192.168.193.203
+Bob's Plan (Starting at B0 facing North):
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+Execute these moves to reach your destination at B7.
+
+@SUPERVISOR
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Forwards command
+INFO from Alice: Final plan for 192.168.193.58
+Understood, let's create a new plan from our current positions. Since I don't have information about our current positions after the interruption, I will assume we are still at our starting positions: you are at B0 facing North and I am at B7 facing South. A new plan for me, Alice, to reach B0 while allowing you to reach B7 without collision is as follows:
+
+Alice's New Plan:
+
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @CLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @WAIT
+8. @WAIT
+9. @ANTICLOCKWISE
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+13. @FORWARD
+14. @FORWARD
+
+This plan should get me to B0, while you can safely pass by moving into B7. If we are indeed at different positions than initially assumed, please let me know our current positions so I can adjust the plan accordingly.
+INFO from Bob: Forwards command
+INFO from Bob: Forwards command
+INFO from Bob: Forwards command
+INFO from Bob: Invalid move in plan, B-1 is not a valid position
+INFO from Bob: Task completed :)
