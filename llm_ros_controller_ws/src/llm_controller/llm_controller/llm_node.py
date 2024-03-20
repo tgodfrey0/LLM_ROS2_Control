@@ -243,6 +243,7 @@ class VelocityPublisher(Node):
         min_dist_reached = any(map(lambda r: r <= self.LIDAR_THRESHOLD, rs))
         if(min_dist_reached):
           self.info("Min LIDAR reading")
+          self.pub_backwards()
           self.sn_ctrl.send("RESTART")
           break
         elif(self.CMD_FORWARD in s):
