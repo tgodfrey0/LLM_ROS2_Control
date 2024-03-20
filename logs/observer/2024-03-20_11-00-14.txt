@@ -1,0 +1,314 @@
+INFO from Bob: SwarmNet initialised successfully
+INFO from Bob: Vision model provided, appending image
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: SwarmNet initialised successfully
+INFO from Alice: Vision model provided, appending image
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Given the starting positions and the requirement for us to swap places, we could use the waiting areas A3 and C4 effectively. To minimize the amount of time spent, it seems sensible for the agent starting from B0 (you) to use A3, as it is closest, and for me to use C4, which is on my way down. Here is a proposed plan that ensures no collisions and an efficient swap:
+
+Your plan from B0 facing North to B7:
+1. @FORWARD (Move to B1)
+2. @FORWARD (Move to B2)
+3. @FORWARD (Move to B3, while I move out of the way into C4)
+4. @FORWARD (Move to B4)
+5. @FORWARD (Move to B5)
+6. @FORWARD (Move to B6)
+7. @FORWARD (End at B7)
+
+My plan from B7 facing South to B0:
+1. @BACKWARDS (Move to B6)
+2. @BACKWARDS (Move to B5)
+3. @BACKWARDS (Move to B4)
+4. @ANTICLOCKWISE (Now facing East)
+5. @FORWARD (Move into C4)
+6. @WAIT (Wait for you to pass B3)
+7. @ANTICLOCKWISE (Now facing South)
+8. @BACKWARDS (Move to B4)
+9. @BACKWARDS (Move to B3)
+10. @BACKWARDS (Move to B2)
+11. @BACKWARDS (Move to B1)
+12. @BACKWARDS (End at B0)
+
+Now, let's ensure we are both in agreement with the plan before calling the @SUPERVISOR. Are you okay with this plan?
+INFO from Alice: Negotiation stage 2
+INFO from Alice: Supervisor called
+INFO from Alice: Your plan from B0 should be adjusted to include a wait move while I'm moving out of the way into C4. Here's the adjusted plan:
+
+Your plan from B0 to B7:
+1. @FORWARD (Move to B1)
+2. @FORWARD (Move to B2)
+3. @FORWARD (Move to B3)
+4. @WAIT (Wait while I move into C4)
+5. @FORWARD (Move to B4)
+6. @FORWARD (Move to B5)
+7. @FORWARD (Move to B6)
+8. @FORWARD (End at B7)
+
+My plan from B7 to B0:
+1. @BACKWARDS (Move to B6)
+2. @BACKWARDS (Move to B5)
+3. @BACKWARDS (Move to B4)
+4. @ANTICLOCKWISE (Now facing East)
+5. @FORWARD (Move into C4)
+6. @WAIT (Wait for you to pass B3 to B4)
+7. @ANTICLOCKWISE (Now facing South)
+8. @FORWARD (From C4 to B4)
+9. @FORWARD (Move to B3)
+10. @FORWARD (Move to B2)
+11. @FORWARD (Move to B1)
+12. @FORWARD (End at B0)
+
+Please confirm if this adjusted plan works for you.
+INFO from Alice: Negotiation stage 4
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Bob: The plan you've suggested seems efficient, allowing for a smooth exchange of positions. I agree with it. Since we have reached an agreement, here is the final plan in a concise list:
+
+Your plan from B0 facing North to B7:
+1. @FORWARD
+2. @FORWARD
+3. @FORWARD
+4. @FORWARD
+5. @FORWARD
+6. @FORWARD
+7. @FORWARD
+
+My plan from B7 facing South to B0:
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @ANTICLOCKWISE
+8. @BACKWARDS
+9. @BACKWARDS
+10. @BACKWARDS
+11. @BACKWARDS
+12. @BACKWARDS
+
+@SUPERVISOR
+INFO from Bob: Negotiation stage 3
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+INFO from Alice: Final plan for 192.168.193.58
+Here is the summarised numerical list for the steps you should take:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @ANTICLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+
+@SUPERVISOR
+FINISHED message sent
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Bob: Final plan for 192.168.193.203
+Bob's plan from B7 to B0:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @ANTICLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+
+@SUPERVISOR
+INFO from Alice: Final plan for 192.168.193.58
+Certainly, here is the final plan for Alice to execute, moving from B7 to B0:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @ANTICLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+
+@SUPERVISOR
+INFO from Bob: Final plan for 192.168.193.203
+Here is the summarized numerical plan for Bob (starting at B7 facing South) to reach B0:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @ANTICLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+
+@SUPERVISOR
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Invalid move in plan, B8 is not a valid position
+Restart message sent
+INFO from Bob: Replanning
+INFO from Bob: Waiting for an agent to be ready
+INFO from Alice: Replanning
+INFO from Alice: Agents ready for movement
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Final plan for 192.168.193.58
+Understood, here is the list of steps for Alice to execute based on the agreed plan:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @ANTICLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+INFO from Bob: Final plan for 192.168.193.203
+Bob's new plan from B7 to B0:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @ANTICLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+
+@SUPERVISOR
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Final plan for 192.168.193.58
+Here is the summarised numerical list of steps for Alice to execute:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @ANTICLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+
+@SUPERVISOR
+INFO from Alice: Negotiation finished
+INFO from Alice: Waiting for an agent to be ready for movement
+INFO from Alice: Agents ready for movement
+INFO from Alice: Invalid move in plan, B-1 is not a valid position
+Restart message sent
+INFO from Alice: Replanning
+INFO from Alice: Waiting for an agent to be ready
+INFO from Bob: Replanning
+INFO from Bob: Final plan for 192.168.193.203
+Understood, let's create a new plan from our current positions, ignoring the previous one.
+
+If I am Bob and currently at B7 facing South, and you are at B0 facing North, with the goal of swapping places, here is a plan for me, Bob:
+
+1. @BACKWARDS (B7 to B6)
+2. @BACKWARDS (B6 to B5)
+3. @BACKWARDS (B5 to B4)
+4. @WAIT (Wait at B4)
+5. @ANTICLOCKWISE (Turn to face East at B4)
+6. @FORWARD (Move from B4 to C4)
+7. @WAIT (Wait at C4 for you to move from B3 to B4)
+8. @ANTICLOCKWISE (Turn to face South at C4)
+9. @FORWARD (Move from C4 to B4)
+10. @FORWARD (B4 to B3)
+11. @FORWARD (B3 to B2)
+12. @FORWARD (B2 to B1)
+13. @FORWARD (B1 to B0)
+
+If this plan is suitable, you can follow a corresponding plan. Let me know if you agree with this proposal.
+
+@SUPERVISOR
+INFO from Alice: Final plan for 192.168.193.58
+Certainly, here is Alice's plan from B7 to B0 according to the agreement:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @ANTICLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+INFO from Bob: Final plan for 192.168.193.203
+Bob's plan from B7 (facing South) to B0:
+
+1. @BACKWARDS
+2. @BACKWARDS
+3. @BACKWARDS
+4. @ANTICLOCKWISE
+5. @FORWARD
+6. @WAIT
+7. @ANTICLOCKWISE
+8. @FORWARD
+9. @FORWARD
+10. @FORWARD
+11. @FORWARD
+12. @FORWARD
+INFO from Bob: Negotiation finished
+INFO from Bob: Waiting for an agent to be ready for movement
+INFO from Bob: Agents ready for movement
+INFO from Bob: Waiting for an agent to be ready
+INFO from Bob: Agents ready for negotiation
+INFO from Bob: Negotiations completed
+INFO from Bob: Negotiation statistics logged
+FINISHED message sent
+INFO from Alice: Agents ready for negotiation
+INFO from Alice: Negotiations completed
+INFO from Alice: Negotiation statistics logged
+FINISHED message sent
