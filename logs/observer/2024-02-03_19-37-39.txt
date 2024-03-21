@@ -1,8 +1,0 @@
-INFO from Alice: SwarmNet initialised successfully
-INFO from Alice: Waiting for an agent to be ready
-INFO from Bob: SwarmNet initialised successfully
-INFO from Bob: Waiting for an agent to be ready
-INFO from Bob: Agents ready for negotiation
-INFO from Bob: =================================== ["You and I are wheeled robots, and can only move forwards, backwards, and rotate clockwise or anticlockwise.          We will negotiate with other robots to navigate a path without colliding. You should negotiate and debate the plan until all agents agree.            You cannot go outside of the grid and we cannot be in the same grid square at once. Only one of us can fit in a square at once.            Once this has been decided you should call the '\x0c@SUPERVISOR' tag at the end of the message but you should agree on the plan first. And print your plan in a concise numbered list using only the following command words:              - '@FORWARD' to move one square forwards              - '@BACKWARDS' to move one square backwards               - '@CLOCKWISE' to rotate 90 degrees clockwise (and stay in the same square)               - '@ANTICLOCKWISE' to rotate 90 degrees clockwise (and stay in the same square)               - '@WAIT' to wait for the time taken to move one square             Do not create new commands and we should both move at the same time.            We should keep our messages as short as possible.            The final plan should be a numbered list only containing these commands and we should try to complete the task as quickly as possible."]
-INFO from Bob: Supervisor called
-INFO from Alice: Agents ready for negotiation
