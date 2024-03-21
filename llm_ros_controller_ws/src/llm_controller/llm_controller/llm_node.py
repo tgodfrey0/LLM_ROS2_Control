@@ -33,8 +33,6 @@ scan_ranges = []
 finished_lock = Lock()
 finished = False
 
-timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
-
 class ScanSubscriber(Node):
   def __init__(self):
     super().__init__("scan_subscriber")
@@ -477,7 +475,7 @@ class VelocityPublisher(Node):
 
     with open(path, "a", newline="") as csvfile:
       writer = csv.writer(csvfile)
-      writer.writerow([timestamp, self.MODEL_NAME, self.MAX_TOKENS, str(self.MAX_NUM_NEGOTIATION_MESSAGES), str(n_stages), str(default_timer() - self.t0)])
+      writer.writerow([self.MODEL_NAME, self.MAX_TOKENS, str(self.MAX_NUM_NEGOTIATION_MESSAGES), str(n_stages), str(default_timer() - self.t0)])
 
   def restart_recv(self, msg: Optional[str]) -> None:
     self.restart(False)
